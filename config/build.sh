@@ -1,4 +1,4 @@
-config=config/_default/config.yml
+config=config/_default/hugo.yml
 destination=public
 port=8080
 
