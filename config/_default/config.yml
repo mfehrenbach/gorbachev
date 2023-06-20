@@ -1,0 +1,14 @@
+baseURL: 'mfehrenbach.github.io/gorbachev/'
+disableHugoGeneratorInject: true
+disableKinds:
+  - RSS
+  - sitemap
+  - taxonomy
+  - term
+enableInlineShortcodes: true
+enableGitInfo: true
+languageCode: en-us
+relativeURLs: true
+removePathAccents: true
+
+title: Gorbachev
