@@ -6,7 +6,7 @@ env:
   destination: public
 jobs:
   github:
-    name: GitHub Pages
+    name:    GitHub Pages
     runs-on: ubuntu-latest
     steps:
     - name: Checkout

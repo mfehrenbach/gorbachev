@@ -1,25 +1,25 @@
-name:        "Setup, Build, Beautify"
+name: Setup, Build, Beautify
 inputs:
   destination:
     required: true
   environment:
     required: true
 runs:
-  using: "composite"
+  using: composite
   steps:
     - name: Setup Hugo
       uses: peaceiris/actions-hugo@v2
       with:
-        hugo-version: 0.114.0js-bea
-        extended: true
-    - name: Setup Beautifier
-      run: npm -g install js-beautify@1.14.8
+        hugo-version: 0.114.0
+        extended:     true
+    - name:  Setup Beautifier
+      run:   npm -g install js-beautify@1.14.8
       shell: bash
-    - name: Build Hugo
-      run:  hugo --minify -d ${{inputs.destination}} --environment ${{inputs.environment}}
+    - name:  Build Hugo
+      run:   hugo --minify -d ${{inputs.destination}} --environment ${{inputs.environment}}
       shell: bash
-    - name: Beautify Output
-      run:  |
+    - name:  Beautify Output
+      run: |
         html-beautify --indent-inner-html --extra_liners --no-preserve-newlines --indent-with-tabs --replace "${{inputs.destination}}/**/*.html"
         css-beautify --space_around_combinator --indent-with-tabs --replace "${{inputs.destination}}/**/*.css"
         js-beautify --indent-with-tabs --replace "${{inputs.destination}}/**/*.js"
