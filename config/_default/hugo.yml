@@ -21,11 +21,7 @@ minify:
       keepQuotes: true
 module:
   mounts:
-  - source: config
-    target: assets
-  - source: content
-    target: assets
-  - source: layouts
+  - source: .github
     target: assets
 relativeURLs: true
 removePathAccents: true
