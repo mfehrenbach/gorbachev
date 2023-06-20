@@ -8,6 +8,25 @@ disableKinds:
 enableInlineShortcodes: true
 enableGitInfo: true
 languageCode: en-us
+markup:
+  goldmark:
+    parser:
+      attribute:
+        block: true
+    renderer:
+      unsafe: true
+minify:
+  tdewolff:
+    html:
+      keepQuotes: true
+module:
+  mounts:
+  - source: config
+    target: assets
+  - source: content
+    target: assets
+  - source: layouts
+    target: assets
 relativeURLs: true
 removePathAccents: true
 
