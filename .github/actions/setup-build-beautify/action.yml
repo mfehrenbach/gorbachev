@@ -11,6 +11,7 @@ runs:
   steps:
     - name: Print path
       run:  'echo "${{inputs.base_url}}"'
+      shell: bash
     - name: Install Hugo
       uses: peaceiris/actions-hugo@v2
       with:
