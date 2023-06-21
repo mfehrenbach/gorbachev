@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Print name
-      run:  'echo "Current repo: ${{ github.repo }}"'
+      run:  'echo "Current repo: ${{ github.event.repository.name }}"'
     - name: Checkout
       uses: actions/checkout@v2
     - name: Build
