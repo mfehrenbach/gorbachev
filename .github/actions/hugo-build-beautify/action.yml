@@ -9,9 +9,6 @@ inputs:
 runs:
   using: composite
   steps:
-    # - name:  Variable checks
-    #   run: echo "{{ github.repository }} / ${{ github.repository_owner }} / ${{ github.event.repository.name }}"
-    #   shell: bash
     - name: Install Hugo
       run: |
         wget -O ${{ runner.temp }}/hugo.deb https://github.com/gohugoio/hugo/releases/download/v${{ inputs.hugo-version }}/hugo_extended_${{ inputs.hugo-version }}_linux-amd64.deb \
@@ -24,12 +21,7 @@ runs:
       run: sudo snap install dart-sass-embedded
       shell: bash
     - name: Build Hugo
-      run: |
-        hugo \
-          --minify \
-          --destination public
-          --baseURL ${{ inputs.base-url }}/
-          --environment production
+      run: hugo --minify --baseURL ${{ inputs.base-url }} --destination public --environment production
       shell: bash
     - name:  Beautify Output
       run: |
