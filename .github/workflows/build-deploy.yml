@@ -9,8 +9,8 @@ jobs:
     name:    GitHub Pages
     runs-on: ubuntu-latest
     steps:
-    - name: Print name
-      run:  'echo "Current repo: ${{ github.event.repository.name }}"'
+    - name: Print path
+      run:  '${{ github.repository_owner }} / ${{ github.event.repository.name }}"'
     - name: Checkout
       uses: actions/checkout@v2
     - name: Build
