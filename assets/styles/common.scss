@@ -2,6 +2,42 @@
 
 
 
-* {
+body {
+	--gutter: 20px;
+	--slate: hsl(210, 33%, 50%);
+
 	font-family: sans-serif;
+	padding:     var(--gutter);
+}
+
+h1 {
+	font-size:     1.62em;
+	font-weight:   bold;
+	margin-bottom: var(--gutter);
+}
+
+h1,
+p {
+	max-width: 80ch;
+}
+
+p + p {
+	margin-top: var(--gutter);
+}
+
+blockquote {
+	font-style:  italic;
+	padding-left: var(--gutter);
+	border-left-width: 0.1em;
+	border-left-style: solid;
+	border-left-color: var(--slate);
+}
+
+p a {
+	text-decoration: underline;
+	color: var(--slate);
+}
+
+em {
+	font-style: italic;
 }
