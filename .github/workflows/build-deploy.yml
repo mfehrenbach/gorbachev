@@ -13,8 +13,6 @@ jobs:
       uses: actions/checkout@v2
     - name: Build
       uses: ./.github/actions/hugo-build-beautify
-      with:
-        destination: ${{ env.destination }}
     - name: Deploy
       uses: peaceiris/actions-gh-pages@v3
       with:

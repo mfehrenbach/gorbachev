@@ -1,7 +1,4 @@
-name: Hugo Build, Beautify
-inputs:
-  destination:
-    required: true
+name: Hugo Build/Beautify
 runs:
   using: composite
   steps:
@@ -20,11 +17,11 @@ runs:
       run: sudo snap install dart-sass-embedded
       shell: bash
     - name:  Build Hugo
-      run:   hugo --minify -d ${{ inputs.destination }} --environment ${{ github.job }}
+      run:   hugo --minify -d ${{ env.destination }} --environment ${{ github.job }}
       shell: bash
     - name:  Beautify Output
       run: |
-        html-beautify --indent-inner-html --extra_liners --no-preserve-newlines --indent-with-tabs --replace "${{ inputs.destination }}/**/*.html"
-        css-beautify --space_around_combinator --indent-with-tabs --replace "${{ inputs.destination }}/**/*.css"
-        js-beautify --indent-with-tabs --replace "${{ inputs.destination }}/**/*.js"
+        html-beautify --indent-inner-html --extra_liners --no-preserve-newlines --indent-with-tabs --replace "${{ env.destination }}/**/*.html"
+        css-beautify --space_around_combinator --indent-with-tabs --replace "${{ env.destination }}/**/*.css"
+        js-beautify --indent-with-tabs --replace "${{ env.destination }}/**/*.js"
       shell: bash
