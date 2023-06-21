@@ -14,11 +14,11 @@ runs:
     #   shell: bash
     - name: Install Hugo
       run: |
-        wget -O ${{ runner.temp }}/hugo.deb https://github.com/gohugoio/hugo/releases/download/v${{ input.hugo-version }}/hugo_extended_${{ input.hugo-version }}_linux-amd64.deb \
+        wget -O ${{ runner.temp }}/hugo.deb https://github.com/gohugoio/hugo/releases/download/v${{ inputs.hugo-version }}/hugo_extended_${{ inputs.hugo-version }}_linux-amd64.deb \
         && sudo dpkg -i ${{ runner.temp }}/hugo.deb
       shell: bash
     - name:  Install Beautifier
-      run:   npm -g install js-beautify@${{ input.beautify-version }}
+      run:   npm -g install js-beautify@${{ inputs.beautify-version }}
       shell: bash
     - name:  Install Sass (Dart)
       run: sudo snap install dart-sass-embedded
@@ -28,7 +28,7 @@ runs:
         hugo \
           --minify \
           --destination public
-          --baseURL ${{ input.base-url }}/
+          --baseURL ${{ inputs.base-url }}/
           --environment production
       shell: bash
     - name:  Beautify Output
