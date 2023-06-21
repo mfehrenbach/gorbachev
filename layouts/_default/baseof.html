@@ -7,8 +7,8 @@
 		<link href="{{ $landing.RelPermalink }}" rel="stylesheet">
 	</head>
 	<body>
-		{{ block "content" . }}{{ end }}
-		{{ $bookmarklet := (resources.Get "scripts/bookmarklet.js" | resources.ExecuteAsTemplate "" .).Content }}
+		{{ block `content` . }}{{ end }}
+		{{ $bookmarklet := (resources.Get `scripts/bookmarklet.js` | resources.ExecuteAsTemplate `` .).Content }}
 		{{ $bookmarklet = print `javascript:(function(){` $bookmarklet `})()` | safeURL }}
 		<a href="{{ $bookmarklet }}" title="Gorbachev">Bookmarklet</a>
 </html>
