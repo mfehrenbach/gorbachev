@@ -18,10 +18,9 @@ jobs:
         base-url:         ${{ steps.pages.outputs.base_url }}
         beautify-version: 1.14.8
         hugo-version:     0.114.0
-    # - name: Deploy
-    #   uses: peaceiris/actions-gh-pages@v3
-    #   with:
-    #     github_token:   ${{ secrets.GITHUB_TOKEN }}
-    #     publish_dir:    ./${{ env.destination }}
-    #     publish_branch: ${{ env.destination }}
-    #     commit_message: ${{ github.event.head_commit.message }}
+    - name: Upload artifact
+      uses: actions/upload-pages-artifact@v1
+      with:
+        path: ./public
+    - name: Deploy Pages
+      uses: actions/deploy-pages@v2
