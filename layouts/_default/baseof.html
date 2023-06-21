@@ -5,10 +5,10 @@
 		<meta content="initial-scale=1, width=device-width, viewport-fit=cover" name="viewport">
 		{{ $landing := resources.Get `styles/landing.scss` |  toCSS (dict `transpiler` `dartsass`) }}
 		<link href="{{ $landing.RelPermalink }}" rel="stylesheet">
-		{{ $script := resources.Get `scripts/payload.js` | js.Build }}
-		<script src="{{ $script.Permalink }}"></script>
 	</head>
 	<body>
 		{{ block "content" . }}{{ end }}
+		{{ $bookmarklet := print `javascript:(function(){` (resources.Get "scripts/bookmarklet.js").Content `})()` }}
+		<a href="{{ $bookmarklet | safeURL }}" title="Gorbachev">Bookmarklet</a>
 	</body>
 </html>
