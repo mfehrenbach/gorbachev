@@ -16,9 +16,7 @@ runs:
       run:   npm -g install js-beautify@1.14.8
       shell: bash
     - name:  Install Sass (Dart)
-      run:   |
-        npm -g install sass
-        chmod 755 dart-sass-embedded
+      run: snap install dart-sass-embedded
       shell: bash
     - name:  Build Hugo
       run:   hugo --minify -d ${{inputs.destination}} --environment ${{inputs.environment}}
