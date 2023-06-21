@@ -1,15 +1,21 @@
 name: Hugo Build/Beautify
 runs:
   using: composite
+  env:
+    HUGO_VERSION: 0.114.0
   steps:
     # - name:  Variable checks
     #   run: echo "{{ github.repository }} / ${{ github.repository_owner }} / ${{ github.event.repository.name }}"
     #   shell: bash
+    # - name: Install Hugo
+    #   uses: peaceiris/actions-hugo@v2
+    #   with:
+    #     hugo-version: 0.114.0
+    #     extended:     true
     - name: Install Hugo
-      uses: peaceiris/actions-hugo@v2
-      with:
-        hugo-version: 0.114.0
-        extended:     true
+      run: |
+        wget -O ${{ runner.temp }}/hugo.deb https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/hugo_extended_${HUGO_VERSION}_linux-amd64.deb \
+        && sudo dpkg -i ${{ runner.temp }}/hugo.deb
     - name:  Install Beautifier
       run:   npm -g install js-beautify@1.14.8
       shell: bash
@@ -17,7 +23,7 @@ runs:
       run: sudo snap install dart-sass-embedded
       shell: bash
     - name:  Build Hugo
-      run:   hugo --minify -d ${{ env.destination }} --environment ${{ github.job }}
+      run:   hugo --minify
       shell: bash
     # - name: Build Hugo
     #   env:
