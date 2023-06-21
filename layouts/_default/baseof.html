@@ -2,6 +2,9 @@
 <html>
 	<head>
 		<title>{{ .Site.Title }}</title>
+		<meta content="initial-scale=1, width=device-width, viewport-fit=cover" name="viewport">
+		{{ $common := resources.Get `styles/common.scss` |  toCSS (dict `transpiler` `dartsass`) | fingerprint }}
+		<link href="{{ $common.RelPermalink }}" rel="stylesheet">
 	</head>
 	<body>
 		{{ block "content" . }}{{ end }}
