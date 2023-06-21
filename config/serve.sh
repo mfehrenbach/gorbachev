@@ -1,6 +1,6 @@
 config=config/_default/hugo.yml
 destination=public
-port=8080
+port=80
 
 rm -rf $destination &&
 
