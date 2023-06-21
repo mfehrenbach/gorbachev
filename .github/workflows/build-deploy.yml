@@ -9,13 +9,12 @@ jobs:
     name:    GitHub Pages
     runs-on: ubuntu-latest
     steps:
-    - name: Print path
-      run:  'echo "${{ github.repository_owner }} / ${{ github.event.repository.name }}"'
     - name: Checkout
       uses: actions/checkout@v2
     - name: Build
       uses: ./.github/actions/setup-build-beautify
       with:
+        base_url:    ${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}
         destination: ${{ env.destination }}
         environment: github
     - name: Deploy

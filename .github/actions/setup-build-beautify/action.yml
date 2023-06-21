@@ -1,5 +1,7 @@
 name: Setup, Build, Beautify
 inputs:
+  base_url:
+    required: true
   destination:
     required: true
   environment:
@@ -7,6 +9,8 @@ inputs:
 runs:
   using: composite
   steps:
+    - name: Print path
+      run:  'echo "${{inputs.base_url}}"'
     - name: Install Hugo
       uses: peaceiris/actions-hugo@v2
       with:
