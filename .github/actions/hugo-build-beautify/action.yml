@@ -21,11 +21,11 @@ runs:
       run: sudo snap install dart-sass-embedded
       shell: bash
     - name: Build Hugo
-      run: hugo --minify --baseURL ${{ inputs.base-url }} --destination public
+      run: hugo --minify --baseURL ${{ inputs.base-url }} --destination _site
       shell: bash
     - name:  Beautify Output
       run: |
-        html-beautify --indent-inner-html --extra_liners --no-preserve-newlines --indent-with-tabs --replace "public/**/*.html"
-        css-beautify --space_around_combinator --indent-with-tabs --replace "public/**/*.css"
-        js-beautify --indent-with-tabs --replace "public/**/*.js"
+        html-beautify --indent-inner-html --extra_liners --no-preserve-newlines --indent-with-tabs --replace "_site/**/*.html"
+        css-beautify --space_around_combinator --indent-with-tabs --replace "_site/**/*.css"
+        js-beautify --indent-with-tabs --replace "_site/**/*.js"
       shell: bash

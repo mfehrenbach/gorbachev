@@ -26,7 +26,5 @@ jobs:
         hugo-version:     0.114.0
     - name: Upload output
       uses: actions/upload-pages-artifact@v1
-      with:
-        path: public
     - name: Deploy Pages
       uses: actions/deploy-pages@v2
