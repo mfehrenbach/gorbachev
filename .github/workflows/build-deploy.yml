@@ -1,7 +1,7 @@
 name: Automatic build/deploy
 on:
   push:
-    branches: [$default-branch]
+    branches: [main]
   # Allow manual triggering
   workflow_dispatch:
 permissions:
