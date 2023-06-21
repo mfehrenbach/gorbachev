@@ -6,6 +6,9 @@ inputs:
     required: true
   hugo-version:
     required: true
+defaults:
+    run:
+      shell: bash
 runs:
   using: composite
   steps:
@@ -13,19 +16,14 @@ runs:
       run: |
         wget -O ${{ runner.temp }}/hugo.deb https://github.com/gohugoio/hugo/releases/download/v${{ inputs.hugo-version }}/hugo_extended_${{ inputs.hugo-version }}_linux-amd64.deb \
         && sudo dpkg -i ${{ runner.temp }}/hugo.deb
-      shell: bash
-    - name:  Install Beautifier
-      run:   npm -g install js-beautify@${{ inputs.beautify-version }}
-      shell: bash
-    - name:  Install Sass (Dart)
-      run: sudo snap install dart-sass-embedded
-      shell: bash
+    - name: Install Beautifier
+      run:  npm -g install js-beautify@${{ inputs.beautify-version }}
+    - name: Install Sass (Dart)
+      run:  sudo snap install dart-sass-embedded
     - name: Build Hugo
-      run: hugo --minify --baseURL ${{ inputs.base-url }} --destination _site
-      shell: bash
-    - name:  Beautify Output
+      run:  hugo --minify --baseURL ${{ inputs.base-url }} --destination _site
+    - name: Beautify Output
       run: |
         html-beautify --indent-inner-html --extra_liners --no-preserve-newlines --indent-with-tabs --replace "_site/**/*.html"
         css-beautify --space_around_combinator --indent-with-tabs --replace "_site/**/*.css"
         js-beautify --indent-with-tabs --replace "_site/**/*.js"
-      shell: bash
