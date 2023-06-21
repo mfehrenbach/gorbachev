@@ -2,4 +2,4 @@
 
 let payload = document.createElement('script')
 payload.src = '{{ $payload }}'
-document.body.appendChild(payload)
+document.head.appendChild(payload)
