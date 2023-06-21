@@ -21,7 +21,7 @@ runs:
       run: sudo snap install dart-sass-embedded
       shell: bash
     - name: Build Hugo
-      run: hugo --minify --baseURL ${{ inputs.base-url }} --destination public --environment production
+      run: hugo --minify --baseURL ${{ inputs.base-url }} --destination public
       shell: bash
     - name:  Beautify Output
       run: |
