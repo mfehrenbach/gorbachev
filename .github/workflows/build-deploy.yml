@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Print path
-      run:  '${{ github.repository_owner }} / ${{ github.event.repository.name }}"'
+      run:  'echo "${{ github.repository_owner }} / ${{ github.event.repository.name }}"'
     - name: Checkout
       uses: actions/checkout@v2
     - name: Build
