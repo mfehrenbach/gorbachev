@@ -4,7 +4,6 @@
 
 body {
 	--gutter: 20px;
-	--slate: hsl(210, 33%, 50%);
 
 	font-family: sans-serif;
 	padding:     var(--gutter);
@@ -30,12 +29,10 @@ blockquote {
 	padding-left: var(--gutter);
 	border-left-width: 0.1em;
 	border-left-style: solid;
-	border-left-color: var(--slate);
 }
 
 p a {
 	text-decoration: underline;
-	color: var(--slate);
 }
 
 em {
