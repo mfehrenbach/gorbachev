@@ -5,7 +5,9 @@ on:
   # Allow manual triggering
   workflow_dispatch:
 permissions:
+  contents: read
   id-token: write
+  pages:    write
 jobs:
   github-pages:
     name:    GitHub Pages
