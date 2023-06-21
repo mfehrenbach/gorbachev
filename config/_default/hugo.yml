@@ -1,3 +1,4 @@
+canonifyURLs: true
 disableHugoGeneratorInject: true
 disableKinds:
   - RSS
