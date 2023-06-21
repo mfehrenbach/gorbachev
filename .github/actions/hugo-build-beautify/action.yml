@@ -24,7 +24,7 @@ runs:
       shell: bash
     - name:  Beautify Output
       run: |
-        html-beautify --indent-inner-html --extra_liners --no-preserve-newlines --indent-with-tabs --replace "${{inputs.destination}}/**/*.html"
-        css-beautify --space_around_combinator --indent-with-tabs --replace "${{inputs.destination}}/**/*.css"
-        js-beautify --indent-with-tabs --replace "${{inputs.destination}}/**/*.js"
+        html-beautify --indent-inner-html --extra_liners --no-preserve-newlines --indent-with-tabs --replace "${{ inputs.destination }}/**/*.html"
+        css-beautify --space_around_combinator --indent-with-tabs --replace "${{ inputs.destination }}/**/*.css"
+        js-beautify --indent-with-tabs --replace "${{ inputs.destination }}/**/*.js"
       shell: bash
