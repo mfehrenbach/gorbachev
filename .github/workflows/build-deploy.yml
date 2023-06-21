@@ -6,6 +6,8 @@ jobs:
   github-pages:
     name:    GitHub Pages
     runs-on: ubuntu-latest
+    env:
+      HUGO_VERSION: 0.114.0
     steps:
     - name: Checkout
       uses: actions/checkout@v2
