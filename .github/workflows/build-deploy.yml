@@ -14,9 +14,8 @@ jobs:
     - name: Build
       uses: ./.github/actions/hugo-build-beautify
       with:
-        base_url:    ${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}
         destination: ${{ env.destination }}
-        environment: github
+        environment: ${{ github.job }}
     - name: Deploy
       uses: peaceiris/actions-gh-pages@v3
       with:
