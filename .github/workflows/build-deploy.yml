@@ -1,7 +1,8 @@
 name: Automatic build/deploy
 on:
   push:
-    branches: [main]
+    branches: [$default-branch]
+  workflow_dispatch:
 permissions:
   contents: read
   id-token: write
