@@ -1,4 +1,11 @@
 name: Hugo Build/Beautify
+inputs:
+  base-url:
+    required: true
+  beautify-version:
+    required: true
+  hugo-version:
+    required: true
 runs:
   using: composite
   steps:
@@ -7,11 +14,11 @@ runs:
     #   shell: bash
     - name: Install Hugo
       run: |
-        wget -O ${{ runner.temp }}/hugo.deb https://github.com/gohugoio/hugo/releases/download/v${{ env.hugo-version }}/hugo_extended_${{ env.hugo-version }}_linux-amd64.deb \
+        wget -O ${{ runner.temp }}/hugo.deb https://github.com/gohugoio/hugo/releases/download/v${{ input.hugo-version }}/hugo_extended_${{ input.hugo-version }}_linux-amd64.deb \
         && sudo dpkg -i ${{ runner.temp }}/hugo.deb
       shell: bash
     - name:  Install Beautifier
-      run:   npm -g install js-beautify@${{ env.beautify-version }}
+      run:   npm -g install js-beautify@${{ input.beautify-version }}
       shell: bash
     - name:  Install Sass (Dart)
       run: sudo snap install dart-sass-embedded
@@ -21,8 +28,8 @@ runs:
         hugo \
           --minify \
           --destination public
-          --baseURL ${{ steps.pages.outputs.base_url }}/
-          --environment ${{ github.job }}
+          --baseURL ${{ input.base-url }}/
+          --environment production
       shell: bash
     - name:  Beautify Output
       run: |
