@@ -3,38 +3,34 @@
 
 
 body {
-	--gutter: 20px;
+	--gutter: 2rem;
 
-	font-family: sans-serif;
-	padding:     var(--gutter);
+	display:        flex;
+	flex-direction: column;
+	gap:            var(--gutter);
+	padding:        var(--gutter);
 }
 
-h1 {
-	font-size:     1.62em;
-	font-weight:   bold;
-	margin-bottom: var(--gutter);
-}
+h1 { font-size: 1.62em }
 
-h1,
-p {
-	max-width: 80ch;
-}
+p { max-width: 80ch }
 
 p:not(:first-child) {
 	margin-top: var(--gutter);
 }
 
+p a { text-decoration: underline }
+
+em { font-style: italic }
+
+a { color: blue }
+
 blockquote {
-	font-style:  italic;
-	padding-left: var(--gutter);
-	border-left-width: 0.1em;
 	border-left-style: solid;
+	border-left-width: 0.1em;
+	font-style:        italic;
+	padding-left:      var(--gutter);
 }
 
-p a {
-	text-decoration: underline;
-}
 
-em {
-	font-style: italic;
-}
+
