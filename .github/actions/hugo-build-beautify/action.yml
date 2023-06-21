@@ -7,8 +7,8 @@ inputs:
   hugo-version:
     required: true
 defaults:
-    run:
-      shell: bash
+  run:
+    shell: bash
 runs:
   using: composite
   steps:
