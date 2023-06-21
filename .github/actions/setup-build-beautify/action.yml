@@ -7,13 +7,16 @@ inputs:
 runs:
   using: composite
   steps:
-    - name: Setup Hugo
+    - name: Install Hugo
       uses: peaceiris/actions-hugo@v2
       with:
         hugo-version: 0.114.0
         extended:     true
-    - name:  Setup Beautifier
+    - name:  Install Beautifier
       run:   npm -g install js-beautify@1.14.8
+      shell: bash
+    - name:  Install Sass (Dart)
+      run:   npm -g install sass
       shell: bash
     - name:  Build Hugo
       run:   hugo --minify -d ${{inputs.destination}} --environment ${{inputs.environment}}
