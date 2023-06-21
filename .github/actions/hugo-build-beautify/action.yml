@@ -2,9 +2,9 @@ name: Hugo Build/Beautify
 runs:
   using: composite
   steps:
-    - name:  Variable checks
-      run: echo "{{ github.repository }} / ${{ github.repository_owner }} / ${{ github.event.repository.name }}"
-      shell: bash
+    # - name:  Variable checks
+    #   run: echo "{{ github.repository }} / ${{ github.repository_owner }} / ${{ github.event.repository.name }}"
+    #   shell: bash
     - name: Install Hugo
       uses: peaceiris/actions-hugo@v2
       with:
@@ -19,6 +19,15 @@ runs:
     - name:  Build Hugo
       run:   hugo --minify -d ${{ env.destination }} --environment ${{ github.job }}
       shell: bash
+    # - name: Build Hugo
+    #   env:
+    #     HUGO_ENVIRONMENT: ${{ github.job }}
+    #   run: |
+    #     hugo \
+    #       --minify \
+    #       --destination
+    #       --baseURL ${{ steps.pages.outputs.base_url }}/
+    #       --environment ${{ github.job }}
     - name:  Beautify Output
       run: |
         html-beautify --indent-inner-html --extra_liners --no-preserve-newlines --indent-with-tabs --replace "${{ env.destination }}/**/*.html"
