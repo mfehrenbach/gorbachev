@@ -3,7 +3,7 @@ runs:
   using: composite
   steps:
     - name:  Variable checks
-      run: echo ${{ github.job }}
+      run: echo ${{ env.destination }}
       shell: bash
     - name: Install Hugo
       uses: peaceiris/actions-hugo@v2
