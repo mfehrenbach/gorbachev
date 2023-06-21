@@ -2,6 +2,10 @@ name: Automatic build/deploy
 on:
   push:
     branches: [main]
+permissions:
+  contents: read
+  id-token: write
+  pages:    write
 jobs:
   github-pages:
     name:    GitHub Pages
