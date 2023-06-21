@@ -20,7 +20,7 @@ runs:
       run: sudo snap install dart-sass-embedded
       shell: bash
     - name:  Build Hugo
-      run:   hugo --minify -d ${{inputs.destination}} --environment ${{inputs.environment}}
+      run:   hugo --minify -d ${{ inputs.destination }} --environment ${{ github.job }}
       shell: bash
     - name:  Beautify Output
       run: |

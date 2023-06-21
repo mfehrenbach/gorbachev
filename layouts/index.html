@@ -1,3 +1,4 @@
 {{ define "content" }}
 	{{ (resources.Get "README.md").Content | markdownify }}
+	<p>Environment: <em>{{ hugo.Environment }}</em></p>
 {{ end }}
