@@ -8,7 +8,7 @@
 	</head>
 	<body>
 		{{ block "content" . }}{{ end }}
-		{{ $bookmarklet := print `javascript:(function(){` (resources.Get "scripts/bookmarklet.js").Content `})()` }}
-		<a href="{{ $bookmarklet | safeURL }}" title="Gorbachev">Bookmarklet</a>
-	</body>
+		{{ $bookmarklet := (resources.Get "scripts/bookmarklet.js" | resources.ExecuteAsTemplate "" .).Content }}
+		{{ $bookmarklet = print `javascript:(function(){` $bookmarklet `})()` | safeURL }}
+		<a href="{{ $bookmarklet }}" title="Gorbachev">Bookmarklet</a>
 </html>

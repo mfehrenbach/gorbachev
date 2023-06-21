@@ -1,3 +1,5 @@
+{{- $payload := (resources.Get `scripts/payload.js`).Permalink -}}
+
 let payload = document.createElement('script')
-payload.src = 'https://mfehrenbach.github.io/gorbachev/scripts/payload.js'
+payload.src = '{{ $payload }}'
 document.body.appendChild(payload)
