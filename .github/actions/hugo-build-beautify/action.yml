@@ -3,7 +3,7 @@ runs:
   using: composite
   steps:
     - name:  Variable checks
-      run: echo ${{ env.destination }}
+      run: echo "{{ github.repository }} / ${{ github.repository_owner }} / ${{ github.event.repository.name }}"
       shell: bash
     - name: Install Hugo
       uses: peaceiris/actions-hugo@v2
