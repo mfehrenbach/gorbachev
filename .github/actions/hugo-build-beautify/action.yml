@@ -2,13 +2,11 @@ name: Hugo Build, Beautify
 inputs:
   destination:
     required: true
-  environment:
-    required: true
 runs:
   using: composite
   steps:
     - name:  Variable checks
-      run: echo ${{inputs.environment}}
+      run: echo ${{ github.job }}
       shell: bash
     - name: Install Hugo
       uses: peaceiris/actions-hugo@v2

@@ -15,7 +15,6 @@ jobs:
       uses: ./.github/actions/hugo-build-beautify
       with:
         destination: ${{ env.destination }}
-        environment: ${{ github.job }}
     - name: Deploy
       uses: peaceiris/actions-gh-pages@v3
       with:
