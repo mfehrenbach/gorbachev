@@ -11,7 +11,7 @@ jobs:
     name:    GitHub Pages
     runs-on: ubuntu-latest
     steps:
-    - name: Checkout
+    - name: Checkout repo
       uses: actions/checkout@v3
     - name: Setup Pages
       id: pages
@@ -22,9 +22,9 @@ jobs:
         base-url:         ${{ steps.pages.outputs.base_url }}
         beautify-version: 1.14.8
         hugo-version:     0.114.0
-    - name: Upload artifact
+    - name: Upload output
       uses: actions/upload-pages-artifact@v1
       with:
-        path: ./public
+        path: public
     - name: Deploy Pages
       uses: actions/deploy-pages@v2
