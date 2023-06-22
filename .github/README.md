@@ -6,6 +6,6 @@
 
 
 
-[Bookmarklet](https://mfehrenbach.github.io/gorbachev/bookmarklet.txt "Gorbachev") <!-- Title for regex hook. -->
+#### [Bookmarklet →](https://mfehrenbach.github.io/gorbachev/bookmarklet.txt "Gorbachev") <!-- Title for regex hook. -->
 
 *Select the code and drag to the toolbar*
