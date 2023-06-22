@@ -29,6 +29,8 @@ jobs:
         HUGO_VERSION:     0.114.0
         HUGO_PARAMS_URL:  ${{ github.server_url }}/${{ github.repository }}
       uses: ./.github/actions/hugo-build-beautify
+    - name:  Echoing
+      run:   ls -la
     - name: Upload output
       uses: actions/upload-pages-artifact@v1
     - name: Deploy Pages
