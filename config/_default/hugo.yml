@@ -8,8 +8,12 @@ disableKinds:
 enableGitInfo: true
 markup:
   goldmark:
+    parser:
+      autoHeadingID: false
     renderer:
       unsafe: true
+  highlight:
+    codeFences: false
 module:
   mounts:
     - source: content
