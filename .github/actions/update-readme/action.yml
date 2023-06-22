@@ -2,29 +2,31 @@ name: Update README
 runs:
   using: composite
   steps:
+    - name: Store bookmarklet
+      id: bookmarklet
+      run: echo "link=$(cat _site/bookmarklet.txt)" >> "$GITHUB_OUTPUT"
     - name: Toss build
       run: git reset --hard
       shell: bash
     - name: Edit link
       uses: jacobtomlinson/gha-find-replace@v3
       with:
-        find:    \((.*?) "Gorbachev"\)
-        replace: (${{ env.HUGO_BASEURL }}/bookmarklet.txt "Gorbachev")
-        include: .github/README.md
+        find:    '\((.*?) "Gorbachev"\)'
+        replace: '(${{ env.HUGO_BASEURL }}/bookmarklet.txt "Gorbachev")'
+        include: '.github/README.md'
+    - name: Edit JS
+      uses: jacobtomlinson/gha-find-replace@v3
+      with:
+        find:    '```js\n(.*?)\n```'
+        replace: '```js\n${{ steps.bookmarklet.outputs.link }}\n```'
+        include: '.github/README.md'
     - name: Commit changes
       run: |
         if [[ "$(git status --porcelain)" != "" ]]; then
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add .
-          git commit -m "Auto-update bookmarklet link."
+          git commit -m "Auto-update README."
           git push
         fi
       shell: bash
-    # - name: Store the bookmarklet
-    #   id: bookmarklet
-    #   run: echo "link=$(cat _site/bookmarklet.txt)" >> "$GITHUB_OUTPUT"
-    #   shell: bash
-    # - name: Get the bookmarklet
-    #   run: echo "Bookmarklet is ${{ steps.bookmarklet.outputs.link }}"
-    #   shell: bash
