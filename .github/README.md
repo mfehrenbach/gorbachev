@@ -11,7 +11,7 @@
 #### [Bookmarklet →](https://mfehrenbach.github.io/gorbachev/bookmarklet.txt "Gorbachev") <!-- Title for regex hook. -->
 
 ```js
-javascript:(function(){let e=document.createElement('script');e.src='https://mfehrenbach.github.io/gorbachev/replacement.js',document.head.appendChild(e)})()
+javascript:(function(){let e=document.createElement('script');e.src='https://mfehrenbach.github.io/gorbachev/replacement.js',document.head.appendChild(e),console.log('Hello, world.')})()
 ```
 
 *GitHub strips JS, so you have to manually select/drag/copy the code*
