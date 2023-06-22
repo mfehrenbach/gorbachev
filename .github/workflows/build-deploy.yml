@@ -23,7 +23,7 @@ jobs:
       with:
         find:    HUGO_BASEURL
         replace: ${{ steps.pages.outputs.base_url }}
-        include: README.md
+        include: '**README.md'
     - name: Commit README.md
       run: |
         if [[ "$(git status --porcelain)" != "" ]]; then
