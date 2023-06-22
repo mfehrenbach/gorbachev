@@ -6,6 +6,10 @@ disableKinds:
   - taxonomy
   - term
 enableGitInfo: true
+markup:
+  goldmark:
+    renderer:
+      unsafe: true
 module:
   mounts:
     - source: content
