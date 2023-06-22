@@ -12,10 +12,6 @@ jobs:
   github-pages:
     name:    GitHub Pages
     runs-on: ubuntu-latest
-    env:
-      BEAUTIFY_VERSION: 1.14.8
-      HUGO_VERSION: 0.114.0
-      HUGO_BASEURL: ${{ steps.pages.outputs.base_url }}
     steps:
     - name: Checkout repo
       uses: actions/checkout@v3
@@ -24,6 +20,10 @@ jobs:
       uses: actions/configure-pages@v3
     - name: Build Hugo
       uses: ./.github/actions/hugo-build-beautify
+      env:
+        BEAUTIFY_VERSION: 1.14.8
+        HUGO_VERSION: 0.114.0
+        HUGO_BASEURL: ${{ steps.pages.outputs.base_url }}
     - name: Upload output
       uses: actions/upload-pages-artifact@v1
     - name: Deploy Pages
