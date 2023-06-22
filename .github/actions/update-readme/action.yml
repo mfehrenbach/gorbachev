@@ -2,6 +2,9 @@ name: Update README
 runs:
   using: composite
   steps:
+    - name:  Echo the param
+      run:   echo ${HUGO_BASEURL}
+      shell: bash
     - name: Edit link
       uses: jacobtomlinson/gha-find-replace@v3
       with:
