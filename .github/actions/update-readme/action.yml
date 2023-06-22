@@ -5,9 +5,9 @@ runs:
     - name: Edit link
       uses: jacobtomlinson/gha-find-replace@v3
       with:
-        find:    '\((.*?) "Gorbachev"\)'
-        replace: '(${HUGO_BASEURL}/bookmarklet.txt "Gorbachev")'
-        include: '**README.md'
+        find:    \((.*?) "Gorbachev"\)
+        replace: (${HUGO_BASEURL}/bookmarklet.txt "Gorbachev")
+        include: .github/README.md
     - name: Commit changes
       run: |
         if [[ "$(git status --porcelain)" != "" ]]; then
