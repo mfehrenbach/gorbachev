@@ -7,6 +7,6 @@
 
 
 <!-- This is hard-coded now, but could be dynamic. -->
-[Bookmarklet](HUGO_BASEURL/bookmarklet.txt)
+[Bookmarklet](https://mfehrenbach.github.io/gorbachev/bookmarklet.txt)
 
 *Select the code and drag to the toolbar*
