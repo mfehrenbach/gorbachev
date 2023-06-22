@@ -31,6 +31,6 @@ jobs:
       uses: actions/upload-artifact@v3
       with:
         name: bookmarklet
-        path: _site/assets/bookmarklet
+        path: bookmarklet
     - name: Deploy Pages
       uses: actions/deploy-pages@v2
