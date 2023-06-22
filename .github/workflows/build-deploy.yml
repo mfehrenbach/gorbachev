@@ -27,11 +27,6 @@ jobs:
         HUGO_VERSION:     0.114.0
         HUGO_BASEURL:     ${{ steps.pages.outputs.base_url }}
         HUGO_PARAMS_URL:  ${{ github.server_url }}/${{ github.repository }}
-    # - name: Store the bookmarklet
-    #   id: bookmarklet
-    #   run: echo "link=$(cat _site/bookmarklet.txt)" >> "$GITHUB_OUTPUT"
-    # - name: Get the bookmarklet
-    #   run: echo "Bookmarklet is ${{ steps.bookmarklet.outputs.link }}"
     - name: Upload output
       uses: actions/upload-pages-artifact@v1
     - name: Deploy Pages

@@ -19,3 +19,8 @@ runs:
           git push
         fi
       shell: bash
+    # - name: Store the bookmarklet
+    #   id: bookmarklet
+    #   run: echo "link=$(cat _site/bookmarklet.txt)" >> "$GITHUB_OUTPUT"
+    # - name: Get the bookmarklet
+    #   run: echo "Bookmarklet is ${{ steps.bookmarklet.outputs.link }}"
