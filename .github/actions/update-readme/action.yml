@@ -3,13 +3,13 @@ runs:
   using: composite
   steps:
     - name:  Echo the param
-      run:   echo ${HUGO_BASEURL}
+      run:   echo ${{ env.HUGO_BASEURL }}
       shell: bash
     - name: Edit link
       uses: jacobtomlinson/gha-find-replace@v3
       with:
         find:    \((.*?) "Gorbachev"\)
-        replace: (${HUGO_BASEURL}/bookmarklet.txt "Gorbachev")
+        replace: (${{ env.HUGO_BASEURL }}/bookmarklet.txt "Gorbachev")
         include: .github/README.md
     - name: Commit changes
       run: |
