@@ -5,6 +5,7 @@ runs:
     - name: Store bookmarklet
       id: bookmarklet
       run: echo "link=$(cat _site/bookmarklet.txt)" >> "$GITHUB_OUTPUT"
+      shell: bash
     - name: Toss build
       run: git reset --hard
       shell: bash
