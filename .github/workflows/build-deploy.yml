@@ -27,5 +27,10 @@ jobs:
         HUGO_PARAMS_URL:  ${{ github.server_url }}/${{ github.repository }}
     - name: Upload output
       uses: actions/upload-pages-artifact@v1
+    - name: Upload bookmarklet
+      uses: actions/upload-artifact@v3
+      with:
+        name: bookmarklet
+        path: _site/assets/bookmarklet
     - name: Deploy Pages
       uses: actions/deploy-pages@v2
