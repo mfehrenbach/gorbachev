@@ -26,9 +26,12 @@ jobs:
         HUGO_BASEURL:     ${{ steps.pages.outputs.base_url }}
         HUGO_PARAMS_URL:  ${{ github.server_url }}/${{ github.repository }}
     - name: Store the bookmarklet
-      env:
-        BOOKMARKLET: cat _site/bookmarklet.txt
-      run: echo ${BOOKMARKLET}
+      run: echo "bookmarklet=$(cat _site/bookmarklet.txt)" >> $GITHUB_ENV
+    - name: Read the bookmarklet
+      run: echo ${{ env.bookmarklet }}
+      # env:
+      #   BOOKMARKLET: cat _site/bookmarklet.txt
+      # run: echo ${BOOKMARKLET}
       # run:  cat _site/bookmarklet.txt
       # run: echo _site/bookmarklet.txt >> $GITHUB_ENV
     # - name: Upload bookmarklet
