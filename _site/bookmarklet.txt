@@ -1,1 +1,0 @@
-javascript:(function(){let e=document.createElement('script');e.src='https://mfehrenbach.github.io/gorbachev/replacement.js',document.head.appendChild(e)})()

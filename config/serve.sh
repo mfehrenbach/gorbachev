@@ -1,5 +1,5 @@
 config=config/_default/hugo.yml
-destination=public
+destination=_site
 port=443
 
 rm -rf $destination &&

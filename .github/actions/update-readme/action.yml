@@ -4,7 +4,6 @@ runs:
   steps:
     - name: Toss build
       run: |
-        ls -la
         git checkout .
         ls -la
       shell: bash
