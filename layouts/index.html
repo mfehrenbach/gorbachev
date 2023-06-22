@@ -5,7 +5,7 @@
 		{{ $bookmarklet = $bookmarklet | resources.ExecuteAsTemplate `` . }}
 		{{ $bookmarklet = $bookmarklet | minify }}
 		{{ $bookmarklet = $bookmarklet.Content }}
-		{{ $bookmarklet = replace $bookmarklet `"` `'` }}
+		{{ $bookmarklet = $bookmarklet | replaceRE `"` `'` }}
 		{{ $bookmarklet = $bookmarklet | resources.FromString `bookmarklet.txt` }}
 		{{ $replacement := resources.Get `replacement.scss` }}
 		{{ $replacement = $replacement | toCSS (dict `transpiler` `dartsass`) }}
@@ -23,7 +23,7 @@
 		{{ if not hugo.IsProduction }}
 			{{ $readme := resources.Get `README.md` }}
 			{{ $readme = $readme.Content }}
-			{{ $readme = replaceRE `\((.*?) "Gorbachev"\)` `(bookmarklet.txt "Gorbachev")` $readme }}
+			{{ $readme = $readme | replaceRE `\((.*?) "Gorbachev"\)` `(bookmarklet.txt "Gorbachev")` }}
 			{{$readme | markdownify }}
 		{{ end }}
 	</body>
