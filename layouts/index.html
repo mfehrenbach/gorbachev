@@ -1,9 +1,17 @@
 <!doctype html>
 <html>
 	<head>
-		{{ $bookmarklet := replace (resources.Get `bookmarklet.js`| resources.ExecuteAsTemplate `` . | minify).Content `"` `'` }}
-		<!-- {{ ($bookmarklet | resources.FromString `bookmarklet.txt`).Permalink }} -->
-		<!-- {{ (resources.Get `replacement.scss` | toCSS (dict `transpiler` `dartsass`)).Permalink }} -->
+		{{ $bookmarklet := resources.Get `bookmarklet.js` }}
+		{{ $bookmarklet = $bookmarklet | resources.ExecuteAsTemplate `` . }}
+		{{ $bookmarklet = $bookmarklet | minify }}
+		{{ $bookmarklet = $bookmarklet.Content }}
+		{{ $bookmarklet = replace $bookmarklet `"` `'` }}
+		{{ $bookmarklet = $bookmarklet | resources.FromString `bookmarklet.txt` }}
+		{{ $replacement := resources.Get `replacement.scss` }}
+		{{ $replacement = $replacement | toCSS (dict `transpiler` `dartsass`) }}
+		<!-- Permalinks render them out.  -->
+		<!-- {{ $bookmarklet.Permalink }} -->
+		<!-- {{ $replacement.Permalink }} -->
 		{{ if hugo.IsProduction }}
 			<title>Redirecting…</title>
 			<meta http-equiv="refresh" content="0; url={{ .Site.Params.URL }}">
@@ -13,7 +21,10 @@
 	</head>
 	<body>
 		{{ if not hugo.IsProduction }}
-			{{ replaceRE `\((.*?) "Gorbachev"\)` `(bookmarklet.txt "Gorbachev")` (resources.Get `README.md`).Content | markdownify }}
+			{{ $readme := resources.Get `README.md` }}
+			{{ $readme = $readme.Content }}
+			{{ $readme = replaceRE `\((.*?) "Gorbachev"\)` `(bookmarklet.txt "Gorbachev")` $readme }}
+			{{$readme | markdownify }}
 		{{ end }}
 	</body>
 </html>
