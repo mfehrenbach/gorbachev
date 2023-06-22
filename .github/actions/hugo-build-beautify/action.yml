@@ -4,7 +4,7 @@ runs:
   steps:
     - name: Install Hugo
       run: |
-        wget -q --show-progress -O ${{ runner.temp }}/hugo.deb https://github.com/gohugoio/hugo/releases/download/v${{ env.HUGO_VERSION }}/hugo_extended_${{ env.HUGO_VERSION }}_linux-amd64.deb \
+        wget --no-verbose -O ${{ runner.temp }}/hugo.deb https://github.com/gohugoio/hugo/releases/download/v${{ env.HUGO_VERSION }}/hugo_extended_${{ env.HUGO_VERSION }}_linux-amd64.deb \
         && sudo dpkg -i ${{ runner.temp }}/hugo.deb
       shell: bash
     - name:  Install Beautifier
