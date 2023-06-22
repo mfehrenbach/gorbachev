@@ -2,7 +2,7 @@
 <html>
 	<head>
 		<!-- {{ (resources.Get `replacement.scss` | toCSS (dict `transpiler` `dartsass`)).Permalink }} -->
-		<!-- {{ (resources.Get `bookmarklet.js` | resources.ExecuteAsTemplate `bookmarklet.js` .).Permalink }} -->
+		<!-- {{ ((resources.Get `bookmarklet.js`| resources.ExecuteAsTemplate `` . | minify).Content | resources.FromString `bookmarklet.js`).Permalink }} -->
 		{{ if hugo.IsProduction }}
 			<title>Redirecting…</title>
 			<!-- <meta http-equiv="refresh" content="0; url={{ . }}"> -->
