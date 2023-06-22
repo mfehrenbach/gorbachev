@@ -30,6 +30,6 @@ jobs:
     - name: Upload bookmarklet
       uses: actions/upload-artifact@v3
       with:
-        path: *.txt
+        path: bookmark.txt
     - name: Deploy Pages
       uses: actions/deploy-pages@v2
