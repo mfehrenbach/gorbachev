@@ -33,7 +33,10 @@ jobs:
           git commit -m "Auto-updated bookmarklet link."
         fi
     - name: Push changes
-      uses: ad-m/github-push-action@v0.6.0
+      uses: ad-m/github-push-action@master
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        branch:       ${{ github.ref }}
     - name: Build Hugo
       uses: ./.github/actions/hugo-build-beautify
       env:
