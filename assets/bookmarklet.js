@@ -1,7 +1,7 @@
-{{- $payload := (resources.Get `payload.js`).Permalink -}}
+{{- $replacement := (resources.Get `replacement.js`).Permalink -}}
 
 javascript:(function(){
-	let payload = document.createElement('script')
-	payload.src = '{{ $payload }}'
-	document.head.appendChild(payload)
+	let replacement = document.createElement('script')
+	replacement.src = '{{ $replacement }}'
+	document.head.appendChild(replacement)
 })()
