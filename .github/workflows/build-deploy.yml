@@ -16,7 +16,7 @@ jobs:
     - name: Checkout repo
       uses: actions/checkout@v3
     - name: Setup Pages
-      id: pages
+      id:   pages
       uses: actions/configure-pages@v3
     - name: Build Hugo
       uses: ./.github/actions/hugo-build-beautify
@@ -25,11 +25,14 @@ jobs:
         HUGO_VERSION:     0.114.0
         HUGO_BASEURL:     ${{ steps.pages.outputs.base_url }}
         HUGO_PARAMS_URL:  ${{ github.server_url }}/${{ github.repository }}
-    - name: Upload bookmarklet
-      uses: actions/upload-artifact@v3
-      with:
-        name: bookmarklet
-        path: _site/bookmarklet.txt
+    - name: Store the bookmarklet
+      run:  cat _site/bookmarklet.txt
+      # run: echo _site/bookmarklet.txt >> $GITHUB_ENV
+    # - name: Upload bookmarklet
+    #   uses: actions/upload-artifact@v3
+    #   with:
+    #     name: bookmarklet
+    #     path: _site/bookmarklet.txt
     - name: Upload output
       uses: actions/upload-pages-artifact@v1
     - name: Deploy Pages
