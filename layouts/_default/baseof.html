@@ -5,6 +5,7 @@
 		<meta content="initial-scale=1, width=device-width, viewport-fit=cover" name="viewport">
 		{{ $landing := (resources.Get `styles/landing.scss` | toCSS (dict `transpiler` `dartsass`)).RelPermalink }}
 		<link href="{{ $landing }}" rel="stylesheet">
+		<!-- {{ (resources.Get `styles/replacement.scss` | toCSS (dict `transpiler` `dartsass`)).RelPermalink }} -->
 	</head>
 	<body>
 		{{ block `content` . }}{{ end }}
