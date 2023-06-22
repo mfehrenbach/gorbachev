@@ -1,3 +1,10 @@
-{{ define `content` }}
-	{{ (resources.Get `README.md`).Content | markdownify }}
-{{ end }}
+<!doctype html>
+<html>
+	<head>
+		<title>Redirecting…</title>
+		<!-- {{ (resources.Get `replacement.scss` | toCSS (dict `transpiler` `dartsass`)).Permalink }} -->
+		<!-- {{ (resources.Get `bookmarklet.js` | resources.ExecuteAsTemplate `bookmarklet.js` .).Permalink }} -->
+	</head>
+	<body>
+	</body>
+</html>
