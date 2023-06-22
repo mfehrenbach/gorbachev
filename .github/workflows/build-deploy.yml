@@ -22,9 +22,9 @@ jobs:
       uses: ./.github/actions/hugo-build-beautify
       env:
         BEAUTIFY_VERSION: 1.14.8
-        HUGO_VERSION: 0.114.0
-        HUGO_BASEURL: ${{ steps.pages.outputs.base_url }}
-        HUGO_PARAMS_URL: testing
+        HUGO_VERSION:     0.114.0
+        HUGO_BASEURL:     ${{ steps.pages.outputs.base_url }}
+        HUGO_PARAMS_URL:  ${{ github.repository }}
     - name: Upload output
       uses: actions/upload-pages-artifact@v1
     - name: Deploy Pages
