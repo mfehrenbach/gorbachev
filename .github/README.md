@@ -8,7 +8,7 @@
 
  
 
-#### [Bookmarklet →](https://mfehrenbach.github.io/gorbachev/bookmarklet.txt "Gorbachev") <!-- Title for regex hook. -->
+#### [Bookmarklet →](bookmarklet.txt "Gorbachev") <!-- Title for regex hook. -->
 
 ```js
 javascript:(function(){let e=document.createElement('script');e.src='https://mfehrenbach.github.io/gorbachev/replacement.js',document.head.appendChild(e)})()
