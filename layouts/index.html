@@ -12,7 +12,7 @@
 	</head>
 	<body>
 		{{ if not hugo.IsProduction }}
-			{{ replaceRE `(https://).*\/` `` (resources.Get `README.md`).Content | markdownify }}
+			{{ replaceRE `\((.*?) "Gorbachev"\)` `(bookmarklet.txt "Gorbachev")` (resources.Get `README.md`).Content | markdownify }}
 		{{ end }}
 	</body>
 </html>

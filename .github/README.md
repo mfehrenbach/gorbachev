@@ -6,7 +6,6 @@
 
 
 
-<!-- This replaced the dynamic one but then is committed… -->
-[Bookmarklet](bookmarklet.txt "Gorbachev")
+[Bookmarklet](bookmarklet.txt "Gorbachev") <!-- Title for regex hook. -->
 
 *Select the code and drag to the toolbar*
