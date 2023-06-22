@@ -5,7 +5,7 @@ on:
   # Allow manual triggering
   workflow_dispatch:
 permissions:
-  contents: read
+  contents: write
   id-token: write
   pages:    write
 jobs:
@@ -24,19 +24,15 @@ jobs:
         find:    HUGO_BASEURL
         replace: ${{ steps.pages.outputs.base_url }}
         include: '**README.md'
-    - name: Commit README.md
+    - name: Commit README
       run: |
         if [[ "$(git status --porcelain)" != "" ]]; then
           git config user.name "GitHub Action"
           git config user.email "action@github.com"
           git add .
           git commit -m "Auto-updated bookmarklet link."
+          git push
         fi
-    - name: Push changes
-      uses: ad-m/github-push-action@master
-      with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        branch:       ${{ github.ref }}
     - name: Build Hugo
       uses: ./.github/actions/hugo-build-beautify
       env:
