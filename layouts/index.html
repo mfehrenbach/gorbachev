@@ -7,12 +7,8 @@
 		{{ $bookmarklet = $bookmarklet.Content }}
 		{{ $bookmarklet = $bookmarklet | replaceRE `"` `'` }}
 		{{ $bookmarklet = $bookmarklet | resources.FromString `bookmarklet.txt` }}
-		{{ $replacement := resources.Get `replacement.scss` }}
-		{{ $replacement = $replacement | toCSS (dict `transpiler` `dartsass`) }}
-		<!-- Permalinks render them out.  -->
-		<!-- {{ $bookmarklet.Permalink }} -->
-		<!-- {{ $replacement.Permalink }} -->
 		{{ if hugo.IsProduction }}
+			<!-- Permalink to render out: {{ $bookmarklet.Permalink }} -->
 			<title>Redirecting…</title>
 			<meta http-equiv="refresh" content="0; url={{ .Site.Params.URL }}">
 		{{ else }}
