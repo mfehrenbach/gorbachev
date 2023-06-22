@@ -23,7 +23,8 @@
 		{{ if not hugo.IsProduction }}
 			{{ $readme := resources.Get `README.md` }}
 			{{ $readme = $readme.Content }}
-			{{ $readme = $readme | replaceRE `\((.*?) "Gorbachev"\)` `(bookmarklet.txt "Gorbachev")` }}
+			{{ $readme = $readme | replaceRE `\((.*?) "Gorbachev"\)` (print `(` $bookmarklet.Permalink ` "Gorbachev")`) }}
+			{{ $readme = $readme | replaceRE "```js\n(.*?)\n```" (print "```js\n" $bookmarklet.Content "\n```") }}
 			{{$readme | markdownify }}
 		{{ end }}
 	</body>
