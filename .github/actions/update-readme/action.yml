@@ -7,6 +7,7 @@ runs:
         ls -la
         git checkout .
         ls -la
+      shell: bash
     - name: Edit link
       uses: jacobtomlinson/gha-find-replace@v3
       with:
