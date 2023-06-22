@@ -8,10 +8,10 @@
 
  
 
-#### [Bookmarklet code →](https://mfehrenbach.github.io/gorbachev/bookmarklet.txt "Gorbachev") <!-- Title for regex hook. -->
+#### [Bookmarklet →](https://mfehrenbach.github.io/gorbachev/bookmarklet.txt "Gorbachev") <!-- Title for regex hook. -->
 
 ```js
 javascript:(function(){let e=document.createElement('script');e.src='https://mfehrenbach.github.io/gorbachev/replacement.js',document.head.appendChild(e)})()
 ```
 
-*GitHub strips JS, so you have to manually select/drag the code*
+*GitHub strips JS, so you have to manually select/drag/copy the code*
