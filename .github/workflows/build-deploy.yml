@@ -21,8 +21,8 @@ jobs:
     - name: Edit README
       uses: jacobtomlinson/gha-find-replace@v3
       with:
-        find:    HUGO_BASEURL
-        replace: ${{ steps.pages.outputs.base_url }}
+        find:    <a\b(?=[^>]* title="[^"]*(?<=[" ])Gorbachev[" ])(?=[^>]* href="([^"]*))
+        replace: ${1}${{ steps.pages.outputs.base_url }}/bookmarklet.txt
         include: '**README.md'
     - name: Commit README
       run: |

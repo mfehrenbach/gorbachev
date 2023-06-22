@@ -6,7 +6,7 @@
 
 
 
-<!-- This is hard-coded now, but could be dynamic. -->
-[Bookmarklet](https://mfehrenbach.github.io/gorbachev/bookmarklet.txt)
+<!-- This replaced the dynamic one but then is committed… -->
+[Bookmarklet](bookmarklet.txt "Gorbachev")
 
 *Select the code and drag to the toolbar*
