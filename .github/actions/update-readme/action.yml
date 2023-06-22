@@ -8,7 +8,6 @@ runs:
         find:    '\((.*?) "Gorbachev"\)'
         replace: '(${{ steps.pages.outputs.base_url }}/bookmarklet.txt "Gorbachev")'
         include: '**README.md'
-      shell: bash
     - name: Commit changes
       run: |
         if [[ "$(git status --porcelain)" != "" ]]; then
@@ -22,5 +21,7 @@ runs:
     # - name: Store the bookmarklet
     #   id: bookmarklet
     #   run: echo "link=$(cat _site/bookmarklet.txt)" >> "$GITHUB_OUTPUT"
+    #   shell: bash
     # - name: Get the bookmarklet
     #   run: echo "Bookmarklet is ${{ steps.bookmarklet.outputs.link }}"
+    #   shell: bash
