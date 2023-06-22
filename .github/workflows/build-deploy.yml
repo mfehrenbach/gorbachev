@@ -31,8 +31,9 @@ jobs:
           git config user.email "action@github.com"
           git add .
           git commit -m "Auto-updated bookmarklet link."
-          git push
         fi
+    - name: Push changes
+      uses: ad-m/github-push-action@v0.6.0
     - name: Build Hugo
       uses: ./.github/actions/hugo-build-beautify
       env:
