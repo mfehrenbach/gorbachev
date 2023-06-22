@@ -1,10 +1,18 @@
 <!doctype html>
 <html>
 	<head>
-		<title>Redirecting…</title>
 		<!-- {{ (resources.Get `replacement.scss` | toCSS (dict `transpiler` `dartsass`)).Permalink }} -->
 		<!-- {{ (resources.Get `bookmarklet.js` | resources.ExecuteAsTemplate `bookmarklet.js` .).Permalink }} -->
+		{{ if hugo.IsProduction }}
+			<title>Redirecting…</title>
+			<!-- <meta http-equiv="refresh" content="0; url={{ . }}"> -->
+		{{ else }}
+			<title>{{ .Site.Title }}</title>
+		{{ end }}
 	</head>
 	<body>
+		{{ if not hugo.IsProduction }}
+			{{ (resources.Get `README.md`).Content | markdownify }}
+		{{ end }}
 	</body>
 </html>
