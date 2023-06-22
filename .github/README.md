@@ -6,6 +6,6 @@
 
 
 
-[Bookmarklet](bookmarklet.txt "Gorbachev") <!-- Title for regex hook. -->
+[Bookmarklet](/bookmarklet.txt "Gorbachev") <!-- Title for regex hook. -->
 
 *Select the code and drag to the toolbar*
