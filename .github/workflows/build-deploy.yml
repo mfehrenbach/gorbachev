@@ -25,11 +25,11 @@ jobs:
         HUGO_VERSION:     0.114.0
         HUGO_BASEURL:     ${{ steps.pages.outputs.base_url }}
         HUGO_PARAMS_URL:  ${{ github.server_url }}/${{ github.repository }}
-    - name: Upload output
-      uses: actions/upload-pages-artifact@v1
     - name: Upload bookmarklet
       uses: actions/upload-artifact@v3
       with:
         path: bookmark.txt
+    - name: Upload output
+      uses: actions/upload-pages-artifact@v1
     - name: Deploy Pages
       uses: actions/deploy-pages@v2
