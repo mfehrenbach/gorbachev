@@ -13,6 +13,8 @@
 	<body>
 		{{ if not hugo.IsProduction }}
 			{{ (resources.Get `README.md`).Content | markdownify }}
+		{{ else }}
+			<h3>{{ .Site.Params.URL | default `none` }}</h3>
 		{{ end }}
 	</body>
 </html>
