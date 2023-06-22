@@ -30,15 +30,6 @@ jobs:
       run: echo "link=$(cat _site/bookmarklet.txt)" >> "$GITHUB_OUTPUT"
     - name: Get the bookmarklet
       run: echo "Bookmarklet is ${{ steps.bookmarklet.outputs.link }}"
-    # - name: Store the bookmarklet
-    #   run: echo "bookmarklet=$(cat _site/bookmarklet.txt)" >> $GITHUB_ENV
-    #   id: random-color-generator
-    #   run: echo "SELECTED_COLOR=green" >> "$GITHUB_OUTPUT"
-    # - name: Upload bookmarklet
-    #   uses: actions/upload-artifact@v3
-    #   with:
-    #     name: bookmarklet
-    #     path: _site/bookmarklet.txt
     - name: Upload output
       uses: actions/upload-pages-artifact@v1
     - name: Deploy Pages
