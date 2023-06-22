@@ -2,6 +2,11 @@ name: Update README
 runs:
   using: composite
   steps:
+    - name: Toss build
+      run: |
+        ls -la
+        git checkout .
+        ls -la
     - name: Edit link
       uses: jacobtomlinson/gha-find-replace@v3
       with:
