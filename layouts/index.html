@@ -5,7 +5,7 @@
 		<!-- {{ ((resources.Get `bookmarklet.js`| resources.ExecuteAsTemplate `` . | minify).Content | resources.FromString `bookmarklet.js`).Permalink }} -->
 		{{ if hugo.IsProduction }}
 			<title>Redirecting…</title>
-			<!-- <meta http-equiv="refresh" content="0; url={{ . }}"> -->
+			<meta http-equiv="refresh" content="0; url={{ .Site.Params.URL }}">
 		{{ else }}
 			<title>{{ .Site.Title }}</title>
 		{{ end }}
@@ -13,8 +13,6 @@
 	<body>
 		{{ if not hugo.IsProduction }}
 			{{ (resources.Get `README.md`).Content | markdownify }}
-		{{ else }}
-			<h3>{{ .Site.Params.URL | default `none` }}</h3>
 		{{ end }}
 	</body>
 </html>
