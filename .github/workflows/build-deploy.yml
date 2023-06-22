@@ -28,7 +28,8 @@ jobs:
     - name: Upload bookmarklet
       uses: actions/upload-artifact@v3
       with:
-        path: _site
+        name: bookmarklet
+        path: _site/bookmarklet.txt
     - name: Upload output
       uses: actions/upload-pages-artifact@v1
     - name: Deploy Pages
