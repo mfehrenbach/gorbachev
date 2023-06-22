@@ -6,7 +6,7 @@ runs:
       uses: jacobtomlinson/gha-find-replace@v3
       with:
         find:    '\((.*?) "Gorbachev"\)'
-        replace: '(${{ steps.pages.outputs.base_url }}/bookmarklet.txt "Gorbachev")'
+        replace: '(${HUGO_BASEURL}/bookmarklet.txt "Gorbachev")'
         include: '**README.md'
     - name: Commit changes
       run: |
