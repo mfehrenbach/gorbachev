@@ -36,7 +36,7 @@ nobr, .nowrap { white-space: nowrap }
 }
 
 // Size/spacing.
-%--variables--leading{
+%--variables--leading {
 	--typography--font-size:   calc(var(--typography--scale, 1) * var(--typography--size--override, var(--typography--size))); // Map to property.
 	--typography--line-height: calc(var(--typography--leading) * var(--typography--size--override, var(--typography--size)));	 // Calculated exactly (not em/relative) to allow for scaled/super/subscript type sizes.
 
@@ -55,7 +55,7 @@ nobr, .nowrap { white-space: nowrap }
 // Bounding/line-box control.
 %typography, h1, h2, h3, h4, h5, h6, td, p {
 	@extend %--variables--face;
-	@extend %--variable--leading;
+	@extend %--variables--leading;
 
 	color:          var(--color);
 	display:        block; // Fallback in lieu of `flow-root` support.
@@ -90,7 +90,7 @@ td { display: table-cell }
 
 
 %type--layout {
-	@extend %--variable--leading;
+	@extend %--variables--leading;
 
 	--typography--cap:     calc(var(--typography--cap-height) * 1em);
 	--typography--between: calc(var(--typography--font-size) * (var(--typography--leading) + var(--typography--shoulder) - 1));
