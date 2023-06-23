@@ -1,1 +1,16 @@
 @use 'reset';
+
+
+
+@use "utilities" as *;
+
+
+
+body {
+	--color--slate: #4a525a; // The original slate.
+	--color--white: white;
+
+
+	background-color: var(--color--slate);
+	color:            var(--color--white);
+}
