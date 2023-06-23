@@ -4,12 +4,16 @@
 
 @use "utilities" as *;
 
+@use 'typography';
 
 
-body {
-	--color--slate: #4a525a; // The original slate.
+
+:root {
+	--color:             var(--color--white);
+	--color--background: var(--color--slate);
+
+	--color--slate: #4a525a;
 	--color--white: white;
-
 
 	background-color: var(--color--slate);
 	color:            var(--color--white);
