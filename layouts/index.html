@@ -22,8 +22,8 @@
 			{{ $replacement = $replacement | toCSS (dict `transpiler` `dartsass`) }}
 			{{ $metrics := resources.Get `metrics.scss` }}
 			{{ $metrics = $metrics | toCSS (dict `transpiler` `dartsass`) }}
-			<!-- Permalink to render out: {{ $replacement.Permalink }} -->
-			<!-- Permalink to render out: {{ $metrics.Permalink }} -->
+			<!-- Permalink to render out: {{ $replacement.RelPermalink }} -->
+			<!-- Permalink to render out: {{ $metrics.RelPermalink }} -->
 			{{ $readme := resources.Get `README.md` }}
 			{{ $readme = $readme.Content }}
 			{{ $readme = $readme | replaceRE `\((.*?) "Gorbachev"\)` (print `(` $bookmarklet.Permalink ` "Gorbachev")`) }}
@@ -31,7 +31,7 @@
 			{{$readme | markdownify }}
 			{{ $metrics := resources.Get `metrics.html` }}
 			{{ $metrics = $metrics | resources.ExecuteAsTemplate `` . }}
-			<h4><a href="{{ $metrics.Permalink }}">Font metrics →</a></h4>
+			<h4><a href="{{ $metrics.RelPermalink }}">Font metrics →</a></h4>
 		{{ end }}
 	</body>
 </html>

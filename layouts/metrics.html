@@ -5,7 +5,7 @@
 		<title>{{ .Site.Title }}</title>
 		{{ $metrics := resources.Get `metrics.scss` }}
 		{{ $metrics = $metrics | toCSS (dict `transpiler` `dartsass`) }}
-		<link href="{{ $metrics.Permalink }}" rel="stylesheet">
+		<link href="{{ $metrics.RelPermalink }}" rel="stylesheet">
 	</head>
 	<body>
 		<div>
