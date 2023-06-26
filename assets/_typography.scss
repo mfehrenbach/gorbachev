@@ -98,3 +98,21 @@ td { display: table-cell }
 	line-height: var(--typography--line-height);
 	font-size:   var(--typography--font-size);
 }
+
+
+
+%typography--underline {
+	--typography--decoration-thickness: calc(var(--typography--underline) * 1em);
+	--typography--text-shadow:          calc(var(--typography--underline--skip) * 1em);
+	--typography--underline-offset:     calc(var(--typography--underline--shift) * 1em);
+
+	text-decoration-color:     var(--color);
+	text-decoration-line:      underline;
+	text-decoration-thickness: var(--typography--decoration-thickness);
+	text-underline-offset:     calc(-1 * var(--typography--underline-offset) + var(--typography--decoration-thickness) + var(--typography--underline-offset--extra, 0em));
+}
+
+%typography--underline--disable {
+	text-decoration: initial;
+	text-shadow:     initial;
+}

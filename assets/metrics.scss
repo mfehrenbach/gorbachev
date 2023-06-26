@@ -22,9 +22,11 @@ body {
 		width:            fit-content;
 
 		p {
-			background-color: rgba(orange, 0.5);
-			color:            rgba(black, 0.5);
-			position:         relative;
+			background-color:         rgba(orange, 0.5);
+			position:                 relative;
+			text-decoration-skip-ink: none; // To see the overlap.
+
+			a { @extend %typography--underline }
 		}
 
 		&:before, &:after {
@@ -33,6 +35,7 @@ body {
 			--x--height:         calc(var(--font--size) * var(--typography--x-height));
 			--underline--height: calc(var(--font--size) * var(--typography--underline));
 
+			background-color: rgba(tomato, 0.333);
 			content:          '';
 			display:          block;
 			position:         absolute;
@@ -40,18 +43,14 @@ body {
 		}
 
 		&:before {
-			background-color: rgba(tomato, 0.333);
-			bottom:           0;
-			height:           var(--x--height);
+			bottom: 0;
+			height: var(--x--height);
 		}
 
 		&:after {
-			background-color: rgba(tomato, 0.333);
-			top:              calc(var(--typography--size) * var(--typography--cap-height) - var(--x--height));
-			height:           var(--underline--height);
+			height: var(--underline--height);
+			top:    calc(var(--typography--size) * var(--typography--cap-height) - var(--x--height));
 		}
-
-
 
 		&:first-of-type { @extend %font--gill-sans }
 		&:last-of-type { @extend %font--verdana }
