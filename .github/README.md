@@ -11,7 +11,7 @@
 #### [Bookmarklet →](https://mfehrenbach.github.io/gorbachev/bookmarklet.txt "Gorbachev") <!-- Title for regex hook. -->
 
 ```js
-javascript:(function(){const e='https://daringfireball.net';if(location.href.includes(e)){document.querySelectorAll('link[rel=stylesheet]').forEach(e=>e.remove());const t=`<meta content='initial-scale=1, width=device-width, viewport-fit=cover' name='viewport'>`,e=`<link href='https://mfehrenbach.github.io/gorbachev/replacement.css' rel='stylesheet'>`;document.head.hasAttribute('gorbachev')?document.head.insertAdjacentHTML('beforeend',e):(document.head.insertAdjacentHTML('beforeend',[t,e]),document.head.setAttribute('gorbachev',''))}else location.href=e})()
+javascript:(function(){const t='https://daringfireball.net',e=document.documentElement;if(location.href.includes(t)){document.querySelectorAll('link[rel=stylesheet]').forEach(e=>e.remove());const n=`<meta content='initial-scale=1, width=device-width, viewport-fit=cover' name='viewport'>`,t=`<link href='https://mfehrenbach.github.io/gorbachev/replacement.css' rel='stylesheet'>`;e.classList.contains('gorbachev')?document.head.insertAdjacentHTML('beforeend',t):(navigator.appVersion.includes('Win')&&e.classList.add('windows'),document.head.insertAdjacentHTML('beforeend',[n,t]),e.classList.add('gorbachev'))}else location.href=t})()
 ```
 
 *GitHub strips JS, so you have to manually select/drag/copy the code*
