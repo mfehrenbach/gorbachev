@@ -32,10 +32,8 @@ body {
 		}
 
 		&:before, &:after {
-			--font--size:  calc(var(--typography--leading) * var(--typography--size));
-
-			--x--height:         calc(var(--font--size) * var(--typography--x-height));
-			--underline--height: calc(var(--font--size) * var(--typography--underline));
+			--x--height:         calc(var(--typography--size) * var(--typography--x-height));
+			--underline--height: calc(var(--typography--size) * var(--typography--underline));
 
 			background-color: rgba(tomato, 0.333);
 			content:          '';
