@@ -33,6 +33,8 @@ module:
     # Surface for `resources.Get` functions. (Must then include default mounts, above.)
     - source: .github
       target: assets
+    - source: layouts
+      target: assets
 relativeURLs: true
 
 title: Gorbachev

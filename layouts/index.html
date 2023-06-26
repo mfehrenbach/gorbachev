@@ -7,8 +7,8 @@
 		{{ $bookmarklet = $bookmarklet.Content }}
 		{{ $bookmarklet = $bookmarklet | replaceRE `"` `'` }}
 		{{ $bookmarklet = $bookmarklet | resources.FromString `bookmarklet.txt` }}
+		<!-- Permalink to render out: {{ $bookmarklet.Permalink }} -->
 		{{ if hugo.IsProduction }}
-			<!-- Permalink to render out: {{ $bookmarklet.Permalink }} -->
 			<title>Redirecting…</title>
 			<meta http-equiv="refresh" content="0; url={{ .Site.Params.URL }}">
 		{{ else }}
@@ -25,6 +25,9 @@
 			{{ $readme = $readme | replaceRE `\((.*?) "Gorbachev"\)` (print `(` $bookmarklet.Permalink ` "Gorbachev")`) }}
 			{{ $readme = $readme | replaceRE "```js\n(.*?)\n```" (print "```js\n" $bookmarklet.Content "\n```") }}
 			{{$readme | markdownify }}
+			{{ $metrics := resources.Get `metrics.html` }}
+			{{ $metrics = $metrics | resources.ExecuteAsTemplate `` . }}
+			<a href="{{ $metrics.Permalink }}">Font metrics →</a>
 		{{ end }}
 	</body>
 </html>

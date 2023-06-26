@@ -1,0 +1,17 @@
+<!doctype html>
+<html>
+	<head>
+		{{- $metrics := resources.Get `metrics.scss` -}}
+		{{- $metrics = $metrics | toCSS (dict `transpiler` `dartsass`) -}}
+		<link href="{{ $metrics.Permalink }}" rel="stylesheet">
+		<title>{{ .Site.Title }}</title>
+	</head>
+	<body>
+		<div>
+			<p>Df</p>
+		</div>
+		<div>
+			<p>Df</p>
+		</div>
+	</body>
+</html>
