@@ -1,0 +1,20 @@
+// Font metrics.
+%--shoulders {
+	--typography--shoulder:      calc(1 - var(--typography--cap-height)); // Remainder/overhang.
+	--typography--shoulder--top: calc(var(--typography--shoulder) - var(--typography--shoulder--bottom));
+}
+
+%font--gill-sans {
+	@extend %--shoulders;
+
+
+	// Apple, Microsoft, fallback.
+	font-family: 'Gill Sans', 'Gill Sans Nova', sans-serif;
+}
+
+%font--verdana {
+	@extend %--shoulders;
+
+
+	font-family: 'Verdana', sans-serif;
+}
