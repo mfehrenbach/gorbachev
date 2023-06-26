@@ -112,7 +112,4 @@ td { display: table-cell }
 	text-underline-offset:     calc(-1 * var(--typography--underline-offset) + var(--typography--decoration-thickness) + var(--typography--underline-offset--extra, 0em));
 }
 
-%typography--underline--disable {
-	text-decoration: initial;
-	text-shadow:     initial;
-}
+%typography--underline--disable { text-decoration: initial }

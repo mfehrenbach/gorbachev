@@ -16,6 +16,7 @@
 
 	--typography--underline:         0.080; // Height of crossbar on lowercase “f”.
 	--typography--underline--shift: -0.069; // Shift down from baseline, to line up with bottom of descenders.
+
 	// Apple, Microsoft, fallback.
 	font-family: 'Gill Sans', 'Gill Sans Nova', sans-serif;
 }
@@ -32,5 +33,6 @@
 
 	--typography--underline:         0.078;
 	--typography--underline--shift: -0.045;
+
 	font-family: 'Verdana', sans-serif;
 }
