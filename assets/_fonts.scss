@@ -12,9 +12,9 @@
 	--typography--shoulder--bottom:  0.157; // Vertical centering in the line box, across most sizes.
 
 	--typography--inset--left:      -0.076; // Optical insets, left edge of capital "D".
-	--typography--inset--right:     -0.008; // Right edge of lowercase “f” (since lines tend to end lowercase).
+	--typography--inset--right:     -0.058; // Right edge of “d” (since lines tend to end lowercase).
 
-	--typography--underline:         0.080; // Height of crossbar on lowercase “f”.
+	--typography--underline:         0.080; // Height of crossbar on “t”.
 	--typography--underline--shift: -0.069; // Shift down from baseline, to line up with bottom of descenders.
 
 	// Apple, Microsoft, fallback.
@@ -29,7 +29,7 @@
 	--typography--shoulder--bottom:  0.103;
 
 	--typography--inset--left:      -0.098;
-	--typography--inset--right:     -0.002;
+	--typography--inset--right:     -0.090;
 
 	--typography--underline:         0.078;
 	--typography--underline--shift: -0.045;
