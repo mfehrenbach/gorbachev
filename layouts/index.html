@@ -17,9 +17,13 @@
 	</head>
 	<body>
 		{{ if not hugo.IsProduction }}
+			<!-- These are duped out here to catch live reloading. -->
 			{{ $replacement := resources.Get `replacement.scss` }}
 			{{ $replacement = $replacement | toCSS (dict `transpiler` `dartsass`) }}
+			{{ $metrics := resources.Get `metrics.scss` }}
+			{{ $metrics = $metrics | toCSS (dict `transpiler` `dartsass`) }}
 			<!-- Permalink to render out: {{ $replacement.Permalink }} -->
+			<!-- Permalink to render out: {{ $metrics.Permalink }} -->
 			{{ $readme := resources.Get `README.md` }}
 			{{ $readme = $readme.Content }}
 			{{ $readme = $readme | replaceRE `\((.*?) "Gorbachev"\)` (print `(` $bookmarklet.Permalink ` "Gorbachev")`) }}
@@ -27,7 +31,7 @@
 			{{$readme | markdownify }}
 			{{ $metrics := resources.Get `metrics.html` }}
 			{{ $metrics = $metrics | resources.ExecuteAsTemplate `` . }}
-			<a href="{{ $metrics.Permalink }}">Font metrics →</a>
+			<h4><a href="{{ $metrics.Permalink }}">Font metrics →</a></h4>
 		{{ end }}
 	</body>
 </html>
