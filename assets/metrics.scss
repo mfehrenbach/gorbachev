@@ -27,15 +27,32 @@ body {
 			position:         relative;
 		}
 
-		&:before {
-			background-color: rgba(tomato, 0.333);
-			bottom:           0;
+		&:before, &:after {
+			--font--size:  calc(var(--typography--leading) * var(--typography--size));
+
+			--x--height:         calc(var(--font--size) * var(--typography--x-height));
+			--underline--height: calc(var(--font--size) * var(--typography--underline));
+
 			content:          '';
 			display:          block;
 			height:           calc(var(--typography--leading) * var(--typography--size) * var(--typography--x-height));
 			position:         absolute;
 			width:            100%;
 		}
+
+		&:before {
+			background-color: rgba(tomato, 0.333);
+			bottom:           0;
+			height:           var(--x--height);
+		}
+
+		&:after {
+			background-color: rgba(tomato, 0.333);
+			top:              calc(var(--typography--size) * var(--typography--cap-height) - var(--x--height));
+			height:           var(--underline--height);
+		}
+
+
 
 		&:first-of-type { @extend %font--gill-sans }
 		&:last-of-type { @extend %font--verdana }
