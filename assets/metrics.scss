@@ -10,10 +10,10 @@ body {
 	--typography--leading: 1;
 	--typography--size:    100rem;
 
-	padding: 8rem;
-	display: grid;
-	gap:     8rem;
-	justify-content: center;
+	display:         grid;
+	gap:             36rem;
+	justify-content: start;
+	padding:         12rem 12rem 36rem;
 
 	div {
 		background-color: gold;
@@ -21,18 +21,19 @@ body {
 		width:            fit-content;
 
 		p {
-			color:            rgba(black, 0.5);
 			background-color: rgba(orange, 0.5);
+			color:            rgba(black, 0.5);
+			position:         relative;
 		}
 
-		&:after {
+		&:before {
 			background-color: rgba(tomato, 0.333);
-			bottom:   0;
-			content:  '';
-			display:  block;
-			height:   calc(var(--typography--leading) * var(--typography--size) * var(--typography--x-height));
-			position: absolute;
-			width:    100%;
+			bottom:           0;
+			content:          '';
+			display:          block;
+			height:           calc(var(--typography--leading) * var(--typography--size) * var(--typography--x-height));
+			position:         absolute;
+			width:            100%;
 		}
 
 		&:first-of-type { @extend %font--gill-sans }
