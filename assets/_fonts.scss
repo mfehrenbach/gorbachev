@@ -8,7 +8,7 @@
 	@extend %--shoulders;
 
 	--typography--cap-height:       0.681; // In em.
-	--typography--x-height:         0.448;
+	--typography--x-height:         0.449;
 	--typography--shoulder--bottom: 0.157; // Vertical centering in the line box, across most sizes.
 
 	--typography--inset--left:  -0.076; // Optical insets, left edge of capital "D".
@@ -21,6 +21,12 @@
 %font--verdana {
 	@extend %--shoulders;
 
+	--typography--cap-height:       0.727;
+	--typography--x-height:         0.546;
+	--typography--shoulder--bottom: 0.103;
+
+	--typography--inset--left:  -0.098;
+	--typography--inset--right: -0.002;
 
 	font-family: 'Verdana', sans-serif;
 }
