@@ -1,0 +1,29 @@
+@use 'reset';
+
+@use 'typography';
+@use 'fonts';
+
+
+
+// Falsework to determine font metrics.
+body {
+	--typography--size: 100rem;
+
+	padding: 8rem;
+	display: grid;
+	gap:     8rem;
+	justify-content: center;
+
+	div {
+		background-color: gold;
+		width:            fit-content;
+
+		p {
+			color:            rgba(black, 0.5);
+			background-color: rgba(orange, 0.5);
+		}
+
+		&:first-of-type { @extend %font--gill-sans }
+		&:last-of-type { @extend %font--verdana }
+	}
+}
