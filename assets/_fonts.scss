@@ -8,12 +8,13 @@
 	@extend %--shoulders;
 
 	--typography--cap-height:       0.681; // In em.
-	--typography--x-height:         0.449;
+	--typography--x-height:         0.448;
 	--typography--shoulder--bottom: 0.157; // Vertical centering in the line box, across most sizes.
 
 	--typography--inset--left:  -0.076; // Optical insets, left edge of capital "D".
 	--typography--inset--right: -0.008; // Right edge of lowercase “f” (since lines tend to end lowercase).
 
+	--typography--underline:         0.080; // Height of crossbar on lowercase “f”.
 	// Apple, Microsoft, fallback.
 	font-family: 'Gill Sans', 'Gill Sans Nova', sans-serif;
 }
@@ -28,5 +29,6 @@
 	--typography--inset--left:  -0.098;
 	--typography--inset--right: -0.002;
 
+	--typography--underline:         0.078;
 	font-family: 'Verdana', sans-serif;
 }
