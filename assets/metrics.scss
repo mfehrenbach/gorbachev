@@ -7,7 +7,8 @@
 
 // Falsework to determine font metrics.
 body {
-	--typography--size: 100rem;
+	--typography--leading: 1;
+	--typography--size:    100rem;
 
 	padding: 8rem;
 	display: grid;
