@@ -1,27 +1,19 @@
-console.log('Separate script.')
+// First run…
+if (typeof replacementStyles == 'undefined') {
+	const metaViewport = '<meta content="initial-scale=1, width=device-width, viewport-fit=cover" name="viewport">'
+
+	document.head.insertAdjacentHTML('beforeEnd', metaViewport)
+
+	if (navigator.appVersion.includes('Win')) document.documentElement.classList.add('windows')
+
+	let baseUrl = document.currentScript.src
+	baseUrl = baseUrl.substring(0, baseUrl.lastIndexOf('/'))
+
+	var replacementStyles = `<link href="${baseUrl}/replacement.css" rel="stylesheet">` // Using `var` so it is global.
+}
 
 
 
-// {{- $replacement := resources.Get `replacement.scss` -}}
-// {{- $replacement = $replacement | toCSS (dict `transpiler` `dartsass`) -}}
-//
-// const df =   'https://daringfireball.net'
-// const html = document.documentElement
-//
-// if (location.href.includes(df)) {
-// 	document.querySelectorAll('link[rel=stylesheet]').forEach(stylesheet => stylesheet.remove())
-//
-// 	const metaViewport =     '<meta content="initial-scale=1, width=device-width, viewport-fit=cover" name="viewport">'
-// 	const replacementStyle = '<link href="{{ $replacement.Permalink }}" rel="stylesheet">'
-//
-// 	if (html.classList.contains('gorbachev')) {
-// 		document.head.insertAdjacentHTML('beforeend', replacementStyle)
-// 	} else {
-// 		if (navigator.appVersion.includes('Win')) html.classList.add('windows')
-// 		document.head.insertAdjacentHTML('beforeend', [metaViewport, replacementStyle])
-// 		html.classList.add('gorbachev')
-// 		// Dupe ad into main column.
-// 	}
-// } else {
-// 	location.href = df
-// }
+// All runs…
+document.querySelectorAll('link[rel=stylesheet]').forEach(stylesheet => stylesheet.remove())
+document.head.insertAdjacentHTML('beforeend', replacementStyles)
