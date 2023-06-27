@@ -1,23 +1,19 @@
-{{- $replacement := resources.Get `replacement.scss` -}}
-{{- $replacement = $replacement | toCSS (dict `transpiler` `dartsass`) -}}
+{{- $payload := resources.Get `payload.js` -}}
 
 javascript:(function(){
-	const df =   'https://daringfireball.net'
-	const html = document.documentElement
+	const df = 'https://daringfireball.net'
+	const id = 'gorbachev'
 
 	if (location.href.includes(df)) {
-		document.querySelectorAll('link[rel=stylesheet]').forEach(stylesheet => stylesheet.remove())
+		let payload = document.getElementById(id)
 
-		const metaViewport =     '<meta content="initial-scale=1, width=device-width, viewport-fit=cover" name="viewport">'
-		const replacementStyle = '<link href="{{ $replacement.Permalink }}" rel="stylesheet">'
+		if (payload) payload.remove()
 
-		if (html.classList.contains('gorbachev')) {
-			document.head.insertAdjacentHTML('beforeend', replacementStyle)
-		} else {
-			if (navigator.appVersion.includes('Win')) html.classList.add('windows')
-			document.head.insertAdjacentHTML('beforeend', [metaViewport, replacementStyle])
-			html.classList.add('gorbachev')
-		}
+		payload = document.createElement('script')
+		payload.id = id
+		payload.src = '{{ $payload.Permalink }}'
+
+		document.head.appendChild(payload)
 	} else {
 		location.href = df
 	}
