@@ -11,7 +11,7 @@
 #### [Bookmarklet →](https://mfehrenbach.github.io/gorbachev/bookmarklet.txt "Gorbachev") <!-- Title for regex hook. -->
 
 ```js
-javascript:(function(){const t='https://daringfireball.net',e=document.documentElement;if(location.href.includes(t)){document.querySelectorAll('link[rel=stylesheet]').forEach(e=>e.remove());const n='<meta content='initial-scale=1, width=device-width, viewport-fit=cover' name='viewport'>',t='<link href='https://mfehrenbach.github.io/gorbachev/replacement.css' rel='stylesheet'>';e.classList.contains('gorbachev')?document.head.insertAdjacentHTML('beforeend',t):(navigator.appVersion.includes('Win')&&e.classList.add('windows'),document.head.insertAdjacentHTML('beforeend',[n,t]),e.classList.add('gorbachev'))}else location.href=t})()
+javascript:(function(){const e='https://daringfireball.net',t='gorbachev';if(location.href.includes(e)){let e=document.getElementById(t);e&&e.remove(),e=document.createElement('script'),e.id=t,e.src='https://mfehrenbach.github.io/gorbachev/payload.js',document.head.appendChild(e)}else location.href=e})()
 ```
 
 *GitHub strips JS, so you have to manually select/drag/copy the code*
