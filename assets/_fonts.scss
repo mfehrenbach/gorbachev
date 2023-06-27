@@ -17,8 +17,10 @@
 	--typography--underline:         0.080; // Height of crossbar on “t”.
 	--typography--underline--shift: -0.069; // Shift down from baseline, to line up with bottom of descenders.
 
-	// Apple, Microsoft, fallback.
-	font-family: 'Gill Sans', 'Gill Sans Nova', sans-serif;
+	font-family: 'Gill Sans', sans-serif;
+
+	// Gill Sans on Windows is unreliable, so go for consistent Verdana.
+	@at-root { :root.windows & { @extend %font--verdana } }
 }
 
 %font--verdana {

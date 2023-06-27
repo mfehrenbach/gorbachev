@@ -53,7 +53,7 @@ nobr, .nowrap { white-space: nowrap }
 
 
 // Bounding/line-box control.
-%typography, h1, h2, h3, h4, h5, h6, td, p {
+h1, h2, h3, h4, h5, h6, td, p, %typography {
 	@extend %--variables--face;
 	@extend %--variables--leading;
 
