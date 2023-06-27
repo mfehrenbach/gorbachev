@@ -1,18 +1,20 @@
 // First run…
 if (typeof replacementStyles == 'undefined') {
+	// Make the page responsive.
 	const metaViewport = '<meta content="initial-scale=1, width=device-width, viewport-fit=cover" name="viewport">'
-
 	document.head.insertAdjacentHTML('beforeEnd', metaViewport)
 
+	// Flag Windows for CSS.
 	if (navigator.appVersion.includes('Win')) document.documentElement.classList.add('windows')
 
-	let baseUrl = document.currentScript.src
-	baseUrl = baseUrl.substring(0, baseUrl.lastIndexOf('/'))
-
+	// Duplicate the ad placement for mobile.
 	let adBlock = document.getElementById('SidebarMartini')
 	adBlock = adBlock.cloneNode(true)
 	document.querySelector('#Main > *:first-child').after(adBlock)
 
+	// Set up the stylesheet.
+	let baseUrl = document.currentScript.src
+	baseUrl = baseUrl.substring(0, baseUrl.lastIndexOf('/'))
 	var replacementStyles = `<link href="${baseUrl}/replacement.css" rel="stylesheet">` // Using `var` so it is global.
 }
 
