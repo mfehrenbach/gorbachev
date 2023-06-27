@@ -7,7 +7,10 @@
 		{{ $bookmarklet = $bookmarklet.Content }}
 		{{ $bookmarklet = $bookmarklet | replaceRE `"` `'` }}
 		{{ $bookmarklet = $bookmarklet | resources.FromString `bookmarklet.txt` }}
+		{{ $replacement := resources.Get `replacement.scss` }}
+		{{ $replacement = $replacement | toCSS (dict `transpiler` `dartsass`) }}
 		<!-- Permalink to render out: {{ $bookmarklet.Permalink }} -->
+		<!-- Permalink to render out: {{ $replacement.Permalink }} -->
 		{{ if hugo.IsProduction }}
 			<title>Redirecting…</title>
 			<meta http-equiv="refresh" content="0; url={{ .Site.Params.URL }}">
@@ -17,12 +20,8 @@
 	</head>
 	<body>
 		{{ if not hugo.IsProduction }}
-			<!-- These are duped out here to catch live reloading. -->
-			{{ $replacement := resources.Get `replacement.scss` }}
-			{{ $replacement = $replacement | toCSS (dict `transpiler` `dartsass`) }}
 			{{ $metrics := resources.Get `metrics.scss` }}
 			{{ $metrics = $metrics | toCSS (dict `transpiler` `dartsass`) }}
-			<!-- Permalink to render out: {{ $replacement.RelPermalink }} -->
 			<!-- Permalink to render out: {{ $metrics.RelPermalink }} -->
 			{{ $readme := resources.Get `README.md` }}
 			{{ $readme = $readme.Content }}
