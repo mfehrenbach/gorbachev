@@ -9,6 +9,10 @@ if (typeof replacementStyles == 'undefined') {
 	let baseUrl = document.currentScript.src
 	baseUrl = baseUrl.substring(0, baseUrl.lastIndexOf('/'))
 
+	let adBlock = document.getElementById('SidebarMartini')
+	adBlock = adBlock.cloneNode(true)
+	document.querySelector('#Main > *:first-child').after(adBlock)
+
 	var replacementStyles = `<link href="${baseUrl}/replacement.css" rel="stylesheet">` // Using `var` so it is global.
 }
 
