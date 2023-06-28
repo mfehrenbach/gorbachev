@@ -1,4 +1,5 @@
 {{- $payload := resources.Get `scripts/payload.js` -}}
+{{- $payload = $payload.Content -}}
 {{- $payload = $payload | resources.FromString `payload.js` -}}
 
 javascript:(function(){
