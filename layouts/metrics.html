@@ -3,8 +3,9 @@
 	<head>
 		<script src="/livereload.js?mindelay=10&v=2&port=443&path=livereload"></script>
 		<title>{{ .Site.Title }}</title>
-		{{ $metrics := resources.Get `metrics.scss` }}
+		{{ $metrics := resources.Get `styles/metrics.scss` }}
 		{{ $metrics = $metrics | toCSS (dict `transpiler` `dartsass`) }}
+		{{ $metrics = $metrics | resources.FromString `metrics.css` }}
 		<link href="{{ $metrics.RelPermalink }}" rel="stylesheet">
 	</head>
 	<body>

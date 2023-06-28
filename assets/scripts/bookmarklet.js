@@ -1,4 +1,5 @@
-{{- $payload := resources.Get `payload.js` -}}
+{{- $payload := resources.Get `scripts/payload.js` -}}
+{{- $payload = $payload | resources.FromString `payload.js` -}}
 
 javascript:(function(){
 	const df = 'https://daringfireball.net'

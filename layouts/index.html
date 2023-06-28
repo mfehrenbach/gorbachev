@@ -1,14 +1,15 @@
 <!doctype html>
 <html>
 	<head>
-		{{ $bookmarklet := resources.Get `bookmarklet.js` }}
+		{{ $bookmarklet := resources.Get `scripts/bookmarklet.js` }}
 		{{ $bookmarklet = $bookmarklet | resources.ExecuteAsTemplate `` . }}
 		{{ $bookmarklet = $bookmarklet | minify }}
 		{{ $bookmarklet = $bookmarklet.Content }}
 		{{ $bookmarklet = $bookmarklet | replaceRE `"` `'` }}
 		{{ $bookmarklet = $bookmarklet | resources.FromString `bookmarklet.txt` }}
-		{{ $replacement := resources.Get `replacement.scss` }}
+		{{ $replacement := resources.Get `styles/replacement.scss` }}
 		{{ $replacement = $replacement | toCSS (dict `transpiler` `dartsass`) }}
+		{{ $replacement = $replacement | resources.FromString `replacement.css` }}
 		<!-- Permalink to render out: {{ $bookmarklet.Permalink }} -->
 		<!-- Permalink to render out: {{ $replacement.Permalink }} -->
 		{{ if hugo.IsProduction }}
@@ -20,8 +21,9 @@
 	</head>
 	<body>
 		{{ if not hugo.IsProduction }}
-			{{ $metrics := resources.Get `metrics.scss` }}
+			{{ $metrics := resources.Get `styles/metrics.scss` }}
 			{{ $metrics = $metrics | toCSS (dict `transpiler` `dartsass`) }}
+			{{ $metrics = $metrics | resources.FromString `metrics.css` }}
 			<!-- Permalink to render out: {{ $metrics.RelPermalink }} -->
 			{{ $readme := resources.Get `README.md` }}
 			{{ $readme = $readme.Content }}
