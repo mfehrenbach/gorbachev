@@ -20,7 +20,7 @@ body {
 	width:           fit-content;
 
 	section {
-		@extend %type--layout;
+		@extend %typography--layout;
 
 		background-color: gold;
 		position:         relative;

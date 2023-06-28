@@ -62,18 +62,23 @@ nobr, .nowrap { white-space: nowrap }
 }
 
 
+%--basic-properties {
+	font-size:   var(--typography--font-size);
+	line-height: var(--typography--line-height);
+}
+
+
 
 // Bounding/line-box control.
 h1, h2, h3, h4, h5, h6, td, p, %typography {
+	@extend %--basic-properties;
 	@extend %--variables--face;
 	@extend %--variables--leading;
 
 	color:          var(--color);
 	display:        flow-root; // For  negative margins without flex parents.
-	font-size:      var(--typography--font-size);
 	font-weight:    var(--typography--weight);
 	letter-spacing: var(--typography--letter-spacing);
-	line-height:    var(--typography--line-height);
 	margin-left:    var(--typography--margin--left);
 	margin-right:   var(--typography--margin--right);
 	overflow-wrap:  break-word; // Prevent container-breaking.
@@ -95,11 +100,9 @@ td { display: table-cell } // Flow-root breaks these.
 
 
 // Type spacing on containers.
-%type--layout {
+%typography--layout {
+	@extend %--basic-properties;
 	@extend %--variables--leading;
-
-	line-height: var(--typography--line-height);
-	font-size:   var(--typography--font-size);
 }
 
 
