@@ -8,9 +8,7 @@
 		{{ $bookmarklet = $bookmarklet | replaceRE `"` `'` }}
 		{{ $bookmarklet = $bookmarklet | resources.FromString `bookmarklet.txt` }}
 		{{ $replacement := resources.Get `styles/replacement.scss` }}
-		{{ $replacement = $replacement | toCSS (dict `transpiler` `dartsass`) }}
-		{{ $replacement = $replacement.Content }}
-		{{ $replacement = $replacement | resources.FromString `replacement.css` }}
+		{{ $replacement = $replacement | toCSS (dict `transpiler` `dartsass` `targetPath` `replacement.css`) }}
 		<!-- Permalink to render out: {{ $bookmarklet.Permalink }} -->
 		<!-- Permalink to render out: {{ $replacement.Permalink }} -->
 		{{ if hugo.IsProduction }}
@@ -23,9 +21,7 @@
 	<body>
 		{{ if not hugo.IsProduction }}
 			{{ $metrics := resources.Get `styles/metrics.scss` }}
-			{{ $metrics = $metrics | toCSS (dict `transpiler` `dartsass`) }}
-			{{ $metrics = $metrics.Content }}
-			{{ $metrics = $metrics | resources.FromString `metrics.css` }}
+			{{ $metrics = $metrics | toCSS (dict `transpiler` `dartsass` `targetPath` `metrics.css`) }}
 			<!-- Permalink to render out: {{ $metrics.RelPermalink }} -->
 			{{ $readme := resources.Get `README.md` }}
 			{{ $readme = $readme.Content }}

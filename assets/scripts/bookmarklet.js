@@ -1,6 +1,5 @@
 {{- $payload := resources.Get `scripts/payload.js` -}}
-{{- $payload = $payload.Content -}}
-{{- $payload = $payload | resources.FromString `payload.js` -}}
+{{- $payload = $payload | resources.Copy `payload.js` -}}
 
 javascript:(function(){
 	const df = 'https://daringfireball.net'
