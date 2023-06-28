@@ -6,8 +6,11 @@
 
 
 
-// Set up variables.
-:root {
+// Variables and layout.
+body {
+	@extend %font--verdana;
+	@extend %typography--layout;
+
 	--typography--leading: 1.8;
 	--typography--size:    1.4rem;
 
@@ -16,13 +19,6 @@
 
 	--color:             var(--color--white);
 	--color--background: var(--color--slate);
-}
-
-
-// Layout.
-body {
-	@extend %font--verdana;
-	@extend %typography--layout;
 
 	background-color: var(--color--slate);
 	color:            var(--color--white);
