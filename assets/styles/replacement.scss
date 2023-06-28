@@ -1,33 +1,8 @@
 @use 'reset';
 
-@use "utilities" as *;
-
 @use 'typography';
 @use 'fonts';
+// Links here.
 
-
-
-:root {
-	@extend %font--verdana;
-
-	--typography--leading: 1.5;
-	--typography--size:    1.6rem;
-
-	--color--slate: #4a525a;
-	--color--white: white;
-
-	--color:             var(--color--white);
-	--color--background: var(--color--slate);
-
-	background-color: var(--color--slate);
-	color:            var(--color--white);
-}
-
-
-
-// Temporary stuff.
-dl.linkedlist > dt { @extend %typography }
-
-#Sidebar > p:first-child { @extend %font--gill-sans }
-
-#SidebarMartini { display:none }
+@use 'main';
+@use 'markdown';

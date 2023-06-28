@@ -1,0 +1,12 @@
+@use "utilities" as *;
+
+@forward 'typography';
+@forward 'fonts';
+// @forward 'links';
+
+
+
+// Markdown blocks.
+.article, .linkedlist {
+	--color: rgba(255, 255, 255, 0.5); // Plugged in.
+}

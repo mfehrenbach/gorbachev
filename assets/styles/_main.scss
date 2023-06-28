@@ -1,0 +1,30 @@
+@use "utilities" as *;
+
+@forward 'typography';
+@forward 'fonts';
+// @forward 'links';
+
+
+
+// Set up variables.
+:root {
+	--typography--leading: 1.8;
+	--typography--size:    1.4rem;
+
+	--color--slate: #4a525a;
+	--color--white: white;
+
+	--color:             var(--color--white);
+	--color--background: var(--color--slate);
+}
+
+
+// Layout.
+body {
+	@extend %font--verdana;
+	@extend %typography--layout;
+
+	background-color: var(--color--slate);
+	color:            var(--color--white);
+	padding:          var(--typography--lead);
+}
