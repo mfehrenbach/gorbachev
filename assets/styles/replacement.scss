@@ -1,8 +1,8 @@
-@use 'reset';
+@use 'partials/reset';
 
-@use 'typography';
-@use 'fonts';
-// Links here.
+@use 'partials/typography';
+@use 'partials/fonts';
+// @use 'partials/links';
 
-@use 'main';
-@use 'markdown';
+@use 'partials/main';
+@use 'partials/markdown';
