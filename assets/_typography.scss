@@ -55,6 +55,9 @@ nobr, .nowrap { white-space: nowrap }
 	--typography--cap:    calc(var(--typography--cap-height) * var(--typography--font-size));
 	--typography--x:      calc(var(--typography--x-height) *   var(--typography--font-size));
 	--typography--stroke: calc(var(--typography--underline) *  var(--typography--font-size));
+
+	--typography--lead: calc(var(--typography--line-height) - var(--typography--cap));
+	--typography--line: calc(var(--typography--line-height) + var(--typography--lead));
 }
 
 
@@ -86,10 +89,11 @@ h1, h2, h3, h4, h5, h6, td, p, %typography {
 	&:after  { margin-bottom: var(--typography--margin--bottom) }
 }
 
-td { display: table-cell }
+td { display: table-cell } // Flow-root breaks these.
 
 
 
+// Type spacing on containers.
 %type--layout {
 	@extend %--variables--leading;
 
@@ -99,6 +103,7 @@ td { display: table-cell }
 
 
 
+// Underlines.
 %typography--underline {
 	--typography--decoration-thickness: calc(var(--typography--underline) * 1em);
 	--typography--text-shadow:          calc(var(--typography--underline--skip) * 1em);

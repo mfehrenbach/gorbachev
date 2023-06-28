@@ -49,10 +49,11 @@ body {
 		&:first-of-type { @extend %font--gill-sans }
 
 		&:last-of-type {
-			--typography--size: 10rem;
+			--typography--size:    10rem;
+			--typography--leading: 1.5;
 
 			display: grid;
-			gap:     var(--typography--cap);
+			gap:     var(--typography--line);
 		}
 	}
 }
