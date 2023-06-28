@@ -50,6 +50,11 @@ nobr, .nowrap { white-space: nowrap }
 	// Total space above/below—also rendered absolute for scaling/shifting.
 	--typography--margin--bottom: calc(-1 * var(--typography--leading--bottom) * var(--typography--size--override, var(--typography--size)));
 	--typography--margin--top:    calc(-1 * var(--typography--leading--top) *    var(--typography--size--override, var(--typography--size)));
+
+	// Calculated spacing variables for layout.
+	--typography--cap:    calc(var(--typography--cap-height) * var(--typography--font-size));
+	--typography--x:      calc(var(--typography--x-height) *   var(--typography--font-size));
+	--typography--stroke: calc(var(--typography--underline) *  var(--typography--font-size));
 }
 
 
@@ -87,10 +92,6 @@ td { display: table-cell }
 
 %type--layout {
 	@extend %--variables--leading;
-
-	// Move these into placeholder?
-	--typography--cap:     calc(var(--typography--cap-height) * 1em);
-	--typography--between: calc(var(--typography--font-size) * (var(--typography--leading) + var(--typography--shoulder) - 1));
 
 	line-height: var(--typography--line-height);
 	font-size:   var(--typography--font-size);

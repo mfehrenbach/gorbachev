@@ -7,8 +7,9 @@
 
 // Falsework to determine font metrics.
 body {
-	--typography--leading: 1;
-	--typography--size:    100rem;
+	@extend %font--verdana;
+
+	--typography--size: 100rem;
 
 	--color: rgba(0, 0, 0, 0.5);
 
@@ -18,7 +19,9 @@ body {
 	padding:         12rem 12rem 36rem;
 	width:           fit-content;
 
-	div {
+	section {
+		@extend %type--layout;
+
 		background-color: gold;
 		position:         relative;
 		width:            fit-content;
@@ -32,27 +35,24 @@ body {
 		}
 
 		&:before, &:after {
-			--x--height:         calc(var(--typography--size) * var(--typography--x-height));
-			--underline--height: calc(var(--typography--size) * var(--typography--underline));
-
 			background-color: rgba(tomato, 0.333);
 			content:          '';
 			display:          block;
 			position:         absolute;
 			width:            100%;
+			top:              calc(var(--typography--cap) - var(--typography--x));
 		}
 
-		&:before {
-			bottom: 0;
-			height: var(--x--height);
-		}
-
-		&:after {
-			height: var(--underline--height);
-			top:    calc(var(--typography--size) * var(--typography--cap-height) - var(--x--height));
-		}
+		&:before { height: var(--typography--x) }
+		&:after { height: var(--typography--stroke) }
 
 		&:first-of-type { @extend %font--gill-sans }
-		&:last-of-type { @extend %font--verdana }
+
+		&:last-of-type {
+			--typography--size: 10rem;
+
+			display: grid;
+			gap:     var(--typography--cap);
+		}
 	}
 }
