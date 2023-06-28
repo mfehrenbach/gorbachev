@@ -7,7 +7,7 @@
 %font--gill-sans {
 	@extend %--shoulders;
 
-	--typography--cap-height:        0.681; // In em.
+	--typography--cap-height:        0.681; // In em. Unitless here for use in calc.
 	--typography--x-height:          0.448;
 	--typography--shoulder--bottom:  0.157; // Vertical centering in the line box, across most sizes.
 
