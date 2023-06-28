@@ -41,7 +41,7 @@ nobr, .nowrap { white-space: nowrap }
 	--typography--line-height: calc(var(--typography--leading, 1) * var(--typography--size--override, var(--typography--size)));
 
 	// Internal variables to keep things tidy.
-	--typography--leading--remainder: calc((var(--typography--leading) - 1) / 2);
+	--typography--leading--remainder: calc((var(--typography--leading, 1) - 1) / 2);
 	--typography--shift:              calc((var(--typography--shoulder) + var(--typography--shoulder--top)) * (1 - var(--typography--scale, 1)));
 
 	--typography--leading--bottom: calc(var(--typography--shoulder--bottom) + var(--typography--leading--remainder) + var(--typography--shift, 0));
