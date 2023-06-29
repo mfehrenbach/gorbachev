@@ -60,7 +60,7 @@ $--tall-threshold:   900;
 	}
 }
 
-@mixin tall($break: $--tall-height) {
+@mixin tall($break: $--tall-threshold) {
 		@media (min-height: #{calc($break / $--default-font-fize)}em) { @content }
 }
 
