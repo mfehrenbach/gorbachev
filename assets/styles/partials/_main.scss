@@ -30,6 +30,16 @@ body {
 	padding:          var(--typography--lead);
 
 	@include legacy { --typography--size: calc((14 / 390) * 100vw) } // Scale down for legacy devices.
+
+
+
+	#Main {
+		// Preserve existing (default size) wrapping.
+		--legacy--column: 425;
+		--legacy--type:   12;
+
+		max-width: calc(var(--legacy--column) / var(--legacy--type) * 1em);
+	}
 }
 
 
