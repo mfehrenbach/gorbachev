@@ -8,5 +8,14 @@
 
 // Markdown blocks.
 .article, .linkedlist {
-	--color: rgba(255, 255, 255, 0.5); // Plugged in.
+
+
+
+	// Temporary.
+	> * { margin-top: var(--typography--line) }
+
+	a {
+		@extend %typography--underline;
+		@extend %link--text;
+	}
 }
