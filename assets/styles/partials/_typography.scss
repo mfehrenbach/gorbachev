@@ -1,3 +1,5 @@
+@use "utilities" as *;
+
 // Sizing and aliasing.
 :root {
 	font-feature-settings: 'liga', 'kern';
@@ -112,6 +114,7 @@ td { display: table-cell } // Flow-root breaks these.
 	--typography--decoration-thickness: calc(var(--typography--underline) * 1em);
 	--typography--underline-offset:     calc(var(--typography--underline--shift) * 1em);
 
+	text-decoration-color:     var(--color);
 	text-decoration-line:      underline;
 	text-decoration-thickness: var(--typography--decoration-thickness);
 	text-underline-offset:     calc(-1 * var(--typography--underline-offset) + var(--typography--decoration-thickness));
