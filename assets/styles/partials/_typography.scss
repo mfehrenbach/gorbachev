@@ -39,10 +39,8 @@ nobr, .nowrap { white-space: nowrap }
 // Size/spacing.
 %--variables--leading {
 	// Calculated absolutely for scaled/shifted type on same baseline.
-	--typography--size--rendered: (var(--typography--size--override, var(--typography--size)) * 0.1rem);
-
-	--typography--font-size:   calc(var(--typography--scale, 1) *   var(--typography--size--rendered));
-	--typography--line-height: calc(var(--typography--leading, 1) * var(--typography--size--rendered));
+	--typography--font-size:   calc(var(--typography--scale, 1) *   var(--typography--size--override, var(--typography--size)));
+	--typography--line-height: calc(var(--typography--leading, 1) * var(--typography--size--override, var(--typography--size)));
 
 	// Internal variables to keep things (somewhat) tidy.
 	--typography--leading--remainder: ((var(--typography--leading, 1) - 1) / 2); // Half above/below.
@@ -53,8 +51,8 @@ nobr, .nowrap { white-space: nowrap }
 	--typography--leading--top:       (var(--typography--shoulder--top) +    var(--typography--leading--remainder) + var(--typography--scale--shift));
 
 	// Total space above/below—also rendered absolute for scaling/shifting.
-	--typography--margin--bottom: calc(-1 * var(--typography--leading--bottom) * var(--typography--size--rendered));
-	--typography--margin--top:    calc(-1 * var(--typography--leading--top) *    var(--typography--size--rendered));
+	--typography--margin--bottom: calc(-1 * var(--typography--leading--bottom) * var(--typography--size--override, var(--typography--size)));
+	--typography--margin--top:    calc(-1 * var(--typography--leading--top) *    var(--typography--size--override, var(--typography--size)));
 
 	// Calculated spacing variables for layout.
 	--typography--cap:    calc(var(--typography--cap-height) * var(--typography--font-size));

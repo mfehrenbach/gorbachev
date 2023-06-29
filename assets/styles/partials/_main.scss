@@ -12,7 +12,7 @@ body {
 	@extend %typography--layout;
 
 	--typography--leading: 1.8;
-	--typography--size:    14;
+	--typography--size:    1.4rem; // Go back to unitless, so we can use the numbers to calc?
 
 	--color--slate: #4a525a;
 	--color--white: white;
@@ -23,7 +23,7 @@ body {
 	--color--active:  hsl(0, 0%, 100%, 10%);
 
 	--link--enlargement: var(--typography--x);
-	--link--outline:     2px;
+	--link--outline:     0.2rem;
 
 	background-color: var(--color--slate);
 	color:            var(--color--white);

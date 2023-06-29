@@ -9,7 +9,7 @@
 body {
 	@extend %font--verdana;
 
-	--typography--size: 1000;
+	--typography--size: 100rem;
 
 	--color: rgba(0, 0, 0, 0.5);
 
@@ -49,7 +49,7 @@ body {
 		&:first-of-type { @extend %font--gill-sans }
 
 		&:last-of-type {
-			--typography--size:    100;
+			--typography--size:    10rem;
 			--typography--leading: 1.5;
 
 			display: grid;
