@@ -1,10 +1,10 @@
 // Active/focus states.
 %--active-focus {
-	-webkit-tap-highlight-color: var(--link--highlight);
+	-webkit-tap-highlight-color: var(--color--active);
 	cursor:                     pointer;
 
 	&:active {
-		background-color: var(--link--highlight);
+		background-color: var(--color--active);
 		border-radius:    calc(var(--link--enlargement) / 2);
 	}
 
@@ -14,7 +14,7 @@
 
 		&:focus-visible:not(:disabled) {
 			border-radius: calc(var(--link--enlargement) / 4);
-			outline-color: var(--link--color);
+			outline-color: var(--color--link, var(--color));
 			outline-style: solid;
 			outline-width: var(--link--outline);
 		}
