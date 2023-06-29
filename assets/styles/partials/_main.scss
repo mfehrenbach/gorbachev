@@ -12,7 +12,8 @@ body {
 	@extend %typography--layout;
 
 	--typography--size--floor:   14;
-	--typography--size--ceiling: 20;
+	--typography--size--middle:  18;
+	--typography--size--ceiling: 22;
 
 	--typography--leading: 1.8;
 	--typography--size:    var(--typography--size--floor);
@@ -36,6 +37,28 @@ body {
 		// Scale down for legacy devices, based on the viewport.
 		--typography--factor: 1; // With the unit already in the calc.
 		--typography--size:   calc(var(--typography--size--floor) / #{ $legacy-threshold } * 100vw);
+	}
+
+	@include width(768) {
+		// Start scaling up type when there is room.
+		--typography--factor: 1;
+		--typography--size:   clamp(
+														calc(var(--typography--size--floor) * 0.1rem),
+														calc(var(--typography--size--floor) / 768 * 100vw),
+														calc(var(--typography--size--middle) * 0.1rem)
+													);
+	}
+
+	@include width(1080) {
+		@include tall {
+			// Further on tall screens, based on height.
+			--typography--factor: 1;
+			--typography--size:   clamp(
+															calc(var(--typography--size--middle) * 0.1rem),
+															calc(var(--typography--size--middle) / 900 * 100vh),
+															calc(var(--typography--size--ceiling) * 0.1rem)
+														);
+		}
 	}
 
 
