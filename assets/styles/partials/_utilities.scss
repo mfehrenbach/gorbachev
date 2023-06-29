@@ -47,64 +47,35 @@ $--default-font-fize: 16;
 
 
 
-// Flexible breaks.
-@mixin breakpoint($break) {
-	@if $break == 320 { // These are sadly the exception, now.
-		@media (max-width: #{calc(374 / $--default-font-fize)}em) {
-			@content;
-		}
-	}
-	@else if $break == 768 {
-		@media
-			(min-width: #{calc($break / $--default-font-fize)}em) and (min-height: #{calc(480 / $--default-font-fize)}em), // Clear landscape iPhones.
-			(min-width: #{calc(930 / $--default-font-fize)}em) {
-			@content;
-		}
-	}
-	@else {
-		@media (min-width: #{calc($break / $--default-font-fize)}em) {
-			@content;
-		}
-	}
+// Breakpoints.
+@mixin legacy {
+	@media (max-width: #{calc(389 / $--default-font-fize)}em) { @content } // Old <390 devices.
+}
+
+@mixin width($break) {
+	@media (min-width: #{calc($break / $--default-font-fize)}em) { @content }
 }
 
 @mixin landscape($break: false) {
 	@if $break {
-		@media
-			(orientation: landscape),
-			(min-width: #{calc($break / $--default-font-fize)}em) {
-			@content;
-		}
+		@media (orientation: landscape) and (min-width: #{calc($break / $--default-font-fize)}em) { @content }
 	}
 	@else {
-		@media
-			(orientation: landscape), // Actually landscape.
-			(min-width: #{calc(568 / $--default-font-fize)}em) and (min-height: #{calc(480 / $--default-font-fize)}em), // Clear landscape iPhones.
-			(min-width: #{calc(930 / $--default-font-fize)}em) {
-			@content;
-		}
+		@media (orientation: landscape) { @content }
 	}
 }
 
-@mixin tall {
-	@media (min-height: #{calc(1024 / $--default-font-fize)}em) {
-		@content;
-	}
+@mixin tall($break: 900) {
+		@media (min-height: #{calc($break / $--default-font-fize)}em) { @content }
 }
 
 @mixin retina($density: 2) {
-	@media (-webkit-min-device-pixel-ratio: #{$density}) {
-		@content;
-	}
+	@media (-webkit-min-device-pixel-ratio: #{$density}) { @content }
 }
 
 
 
 // Scope hovers.
 @mixin hover {
-	@media (any-hover: hover) {
-		&:hover {
-			@content;
-		}
-	}
+	@media (any-hover: hover) { &:hover { @content } }
 }
