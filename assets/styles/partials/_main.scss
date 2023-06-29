@@ -11,8 +11,11 @@ body {
 	@extend %font--verdana;
 	@extend %typography--layout;
 
+	--typography--size--floor:   14;
+	--typography--size--ceiling: 20;
+
 	--typography--leading: 1.8;
-	--typography--size:    1.4rem; // Go back to unitless, so we can use the numbers to calc?
+	--typography--size:    var(--typography--size--floor);
 
 	--color--slate: #4a525a;
 	--color--white: white;
@@ -23,13 +26,17 @@ body {
 	--color--active:  hsl(0, 0%, 100%, 10%);
 
 	--link--enlargement: var(--typography--x);
-	--link--outline:     0.2rem;
+	--link--outline:     2px;
 
 	background-color: var(--color--slate);
 	color:            var(--color--white);
 	padding:          var(--typography--lead);
 
-	@include legacy { --typography--size: calc((14 / #{ $legacy-threshold }) * 100vw) } // Scale down for legacy devices.
+	@include legacy {
+		// Scale down for legacy devices, based on the viewport.
+		--typography--factor: 1; // With the unit already in the calc.
+		--typography--size:   calc(var(--typography--size--floor) / #{ $legacy-threshold } * 100vw);
+	}
 
 
 
