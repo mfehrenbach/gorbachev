@@ -1,44 +1,38 @@
 $--default-font-fize: 16;
 
+$--mobile-threshold--short: 440;
+$--mobile-threshold--long:  840;
+
+$--legacy-threshold: 390;
+$--tall-threshold:   900;
 
 
-// For targeting lingering, different behaviors.
-@mixin browser-specific($browsers...) {
+
+// Targeting lingering, different browser behaviors.
+@mixin browser($browsers...) {
 	@if index($browsers, 'firefox') {
-		@supports (-moz-appearance: none) {
-			@content;
-		}
+		@supports (-moz-appearance: none) { @content }
 	}
-
 	@if index($browsers, 'safari') {
-		@supports (-webkit-hyphens: none) { // This might change, when Chrome plays ball.
-			@content;
-		}
+		// This might change, when Chrome plays ball.
+		@supports (-webkit-hyphens: none) { @content }
 	}
-
 	@if index($browsers, 'safari--mobile') {
-		@supports (-webkit-hyphens: none) and (-webkit-touch-callout: none) { // Target iOS subset.
-			@content;
-		}
+		// Target iOS subset.
+		@supports (-webkit-hyphens: none) and (-webkit-touch-callout: none) { @content }
 	}
-
 	@if index($browsers, 'safari--iphone') {
-		@supports (-webkit-hyphens: none) and (-webkit-touch-callout: none) {
-			@media (-webkit-min-device-pixel-ratio: 3) { // iPhones after 2020 or so, as no iPads are @3x yet.
-				@content;
-			}
-		}
+		// iPhones after 2020 or so, as no iPads are @3x (yet).
+		@supports (-webkit-hyphens: none) and (-webkit-touch-callout: none) { @media (-webkit-min-device-pixel-ratio: 3) { @content } }
 	}
-
 	@if index($browsers, 'chrome') {
-		@supports (not (-webkit-hyphens: none)) and (not (-moz-appearance: none)) {
-			@content;
-		}
+		@supports (not (-webkit-hyphens: none)) and (not (-moz-appearance: none)) { @content }
 	}
-
 	@if index($browsers, 'chrome--mobile') {
 		@supports (not (-webkit-hyphens: none)) and (not (-moz-appearance: none)) {
-			@media (max-width: #{$desktop--width - 1}px) {
+			@media
+				(max-width: #{calc(($--mobile-threshold--long - 1) / $--default-font-fize)}em) and (max-height: #{calc(($--mobile-threshold--short - 1) / $--default-font-fize)}em),
+				(max-width: #{calc(($--mobile-threshold--short - 1) / $--default-font-fize)}em) and (max-height: #{calc(($--mobile-threshold--long - 1) / $--default-font-fize)}em) {
 				@content;
 			}
 		}
@@ -47,9 +41,9 @@ $--default-font-fize: 16;
 
 
 
-// Breakpoints.
+// Media queries.
 @mixin legacy {
-	@media (max-width: #{calc(389 / $--default-font-fize)}em) { @content } // Old <390 devices.
+	@media (max-width: #{calc(($--legacy-threshold - 1) / $--default-font-fize)}em) { @content }
 }
 
 @mixin width($break) {
@@ -65,7 +59,7 @@ $--default-font-fize: 16;
 	}
 }
 
-@mixin tall($break: 900) {
+@mixin tall($break: $--tall-height) {
 		@media (min-height: #{calc($break / $--default-font-fize)}em) { @content }
 }
 
