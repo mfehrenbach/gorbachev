@@ -1,9 +1,10 @@
+$legacy-threshold: 390;
+
 $--default-font-fize: 16;
 
 $--mobile-threshold--short: 440;
 $--mobile-threshold--long:  840;
 
-$--legacy-threshold: 390;
 $--tall-threshold:   900;
 
 
@@ -43,7 +44,7 @@ $--tall-threshold:   900;
 
 // Media queries.
 @mixin legacy {
-	@media (max-width: #{calc(($--legacy-threshold - 1) / $--default-font-fize)}em) { @content }
+	@media (max-width: #{calc(($legacy-threshold - 1) / $--default-font-fize)}em) { @content }
 }
 
 @mixin width($break) {

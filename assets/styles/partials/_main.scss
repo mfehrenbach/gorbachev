@@ -29,7 +29,7 @@ body {
 	color:            var(--color--white);
 	padding:          var(--typography--lead);
 
-	@include legacy { --typography--size: calc((14 / 390) * 100vw) } // Scale down for legacy devices.
+	@include legacy { --typography--size: calc((14 / #{ $legacy-threshold }) * 100vw) } // Scale down for legacy devices.
 
 
 
