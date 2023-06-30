@@ -35,6 +35,8 @@ body {
 
 	background-color: var(--color--slate);
 	color:            var(--color--white);
+	padding-left:     calc(env(safe-area-inset-left, 0rem) * 0.72); // Right to the notch edge.
+	padding-right:    calc(env(safe-area-inset-right, 0rem) * 0.72);
 
 
 
