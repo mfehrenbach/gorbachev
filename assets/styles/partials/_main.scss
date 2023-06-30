@@ -92,17 +92,17 @@ body {
 				--intrinsic--width:  720; // From the PNG.
 				--intrinsic--height: 168;
 
-				--content--width:  635; // Wordmark itself.
+				--content--width:  644; // Wordmark itself.
 				--content--height: 72;
 
-				--content--inset--left: 55;
+				--content--inset--left: 47;
 				--content--inset--top:  44;
 
 				--link--enlargement: calc(var(--typography--x) * 2); // Around circle overshoot.
 
 				aspect-ratio: var(--content--width) / var(--content--height);
 				box-sizing:   content-box; // Padding outside.
-				height:       calc(var(--typography--cap) * 3);
+				height:       calc(var(--typography--cap) + var(--typography--lead));
 				position:     relative;
 				width:        auto;
 
