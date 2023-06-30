@@ -85,11 +85,10 @@ body {
 			a {
 				@extend %link--element;
 
-				// From the PNG.
-				--intrinsic--width:  720;
+				--intrinsic--width:  720; // From the PNG.
 				--intrinsic--height: 168;
 
-				--content--width:  635;
+				--content--width:  635; // Wordmark itself.
 				--content--height: 72;
 
 				--content--inset--left: 55;
@@ -97,16 +96,20 @@ body {
 
 				aspect-ratio: var(--content--width) / var(--content--height);
 				box-sizing:   content-box; // Padding outside.
-				display:      flow-root;
 				height:       calc(var(--typography--cap) * 2);
+				position:     relative;
 				width:        auto;
 
+
 				img {
+					aspect-ratio: var(--intrinsic--width) / var(--intrinsic--height);
+					height:       initial; // Cancel inline.
+					margin-left:  calc(-1 * var(--content--inset--left) / var(--content--width) * (100% - var(--link--enlargement) * 2));
+					margin-top:   calc(-1 * var(--content--inset--top) / var(--content--width) * (100% - var(--link--enlargement) * 2));
+					max-width:    initial; // Cancel reset.
+					position:     absolute;
+					width:        calc(var(--intrinsic--width) / var(--content--width) * (100% - var(--link--enlargement) * 2));
 					// Percentages derive from width, so use that for height offset too.
-					height:      auto;
-					margin-left: calc(-1 * var(--content--inset--left) / var(--content--width) * 100%);
-					margin-top:  calc(-1 * var(--content--inset--top) / var(--content--width) * 100%);
-					min-width:   calc(var(--intrinsic--width) / var(--content--width) * 100%);
 				}
 			}
 		}
