@@ -85,6 +85,7 @@ body {
 			padding-bottom: var(--typography--line);
 			z-index:        1; // Over the sidebar.
 
+			// The logo.
 			a {
 				@extend %link--element;
 
@@ -96,6 +97,8 @@ body {
 
 				--content--inset--left: 55;
 				--content--inset--top:  44;
+
+				--link--enlargement: calc(var(--typography--x) * 2); // Around circle overshoot.
 
 				aspect-ratio: var(--content--width) / var(--content--height);
 				box-sizing:   content-box; // Padding outside.
