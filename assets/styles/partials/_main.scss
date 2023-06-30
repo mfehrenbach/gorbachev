@@ -11,6 +11,8 @@ body {
 	@extend %font--verdana;
 	@extend %typography--layout;
 
+
+
 	--typography--size--floor:   14;
 	--typography--size--middle:  18;
 	--typography--size--ceiling: 22;
@@ -31,7 +33,8 @@ body {
 
 	background-color: var(--color--slate);
 	color:            var(--color--white);
-	padding:          var(--typography--lead);
+
+
 
 	@include legacy {
 		// Scale down for legacy devices, based on the viewport.
@@ -63,16 +66,55 @@ body {
 
 
 
-	#Main {
-		// Preserve existing (default size) wrapping.
-		--legacy--column: 425;
-		--legacy--type:   12;
+	// Main layout.
+	#Box {
+		align-items:    start;
+		display:        grid;
+		padding-bottom: var(--typography--lead);
+		padding-left:   var(--typography--lead);
+		padding-right:  var(--typography--lead);
+		grid-template-areas:
+			'banner'
+			'sidebar'
+			'main';
 
-		max-width: calc(var(--legacy--column) / var(--legacy--type) * 1em);
+		#Banner {
+			grid-area: banner;
+		}
+
+		#Sidebar {
+			background-color: var(--color--slate);
+			grid-area:        sidebar;
+			margin-left:      calc(var(--typography--lead) * -1);
+			margin-right:     calc(var(--typography--lead) * -1);
+			padding:          var(--typography--lead);
+			position:         sticky;
+			top:              0;
+		}
+
+		#Main {
+			// Preserve existing (default size) wrapping.
+			--legacy--column: 425;
+			--legacy--type:   12;
+
+			grid-area: main;
+			max-width: calc(var(--legacy--column) / var(--legacy--type) * 1em);
+		}
+
+
+
+		// Two-column.
+		@include width(768) {
+			column-gap:      calc(var(--typography--lead) * 5);
+			justify-content: center;
+			grid-template-areas:
+				'banner  banner'
+				'sidebar main  ';
+		}
 	}
 }
 
 
 
-// Temporary stuff.
-#Banner, #Sidebar { display: none }
+// // Temporary stuff.
+#Sidebar > ul, #SidebarMartini, [id^=Zoom] { display: none }
