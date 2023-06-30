@@ -84,6 +84,7 @@ body {
 
 		#Sidebar {
 			background-color: var(--color--slate);
+			box-shadow:       0 0 var(--typography--line) var(--color--slate);
 			grid-area:        sidebar;
 			margin-left:      calc(var(--typography--lead) * -1);
 			margin-right:     calc(var(--typography--lead) * -1);
@@ -110,6 +111,11 @@ body {
 			grid-template-areas:
 				'banner  banner'
 				'sidebar main  ';
+
+			#Sidebar {
+				background-color: initial;
+				box-shadow:       initial;
+			}
 		}
 	}
 }
