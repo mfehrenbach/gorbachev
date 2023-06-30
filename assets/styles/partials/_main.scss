@@ -158,10 +158,10 @@ body {
 
 
 		// Two-column.
-		@include width(768) {
-			column-gap:      var(--typography--line--2);
+		@include width(667) {
+			column-gap:      var(--typography--line--3);
 			justify-content: center;
-			padding:         var(--typography--line--2) var(--typography--lead);
+			padding:         var(--typography--line--2) var(--typography--line);
 			row-gap:         var(--typography--line--2);
 			grid-template-areas:
 				'banner  banner'
