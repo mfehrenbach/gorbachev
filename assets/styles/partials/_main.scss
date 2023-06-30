@@ -68,7 +68,6 @@ body {
 
 	// Main layout.
 	#Box {
-		align-items:    start;
 		display:        grid;
 		padding-bottom: var(--typography--lead);
 		padding-left:   var(--typography--lead);
@@ -113,8 +112,10 @@ body {
 				'sidebar main  ';
 
 			#Sidebar {
+				align-self:       start;
 				background-color: initial;
 				box-shadow:       initial;
+				justify-self:     end;
 			}
 		}
 	}
