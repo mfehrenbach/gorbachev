@@ -126,8 +126,14 @@ body {
 			background-color: var(--color--slate);
 			box-shadow:       0 0 var(--typography--line) var(--color--slate);
 			grid-area:        sidebar;
-			margin:           calc(-1 * var(--typography--lead));
-			padding:          var(--typography--lead);
+			margin-bottom:    calc(-1 * var(--typography--lead));
+			margin-left:      calc(-1 * var(--typography--lead));
+			margin-right:     calc(-1 * var(--typography--lead));
+			margin-top:       calc(-1 * var(--typography--line));
+			padding-bottom:   var(--typography--lead);
+			padding-left:     var(--typography--lead);
+			padding-right:    var(--typography--lead);
+			padding-top:      var(--typography--line);
 			position:         sticky;
 			top:              0;
 
@@ -166,6 +172,9 @@ body {
 				background-color: initial;
 				box-shadow:       initial;
 				justify-self:     end;
+				margin:           initial;
+				padding:          initial;
+				top:              var(--typography--line);
 			}
 		}
 	}
