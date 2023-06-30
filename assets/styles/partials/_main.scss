@@ -118,8 +118,8 @@ body {
 			background-color: var(--color--slate);
 			box-shadow:       0 0 var(--typography--line) var(--color--slate);
 			grid-area:        sidebar;
-			margin-left:      calc(var(--typography--lead) * -1);
-			margin-right:     calc(var(--typography--lead) * -1);
+			margin-left:      calc(-1 * var(--typography--lead));
+			margin-right:     calc(-1 * var(--typography--lead));
 			padding:          var(--typography--lead);
 			position:         sticky;
 			top:              0;
