@@ -80,6 +80,7 @@ body {
 		#Banner {
 			grid-area:   banner;
 			padding-top: var(--typography--lead);
+			z-index:     1; // Over the sidebar.
 
 			a {
 				@extend %link--element;
