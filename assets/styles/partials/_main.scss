@@ -42,6 +42,8 @@ body {
 		// Scale down for legacy devices, based on the viewport.
 		--typography--factor: 1; // With the unit already in the calc.
 		--typography--size:   calc(var(--typography--size--floor) / #{ $legacy-threshold } * 100vw);
+
+		@include landscape { --typography--size: calc(var(--typography--size--floor) / #{ $legacy-threshold } * 100vh) }
 	}
 
 	@include width(768) {

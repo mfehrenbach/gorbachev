@@ -33,9 +33,8 @@ $--tall-threshold:   900;
 		@supports (not (-webkit-hyphens: none)) and (not (-moz-appearance: none)) {
 			@media
 				(max-width: #{calc(($--mobile-threshold--long - 1) / $--default-font-fize)}em) and (max-height: #{calc(($--mobile-threshold--short - 1) / $--default-font-fize)}em),
-				(max-width: #{calc(($--mobile-threshold--short - 1) / $--default-font-fize)}em) and (max-height: #{calc(($--mobile-threshold--long - 1) / $--default-font-fize)}em) {
-				@content;
-			}
+				(max-width: #{calc(($--mobile-threshold--short - 1) / $--default-font-fize)}em) and (max-height: #{calc(($--mobile-threshold--long - 1) / $--default-font-fize)}em)
+			{ @content }
 		}
 	}
 }
@@ -44,7 +43,11 @@ $--tall-threshold:   900;
 
 // Media queries.
 @mixin legacy {
-	@media (max-width: #{calc(($legacy-threshold - 1) / $--default-font-fize)}em) { @content }
+	// In landscape “device-width” is the height.
+	@media
+		(max-width: #{calc(($legacy-threshold - 1) / $--default-font-fize)}em),
+		(orientation: landscape) and (max-device-width: #{calc(($legacy-threshold - 1) / $--default-font-fize)}em)
+	{ @content }
 }
 
 @mixin width($break) {
