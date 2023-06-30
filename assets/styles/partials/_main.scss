@@ -78,9 +78,10 @@ body {
 			'main';
 
 		#Banner {
-			grid-area:   banner;
-			padding-top: var(--typography--lead);
-			z-index:     1; // Over the sidebar.
+			grid-area:      banner;
+			padding-top:    var(--typography--line);
+			padding-bottom: var(--typography--line);
+			z-index:        1; // Over the sidebar.
 
 			a {
 				@extend %link--element;
@@ -96,7 +97,7 @@ body {
 
 				aspect-ratio: var(--content--width) / var(--content--height);
 				box-sizing:   content-box; // Padding outside.
-				height:       calc(var(--typography--cap) * 2);
+				height:       calc(var(--typography--cap) * 3);
 				position:     relative;
 				width:        auto;
 
