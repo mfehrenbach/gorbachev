@@ -1,13 +1,21 @@
+// For maths.
+:root {
+	--typography--cap-height--gill-sans: 0.681; // In em. Unitless for use in calc.
+	--typography--cap-height--verdana:   0.727;
+}
+
 // Font metrics.
 %--shoulders {
 	--typography--shoulder:      calc(1 - var(--typography--cap-height)); // Remainder/overhang.
 	--typography--shoulder--top: calc(var(--typography--shoulder) - var(--typography--shoulder--bottom));
 }
 
+
+
 %font--gill-sans {
 	@extend %--shoulders;
 
-	--typography--cap-height:        0.681; // In em. Unitless here for use in calc.
+	--typography--cap-height:        var(--typography--cap-height--gill-sans);
 	--typography--x-height:          0.448;
 	--typography--shoulder--bottom:  0.157; // Vertical centering in the line box, across most sizes.
 
@@ -23,17 +31,26 @@
 	@at-root { :root.windows & { @extend %font--verdana } }
 }
 
+// Match cap heights of Gill to Verdana.
+%font--gill-sans--on-verdana {
+	@extend %font--gill-sans;
+
+	--typography--size--override: calc(var(--typography--cap-height--verdana) / var(--typography--cap-height--gill-sans) * var(--typography--size));
+}
+
+
+
 %font--verdana {
 	@extend %--shoulders;
 
-	--typography--cap-height:        0.727;
+	--typography--cap-height:        var(--typography--cap-height--verdana);
 	--typography--x-height:          0.546;
 	--typography--shoulder--bottom:  0.103;
 
 	--typography--inset--left:      -0.098;
 	--typography--inset--right:     -0.090;
 
-	--typography--underline:         0.078;
+	--typography--underline:         0.078; // 0.78, adjust for Safari rounding.
 	--typography--underline--shift: -0.045;
 
 	font-family: 'Verdana', sans-serif;
