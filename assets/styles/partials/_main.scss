@@ -98,6 +98,7 @@ body {
 				box-sizing:   content-box; // Padding outside.
 				display:      flow-root;
 				height:       calc(var(--typography--cap) * 2);
+				width:        auto;
 
 				img {
 					// Percentages derive from width, so use that for height offset too.
