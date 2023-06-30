@@ -130,6 +130,14 @@ body {
 			padding:          var(--typography--lead);
 			position:         sticky;
 			top:              0;
+
+			// Byline.
+			> p:first-child {
+				@extend %font--gill-sans--on-verdana;
+				@extend %font--extended;
+
+				strong { text-transform: uppercase }
+			}
 		}
 
 		#Main {
