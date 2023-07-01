@@ -84,6 +84,8 @@ body {
 			'sidebar'
 			'main';
 
+
+
 		#Banner {
 			grid-area: banner;
 			z-index:   1; // Over the sidebar.
@@ -128,6 +130,8 @@ body {
 			}
 		}
 
+
+
 		#Sidebar {
 			background-color: var(--color--slate);
 			box-shadow:       0 0 var(--typography--line) var(--color--slate);
@@ -152,6 +156,8 @@ body {
 				strong { text-transform: uppercase }
 			}
 		}
+
+
 
 		#Main {
 			// Preserve existing (default size) wrapping.
