@@ -61,12 +61,12 @@ body {
 	}
 
 	@include width(1080) {
-		@include tall {
+		@include tall(800) {
 			// Further on tall screens, based on height.
 			--typography--factor: 1;
 			--typography--size:   clamp(
 															calc(var(--typography--size--middle) * 0.1rem),
-															calc(var(--typography--size--middle) / 900 * 100vh),
+															calc(var(--typography--size--middle) / 800 * 100vh),
 															calc(var(--typography--size--ceiling) * 0.1rem)
 														);
 		}
