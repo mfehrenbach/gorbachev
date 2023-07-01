@@ -14,7 +14,7 @@ body {
 
 
 	--typography--size--floor:   14;
-	--typography--size--middle:  18;
+	--typography--size--middle:  16;
 	--typography--size--ceiling: 22;
 
 	--typography--leading: 1.8;
@@ -165,11 +165,11 @@ body {
 
 
 		// Two-column.
-		@include width(667) {
-			column-gap:      var(--typography--line--3);
+		@include width(568) {
+			column-gap:      var(--typography--line);
 			justify-content: center;
-			padding:         var(--typography--line--2) var(--typography--line);
-			row-gap:         var(--typography--line--2);
+			padding:         var(--typography--line) var(--typography--line);
+			row-gap:         var(--typography--line);
 			grid-template-areas:
 				'banner  banner'
 				'sidebar main  ';
@@ -181,7 +181,16 @@ body {
 				justify-self:     end;
 				margin:           initial;
 				padding:          initial;
-				top:              var(--typography--line);
+				top:              var(--typography--lead);
+			}
+
+			// Tablets/comps.
+			@include tall(480) {
+				column-gap: calc(var(--typography--line) * 2); // Horizontal, so twice optically (not baseline).
+				padding:    var(--typography--line--2) var(--typography--line);
+				row-gap:    var(--typography--line--2);
+
+				#Sidebar { top: var(--typography--line) }
 			}
 		}
 	}
