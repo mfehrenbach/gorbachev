@@ -49,13 +49,15 @@ body {
 	}
 
 	@include width(768) {
-		// Start scaling up type when there is room.
-		--typography--factor: 1;
-		--typography--size:   clamp(
-														calc(var(--typography--size--floor) * 0.1rem),
-														calc(var(--typography--size--floor) / 768 * 100vw),
-														calc(var(--typography--size--middle) * 0.1rem)
-													);
+		@include tall(480) {
+			// Start scaling up type when there is room.
+			--typography--factor: 1;
+			--typography--size:   clamp(
+															calc(var(--typography--size--floor) * 0.1rem),
+															calc(var(--typography--size--floor) / 768 * 100vw),
+															calc(var(--typography--size--middle) * 0.1rem)
+														);
+		}
 	}
 
 	@include width(1080) {
