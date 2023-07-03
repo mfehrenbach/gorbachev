@@ -181,23 +181,24 @@ body {
 
 
 
-		#Main {
-			// Preserve existing (default size) wrapping.
-			--legacy--column: 425;
-			--legacy--type:   12;
 
-			grid-area: main;
-			max-width: calc(var(--legacy--column) / var(--legacy--type) * 1em);
-		}
+		#Main { grid-area: main }
 
 
 
 		// Two-column.
 		@include width(568) {
-			column-gap:      var(--typography--line);
-			justify-content: center;
-			padding:         var(--typography--line) var(--typography--line);
-			row-gap:         var(--typography--line);
+			// Preserve existing (default size) wrapping.
+			--legacy--column: 425;
+			--legacy--type:   12;
+
+			--main--column: calc(var(--legacy--column) / var(--legacy--type) * 1em);
+
+			column-gap:            var(--typography--line);
+			grid-template-columns: min-content minmax(0, var(--main--column));
+			justify-content:       center;
+			padding:               var(--typography--line) var(--typography--line);
+			row-gap:               var(--typography--line);
 			grid-template-areas:
 				'banner  banner'
 				'sidebar main  ';
