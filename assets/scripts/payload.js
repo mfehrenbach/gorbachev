@@ -8,10 +8,15 @@ if (typeof replacementStyles == 'undefined') {
 	if (navigator.appVersion.includes('Win')) document.documentElement.classList.add('windows')
 
 	// Duplicate the ad placement for mobile.
+	const firstThing = document.querySelector('#Main > *:first-child')
 	let adBlock = document.getElementById('SidebarMartini')
 	adBlock = adBlock.cloneNode(true)
 	adBlock.id = 'MainMartini'
-	document.querySelector('#Main > *:first-child').after(adBlock)
+	if (firstThing.classList.contains('article')) {
+		firstThing.querySelector('*:nth-child(2)').after(adBlock) // This could be smarter.
+	} else if (firstThing.classList.contains('linkedlist')) {
+		firstThing.querySelector('dd:first-of-type').after(adBlock) // After the first “definition”.
+	}
 
 	// Set up the stylesheet.
 	let baseUrl = document.currentScript.src
