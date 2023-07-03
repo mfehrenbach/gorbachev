@@ -263,19 +263,7 @@ body {
 					flex-direction: column;
 					row-gap:        var(--typography--lead);
 				}
-
-				// Ad block.
-				#SidebarMartini {
-					align-items:    end;
-					display:        flex;
-					flex-direction: column;
-				}
 			}
-
-
-
-			// Hide main-column dupe.
-			#Main #SidebarMartini { display: none }
 
 
 
@@ -285,7 +273,19 @@ body {
 				padding:    var(--typography--line--2) var(--typography--line);
 				row-gap:    var(--typography--line--2);
 
-				#Sidebar { top: var(--typography--line) }
+				#Sidebar {
+					top: var(--typography--line);
+
+					// Ad block.
+					#SidebarMartini {
+						align-items:    end;
+						display:        flex;
+						flex-direction: column;
+					}
+				}
+
+				// Hide main-column dupe.
+				#Main #SidebarMartini { display: none }
 			}
 		}
 	}
