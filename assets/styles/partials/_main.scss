@@ -20,18 +20,22 @@ body {
 	--typography--leading: 1.8;
 	--typography--size:    var(--typography--size--floor);
 
-	--opacity--body: 90%;
+	--opacity--main:      90%;
+	--opacity--secondary: 70%;
+	--opacity--highlight: 13.333%;
 
 	--color--slate: #4a525a;
-	--color--white: hsla(0, 0%, 100%, var(--opacity--body));
+	--color--white: hsla(0, 0%, 100%, var(--opacity--main));
 
 	--color:             var(--color--white);
 	--color--background: var(--color--slate);
 
-	--color--active:  hsla(0, 0%, 100%, 10%);
+	--color--active: hsla(0, 0%, 100%, var(--opacity--highlight));
 
 	--link--enlargement: var(--typography--x);
 	--link--outline:     2px;
+
+
 
 	background-color: var(--color--slate);
 	color:            var(--color--white);
@@ -119,7 +123,7 @@ body {
 					margin-left:  calc(-1 * var(--content--inset--left) / var(--content--width) * (100% - var(--link--enlargement) * 2));
 					margin-top:   calc(-1 * var(--content--inset--top) / var(--content--width) * (100% - var(--link--enlargement) * 2));
 					max-width:    initial; // Cancel reset.
-					opacity:      var(--opacity--body); // Match body copy.
+					opacity:      var(--opacity--main); // Match body copy.
 					position:     absolute;
 					width:        calc(var(--intrinsic--width) / var(--content--width) * (100% - var(--link--enlargement) * 2));
 					// Percentages derive from width, so use that for height offset too.
