@@ -24,10 +24,11 @@ body {
 	--opacity--secondary: 70%;
 	--opacity--highlight: 13.333%;
 
-	--color--slate: #4a525a;
-	--color--white: hsla(0, 0%, 100%, var(--opacity--main));
+	--color--slate:     #4a525a;
+	--color--main:      hsla(0, 0%, 100%, var(--opacity--main));
+	--color--secondary: hsla(0, 0%, 100%, var(--opacity--secondary));
 
-	--color:             var(--color--white);
+	--color:             var(--color--main);
 	--color--background: var(--color--slate);
 
 	--color--active: hsla(0, 0%, 100%, var(--opacity--highlight));
@@ -38,7 +39,7 @@ body {
 
 
 	background-color: var(--color--slate);
-	color:            var(--color--white);
+	color:            var(--color--main);
 	padding-left:     calc(env(safe-area-inset-left, 0rem) * 0.72); // Right to the notch edge.
 	padding-right:    calc(env(safe-area-inset-right, 0rem) * 0.72);
 
@@ -189,12 +190,8 @@ body {
 
 
 		#Main {
-			// Preserve existing (default size) wrapping.
-			--legacy--column: 425;
-			--legacy--type:   12;
-
 			grid-area: main;
-			max-width: calc(var(--legacy--column) / var(--legacy--type) * 1em);
+			max-width: calc(425 / 12 * 1em); // Preserve existing (default size) wrapping.
 		}
 
 
@@ -213,14 +210,12 @@ body {
 
 			// Tagline.
 			> p {
-				--opacity--main: var(--opacity--secondary);
+				--color: var(--color--secondary);
 
-				--typography--size:   11;
-				--typography--factor: initial; // Since type is not scaling.
+				--typography--size--override: 11;
+				--typography--factor:         initial; // Since type is not scaling.
 
-				--legacy--column: 165; // Preserve existing (default size) wrapping.
-
-				max-width: calc(var(--legacy--column) / var(--typography--size) * 1em);
+				max-width: calc(165 / 11 * 1em); // Preserve existing (default size) wrapping.
 
 				a {
 					@extend %link--text;
