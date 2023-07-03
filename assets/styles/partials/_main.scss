@@ -135,7 +135,7 @@ body {
 		#Sidebar {
 			background-color: var(--color--slate);
 			box-shadow:       0 0 var(--typography--line) var(--color--slate); // Buggy on reloads.
-			column-gap:       var(--typography--line);
+			column-gap:       calc(var(--typography--lead) * 4); // Double the internal nav gap.
 			display:          flex;
 			grid-area:        sidebar;
 			margin-bottom:    calc(-1 * var(--typography--lead));
@@ -149,6 +149,8 @@ body {
 			padding-top:      var(--typography--line);
 			position:         sticky;
 			top:              0;
+
+			&::-webkit-scrollbar { display: none } // Hide scrollbar.
 
 			// Byline.
 			> p:first-child {
