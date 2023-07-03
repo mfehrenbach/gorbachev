@@ -205,6 +205,22 @@ body {
 				flex-shrink: 0; // Prevent image smushing in mobile left/right layout.
 			}
 
+			// Tagline.
+			> p {
+				--opacity--main: var(--opacity--secondary);
+
+				--typography--size:   11;
+				--typography--factor: initial; // Since type is not scaling.
+
+				--legacy--column: 165; // Preserve existing (default size) wrapping.
+
+				max-width: calc(var(--legacy--column) / var(--typography--size) * 1em);
+
+				a {
+					@extend %link--text;
+					@extend %typography--underline;
+				}
+			}
 		}
 
 
