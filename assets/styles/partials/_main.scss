@@ -177,12 +177,31 @@ body {
 					> a { @extend %link--text }
 				}
 			}
+
+			// Ad block.
+			#SidebarMartini { display: none } // Hide on single-column (show dupe in main).
 		}
 
 
 
-
 		#Main { grid-area: main }
+
+
+
+		// Ad block.
+		#SidebarMartini {
+			align-items: center;
+			display:     flex;
+			gap:         var(--typography--lead);
+
+			// Around the image.
+			> a {
+				@extend %link--element;
+
+				flex-shrink: 0; // Prevent image smushing in mobile left/right layout.
+			}
+
+		}
 
 
 
@@ -202,6 +221,8 @@ body {
 			grid-template-areas:
 				'banner  banner'
 				'sidebar main  ';
+
+
 
 			#Sidebar {
 				align-items:      end;
@@ -223,7 +244,21 @@ body {
 					flex-direction: column;
 					row-gap:        var(--typography--lead);
 				}
+
+				// Ad block.
+				#SidebarMartini {
+					align-items:    end;
+					display:        flex;
+					flex-direction: column;
+				}
 			}
+
+
+
+			// Hide main-column dupe.
+			#Main #SidebarMartini { display: none }
+
+
 
 			// Tablets/comps.
 			@include tall(480) {
@@ -240,4 +275,4 @@ body {
 
 
 // // Temporary stuff.
-#SidebarMartini, [id^=Zoom] { display: none }
+[id^=Zoom] { display: none }
