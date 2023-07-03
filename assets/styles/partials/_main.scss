@@ -268,7 +268,7 @@ body {
 
 
 			// Tablets/comps.
-			@include tall(480) {
+			@include tall(600) {
 				column-gap: calc(var(--typography--line) * 2); // Horizontal, so twice optically (not baseline).
 				padding:    var(--typography--line--2) var(--typography--line);
 				row-gap:    var(--typography--line--2);
@@ -286,6 +286,20 @@ body {
 
 				// Hide main-column dupe.
 				#Main #SidebarMartini { display: none }
+			}
+
+			// Noodley without more DOM, stick the ad to the bottom when there is room.
+			@include tall(754) {
+				#Sidebar {
+					height: calc(100vh - var(--typography--line) * 2);
+
+					#SidebarMartini {
+						bottom:          var(--typography--line);
+						flex-grow:       1;
+						justify-content: end;
+						position:        sticky;
+					}
+				}
 			}
 		}
 	}
