@@ -134,12 +134,15 @@ body {
 
 		#Sidebar {
 			background-color: var(--color--slate);
-			box-shadow:       0 0 var(--typography--line) var(--color--slate);
+			box-shadow:       0 0 var(--typography--line) var(--color--slate); // Buggy on reloads.
+			column-gap:       var(--typography--line);
+			display:          flex;
 			grid-area:        sidebar;
 			margin-bottom:    calc(-1 * var(--typography--lead));
 			margin-left:      calc(-1 * var(--typography--lead));
 			margin-right:     calc(-1 * var(--typography--lead));
 			margin-top:       calc(-1 * var(--typography--line));
+			overflow-x:       scroll;
 			padding-bottom:   var(--typography--lead);
 			padding-left:     var(--typography--lead);
 			padding-right:    var(--typography--lead);
@@ -154,6 +157,23 @@ body {
 				@extend nobr;
 
 				strong { text-transform: uppercase }
+			}
+
+			// Navigation.
+			> ul {
+				column-gap: calc(var(--typography--lead) * 2); // Single not enough with spaces in links.
+				display:    flex;
+
+				> li {
+					@extend %font--extended;
+					@extend %font--gill-sans--on-verdana;
+					@extend %typography;
+					@extend nobr;
+
+					text-transform: uppercase;
+
+					> a { @extend %link--text }
+				}
 			}
 		}
 
@@ -181,13 +201,25 @@ body {
 				'sidebar main  ';
 
 			#Sidebar {
+				align-items:      end;
 				align-self:       start;
 				background-color: initial;
 				box-shadow:       initial;
+				flex-direction:   column;
 				justify-self:     end;
 				margin:           initial;
+				overflow:         visible;
 				padding:          initial;
+				row-gap:          var(--typography--line--2);
+				text-align:       right;
 				top:              var(--typography--lead);
+
+				// Navigation.
+				> ul {
+					align-items:    end;
+					flex-direction: column;
+					row-gap:        var(--typography--lead);
+				}
 			}
 
 			// Tablets/comps.
@@ -205,4 +237,4 @@ body {
 
 
 // // Temporary stuff.
-#Sidebar > ul, #SidebarMartini, [id^=Zoom] { display: none }
+#SidebarMartini, [id^=Zoom] { display: none }
