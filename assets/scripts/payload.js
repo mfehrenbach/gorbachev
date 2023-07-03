@@ -24,7 +24,7 @@ if (typeof replacementStyles == 'undefined') {
 	var replacementStyles = `<link href="${baseUrl}/replacement.css" rel="stylesheet">` // Using `var` so it is global.
 
 	// Toss the empty/conditional Linked List item from nav.
-	let linkedList = document.querySelector('#Sidebar > ul script').parentNode
+	const linkedList = document.querySelector('#Sidebar > ul script').parentNode
 	linkedList.remove()
 }
 
