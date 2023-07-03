@@ -60,4 +60,6 @@
 
 %font--extended {
 	--typography--tracking: calc(1 / 6);
+
+	--typography--inset--right--override: calc(var(--typography--inset--right) - var(--typography--tracking));
 }

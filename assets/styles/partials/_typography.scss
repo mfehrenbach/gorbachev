@@ -30,8 +30,8 @@ nobr, .nowrap { white-space: nowrap }
 %--variables--face {
 	// Render to em.
 	--typography--letter-spacing: calc(var(--typography--tracking--override, var(--typography--tracking, 0)) * 1em);
-	--typography--margin--left:   calc(var(--typography--inset--left) * 1em);
-	--typography--margin--right:  calc(var(--typography--inset--right) * 1em);
+	--typography--margin--left:   calc(var(--typography--inset--left--override, var(--typography--inset--left, 0)) * 1em);
+	--typography--margin--right:  calc(var(--typography--inset--right--override, var(--typography--inset--right, 0)) * 1em);
 }
 
 // Size/spacing.
