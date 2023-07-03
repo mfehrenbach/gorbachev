@@ -196,7 +196,7 @@ body {
 
 
 		// Ad block.
-		#SidebarMartini {
+		#SidebarMartini, #MainMartini {
 			align-items: center;
 			display:     flex;
 			gap:         var(--typography--lead);
@@ -280,7 +280,7 @@ body {
 				}
 
 				// Hide main-column dupe.
-				#Main #SidebarMartini { display: none }
+				#MainMartini { display: none }
 			}
 
 			// Noodley without more DOM, stick the ad to the bottom when there is room.

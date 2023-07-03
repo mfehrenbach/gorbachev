@@ -10,6 +10,7 @@ if (typeof replacementStyles == 'undefined') {
 	// Duplicate the ad placement for mobile.
 	let adBlock = document.getElementById('SidebarMartini')
 	adBlock = adBlock.cloneNode(true)
+	adBlock.id = 'MainMartini'
 	document.querySelector('#Main > *:first-child').after(adBlock)
 
 	// Set up the stylesheet.
