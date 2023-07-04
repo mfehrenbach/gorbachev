@@ -7,9 +7,14 @@ if (typeof replacementStyles == 'undefined') {
 	// Flag Windows for CSS.
 	if (navigator.appVersion.includes('Win')) document.documentElement.classList.add('windows')
 
-	// Duplicate the ad placement for mobile.
-	const firstThing = document.querySelector('#Main > *:first-child')
+	// Wrap another layer around the ad, for stickiness.
 	let adBlock = document.getElementById('SidebarMartini')
+	const wrapper = document.createElement('div')
+	wrapper.append(...adBlock.children)
+	adBlock.appendChild(wrapper)
+
+	// Duplicate to the main column, for mobile.
+	const firstThing = document.querySelector('#Main > *:first-child')
 	adBlock = adBlock.cloneNode(true)
 	adBlock.id = 'MainMartini'
 	if (firstThing.classList.contains('article')) {
