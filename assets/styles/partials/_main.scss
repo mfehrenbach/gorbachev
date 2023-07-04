@@ -32,9 +32,11 @@ body {
 	--color--background: var(--color--slate);
 
 	--color--active: hsla(0, 0%, 100%, var(--opacity--slight));
+	--color--hover:  hsla(0, 0%, 100%, 100%);
 
 	--link--enlargement: var(--typography--x);
 	--link--outline:     2px;
+	--link--transition:  200ms;
 
 
 
