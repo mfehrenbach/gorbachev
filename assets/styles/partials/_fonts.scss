@@ -1,3 +1,7 @@
+@use 'utilities' as *;
+
+
+
 // For maths.
 :root {
 	--typography--cap-height--gill-sans: 0.681; // In em. Unitless for use in calc.
@@ -8,12 +12,15 @@
 %--shoulders {
 	--typography--shoulder:      calc(1 - var(--typography--cap-height)); // Remainder/overhang.
 	--typography--shoulder--top: calc(var(--typography--shoulder) - var(--typography--shoulder--bottom));
+
+	--typography--underline--clear:  1; // “True,” moves underline fully south of descender.
 }
 
 
 
 %font--gill-sans {
 	@extend %--shoulders;
+	@extend %--safari--rounding;
 
 	--typography--cap-height:        var(--typography--cap-height--gill-sans);
 	--typography--x-height:          0.448;
@@ -24,8 +31,6 @@
 
 	--typography--underline:         0.080; // Height of crossbar on “t”.
 	--typography--underline--shift: -0.069; // Shift down from baseline, to line up with bottom of descenders.
-
-	--typography--underline--clear:  1; // “True,” moves underline fully south of descender.
 
 	font-family: 'Gill Sans', sans-serif;
 
@@ -44,6 +49,7 @@
 
 %font--verdana {
 	@extend %--shoulders;
+	@extend %--safari--rounding;
 
 	--typography--cap-height:        var(--typography--cap-height--verdana);
 	--typography--x-height:          0.546;
@@ -52,10 +58,8 @@
 	--typography--inset--left:      -0.098;
 	--typography--inset--right:     -0.090;
 
-	--typography--underline:         0.078; // 0.78, adjust for Safari rounding.
+	--typography--underline:         0.078;
 	--typography--underline--shift: -0.045;
-
-	--typography--underline--clear:  1;
 
 	font-family: 'Verdana', sans-serif;
 }
@@ -66,4 +70,14 @@
 	--typography--tracking: calc(1 / 6);
 
 	--typography--inset--right--override: calc(var(--typography--inset--right) - var(--typography--tracking));
+}
+
+
+
+// Adjustments for Safari whole-point rounding (up to 18pt), lower for cascade.
+%--safari--rounding {
+	@include browser(safari) {
+		--typography--underline:         0.056;
+		--typography--underline--shift: -0.089;
+	}
 }
