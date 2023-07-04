@@ -1,5 +1,7 @@
 @use 'utilities' as *;
 
+@forward 'typography';
+
 
 
 // Active/focus states.
@@ -17,10 +19,11 @@
 		z-index: 1;
 
 		&:focus-visible:not(:disabled) {
-			border-radius: calc(var(--link--enlargement) / 2);
-			outline-color: var(--color--link, var(--color));
-			outline-style: solid;
-			outline-width: var(--link--outline);
+			@extend %typography--underline--disable;
+
+			outline-color:   var(--color--link, var(--color));
+			outline-style:   solid;
+			outline-width:   var(--link--outline);
 		}
 	}
 }
