@@ -35,6 +35,8 @@
 		--color: var(--color--hover);
 
 		background-color: var(--color--highlight);
+
+		&:active { background-color: var(--color--highlight--more) } // Two-step.
 	}
 }
 

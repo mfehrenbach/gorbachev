@@ -31,8 +31,9 @@ body {
 	--color:             var(--color--primary);
 	--color--background: var(--color--slate);
 
-	--color--highlight: hsla(0, 0%, 100%, var(--opacity--slight));
-	--color--hover:     hsla(0, 0%, 100%, 100%);
+	--color--highlight:       hsla(0, 0%, 100%, var(--opacity--slight));
+	--color--highlight--more: hsla(0, 0%, 100%, calc(var(--opacity--slight) * 2));
+	--color--hover:           hsla(0, 0%, 100%, 100%);
 
 	--link--enlargement: var(--typography--x);
 	--link--outline:     2px;
