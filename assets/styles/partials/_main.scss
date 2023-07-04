@@ -197,29 +197,32 @@ body {
 
 		// Ad block.
 		#SidebarMartini, #MainMartini {
-			align-items: center;
-			display:     flex;
-			gap:         var(--typography--lead);
+			// Added container.
+			> div {
+				align-items: center;
+				display:     flex;
+				gap:         var(--typography--lead);
 
-			// Around the image.
-			> a {
-				@extend %link--element;
+				// Around the image.
+				> a {
+					@extend %link--element;
 
-				flex-shrink: 0; // Prevent image smushing in mobile left/right layout.
-			}
+					flex-shrink: 0; // Prevent image smushing in mobile left/right layout.
+				}
 
-			// Tagline.
-			> p {
-				--color: var(--color--secondary);
+				// Tagline.
+				> p {
+					--color: var(--color--secondary);
 
-				--typography--size--override: 11;
-				--typography--factor:         initial; // Since type is not scaling.
+					--typography--size--override: 11;
+					--typography--factor:         initial; // Since type is not scaling.
 
-				max-width: calc(165 / 11 * 1em); // Preserve existing (default size) wrapping.
+					max-width: calc(165 / 11 * 1em); // Preserve existing (default size) wrapping.
 
-				a {
-					@extend %link--text;
-					@extend %typography--underline;
+					a {
+						@extend %link--text;
+						@extend %typography--underline;
+					}
 				}
 			}
 		}
@@ -269,32 +272,26 @@ body {
 				row-gap:    var(--typography--line--2);
 
 				#Sidebar {
-					top: var(--typography--line);
+					height: calc(100vh - var(--typography--line) * 2);
+					top:    var(--typography--line);
 
 					// Ad block.
 					#SidebarMartini {
-						align-items:    end;
-						display:        flex;
-						flex-direction: column;
+						display:     flex;
+						flex-grow:   1;
+						align-items: end;
+
+						> div {
+							align-items:    end;
+							bottom:         var(--typography--line);
+							flex-direction: column;
+							position:       sticky;
+						}
 					}
 				}
 
 				// Hide main-column dupe.
 				#MainMartini { display: none }
-			}
-
-			// Noodley without more DOM, stick the ad to the bottom when there is room.
-			@include tall(754) {
-				#Sidebar {
-					height: calc(100vh - var(--typography--line) * 2);
-
-					#SidebarMartini {
-						bottom:          var(--typography--line);
-						flex-grow:       1;
-						justify-content: end;
-						position:        sticky;
-					}
-				}
 			}
 		}
 	}
