@@ -188,7 +188,10 @@ body {
 
 					text-transform: uppercase;
 
-					> a { @extend %link--text }
+					> a {
+						@extend %link--text;
+						@extend %typography--underline--disable;
+					 }
 				}
 			}
 
@@ -226,10 +229,7 @@ body {
 
 				max-width: calc(165 / 11 * 1em); // Preserve existing (default size) wrapping.
 
-				a {
-					@extend %link--text;
-					@extend %typography--underline;
-				}
+				a { @extend %link--text }
 			}
 		}
 

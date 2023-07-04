@@ -25,7 +25,7 @@
 		&:focus-visible:not(:disabled) {
 			@extend %typography--underline--disable;
 
-			outline-color:   var(--color--link, var(--color));
+			outline-color:   var(--color);
 			outline-style:   solid;
 			outline-width:   var(--link--outline);
 		}
@@ -56,6 +56,7 @@
 // In-text links.
 %link--text {
 	@extend %--active-focus;
+	@extend %typography--underline;
 
 	border-bottom-width: calc(var(--link--enlargement) / 2);
 	border-color:        transparent;
