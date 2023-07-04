@@ -35,6 +35,7 @@ body {
 	--color--highlight:       hsla(0, 0%, 100%, var(--opacity--slight));
 	--color--highlight--more: hsla(0, 0%, 100%, calc(var(--opacity--slight) * 2));
 	--color--hover:           hsla(0, 0%, 100%, 100%);
+	--color--underline:       hsla(0, 0%, 100%, var(--opacity--tertiary));
 
 	--link--enlargement: var(--typography--x);
 	--link--outline:     2px;

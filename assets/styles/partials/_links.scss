@@ -10,7 +10,7 @@
 	border-radius:               calc(var(--link--outline) * 2);
 	cursor:                      pointer;
 	transition-duration:         var(--link--transition);
-	transition-property:         background-color, color;
+	transition-property:         background-color, color, text-decoration-color;
 	transition-timing-function:  ease-in-out;
 
 	&:active {
@@ -34,7 +34,8 @@
 	@include hover {
 		--color: var(--color--hover);
 
-		background-color: var(--color--highlight);
+		background-color:      var(--color--highlight);
+		text-decoration-color: transparent;
 
 		&:active { background-color: var(--color--highlight--more) } // Two-step.
 	}
