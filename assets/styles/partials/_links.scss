@@ -11,7 +11,7 @@
 	cursor:                      pointer;
 	transition-duration:         var(--link--transition);
 	transition-property:         background-color, color;
-	transition-timing-function:  linear;
+	transition-timing-function:  ease-in-out;
 
 	&:active {
 		background-color: var(--color--active);

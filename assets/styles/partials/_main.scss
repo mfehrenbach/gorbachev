@@ -120,19 +120,24 @@ body {
 
 
 				img {
-					aspect-ratio: var(--intrinsic--width) / var(--intrinsic--height);
-					filter:       brightness(1.16); // Take image to white.
-					height:       initial; // Cancel inline.
-					margin-left:  calc(-1 * var(--content--inset--left) / var(--content--width) * (100% - var(--link--enlargement) * 2));
-					margin-top:   calc(-1 * var(--content--inset--top) / var(--content--width) * (100% - var(--link--enlargement) * 2));
-					max-width:    initial; // Cancel reset.
-					opacity:      var(--opacity--primary); // Match body copy.
-					position:     absolute;
-					width:        calc(var(--intrinsic--width) / var(--content--width) * (100% - var(--link--enlargement) * 2));
+					aspect-ratio:               var(--intrinsic--width) / var(--intrinsic--height);
+					filter:                     brightness(1.16); // Take image to white.
+					height:                     initial; // Cancel inline.
+					margin-left:                calc(-1 * var(--content--inset--left) / var(--content--width) * (100% - var(--link--enlargement) * 2));
+					margin-top:                 calc(-1 * var(--content--inset--top) / var(--content--width) * (100% - var(--link--enlargement) * 2));
+					max-width:                  initial; // Cancel reset.
+					opacity:                    var(--opacity--primary); // Match body copy.
+					position:                   absolute;
+					transition-duration:        var(--link--transition); // Match other links.
+					transition-property:        opacity;
+					transition-timing-function: ease-in-out;
+					width:                      calc(var(--intrinsic--width) / var(--content--width) * (100% - var(--link--enlargement) * 2));
 					// Percentages derive from width, so use that for height offset too.
 
 					// Sharpen up Safari scaling, particularly at 1x.
 					@include browser(safari) { image-rendering: optimizeQuality }
+
+					@include hover { opacity: 100% } // Match other links.
 				}
 			}
 		}
