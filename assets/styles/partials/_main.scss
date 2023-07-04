@@ -17,12 +17,12 @@ body {
 	--typography--size--middle:  16;
 	--typography--size--ceiling: 18;
 
-	--typography--leading: 1.8;
 	--typography--size:    var(--typography--size--floor);
+	--typography--leading: 1.8;
 
 	--opacity--primary:   90%;
 	--opacity--secondary: 70%;
-	--opacity--highlight: 13.333%;
+	--opacity--slight:    13.333%;
 
 	--color--slate:     #4a525a;
 	--color--primary:   hsla(0, 0%, 100%, var(--opacity--primary));
@@ -31,7 +31,7 @@ body {
 	--color:             var(--color--primary);
 	--color--background: var(--color--slate);
 
-	--color--active: hsla(0, 0%, 100%, var(--opacity--highlight));
+	--color--active: hsla(0, 0%, 100%, var(--opacity--slight));
 
 	--link--enlargement: var(--typography--x);
 	--link--outline:     2px;
