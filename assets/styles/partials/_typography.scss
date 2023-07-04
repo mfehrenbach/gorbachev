@@ -115,7 +115,8 @@ td { display: table-cell } // Flow-root breaks these.
 // Underlines.
 %typography--underline {
 	--typography--decoration-thickness: calc(var(--typography--underline) * 1em);
-	--typography--underline-offset:     calc(var(--typography--underline--shift) * 1em);
+	--typography--underline-offset:     calc((var(--typography--underline--shift) - (2 * var(--typography--underline) * var(--typography--underline--clear, 0))) * 1em);
+	// Allow for below-descender option.
 
 	text-decoration-color:     var(--color);
 	text-decoration-line:      underline;
