@@ -20,9 +20,10 @@ body {
 	--typography--size:    var(--typography--size--floor);
 	--typography--leading: 1.8;
 
-	--opacity--primary:   90%;
-	--opacity--secondary: 70%;
-	--opacity--slight:    13.333%;
+	--opacity--primary:   90%;   // #EEE equivalent on slate.
+	--opacity--secondary: 70%;   // #CCC.
+	--opacity--tertiary:  31.5%; // #888.
+	--opacity--slight:    13%;   // #606870.
 
 	--color--slate:     #4a525a;
 	--color--primary:   hsla(0, 0%, 100%, var(--opacity--primary));
