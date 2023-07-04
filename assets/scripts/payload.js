@@ -7,21 +7,21 @@ if (typeof replacementStyles == 'undefined') {
 	// Flag Windows for CSS.
 	if (navigator.appVersion.includes('Win')) document.documentElement.classList.add('windows')
 
-	// Wrap another layer around the ad, for stickiness.
-	let adBlock = document.getElementById('SidebarMartini')
+	// Duplicate to the main column, for mobile.
+	const firstThing = document.querySelector('#Main > *:first-child')
+	const adBlock = document.getElementById('SidebarMartini')
+	let mainAdBlock = adBlock.cloneNode(true)
+	mainAdBlock.id = 'MainMartini'
+	if (firstThing.classList.contains('article')) {
+		firstThing.querySelector('*:nth-child(2)').after(mainAdBlock) // This could be smarter.
+	} else if (firstThing.classList.contains('linkedlist')) {
+		firstThing.querySelector('dd:first-of-type').after(mainAdBlock) // After the first “definition”.
+	}
+
+	// Wrap another layer around the sidebar ad, for stickiness.
 	const wrapper = document.createElement('div')
 	wrapper.append(...adBlock.children)
 	adBlock.appendChild(wrapper)
-
-	// Duplicate to the main column, for mobile.
-	const firstThing = document.querySelector('#Main > *:first-child')
-	adBlock = adBlock.cloneNode(true)
-	adBlock.id = 'MainMartini'
-	if (firstThing.classList.contains('article')) {
-		firstThing.querySelector('*:nth-child(2)').after(adBlock) // This could be smarter.
-	} else if (firstThing.classList.contains('linkedlist')) {
-		firstThing.querySelector('dd:first-of-type').after(adBlock) // After the first “definition”.
-	}
 
 	// Set up the stylesheet.
 	let baseUrl = document.currentScript.src
