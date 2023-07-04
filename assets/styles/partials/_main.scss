@@ -154,6 +154,7 @@ body {
 			padding-top:      var(--typography--line);
 			position:         sticky;
 			top:              0;
+			width:            min-content;
 
 			&::-webkit-scrollbar { display: none } // Hide scrollbar.
 
