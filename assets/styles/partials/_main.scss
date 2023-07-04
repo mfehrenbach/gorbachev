@@ -20,15 +20,15 @@ body {
 	--typography--leading: 1.8;
 	--typography--size:    var(--typography--size--floor);
 
-	--opacity--main:      90%;
+	--opacity--primary:   90%;
 	--opacity--secondary: 70%;
 	--opacity--highlight: 13.333%;
 
 	--color--slate:     #4a525a;
-	--color--main:      hsla(0, 0%, 100%, var(--opacity--main));
+	--color--primary:   hsla(0, 0%, 100%, var(--opacity--primary));
 	--color--secondary: hsla(0, 0%, 100%, var(--opacity--secondary));
 
-	--color:             var(--color--main);
+	--color:             var(--color--primary);
 	--color--background: var(--color--slate);
 
 	--color--active: hsla(0, 0%, 100%, var(--opacity--highlight));
@@ -39,7 +39,7 @@ body {
 
 
 	background-color: var(--color--slate);
-	color:            var(--color--main);
+	color:            var(--color--primary);
 	padding-left:     calc(env(safe-area-inset-left, 0rem) * 0.72); // Right to the notch edge.
 	padding-right:    calc(env(safe-area-inset-right, 0rem) * 0.72);
 
@@ -124,7 +124,7 @@ body {
 					margin-left:  calc(-1 * var(--content--inset--left) / var(--content--width) * (100% - var(--link--enlargement) * 2));
 					margin-top:   calc(-1 * var(--content--inset--top) / var(--content--width) * (100% - var(--link--enlargement) * 2));
 					max-width:    initial; // Cancel reset.
-					opacity:      var(--opacity--main); // Match body copy.
+					opacity:      var(--opacity--primary); // Match body copy.
 					position:     absolute;
 					width:        calc(var(--intrinsic--width) / var(--content--width) * (100% - var(--link--enlargement) * 2));
 					// Percentages derive from width, so use that for height offset too.
