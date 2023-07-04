@@ -6,7 +6,7 @@
 
 // Active/focus states.
 %--active-focus {
-	-webkit-tap-highlight-color: var(--color--active);
+	-webkit-tap-highlight-color: var(--color--highlight);
 	border-radius:               calc(var(--link--outline) * 2);
 	cursor:                      pointer;
 	transition-duration:         var(--link--transition);
@@ -14,7 +14,7 @@
 	transition-timing-function:  ease-in-out;
 
 	&:active {
-		background-color: var(--color--active);
+		background-color: var(--color--highlight);
 		border-radius:    calc(var(--link--enlargement) / 2);
 	}
 
@@ -34,7 +34,7 @@
 	@include hover {
 		--color: var(--color--hover);
 
-		background-color: var(--color--active);
+		background-color: var(--color--highlight);
 	}
 }
 
