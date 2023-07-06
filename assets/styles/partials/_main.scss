@@ -7,6 +7,9 @@
 
 
 #Main {
+	display:        flex;
+	flex-direction: column;
+	row-gap:        var(--typography--line--2);
 
 	h2.dateline {
 		@extend %font--extended;
@@ -17,9 +20,13 @@
 		text-transform: uppercase;
 	}
 
+	dl.linkedlist {
+		display:        flex;
+		flex-direction: column;
+		row-gap:        var(--typography--line--2);
+	}
 
-	// Temporary.
-	> *:not(:first-child) { margin-top: var(--typography--line) }
 
-	a { @extend %link--text }
+
+	p > a { @extend %link--text }
 }
