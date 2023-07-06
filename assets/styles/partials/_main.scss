@@ -8,6 +8,14 @@
 
 #Main {
 
+	h2.dateline {
+		@extend %font--extended;
+		@extend %font--gill-sans--on-verdana;
+
+		--color: var(--color--tertiary);
+
+		text-transform: uppercase;
+	}
 
 
 	// Temporary.
