@@ -6,6 +6,9 @@
 :root {
 	--typography--cap-height--gill-sans: 0.681; // In em. Unitless for use in calc.
 	--typography--cap-height--verdana:   0.727;
+
+	--typography--x-height--gill-sans: 0.448;
+	--typography--x-height--verdana:   0.546;
 }
 
 // Font metrics.
@@ -23,7 +26,7 @@
 	@extend %--safari--rounding;
 
 	--typography--cap-height:        var(--typography--cap-height--gill-sans);
-	--typography--x-height:          0.448;
+	--typography--x-height:          var(--typography--x-height--gill-sans);
 	--typography--shoulder--bottom:  0.157; // Vertical centering in the line box, across most sizes.
 
 	--typography--inset--left:      -0.076; // Optical insets, left edge of capital "D".
@@ -49,9 +52,9 @@
 }
 
 %font--gill-sans--x-verdana-cap { // Match x-height to Verdana caps.
-	@extend %font--gill-sans;
+	@extend %font--gill-sans--on-verdana;
 
-	--typography--scale: 1.333;
+	--typography--scale: calc(var(--typography--cap-height--gill-sans) / var(--typography--x-height--gill-sans));
 }
 
 
@@ -61,7 +64,7 @@
 	@extend %--safari--rounding;
 
 	--typography--cap-height:        var(--typography--cap-height--verdana);
-	--typography--x-height:          0.546;
+	--typography--x-height:          var(--typography--x-height--verdana);
 	--typography--shoulder--bottom:  0.103;
 
 	--typography--inset--left:      -0.098;
