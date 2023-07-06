@@ -42,7 +42,6 @@
 			--color: var(--color--secondary);
 
 			> a {
-				@extend %link--text;
 				@extend %typography--underline--disable;
 
 				&:last-of-type {
