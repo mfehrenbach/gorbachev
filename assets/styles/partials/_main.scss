@@ -11,6 +11,12 @@
 	flex-direction: column;
 	row-gap:        var(--typography--line--2);
 
+
+
+	a { @extend %link--text }
+
+
+
 	h2.dateline {
 		@extend %font--extended;
 		@extend %font--gill-sans--on-verdana;
@@ -47,5 +53,4 @@
 
 
 
-	p > a { @extend %link--text }
 }
