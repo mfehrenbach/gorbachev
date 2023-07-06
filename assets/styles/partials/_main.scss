@@ -6,13 +6,12 @@
 
 
 
-// Markdown blocks.
-.article, .linkedlist {
+#Main {
 
 
 
 	// Temporary.
-	> * { margin-top: var(--typography--line) }
+	> *:not(:first-child) { margin-top: var(--typography--line) }
 
 	a { @extend %link--text }
 }
