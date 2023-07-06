@@ -51,11 +51,33 @@
 				}
 			}
 		}
+
+		> dd {
+			@extend %--nested--spacing;
+
+			> blockquote {
+				@extend %--nested--spacing;
+			}
+		}
 	}
 
 
 
 	> div.article {
 		@extend %--nested--spacing;
+
+		> h1 {
+			@extend %font--gill-sans--x-verdana-cap;
+
+			> a { @extend %typography--underline--disable };
+		}
+
+		> h6.dateline {
+			@extend %font--extended;
+			@extend %font--gill-sans--on-verdana;
+			@extend %font--uppercase;
+
+			--color: var(--color--tertiary);
+		}
 	}
 }
