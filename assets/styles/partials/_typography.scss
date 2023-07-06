@@ -40,10 +40,10 @@ nobr, .nowrap { white-space: nowrap }
 	--typography--size--rendered: (var(--typography--size--override, var(--typography--size)) * var(--typography--factor, 0.1rem));
 
 	--typography--font-size:   calc(var(--typography--scale, 1) *   var(--typography--size--rendered));
-	--typography--line-height: calc(var(--typography--leading, 1) * var(--typography--size--rendered));
+	--typography--line-height: calc(var(--typography--leading--override, var(--typography--leading, 1)) * var(--typography--size--rendered));
 
 	// Internal variables to keep things (somewhat) tidy.
-	--typography--leading--remainder: ((var(--typography--leading, 1) - 1) / 2); // Half above/below.
+	--typography--leading--remainder: ((var(--typography--leading--override, var(--typography--leading, 1)) - 1) / 2); // Half above/below.
 	--typography--scale--remainder:   ((var(--typography--scale, 1) - 1) / 2);
 	--typography--scale--shoulder:    (var(--typography--shoulder--bottom) - var(--typography--shoulder--bottom) * var(--typography--scale, 1));
 	--typography--scale--shift:       (var(--typography--scale--remainder) + var(--typography--scale--shoulder));

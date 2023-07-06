@@ -38,10 +38,14 @@
 	@at-root { :root.windows & { @extend %font--verdana } }
 }
 
-%font--gill-sans--on-verdana { // Match cap heights of Gill to Verdana.
+%font--gill-sans--on-verdana {
 	@extend %font--gill-sans;
 
-	--typography--size--override: calc(var(--typography--cap-height--verdana) / var(--typography--cap-height--gill-sans) * var(--typography--size));
+	// Match cap heights of Gill to Verdana.
+	--typography--size--override:    calc(var(--typography--cap-height--verdana) / var(--typography--cap-height--gill-sans) * var(--typography--size));
+
+	// But cancel this out in the leading.
+	--typography--leading--override: calc(var(--typography--cap-height--gill-sans) / var(--typography--cap-height--verdana) * var(--typography--leading));
 }
 
 %font--gill-sans--x-verdana-cap { // Match x-height to Verdana caps.
