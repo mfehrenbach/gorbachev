@@ -7,9 +7,12 @@
 
 
 #Main {
-	display:        flex;
-	flex-direction: column;
-	row-gap:        var(--typography--line--2);
+	// Base spacing.
+	> *:not(:first-child) { margin-top: var(--margin--top, var(--typography--line--2)) }
+
+	%--nested--spacing {
+		> *:not(:first-child) { margin-top: var(--margin--top, var(--typography--line)) }
+	}
 
 
 
@@ -25,10 +28,10 @@
 		--color: var(--color--tertiary);
 	}
 
+
+
 	dl.linkedlist {
-		display:        flex;
-		flex-direction: column;
-		row-gap:        var(--typography--line--2);
+		@extend %--nested--spacing;
 
 		> dt {
 			@extend %font--extended;
@@ -53,4 +56,7 @@
 
 
 
+	div.article {
+		@extend %--nested--spacing;
+	}
 }
