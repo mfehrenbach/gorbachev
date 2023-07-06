@@ -13,6 +13,7 @@ body {
 
 
 
+	// Type.
 	--typography--size--floor:   14;
 	--typography--size--middle:  16;
 	--typography--size--ceiling: 18;
@@ -20,6 +21,7 @@ body {
 	--typography--size:    var(--typography--size--floor);
 	--typography--leading: 1.8;
 
+	// Palette.
 	--opacity--primary:   90%;   // #EEE equivalent on slate.
 	--opacity--secondary: 70%;   // #CCC.
 	--opacity--tertiary:  31.5%; // #888.
@@ -29,15 +31,18 @@ body {
 	--color--primary:   hsla(0, 0%, 100%, var(--opacity--primary));
 	--color--secondary: hsla(0, 0%, 100%, var(--opacity--secondary));
 	--color--tertiary:  hsla(0, 0%, 100%, var(--opacity--tertiary));
+	--color--slight:    hsla(0, 0%, 100%, var(--opacity--slight));
 
+	// Map to use.
 	--color:             var(--color--primary);
 	--color--background: var(--color--slate);
 
-	--color--highlight:       hsla(0, 0%, 100%, var(--opacity--slight));
-	--color--highlight--more: hsla(0, 0%, 100%, calc(var(--opacity--slight) * 2));
-	--color--hover:           hsla(0, 0%, 100%, 100%);
-	--color--underline:       hsla(0, 0%, 100%, var(--opacity--tertiary));
+	--color--highlight:       var(--color--slight);
+	--color--highlight--more: var(--color--tertiary);
+	--color--hover:           white;
+	--color--underline:       var(--color--tertiary);
 
+	// Links.
 	--link--enlargement: var(--typography--x);
 	--link--outline:     2px;
 	--link--transition:  100ms;
