@@ -156,18 +156,18 @@ body {
 		#Sidebar {
 			background-color: var(--color--slate);
 			box-shadow:       0 0 var(--typography--line) var(--color--slate); // Buggy on reloads.
-			column-gap:       calc(var(--typography--lead) * 4); // Double the internal nav gap.
+			column-gap:       calc(var(--typography--lead) * 2); // Match the nav gap, below.
 			display:          flex;
 			grid-area:        sidebar;
-			margin-bottom:    calc(-1 * var(--typography--lead));
+			margin-bottom:    calc(-1 * var(--typography--cap) * 2);
 			margin-left:      calc(-1 * var(--typography--lead));
 			margin-right:     calc(-1 * var(--typography--lead));
-			margin-top:       calc(-1 * var(--typography--line));
+			margin-top:       calc(-1 * var(--typography--cap) * 2);
 			overflow-x:       scroll;
-			padding-bottom:   var(--typography--lead);
+			padding-bottom:   calc(var(--typography--cap) * 2);
 			padding-left:     var(--typography--lead);
 			padding-right:    var(--typography--lead);
-			padding-top:      var(--typography--line);
+			padding-top:      calc(var(--typography--cap) * 2);
 			position:         sticky;
 			top:              0;
 
@@ -264,7 +264,7 @@ body {
 				padding:          initial;
 				row-gap:          var(--typography--line--2);
 				text-align:       right;
-				top:              var(--typography--lead);
+				top:              calc(var(--typography--cap) * 2);
 				width:            min-content;
 
 				// Navigation.
