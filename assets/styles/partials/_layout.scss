@@ -93,8 +93,8 @@ body {
 	// Main layout.
 	#Box {
 		display: grid;
-		padding: var(--typography--line) var(--typography--lead);
-		row-gap: var(--typography--line);
+		padding: var(--typography--line--2) var(--typography--lead);
+		row-gap: var(--typography--line--2);
 		grid-template-areas:
 			'banner'
 			'sidebar'
@@ -245,8 +245,7 @@ body {
 		@include width(568) {
 			column-gap:      var(--typography--line);
 			justify-content: center;
-			padding:         var(--typography--line) var(--typography--line);
-			row-gap:         var(--typography--line);
+			padding:         var(--typography--line--2) var(--typography--line);
 			grid-template-areas:
 				'banner  banner'
 				'sidebar main  ';
@@ -281,8 +280,8 @@ body {
 			// Tablets/comps.
 			@include tall(600) {
 				column-gap: calc(var(--typography--line) * 2); // Horizontal, so twice optically (not baseline).
-				padding:    var(--typography--line--2) var(--typography--line);
-				row-gap:    var(--typography--line--2);
+				padding:    var(--typography--line--4) var(--typography--line);
+				row-gap:    var(--typography--line--4);
 
 				#Sidebar {
 					height: calc(100vh - var(--typography--line) * 2);
