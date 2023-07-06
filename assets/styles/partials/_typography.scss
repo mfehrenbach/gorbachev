@@ -56,6 +56,9 @@ nobr, .nowrap { white-space: nowrap }
 
 	// Calculated spacing variables for layout.
 	--typography--cap:    calc(var(--typography--cap-height) * var(--typography--font-size));
+	--typography--cap--2: calc(var(--typography--cap-height) * 2 * var(--typography--font-size));
+	--typography--cap--3: calc(var(--typography--cap-height) * 3 * var(--typography--font-size));
+	--typography--cap--4: calc(var(--typography--cap-height) * 4 * var(--typography--font-size));
 	--typography--x:      calc(var(--typography--x-height) *   var(--typography--font-size));
 	--typography--stroke: calc(var(--typography--underline) *  var(--typography--font-size));
 
