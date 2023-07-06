@@ -24,6 +24,27 @@
 		display:        flex;
 		flex-direction: column;
 		row-gap:        var(--typography--line--2);
+
+		> dt {
+			@extend %font--extended;
+			@extend %font--gill-sans--on-verdana;
+			@extend %typography;
+
+			--color: var(--color--secondary);
+
+			text-transform: uppercase;
+
+			> a {
+				@extend %link--text;
+				@extend %typography--underline--disable;
+
+				&:last-of-type {
+					--color: var(--color--tertiary);
+
+					margin-left: initial; // Don’t cancel the link enlargement, for more space.
+				}
+			}
+		}
 	}
 
 
