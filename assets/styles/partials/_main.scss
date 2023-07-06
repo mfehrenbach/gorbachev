@@ -14,10 +14,9 @@
 	h2.dateline {
 		@extend %font--extended;
 		@extend %font--gill-sans--on-verdana;
+		@extend %font--uppercase;
 
 		--color: var(--color--tertiary);
-
-		text-transform: uppercase;
 	}
 
 	dl.linkedlist {
@@ -29,10 +28,9 @@
 			@extend %font--extended;
 			@extend %font--gill-sans--on-verdana;
 			@extend %typography;
+			@extend %font--uppercase;
 
 			--color: var(--color--secondary);
-
-			text-transform: uppercase;
 
 			> a {
 				@extend %link--text;

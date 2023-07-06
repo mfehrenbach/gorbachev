@@ -174,7 +174,7 @@ body {
 				@extend %font--gill-sans--on-verdana;
 				@extend nobr;
 
-				strong { text-transform: uppercase }
+				strong { @extend %font--uppercase }
 			}
 
 			// Navigation.
@@ -185,10 +185,9 @@ body {
 				> li {
 					@extend %font--extended;
 					@extend %font--gill-sans--on-verdana;
+					@extend %font--uppercase;
 					@extend %typography;
 					@extend nobr;
-
-					text-transform: uppercase;
 
 					> a {
 						@extend %link--text;
