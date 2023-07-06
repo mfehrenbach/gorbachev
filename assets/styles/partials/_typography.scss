@@ -89,7 +89,7 @@ h1, h2, h3, h4, h5, h6, td, p, %typography {
 	letter-spacing: var(--typography--letter-spacing);
 	margin-left:    var(--typography--margin--left);
 	margin-right:   var(--typography--margin--right);
-	overflow-wrap:  break-word; // Prevent container-breaking.
+	word-break:     break-word; // Prevent container-breaking.
 
 	// Pseudo-elements to negate the shoulders.
 	&:before, &:after {
