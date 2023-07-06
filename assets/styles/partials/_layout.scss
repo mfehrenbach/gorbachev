@@ -262,7 +262,6 @@ body {
 				margin:           initial;
 				overflow:         visible;
 				padding:          initial;
-				row-gap:          var(--typography--line--2);
 				text-align:       right;
 				top:              var(--typography--cap--2);
 				width:            min-content;
@@ -271,6 +270,7 @@ body {
 				> ul {
 					align-items:    end;
 					flex-direction: column;
+					margin-top:     var(--typography--line--2);
 					row-gap:        var(--typography--lead);
 				}
 			}
@@ -289,9 +289,10 @@ body {
 
 					// Ad block.
 					#SidebarMartini {
+						align-items: end;
 						display:     flex;
 						flex-grow:   1;
-						align-items: end;
+						margin-top:  var(--typography--line--4);
 
 						> div { // The JS-added container.
 							align-items:    end;
