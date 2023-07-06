@@ -20,7 +20,7 @@
 
 
 
-	h2.dateline {
+	> h2.dateline {
 		@extend %font--extended;
 		@extend %font--gill-sans--on-verdana;
 		@extend %font--uppercase;
@@ -30,7 +30,7 @@
 
 
 
-	dl.linkedlist {
+	> dl.linkedlist {
 		@extend %--nested--spacing;
 
 		> dt {
@@ -56,7 +56,7 @@
 
 
 
-	div.article {
+	> div.article {
 		@extend %--nested--spacing;
 	}
 }
