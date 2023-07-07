@@ -13,7 +13,7 @@ if (typeof replacementStyles == 'undefined') {
 	let mainAdBlock = adBlock.cloneNode(true)
 	mainAdBlock.id = 'MainMartini'
 	if (firstThing.classList.contains('article')) {
-		firstThing.querySelector('*:nth-child(2)').after(mainAdBlock) // This could be smarter.
+		firstThing.querySelector('*:nth-child(5)').after(mainAdBlock) // This could be smarter.
 	} else if (firstThing.classList.contains('linkedlist')) {
 		firstThing.querySelector('dd:first-of-type').after(mainAdBlock) // After the first “definition”.
 	}
