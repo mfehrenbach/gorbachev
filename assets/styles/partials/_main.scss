@@ -20,12 +20,16 @@
 
 
 
-	> h2.dateline {
+	.dateline {
 		@extend %font--extended;
 		@extend %font--gill-sans--on-verdana;
 		@extend %font--uppercase;
 
 		--color: var(--color--tertiary);
+
+		margin-bottom: var(--typography--line--2);
+
+		+ * { margin-top: var(--typography--line--2) }
 	}
 
 
@@ -74,14 +78,6 @@
 			@extend %font--gill-sans--x-verdana-cap;
 
 			> a { @extend %typography--underline--disable };
-		}
-
-		> h6.dateline {
-			@extend %font--extended;
-			@extend %font--gill-sans--on-verdana;
-			@extend %font--uppercase;
-
-			--color: var(--color--tertiary);
 		}
 	}
 
