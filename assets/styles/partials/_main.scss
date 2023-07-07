@@ -41,6 +41,8 @@
 
 			--color: var(--color--secondary);
 
+			&:not(:first-child) { margin-top: var(--typography--line--4) }
+
 			> a {
 				@extend %typography--underline--disable;
 
