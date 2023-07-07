@@ -8,10 +8,10 @@
 
 #Main {
 	// Base spacing.
-	> *:not(:first-child) { margin-top: var(--margin--top, var(--typography--line--2)) }
+	> *:not(:first-child) { margin-top: var(--typography--line--2) }
 
 	%--nested--spacing {
-		> *:not(:first-child) { margin-top: var(--margin--top, var(--typography--line)) }
+		> *:not(:first-child) { margin-top: var(--typography--line) }
 	}
 
 
