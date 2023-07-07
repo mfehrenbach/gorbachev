@@ -57,6 +57,8 @@
 
 			> blockquote {
 				@extend %--nested--spacing;
+
+				padding-left: var(--typography--line);
 			}
 		}
 	}
