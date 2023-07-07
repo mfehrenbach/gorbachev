@@ -224,6 +224,7 @@ body {
 				@extend %link--element;
 
 				flex-shrink: 0; // Prevent image smushing in mobile left/right layout.
+				border:      initial; // Cancel out text-link spacing.
 			}
 
 			// Tagline.
