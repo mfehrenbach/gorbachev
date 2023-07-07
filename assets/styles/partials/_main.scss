@@ -86,6 +86,12 @@
 	> hr.ookiaks {
 		display:    flow-root; // Prevent margin collapse.
 		margin-top: calc(var(--typography--line-height) * 2); // Just two extra lines, no leading.
+
+		@include width(568) {
+			@include tall(600) {
+				margin-top: calc(var(--typography--line-height) * 4); // Smoke em’ if you got em.
+			}
+		}
 	}
 
 
