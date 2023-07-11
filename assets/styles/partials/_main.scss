@@ -21,7 +21,21 @@
 	blockquote {
 		@extend %--nested--spacing;
 
-		padding-left: var(--typography--line);
+		--color: var(--color--secondary);
+
+		padding-left:  var(--typography--lead);
+		padding-right: var(--typography--line);
+		position:      relative;
+
+		&:after {
+			background-color: var(--color--tertiary);
+			content:          '';
+			height:           calc(100% + var(--typography--lead));
+			left:             0;
+			position:         absolute;
+			top:              calc(-1 * var(--typography--lead) / 2);
+			width:            var(--typography--stroke);
+		}
 	}
 
 
