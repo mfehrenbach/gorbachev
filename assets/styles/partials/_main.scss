@@ -16,7 +16,11 @@
 
 
 
-	a { @extend %link--text }
+	a {
+		@extend %link--text;
+
+		--color: var(--color--secondary);
+	}
 
 	blockquote {
 		@extend %--nested--spacing;
