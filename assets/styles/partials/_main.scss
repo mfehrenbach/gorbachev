@@ -14,6 +14,12 @@
 		> *:not(:first-child) { margin-top: var(--typography--line) }
 	}
 
+	%--double--after {
+		margin-bottom: var(--typography--line--2);
+
+		+ * { margin-top: var(--typography--line--2) }
+	}
+
 
 
 	a {
@@ -23,6 +29,7 @@
 	}
 
 	blockquote {
+		@extend %--double--after;
 		@extend %--nested--spacing;
 
 		--color: var(--color--secondary);
@@ -45,15 +52,12 @@
 
 
 	.dateline {
+		@extend %--double--after;
 		@extend %font--extended;
 		@extend %font--gill-sans--on-verdana;
 		@extend %font--uppercase;
 
 		--color: var(--color--tertiary);
-
-		margin-bottom: var(--typography--line--2);
-
-		+ * { margin-top: var(--typography--line--2) }
 	}
 
 
