@@ -58,6 +58,8 @@
 			left:             0;
 			min-height:       calc(var(--typography--cap) + var(--typography--lead));
 			position:         absolute;
+			top:              50%;
+			transform:        translateY(-50%); // Center single-line bar on text.
 			width:            var(--typography--stroke);
 
 			// Chrome rounds up for the width, but not for borders.
