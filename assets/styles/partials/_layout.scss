@@ -196,7 +196,9 @@ body {
 
 			// Navigation.
 			> ul {
-				column-gap: calc(var(--typography--lead) * 2); // Single not enough with spaces in links.
+				--color: var(--color--secondary);
+
+				column-gap: var(--typography--line);
 				display:    flex;
 
 				> li {
