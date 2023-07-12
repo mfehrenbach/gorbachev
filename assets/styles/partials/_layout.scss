@@ -271,7 +271,7 @@ body {
 				align-items:      end;
 				align-self:       start;
 				background-color: initial; // Reset sticky-header properties.
-				box-shadow:       initial;
+				filter:           initial;
 				flex-direction:   column;
 				justify-self:     end;
 				margin:           initial;
