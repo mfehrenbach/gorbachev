@@ -24,24 +24,24 @@
 
 	%--sticky-header--main {
 		@extend %sticky-header;
-
-		margin-left:   calc(-1 * var(--typography--lead));
-		margin-right:  calc(-1 * var(--typography--lead));
-		margin-top:    calc(-1 * (var(--typography--line)));
-		padding-left:  calc(var(--typography--lead) + var(--typography--margin--left));
-		padding-right: calc(var(--typography--lead) + var(--typography--margin--right));
-		padding-top:   var(--typography--line);
-		top:           var(--layout--sticky--offset);
-		z-index:       1;
+		-webkit-backdrop-filter: blur(var(--layout--sticky--chin));
+		backdrop-filter:  blur(var(--layout--sticky--chin));
+		background-color: hsla(var(--color--slate--hsl), var(--opacity--tertiary));
+		margin-left:      calc(-1 * var(--typography--lead));
+		margin-right:     calc(-1 * var(--typography--lead));
+		margin-top:       calc(-1 * var(--typography--line) - var(--layout--sticky--offset));
+		padding-left:     calc(var(--typography--lead) + var(--typography--margin--left));
+		padding-right:    calc(var(--typography--lead) + var(--typography--margin--right));
+		padding-top:      calc(var(--typography--line) + var(--layout--sticky--offset));
+		z-index:          1;
 
 		@include width(568) {
-			margin-left:   calc(-1 * var(--typography--line));
-			margin-right:  calc(-1 * var(--typography--line));
+			margin-left:   calc(-1 * var(--typography--line) * 2);
+			margin-right:  calc(-1 * var(--typography--line) * 2);
 			margin-top:    calc(-1 * (var(--typography--line)));
-			padding-left:  calc(var(--typography--line) + var(--typography--margin--left));
-			padding-right: calc(var(--typography--line) + var(--typography--margin--right));
+			padding-left:  calc(var(--typography--line) * 2 + var(--typography--margin--left));
+			padding-right: calc(var(--typography--line) * 2 + var(--typography--margin--right));
 			padding-top:   var(--typography--line);
-			top:           0;
 		}
 	}
 
