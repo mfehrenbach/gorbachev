@@ -131,6 +131,15 @@
 				--color: var(--color--primary);
 			};
 		}
+
+		> h2 {
+			@extend %--double--after;
+			@extend %font--extended;
+			@extend %font--gill-sans--on-verdana;
+			@extend %font--uppercase;
+
+			&:not(:first-child) { margin-top: var(--typography--line--4) } // Specificity match the wildcard.
+		}
 	}
 
 
