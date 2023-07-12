@@ -83,6 +83,7 @@
 		@extend %--nested--spacing;
 
 		> dt {
+			@extend %--double--after;
 			@extend %font--extended;
 			@extend %font--gill-sans--on-verdana;
 			@extend %typography;
@@ -115,6 +116,7 @@
 		@extend %--nested--spacing;
 
 		> h1 {
+			@extend %--double--after;
 			@extend %font--gill-sans--x-verdana-cap;
 
 			> a { @extend %typography--underline--disable };
