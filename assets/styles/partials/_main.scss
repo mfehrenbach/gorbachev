@@ -78,7 +78,7 @@
 			> a {
 				@extend %typography--underline--disable;
 
-				&:last-of-type {
+				&.permalink {
 					--color: var(--color--tertiary);
 
 					// Add gap, cancel out the `&nbsp;`, enlargement, and letter-spacing.
