@@ -51,7 +51,7 @@ body {
 
 	// Layout proxies.
 	--layout--sticky--chin:     var(--typography--lead);
-	--layout--sticky--forehead: var(--typography--line);
+	--layout--sticky--forehead: calc(var(--typography--lead) * 2); // Optically with bottom address bar (iOS).
 	--layout--sticky--offset:   calc(var(--layout--sticky--forehead) + var(--typography--cap));
 
 
@@ -62,6 +62,9 @@ body {
 	padding-right:    calc(env(safe-area-inset-right, 0rem) * 0.72);
 
 
+
+	// Chrome address bar is at the top.
+	@include browser(chrome) { --layout--sticky--forehead: var(--typography--line) }
 
 	@include legacy {
 		// Scale down for legacy devices, based on the viewport.
@@ -100,17 +103,20 @@ body {
 	// Main layout.
 	#Box {
 		display: grid;
-		padding: var(--typography--line--2) var(--typography--lead);
+		padding: var(--typography--line--3) var(--typography--lead); // Less needed above optically (iOS).
 		row-gap: var(--typography--line--2);
 		grid-template-areas:
 			'banner'
 			'sidebar'
 			'main';
 
+		// Even for Chrome.
+		@include browser(chrome) { padding: var(--typography--line--4) var(--typography--lead) }
 
 
 		#Banner {
-			grid-area: banner;
+			grid-area:     banner;
+			margin-bottom: calc(var(--typography--line-height) * 2); // Just extra lines, no leading.
 
 			// The logo.
 			a {
@@ -170,7 +176,7 @@ body {
 		#Sidebar {
 			@extend %sticky-header;
 
-			column-gap:    var(--typography--line--2);
+			column-gap:    var(--typography--line);
 			display:       flex;
 			grid-area:     sidebar;
 			margin-left:   calc(-1 * var(--typography--lead));
@@ -266,6 +272,8 @@ body {
 				'sidebar main  ';
 
 
+
+			#Banner { margin-bottom: initial } // Reset extra mobile/portrait space.
 
 			#Sidebar {
 				align-items:      end;
