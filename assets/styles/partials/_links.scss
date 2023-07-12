@@ -25,9 +25,12 @@
 		&:focus-visible:not(:disabled) {
 			@extend %typography--underline--disable;
 
-			outline-color:   var(--color);
-			outline-style:   solid;
-			outline-width:   var(--link--outline);
+			--color: var(--color--hover);
+
+			outline-color:       var(--color);
+			outline-style:       solid;
+			outline-width:       var(--link--outline);
+			transition-duration: initial;
 		}
 	}
 
