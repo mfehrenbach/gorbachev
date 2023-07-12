@@ -97,23 +97,23 @@
 
 
 	> .linkedlist {
-		@extend %--nested--spacing;
-
-		> dt {
-			@extend %--double--after;
-			@extend %font--extended;
-			@extend %font--gill-sans--on-verdana;
-			@extend %typography;
-			@extend %font--uppercase;
-
-			--color: var(--color--secondary);
-
+		> div { // New container from JS.
 			&:not(:first-child) { margin-top: var(--typography--line--4) }
 
-			> a { @extend %typography--underline--disable }
-		}
+			> dt {
+				@extend %--double--after;
+				@extend %font--extended;
+				@extend %font--gill-sans--on-verdana;
+				@extend %typography;
+				@extend %font--uppercase;
 
-		> dd { @extend %--nested--spacing }
+				--color: var(--color--secondary);
+
+				> a { @extend %typography--underline--disable }
+			}
+
+			> dd { @extend %--nested--spacing }
+		}
 	}
 
 

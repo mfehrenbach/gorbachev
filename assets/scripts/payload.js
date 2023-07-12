@@ -7,6 +7,18 @@ if (typeof replacementStyles == 'undefined') {
 	// Flag Windows for CSS.
 	if (navigator.appVersion.includes('Win')) document.documentElement.classList.add('windows')
 
+	// Add a level of DOM grouping to linked lists.
+	const linkedLists = document.querySelectorAll('dl.linkedlist')
+	linkedLists.forEach(linkedList => {
+		const linkListTitles = linkedList.querySelectorAll('dt')
+		linkListTitles.forEach(linkListTitle => {
+			const linkListDescription = linkListTitle.nextElementSibling
+			const linkListDiv = document.createElement('div')
+			linkListDiv.append(linkListTitle, linkListDescription)
+			linkedList.appendChild(linkListDiv)
+		})
+	})
+
 	// Duplicate to the main column, for mobile.
 	const firstThing = document.querySelector('#Main > *:first-child')
 	const adBlock = document.getElementById('SidebarMartini')
@@ -15,7 +27,7 @@ if (typeof replacementStyles == 'undefined') {
 	if (firstThing.classList.contains('article')) {
 		firstThing.querySelector('*:nth-child(5)').after(mainAdBlock) // This could be smarter.
 	} else if (firstThing.classList.contains('linkedlist')) {
-		firstThing.querySelector('dd:first-of-type').after(mainAdBlock) // After the first “definition”.
+		firstThing.querySelector('div:first-of-type').after(mainAdBlock) // After the first “definition”.
 	}
 
 	// Wrap another layer around the sidebar ad, for stickiness.
