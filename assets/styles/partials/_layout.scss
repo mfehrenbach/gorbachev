@@ -51,7 +51,9 @@ body {
 
 	// Layout proxies.
 	--layout--sticky--chin:     var(--typography--lead);
-	--layout--sticky--forehead: calc(var(--typography--lead) * 2);
+	--layout--sticky--forehead: var(--typography--line);
+	--layout--sticky--offset:   calc(var(--layout--sticky--forehead) + var(--typography--cap));
+
 
 
 	background-color: var(--color--slate);
@@ -109,7 +111,6 @@ body {
 
 		#Banner {
 			grid-area: banner;
-			z-index:   1; // Over the sidebar.
 
 			// The logo.
 			a {
@@ -161,22 +162,26 @@ body {
 		%sticky-header {
 			background-color: var(--color--slate);
 			filter:           drop-shadow(0 calc(var(--layout--sticky--chin) / 2) var(--layout--sticky--chin) var(--color--slate));
-			margin:           calc(-1 * var(--layout--sticky--chin));
-			padding:          calc(var(--layout--sticky--chin));
+			margin-bottom:    calc(-1 * var(--layout--sticky--chin));
+			padding-bottom:   calc(var(--layout--sticky--chin));
 			position:         sticky;
-			z-index:          1;
 		}
 
 		#Sidebar {
 			@extend %sticky-header;
 
-			column-gap:  calc(var(--typography--lead) * 2); // Match the nav gap, below.
-			display:     flex;
-			grid-area:   sidebar;
-			margin-top:  calc(-1 * var(--layout--sticky--forehead));
-			overflow-x:  scroll;
-			padding-top: var(--layout--sticky--forehead);
-			top:         0;
+			column-gap:    var(--typography--line--2);
+			display:       flex;
+			grid-area:     sidebar;
+			margin-left:   calc(-1 * var(--typography--lead));
+			margin-right:  calc(-1 * var(--typography--lead));
+			margin-top:    calc(-1 * var(--layout--sticky--forehead));
+			overflow-x:    scroll;
+			padding-left:  var(--typography--lead);
+			padding-right: var(--typography--lead);
+			padding-top:   var(--layout--sticky--forehead);
+			top:           0;
+			z-index:       2; // Over the sticky headers in the main column.
 
 			&::-webkit-scrollbar { display: none } // Hide scrollbar.
 
@@ -271,7 +276,7 @@ body {
 				overflow:         visible;
 				padding:          initial;
 				text-align:       right;
-				top:              var(--typography--lead);
+				top:              var(--typography--line);
 				width:            min-content;
 
 				// Navigation.

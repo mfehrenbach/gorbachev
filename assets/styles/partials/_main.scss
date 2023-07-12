@@ -4,6 +4,8 @@
 @forward 'fonts';
 @forward 'links';
 
+@forward 'layout';
+
 
 
 #Main {
@@ -16,6 +18,31 @@
 
 	%--double--after { // Bump specificity.
 		+ *:not(:first-child):not(._) { margin-top: var(--typography--line--2) }
+	}
+
+
+
+	%--sticky-header--main {
+		@extend %sticky-header;
+
+		margin-left:   calc(-1 * var(--typography--lead));
+		margin-right:  calc(-1 * var(--typography--lead));
+		margin-top:    calc(-1 * (var(--typography--line)));
+		padding-left:  var(--typography--lead);
+		padding-right: var(--typography--lead);
+		padding-top:   var(--typography--line);
+		top:           var(--layout--sticky--offset);
+		z-index:       1;
+
+		@include width(568) {
+			margin-left:   calc(-1 * var(--typography--line));
+			margin-right:  calc(-1 * var(--typography--line));
+			margin-top:    calc(-1 * (var(--typography--line)));
+			padding-left:  var(--typography--line);
+			padding-right: var(--typography--line);
+			padding-top:   var(--typography--line);
+			top:           0;
+		}
 	}
 
 
@@ -102,6 +129,7 @@
 
 			> dt {
 				@extend %--double--after;
+				@extend %--sticky-header--main;
 				@extend %font--extended;
 				@extend %font--gill-sans--on-verdana;
 				@extend %typography;
@@ -122,6 +150,7 @@
 		@extend %--nested--spacing;
 
 		> h1 {
+			@extend %--sticky-header--main;
 			@extend %--double--after;
 			@extend %font--gill-sans--x-verdana-cap;
 
