@@ -39,7 +39,7 @@ nobr, .nowrap { white-space: nowrap }
 	// Calculated absolutely for scaled/shifted type on same baseline.
 	--typography--size--rendered: (var(--typography--size--override, var(--typography--size)) * var(--typography--factor, 0.1rem));
 
-	--typography--font-size:   calc(var(--typography--scale, 1) *   var(--typography--size--rendered));
+	--typography--font-size:   calc(var(--typography--scale, 1) * var(--typography--size--rendered));
 	--typography--line-height: calc(var(--typography--leading--override, var(--typography--leading, 1)) * var(--typography--size--rendered));
 
 	// Internal variables to keep things (somewhat) tidy.
@@ -62,7 +62,7 @@ nobr, .nowrap { white-space: nowrap }
 	--typography--x:      calc(var(--typography--x-height) *   var(--typography--font-size));
 	--typography--stroke: calc(var(--typography--underline) *  var(--typography--font-size));
 
-	--typography--lead:    calc(var(--typography--line-height) - var(--typography--cap));
+	--typography--lead:    calc(var(--typography--line-height) - var(--typography--cap) / var(--typography--scale, 1));
 	--typography--line:    calc(var(--typography--line-height) + var(--typography--lead));
 	--typography--line--2: calc(var(--typography--line-height) * 2 + var(--typography--lead));
 	--typography--line--3: calc(var(--typography--line-height) * 3 + var(--typography--lead));
