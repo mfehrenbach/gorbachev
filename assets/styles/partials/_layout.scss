@@ -56,7 +56,7 @@ body {
 
 
 
-	background-color: var(--color--slate);
+	background-color: var(--color--background);
 	color:            var(--color--primary);
 	padding-left:     calc(env(safe-area-inset-left, 0rem) * 0.72); // Right to the notch edge.
 	padding-right:    calc(env(safe-area-inset-right, 0rem) * 0.72);
@@ -160,8 +160,8 @@ body {
 
 
 		%sticky-header {
-			background-color: var(--color--slate);
-			filter:           drop-shadow(0 calc(var(--layout--sticky--chin) / 2) var(--layout--sticky--chin) var(--color--slate));
+			background-color: var(--color--background);
+			filter:           drop-shadow(0 0 var(--layout--sticky--chin) var(--color--background));
 			margin-bottom:    calc(-1 * var(--layout--sticky--chin));
 			padding-bottom:   calc(var(--layout--sticky--chin));
 			position:         sticky;
