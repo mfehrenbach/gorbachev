@@ -70,9 +70,16 @@ nobr, .nowrap { white-space: nowrap }
 }
 
 
+
 %--basic-properties {
 	font-size:   var(--typography--font-size);
 	line-height: var(--typography--line-height);
+}
+
+%--color-spacing-weight {
+	color:          var(--color);
+	font-weight:    var(--typography--weight);
+	letter-spacing: var(--typography--letter-spacing);
 }
 
 
@@ -80,16 +87,14 @@ nobr, .nowrap { white-space: nowrap }
 // Bounding/line-box control.
 h1, h2, h3, h4, h5, h6, td, p, %typography {
 	@extend %--basic-properties;
+	@extend %--color-spacing-weight;
 	@extend %--variables--face;
 	@extend %--variables--leading;
 
-	color:          var(--color);
-	display:        flow-root; // For  negative margins without flex parents.
-	font-weight:    var(--typography--weight);
-	letter-spacing: var(--typography--letter-spacing);
-	margin-left:    var(--typography--margin--left);
-	margin-right:   var(--typography--margin--right);
-	word-break:     break-word; // Prevent container-breaking.
+	display:      flow-root; // For negative margins without flex parents.
+	margin-left:  var(--typography--margin--left);
+	margin-right: var(--typography--margin--right);
+	word-break:   break-word; // Prevent container-breaking.
 
 	// Pseudo-elements to negate the shoulders.
 	&:before, &:after {
