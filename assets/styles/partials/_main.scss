@@ -83,6 +83,17 @@
 		--color: var(--color--middle);
 	}
 
+	.permalink {
+		@extend %typography--underline--disable;
+
+		--color: var(--color--middle);
+
+		// Add gap, cancel out the `&nbsp;`, enlargement, and letter-spacing.
+		margin-left: calc(var(--typography--lead) - 1ch - var(--link--enlargement) + (var(--typography--inset--right--override) * 1em));
+
+		@include hover { --color: var(--color--hover) } // Specificity.
+	}
+
 
 
 	> dl.linkedlist {
@@ -99,18 +110,7 @@
 
 			&:not(:first-child) { margin-top: var(--typography--line--4) }
 
-			> a {
-				@extend %typography--underline--disable;
-
-				&.permalink {
-					--color: var(--color--middle);
-
-					// Add gap, cancel out the `&nbsp;`, enlargement, and letter-spacing.
-					margin-left: calc(var(--typography--lead) - 1ch - var(--link--enlargement) + (var(--typography--inset--right--override) * 1em));
-
-					@include hover { --color: var(--color--hover) } // Specificity.
-				}
-			}
+			> a { @extend %typography--underline--disable }
 		}
 
 		> dd { @extend %--nested--spacing }
