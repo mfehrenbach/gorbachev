@@ -35,9 +35,9 @@ if (typeof replacementStyles == 'undefined') {
 	wrapper.append(...adBlock.children)
 	adBlock.appendChild(wrapper)
 
-	// Toss the empty/conditional Linked List item from nav.
-	const linkedList = document.querySelector('#Sidebar > ul script').parentNode
-	linkedList.remove()
+	// Toss the empty/conditional linked list item from nav.
+	const navLinkedList = document.querySelector('#Sidebar > ul script').parentNode
+	navLinkedList.remove()
 
 	// Set up the stylesheet.
 	let baseUrl = document.currentScript.src
