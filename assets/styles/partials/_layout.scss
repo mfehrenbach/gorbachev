@@ -24,12 +24,14 @@ body {
 	// Palette.
 	--opacity--primary:   90%;   // #EEE equivalent on slate.
 	--opacity--secondary: 70%;   // #CCC.
+	--opacity--tertiary:  51.5%; // #AAA.
 	--opacity--middle:    31.5%; // #888.
 	--opacity--slight:    13%;   // #606870.
 
 	--color--slate:     #4a525a;
 	--color--primary:   hsla(0, 0%, 100%, var(--opacity--primary));
 	--color--secondary: hsla(0, 0%, 100%, var(--opacity--secondary));
+	--color--tertiary:  hsla(0, 0%, 100%, var(--opacity--tertiary));
 	--color--middle:    hsla(0, 0%, 100%, var(--opacity--middle));
 	--color--slight:    hsla(0, 0%, 100%, var(--opacity--slight));
 

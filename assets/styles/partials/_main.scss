@@ -47,6 +47,11 @@
 		padding-right: var(--typography--line);
 		position:      relative;
 
+		a { // Down one more notch.
+			--color:            var(--color--tertiary);
+			--color--underline: var(--color--middle);
+		}
+
 		// The bar on the side.
 		&:before {
 			background-color: var(--color--middle);
