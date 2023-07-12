@@ -125,7 +125,11 @@
 			@extend %--double--after;
 			@extend %font--gill-sans--x-verdana-cap;
 
-			> a { @extend %typography--underline--disable };
+			> a {
+				@extend %typography--underline--disable;
+
+				--color: var(--color--primary);
+			};
 		}
 	}
 
