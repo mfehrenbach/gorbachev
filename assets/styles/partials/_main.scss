@@ -81,7 +81,8 @@
 				&:last-of-type {
 					--color: var(--color--tertiary);
 
-					margin-left: initial; // Don’t cancel the link enlargement, for more space.
+					// Add gap, cancel out the `&nbsp;`, enlargement, and letter-spacing.
+					margin-left: calc(var(--typography--lead) - 1ch - var(--link--enlargement) + (var(--typography--inset--right--override) * 1em));
 				}
 			}
 		}
