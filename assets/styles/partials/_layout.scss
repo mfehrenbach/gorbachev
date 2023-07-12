@@ -157,9 +157,9 @@ body {
 
 		#Sidebar {
 			background-color: var(--color--slate);
-			box-shadow:       0 0 var(--typography--line) var(--color--slate); // Buggy on reloads.
 			column-gap:       calc(var(--typography--lead) * 2); // Match the nav gap, below.
 			display:          flex;
+			filter:           drop-shadow(0 calc(var(--typography--lead) / 2) var(--typography--lead) var(--color--slate));
 			grid-area:        sidebar;
 			margin-bottom:    calc(-1 * var(--typography--cap--2));
 			margin-left:      calc(-1 * var(--typography--lead));
