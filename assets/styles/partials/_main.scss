@@ -25,7 +25,16 @@
 	a {
 		@extend %link--text;
 
-		--color: var(--color--secondary);
+		--color: var(--color--secondary);  // Make extends for these?
+	}
+
+	strong {
+		@extend %font--extended;
+		@extend %font--gill-sans--in-verdana;
+		@extend %font--uppercase;
+		@extend %typography--inline;
+
+		--color: var(--color--secondary)
 	}
 
 	blockquote {
