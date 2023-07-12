@@ -123,8 +123,9 @@ td { display: table-cell } // Flow-root breaks these.
 	@extend %--variables--face;
 	@extend %--variables--leading;
 
-	display:    inline-block; // For negative margin.
-	margin-top: var(--typography--margin--top);
+	display:       inline-block; // For negative margins.
+	margin-bottom: var(--typography--margin--bottom);
+	margin-top:    var(--typography--margin--top);
 }
 
 
