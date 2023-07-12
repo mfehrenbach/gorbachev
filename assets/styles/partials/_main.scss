@@ -47,7 +47,7 @@
 		padding-right: var(--typography--line);
 		position:      relative;
 
-		&:after {
+		&:before {
 			background-color: var(--color--tertiary);
 			content:          '';
 			height:           calc(100% + var(--typography--lead));
