@@ -170,6 +170,7 @@ body {
 			padding-top:      var(--typography--cap--2);
 			position:         sticky;
 			top:              0;
+			z-index:          1; // Keep above lower-but-relative elements in #Main.
 
 			&::-webkit-scrollbar { display: none } // Hide scrollbar.
 
