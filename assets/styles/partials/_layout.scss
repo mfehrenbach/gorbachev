@@ -168,10 +168,10 @@ body {
 
 
 		%sticky-header {
-			margin-bottom:    calc(-1 * var(--layout--sticky--chin));
-			padding-bottom:   calc(var(--layout--sticky--chin));
-			position:         sticky;
-			top:              0;
+			margin-bottom:  calc(-1 * var(--layout--sticky--chin));
+			padding-bottom: calc(var(--layout--sticky--chin));
+			position:       sticky;
+			top:            0;
 		}
 
 		#Sidebar {

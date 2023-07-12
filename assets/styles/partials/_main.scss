@@ -24,6 +24,7 @@
 
 	%--sticky-header--main {
 		@extend %sticky-header;
+
 		-webkit-backdrop-filter: blur(var(--layout--sticky--chin));
 		backdrop-filter:  blur(var(--layout--sticky--chin));
 		background-color: hsla(var(--color--slate--hsl), var(--opacity--tertiary));
