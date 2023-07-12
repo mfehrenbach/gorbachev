@@ -63,7 +63,6 @@
 	}
 
 	blockquote {
-		@extend %--double--after;
 		@extend %--nested--spacing;
 
 		--color: var(--color--secondary);
