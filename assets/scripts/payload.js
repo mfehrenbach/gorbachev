@@ -30,7 +30,7 @@ if (typeof replacementStyles == 'undefined') {
 	if (firstThing.classList.contains('article')) {
 		firstThing.querySelector('*:nth-child(5)').after(mainAdBlock) // This could be smarter.
 	} else if (firstThing.classList.contains('linkedlist')) {
-		firstThing.querySelector('div:first-of-type').after(mainAdBlock) // After the first “definition”.
+		firstThing.querySelector('div:first-of-type').appendChild(mainAdBlock) // After the first “definition”.
 	}
 
 	// Wrap another layer around the sidebar ad, for stickiness.
