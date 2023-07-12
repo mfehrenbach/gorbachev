@@ -49,7 +49,7 @@
 
 		// The bar on the side.
 		&:before {
-			background-color: var(--color--tertiary);
+			background-color: var(--color--middle);
 			content:          '';
 			height:           100%;
 			left:             0;
@@ -60,7 +60,7 @@
 			// Chrome rounds up for the width, but not for borders.
 			@include browser (chrome) {
 				background-color:  initial;
-				border-left-color: var(--color--tertiary);
+				border-left-color: var(--color--middle);
 				border-left-style: solid;
 				border-left-width: var(--typography--stroke);
 			}
@@ -75,7 +75,7 @@
 		@extend %font--gill-sans--on-verdana;
 		@extend %font--uppercase;
 
-		--color: var(--color--tertiary);
+		--color: var(--color--middle);
 	}
 
 
@@ -98,7 +98,7 @@
 				@extend %typography--underline--disable;
 
 				&.permalink {
-					--color: var(--color--tertiary);
+					--color: var(--color--middle);
 
 					// Add gap, cancel out the `&nbsp;`, enlargement, and letter-spacing.
 					margin-left: calc(var(--typography--lead) - 1ch - var(--link--enlargement) + (var(--typography--inset--right--override) * 1em));
