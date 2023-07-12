@@ -25,9 +25,7 @@
 	%--sticky-header--main {
 		@extend %sticky-header;
 
-		-webkit-backdrop-filter: blur(var(--layout--sticky--chin));
-		backdrop-filter:  blur(var(--layout--sticky--chin));
-		background-color: hsla(var(--color--slate--hsl), var(--opacity--tertiary));
+		background-color: hsla(var(--color--slate--hsl), var(--opacity--primary));
 		margin-left:      calc(-1 * var(--typography--lead));
 		margin-right:     calc(-1 * var(--typography--lead));
 		margin-top:       calc(-1 * var(--typography--line) - var(--layout--sticky--offset));
