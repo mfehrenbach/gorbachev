@@ -49,6 +49,9 @@ body {
 	--link--outline:     2px;
 	--link--transition:  50ms;
 
+	// Layout proxies.
+	--layout--sticky--chin:     var(--typography--lead);
+	--layout--sticky--forehead: calc(var(--typography--lead) * 2);
 
 
 	background-color: var(--color--slate);
@@ -155,24 +158,25 @@ body {
 
 
 
-		#Sidebar {
+		%sticky-header {
 			background-color: var(--color--slate);
-			column-gap:       calc(var(--typography--lead) * 2); // Match the nav gap, below.
-			display:          flex;
-			filter:           drop-shadow(0 calc(var(--typography--lead) / 2) var(--typography--lead) var(--color--slate));
-			grid-area:        sidebar;
-			margin-bottom:    calc(-1 * var(--typography--cap--2));
-			margin-left:      calc(-1 * var(--typography--lead));
-			margin-right:     calc(-1 * var(--typography--lead));
-			margin-top:       calc(-1 * var(--typography--cap--2));
-			overflow-x:       scroll;
-			padding-bottom:   var(--typography--cap--2);
-			padding-left:     var(--typography--lead);
-			padding-right:    var(--typography--lead);
-			padding-top:      var(--typography--cap--2);
+			filter:           drop-shadow(0 calc(var(--layout--sticky--chin) / 2) var(--layout--sticky--chin) var(--color--slate));
+			margin:           calc(-1 * var(--layout--sticky--chin));
+			padding:          calc(var(--layout--sticky--chin));
 			position:         sticky;
-			top:              0;
-			z-index:          1; // Keep above lower-but-relative elements in #Main.
+			z-index:          1;
+		}
+
+		#Sidebar {
+			@extend %sticky-header;
+
+			column-gap:  calc(var(--typography--lead) * 2); // Match the nav gap, below.
+			display:     flex;
+			grid-area:   sidebar;
+			margin-top:  calc(-1 * var(--layout--sticky--forehead));
+			overflow-x:  scroll;
+			padding-top: var(--layout--sticky--forehead);
+			top:         0;
 
 			&::-webkit-scrollbar { display: none } // Hide scrollbar.
 
@@ -259,7 +263,7 @@ body {
 			#Sidebar {
 				align-items:      end;
 				align-self:       start;
-				background-color: initial;
+				background-color: initial; // Reset sticky-header properties.
 				box-shadow:       initial;
 				flex-direction:   column;
 				justify-self:     end;
@@ -267,7 +271,7 @@ body {
 				overflow:         visible;
 				padding:          initial;
 				text-align:       right;
-				top:              var(--typography--cap--2);
+				top:              var(--typography--lead);
 				width:            min-content;
 
 				// Navigation.
