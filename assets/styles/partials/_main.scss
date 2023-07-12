@@ -14,10 +14,8 @@
 		> *:not(:first-child) { margin-top: var(--typography--line) }
 	}
 
-	%--double--after {
-		margin-bottom: var(--typography--line--2);
-
-		+ * { margin-top: var(--typography--line--2) }
+	%--double--after { // Bump specificity.
+		+ *:not(:first-child):not(._) { margin-top: var(--typography--line--2) }
 	}
 
 
