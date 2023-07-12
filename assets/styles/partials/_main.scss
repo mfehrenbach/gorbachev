@@ -25,7 +25,7 @@
 	a {
 		@extend %link--text;
 
-		--color: var(--color--secondary);  // Make extends for these?
+		--color: var(--color--secondary);
 	}
 
 	strong {
