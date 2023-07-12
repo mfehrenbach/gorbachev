@@ -7,7 +7,10 @@ if (typeof replacementStyles == 'undefined') {
 	// Flag Windows for CSS.
 	if (navigator.appVersion.includes('Win')) document.documentElement.classList.add('windows')
 
-	// Add a level of DOM grouping to linked lists.
+	// Pull footer out to the end of main column.
+	document.getElementById('Main').appendChild(document.getElementById('Footer'))
+
+	// Add a level of DOM grouping to linked lists, for stickiness.
 	const linkedLists = document.querySelectorAll('dl.linkedlist')
 	linkedLists.forEach(linkedList => {
 		const linkListTitles = linkedList.querySelectorAll('dt')
@@ -19,7 +22,7 @@ if (typeof replacementStyles == 'undefined') {
 		})
 	})
 
-	// Duplicate to the main column, for mobile.
+	// Duplicate the sidebar ad to the main column, for mobile.
 	const firstThing = document.querySelector('#Main > *:first-child')
 	const adBlock = document.getElementById('SidebarMartini')
 	let mainAdBlock = adBlock.cloneNode(true)
