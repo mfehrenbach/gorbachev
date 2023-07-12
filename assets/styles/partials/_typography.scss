@@ -112,10 +112,19 @@ td { display: table-cell } // Flow-root breaks these.
 
 
 
-// Type spacing on containers.
-%typography--layout {
+%typography--layout { // Type spacing on containers.
 	@extend %--basic-properties;
 	@extend %--variables--leading;
+}
+
+%typography--inline { // For inline family changes.
+	@extend %--basic-properties;
+	@extend %--color-spacing-weight;
+	@extend %--variables--face;
+	@extend %--variables--leading;
+
+	display:    inline-block; // For negative margin.
+	margin-top: var(--typography--margin--top);
 }
 
 
