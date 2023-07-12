@@ -47,13 +47,14 @@
 		padding-right: var(--typography--line);
 		position:      relative;
 
+		// The bar on the side.
 		&:before {
 			background-color: var(--color--tertiary);
 			content:          '';
-			height:           calc(100% + var(--typography--lead));
+			height:           100%;
 			left:             0;
+			min-height:       calc(var(--typography--cap) + var(--typography--lead));
 			position:         absolute;
-			top:              calc(-1 * var(--typography--lead) / 2);
 			width:            var(--typography--stroke);
 
 			// Chrome rounds up for the width, but not for borders.
