@@ -86,7 +86,7 @@
 %font--uppercase { text-transform: uppercase }
 
 %font--extended {
-	--typography--tracking: calc(1 / 6);
+	--typography--tracking: calc(1 / 6 * (1 / var(--typography--scale, 1))); // Adjust for scale.
 
 	--typography--inset--right--override: calc(var(--typography--inset--right) - var(--typography--tracking));
 }
