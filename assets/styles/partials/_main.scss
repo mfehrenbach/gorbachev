@@ -38,7 +38,7 @@
 
 		// Include type margin above to repurpose the pseudo-element here for a fade.
 		&:after {
-			background:     linear-gradient(rgba(var(--color--slate--rgb), var(--opacity--tertiary)), rgba(var(--color--slate--rgb), 0%));
+			background:     linear-gradient(rgba(var(--color--background--rgb), var(--opacity--tertiary)), rgba(var(--color--background--rgb), 0%));
 			height:         var(--typography--line-height);
 			left:           0;
 			margin:         initial;

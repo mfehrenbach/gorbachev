@@ -38,8 +38,9 @@ body {
 	--color--slight:    rgba(255, 255, 255, var(--opacity--slight));
 
 	// Map to use.
-	--color:             var(--color--primary);
-	--color--background: var(--color--slate);
+	--color:                  var(--color--primary);
+	--color--background:      var(--color--slate);
+	--color--background--rgb: var(--color--slate--rgb);
 
 	--color--highlight:       var(--color--slight);
 	--color--highlight--more: var(--color--middle);
