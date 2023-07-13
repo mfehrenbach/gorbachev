@@ -327,35 +327,38 @@ body {
 			#Main { &:after { display: none } } // Turn off address-bar fade.
 
 
+
 			// Tablets/comps.
-			@include tall(600) {
-				column-gap: calc(var(--typography--line) * 2); // Horizontal, so twice optically (not baseline).
-				padding:    var(--typography--line--4) var(--typography--line);
-				row-gap:    var(--typography--line--4);
+			@include width(640) {
+				@include tall(600) {
+					column-gap: calc(var(--typography--line) * 2); // Horizontal, so twice optically (not baseline).
+					padding:    var(--typography--line--4) var(--typography--line);
+					row-gap:    var(--typography--line--4);
 
-				#Sidebar {
-					--sticky--top: var(--typography--line);
+					#Sidebar {
+						--sticky--top: var(--typography--line);
 
-					height: calc(100vh - var(--typography--line) * 2);
+						height: calc(100vh - var(--typography--line) * 2);
 
-					// Ad block.
-					#SidebarMartini {
-						align-items: end;
-						display:     flex;
-						flex-grow:   1;
-						margin-top:  var(--typography--line--4);
+						// Ad block.
+						#SidebarMartini {
+							align-items: end;
+							display:     flex;
+							flex-grow:   1;
+							margin-top:  var(--typography--line--4);
 
-						> div { // The JS-added container.
-							align-items:    end;
-							bottom:         var(--typography--line);
-							flex-direction: column;
-							position:       sticky;
+							> div { // The JS-added container.
+								align-items:    end;
+								bottom:         var(--typography--line);
+								flex-direction: column;
+								position:       sticky;
+							}
 						}
 					}
-				}
 
-				// Hide main-column dupe.
-				#MainMartini { display: none }
+					// Hide main-column dupe.
+					#MainMartini { display: none }
+				}
 			}
 		}
 	}
