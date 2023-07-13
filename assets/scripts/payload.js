@@ -23,10 +23,11 @@ if (typeof replacementStyles == 'undefined') {
 	})
 
 	// Duplicate the sidebar ad to the main column, for mobile.
-	const firstThing = document.querySelector('#Main > *:first-child')
 	const adBlock = document.getElementById('SidebarMartini')
 	let mainAdBlock = adBlock.cloneNode(true)
 	mainAdBlock.id = 'MainMartini'
+	let firstThing = document.querySelector('#Main > *:first-child')
+	if (firstThing.classList.contains('dateline')) firstThing = document.querySelector('#Main > *:nth-child(2)')
 	if (firstThing.classList.contains('article')) {
 		let adPlacement = null
 		// Ideally place it between paragraphs, but not at the start.
