@@ -36,7 +36,11 @@
 		top:            var(--sticky--offset);
 		z-index:        1;
 
-		@include width(568) { top: 0 }
+		@include width(568) {
+			top: 0;
+
+			@include browser(chrome) { top: -0.01rem } // Prevent visible sliver above.
+		}
 	}
 
 
