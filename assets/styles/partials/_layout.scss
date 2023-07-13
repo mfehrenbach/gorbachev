@@ -163,11 +163,11 @@ body {
 		// Sticky stuff.
 		%sticky-header {
 
+			--sticky--fade:     var(--typography--line-height);
 			--sticky--forehead: calc(var(--typography--lead) * 2); // Optically with bottom address bar (iOS).
 			--sticky--offset:   calc(var(--sticky--forehead) + var(--typography--cap));
-			--sticky--fade:     var(--typography--line-height);
 
-			// Chrome needs the prefix.
+			// Chrome needs the prefix; Safari understands with and without.
 			-webkit-mask:     linear-gradient(to top, transparent, var(--color--secondary) var(--sticky--fade), var(--color--hover) var(--sticky--fade));
 			background-color: var(--color--background);
 			margin-left:      calc(-1 * var(--typography--lead));
@@ -182,6 +182,8 @@ body {
 		#Sidebar {
 			@extend %sticky-header;
 
+			--sticky--top: 0;
+
 			column-gap:     var(--typography--line);
 			display:        flex;
 			grid-area:      sidebar;
@@ -192,7 +194,7 @@ body {
 			padding-left:   var(--typography--lead);
 			padding-right:  var(--typography--line);
 			padding-top:    var(--sticky--forehead);
-			top:            0;
+			top:            var(--sticky--top);
 			z-index:        2; // Over the sticky headers in the main column.
 
 			&::-webkit-scrollbar { display: none } // Hide scrollbar.
@@ -299,6 +301,8 @@ body {
 			#Banner { margin-bottom: initial } // Reset extra mobile/portrait space.
 
 			#Sidebar {
+				--sticky--top: var(--typography--line-height);
+
 				-webkit-mask:     initial; // Reset sticky-header properties.
 				align-items:      end;
 				align-self:       start;
@@ -306,11 +310,9 @@ body {
 				flex-direction:   column;
 				justify-self:     end;
 				margin:           initial;
-				mask:             initial;
 				overflow:         visible;
 				padding:          initial;
 				text-align:       right;
-				top:              var(--typography--line);
 				width:            min-content;
 
 				// Navigation.
@@ -332,8 +334,9 @@ body {
 				row-gap:    var(--typography--line--4);
 
 				#Sidebar {
+					--sticky--top: var(--typography--line);
+
 					height: calc(100vh - var(--typography--line) * 2);
-					top:    var(--typography--line);
 
 					// Ad block.
 					#SidebarMartini {
