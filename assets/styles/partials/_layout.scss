@@ -192,7 +192,7 @@ body {
 			overflow-x:     scroll;
 			padding-bottom: calc(var(--typography--lead) + var(--sticky--fade));
 			padding-left:   var(--typography--lead);
-			padding-right:  var(--typography--lead);
+			padding-right:  var(--typography--line);
 			padding-top:    var(--sticky--forehead);
 			top:            0;
 			z-index:        2; // Over the sticky headers in the main column.
