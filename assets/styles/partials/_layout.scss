@@ -240,7 +240,6 @@ body {
 			// iOS bottom-edge fade for scrolled address bar (slate on slate).
 			&:after {
 				background-color: var(--color--background);
-				bottom:           0;
 				content:          '';
 				height:           var(--typography--line);
 				left:             0;
@@ -248,6 +247,8 @@ body {
 				pointer-events:   none;
 				position:         fixed;
 				right:            0;
+				top:              calc(100vh - var(--typography--line));
+				transform:        translateZ(0); // Force rendering before collapse.
 				z-index:          2; // Above sticky titles.
 
 				@include browser(chrome) { display: none }
