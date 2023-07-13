@@ -51,11 +51,6 @@ body {
 	--link--outline:     2px;
 	--link--transition:  50ms;
 
-	// Layout proxies.
-	--layout--sticky--chin:     var(--typography--lead);
-	--layout--sticky--forehead: calc(var(--typography--lead) * 2); // Optically with bottom address bar (iOS).
-	--layout--sticky--offset:   calc(var(--layout--sticky--forehead) + var(--typography--cap));
-
 
 
 	background-color: var(--color--background);
@@ -64,9 +59,6 @@ body {
 	padding-right:    calc(env(safe-area-inset-right, 0rem) * 0.72);
 
 
-
-	// Chrome address bar is at the top.
-	@include browser(chrome) { --layout--sticky--forehead: var(--typography--line) }
 
 	@include legacy {
 		// Scale down for legacy devices, based on the viewport.
@@ -167,28 +159,36 @@ body {
 
 
 
+		// Sticky stuff.
 		%sticky-header {
+			--sticky--forehead: calc(var(--typography--lead) * 2); // Optically with bottom address bar (iOS).
+			--sticky--offset:   calc(var(--sticky--forehead) + var(--typography--cap));
+
 			background-color: var(--color--background);
-			margin-bottom:    calc(-1 * var(--layout--sticky--chin));
-			padding-bottom:   calc(var(--layout--sticky--chin));
+			margin-left:      calc(-1 * var(--typography--lead));
+			margin-right:     calc(-1 * var(--typography--lead));
 			position:         sticky;
-			top:              0;
+
+			@include browser(chrome) { --sticky--forehead: var(--typography--line) }
 		}
+
+
 
 		#Sidebar {
 			@extend %sticky-header;
 
-			column-gap:    var(--typography--line);
-			display:       flex;
-			grid-area:     sidebar;
-			margin-left:   calc(-1 * var(--typography--lead));
-			margin-right:  calc(-1 * var(--typography--lead));
-			margin-top:    calc(-1 * var(--layout--sticky--forehead));
-			overflow-x:    scroll;
-			padding-left:  var(--typography--lead);
-			padding-right: var(--typography--lead);
-			padding-top:   var(--layout--sticky--forehead);
-			z-index:       2; // Over the sticky headers in the main column.
+			column-gap:     var(--typography--line);
+			display:        flex;
+			grid-area:      sidebar;
+			margin-bottom:  calc(-1 * var(--typography--lead));
+			margin-top:     calc(-1 * var(--sticky--forehead));
+			overflow-x:     scroll;
+			padding-bottom: var(--typography--lead);
+			padding-left:   var(--typography--lead);
+			padding-right:  var(--typography--lead);
+			padding-top:    var(--sticky--forehead);
+			top:            0;
+			z-index:        2; // Over the sticky headers in the main column.
 
 			&::-webkit-scrollbar { display: none } // Hide scrollbar.
 
@@ -280,7 +280,6 @@ body {
 				align-items:      end;
 				align-self:       start;
 				background-color: initial; // Reset sticky-header properties.
-				filter:           initial;
 				flex-direction:   column;
 				justify-self:     end;
 				margin:           initial;
