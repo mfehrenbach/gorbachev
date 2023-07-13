@@ -116,6 +116,8 @@
 
 	> .linkedlist {
 		> div { // New container from JS.
+			display: flow-root; // Prevent margin collapse.
+
 			&:not(:first-child) { margin-top: var(--typography--line--4) }
 
 			> dt {
@@ -139,6 +141,8 @@
 
 	> .article {
 		@extend %--nested--spacing;
+
+		display: flow-root; // Prevent margin collapse.
 
 		> h1 {
 			@extend %--sticky-header--main;
