@@ -28,8 +28,12 @@ if (typeof replacementStyles == 'undefined') {
 	let mainAdBlock = adBlock.cloneNode(true)
 	mainAdBlock.id = 'MainMartini'
 	if (firstThing.classList.contains('article')) {
-		let adPlacement = firstThing.querySelector('.article > blockquote + p') // After blockquote.
-		adPlacement = firstThing.querySelector('.article > *:not(h6) + p + p') // But ideally between two paragraphs, not at start.
+		let adPlacement = firstThing.querySelector('.article > blockquote + p') // Could go after first blockquote.
+		// But ideally between paragraphs, but not at the start.
+		betweenParagraphs = [...firstThing.querySelectorAll('.article > *:not(h6) + p + p')]
+		betweenParagraphs.reverse().forEach(paragraph => { // Go through backwards, to get the highest.
+			if (paragraph.previousElementSibling.textContent.at(-1) != ':') adPlacement = paragraph // Only if not preceded by a colon.
+		})
 		adPlacement.before(mainAdBlock)
 	} else if (firstThing.classList.contains('linkedlist')) {
 		firstThing.querySelector('div:first-of-type').appendChild(mainAdBlock) // After the first “definition”.
