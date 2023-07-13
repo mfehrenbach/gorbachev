@@ -236,6 +236,22 @@ body {
 		#Main {
 			grid-area: main;
 			max-width: calc(425 / 12 * 1em); // Preserve existing (default size) wrapping.
+
+			// iOS bottom-edge fade for scrolled address bar (slate on slate).
+			&:after {
+				background-color: var(--color--background);
+				bottom:           0;
+				content:          '';
+				height:           var(--typography--line);
+				left:             0;
+				mask:             linear-gradient(transparent, var(--color--secondary));
+				pointer-events:   none;
+				position:         fixed;
+				right:            0;
+				z-index:          2; // Above sticky titles.
+
+				@include browser(chrome) { display: none }
+			}
 		}
 
 
@@ -305,6 +321,7 @@ body {
 				}
 			}
 
+			#Main { &:after { display: none } } // Turn off address-bar fade.
 
 
 			// Tablets/comps.
