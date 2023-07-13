@@ -28,7 +28,9 @@ if (typeof replacementStyles == 'undefined') {
 	let mainAdBlock = adBlock.cloneNode(true)
 	mainAdBlock.id = 'MainMartini'
 	if (firstThing.classList.contains('article')) {
-		firstThing.querySelector('*:nth-child(5)').after(mainAdBlock) // This could be smarter.
+		let adPlacement = firstThing.querySelector('.article > blockquote + p') // After blockquote.
+		adPlacement = firstThing.querySelector('.article > *:not(h6) + p + p') // But ideally between two paragraphs, not at start.
+		adPlacement.before(mainAdBlock)
 	} else if (firstThing.classList.contains('linkedlist')) {
 		firstThing.querySelector('div:first-of-type').appendChild(mainAdBlock) // After the first “definition”.
 	}
