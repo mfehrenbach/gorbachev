@@ -168,19 +168,18 @@ body {
 
 
 		%sticky-header {
-			margin-bottom:  calc(-1 * var(--layout--sticky--chin));
-			padding-bottom: calc(var(--layout--sticky--chin));
-			position:       sticky;
-			top:            0;
+			background-color: var(--color--background);
+			margin-bottom:    calc(-1 * var(--layout--sticky--chin));
+			padding-bottom:   calc(var(--layout--sticky--chin));
+			position:         sticky;
+			top:              0;
 		}
 
 		#Sidebar {
 			@extend %sticky-header;
 
-			background:    linear-gradient(hsla(var(--color--slate--hsl), 1), hsla(var(--color--slate--hsl), 0));
 			column-gap:    var(--typography--line);
 			display:       flex;
-			filter:        drop-shadow(0 0 var(--layout--sticky--chin) var(--color--background));
 			grid-area:     sidebar;
 			margin-left:   calc(-1 * var(--typography--lead));
 			margin-right:  calc(-1 * var(--typography--lead));

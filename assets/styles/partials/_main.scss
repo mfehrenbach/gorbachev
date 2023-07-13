@@ -25,7 +25,6 @@
 	%--sticky-header--main {
 		@extend %sticky-header;
 
-		background-color: hsla(var(--color--slate--hsl), var(--opacity--primary));
 		margin-left:      calc(-1 * var(--typography--lead));
 		margin-right:     calc(-1 * var(--typography--lead));
 		margin-top:       calc(-1 * var(--typography--line) - var(--layout--sticky--offset));
