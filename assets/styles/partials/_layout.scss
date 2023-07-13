@@ -165,15 +165,13 @@ body {
 
 			--sticky--forehead: calc(var(--typography--lead) * 2); // Optically with bottom address bar (iOS).
 			--sticky--offset:   calc(var(--sticky--forehead) + var(--typography--cap));
+			--sticky--fade:     var(--typography--line-height);
 
-			--sticky--fade: var(--typography--line-height);
-			--sticky--mask: linear-gradient(to top, transparent, var(--color--secondary) var(--sticky--fade), var(--color--hover) var(--sticky--fade));
-
-			-webkit-mask:     var(--sticky--mask);
+			// Chrome needs the prefix.
+			-webkit-mask:     linear-gradient(to top, transparent, var(--color--secondary) var(--sticky--fade), var(--color--hover) var(--sticky--fade));
 			background-color: var(--color--background);
 			margin-left:      calc(-1 * var(--typography--lead));
 			margin-right:     calc(-1 * var(--typography--lead));
-			mask:             var(--sticky--mask);
 			position:         sticky;
 
 			@include browser(chrome) { --sticky--forehead: var(--typography--line) }
