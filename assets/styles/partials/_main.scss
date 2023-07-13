@@ -184,7 +184,8 @@
 
 
 	#MainMartini {
-		margin-bottom: var(--typography--line--2);
-		margin-top:    var(--typography--line--2);
+		@extend %--double--after;
+
+		margin-top: var(--typography--line--2);
 	}
 }
