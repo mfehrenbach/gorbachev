@@ -29,13 +29,13 @@ body {
 	--opacity--slight:    13%;   // #606870.
 
 	--color--slate:      #4a525a;
-	--color--slate--hsl: 210, 10%, 32%;
+	--color--slate--rgb: 74, 82, 90;
 
-	--color--primary:   hsla(0, 0%, 100%, var(--opacity--primary));
-	--color--secondary: hsla(0, 0%, 100%, var(--opacity--secondary));
-	--color--tertiary:  hsla(0, 0%, 100%, var(--opacity--tertiary));
-	--color--middle:    hsla(0, 0%, 100%, var(--opacity--middle));
-	--color--slight:    hsla(0, 0%, 100%, var(--opacity--slight));
+	--color--primary:   rgba(255, 255, 255, var(--opacity--primary));
+	--color--secondary: rgba(255, 255, 255, var(--opacity--secondary));
+	--color--tertiary:  rgba(255, 255, 255, var(--opacity--tertiary));
+	--color--middle:    rgba(255, 255, 255, var(--opacity--middle));
+	--color--slight:    rgba(255, 255, 255, var(--opacity--slight));
 
 	// Map to use.
 	--color:             var(--color--primary);
