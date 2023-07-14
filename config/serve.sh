@@ -1,6 +1,6 @@
 config=config/_default/hugo.yml
 destination=_site
-ip=$(ifconfig | grep 'inet ' | grep -v '127.0.0.1' | awk '{print $2}')
+ip=https://$(ifconfig | grep 'inet ' | grep -v '127.0.0.1' | awk '{print $2}')
 port=443
 
 rm -rf $destination &&
