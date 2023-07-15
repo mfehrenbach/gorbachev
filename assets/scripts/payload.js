@@ -15,8 +15,12 @@ if (typeof replacementStyles == 'undefined') {
 	// Toss the empty/conditional linked list item from nav.
 	document.querySelector('#Sidebar > ul script').parentNode.remove()
 
-	// And the Display Preferences link.
+	// And the Display Preferences link and extra breaks.
 	document.querySelector('.smallprint > a[href="/preferences/"').remove()
+	document.querySelectorAll('.smallprint > br').forEach(br => br.remove())
+
+	// Nix inline styles on the search form, come on now.
+	document.getElementById('SiteSearch').removeAttribute('style')
 
 
 
