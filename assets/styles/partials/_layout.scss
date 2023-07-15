@@ -168,7 +168,7 @@ body {
 			--sticky--offset:   calc(var(--sticky--forehead) + var(--typography--cap));
 
 			// Chrome needs the prefix; Safari understands with and without.
-			-webkit-mask:     linear-gradient(to top, transparent, var(--color--secondary) var(--sticky--fade), var(--color--hover) var(--sticky--fade));
+			-webkit-mask:     linear-gradient(to top, transparent, var(--color--tertiary) var(--sticky--fade), var(--color--hover) var(--sticky--fade));
 			background-color: var(--color--background);
 			margin-left:      calc(-1 * var(--typography--lead));
 			margin-right:     calc(-1 * var(--typography--lead));
@@ -245,7 +245,7 @@ body {
 				content:          '';
 				height:           var(--typography--line);
 				left:             0;
-				mask:             linear-gradient(transparent, var(--color--secondary));
+				mask:             linear-gradient(transparent, var(--color--tertiary));
 				pointer-events:   none;
 				position:         fixed;
 				right:            0;
