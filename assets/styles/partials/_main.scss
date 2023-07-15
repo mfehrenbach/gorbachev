@@ -75,6 +75,9 @@
 			--color--underline: var(--color--middle);
 		}
 
+		// The rare nested one, also down a notch.
+		blockquote { --color: var(--color--tertiary) }
+
 		// The bar on the side.
 		&:before {
 			background-color: var(--color--middle);
