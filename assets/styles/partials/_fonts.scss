@@ -2,16 +2,18 @@
 
 
 
-// For maths.
+// Font metrics.
 :root {
-	--typography--cap-height--verdana: 0.727; // In em. Unitless for use in calc.
-	--typography--x-height--verdana:   0.546;
+	--typography--cap-height--verdana:   0.727; // In em. Unitless for use in calc.
+	--typography--x-height--verdana:     0.546;
 
 	--typography--cap-height--gill-sans: 0.681;
 	--typography--x-height--gill-sans:   0.448;
+
+	--typography--cap-height--sf-mono:   0.705;
+	--typography--x-height--sf-mono:     0.526;
 }
 
-// Font metrics.
 %--shoulders {
 	--typography--shoulder:      calc(1 - var(--typography--cap-height)); // Remainder/overhang.
 	--typography--shoulder--top: calc(var(--typography--shoulder) - var(--typography--shoulder--bottom));
@@ -91,8 +93,8 @@
 %font--sf-mono {
 	@extend %--shoulders;
 
-	--typography--cap-height:        0.705;
-	--typography--x-height:          0.526;
+	--typography--cap-height:        var(--typography--cap-height--sf-mono);
+	--typography--x-height:          var(--typography--x-height--sf-mono);
 	--typography--shoulder--bottom:  0.145;
 
 	--typography--inset--left:      -0.055;
