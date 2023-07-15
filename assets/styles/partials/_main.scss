@@ -120,17 +120,26 @@
 	*:not(pre) > code { // Inline-only.
 		@extend %typography--inline;
 
-		max-width:   100%;
-		overflow-x:  scroll;
-		padding:     0 0.5em;
-		user-select: all;
+		--padding: 0.333em;
+
+		--inset: calc((var(--typography--line-height) - var(--typography--cap)) / 2 - var(--padding));
+
+		border-radius:  calc(var(--inset) + var(--link--radius) / 2);
+		max-width:      100%;
+		outline-offset: calc(-1 * var(--inset) + 0.1rem);
+		outline:        var(--inset) solid var(--color--background); // Draws over background.
+		overflow-x:     hidden;
+		padding-left:   calc(var(--inset) + var(--padding) + var(--typography--margin--left));
+		padding-right:  calc(var(--inset) + var(--padding) + var(--typography--margin--right));
+		user-select:    all;
 
 		&::-webkit-scrollbar { display: none }
 	}
 
 	pre {
-		padding:  var(--typography--lead);
-		tab-size: 2;
+		border-radius: var(--link--radius);
+		padding:       var(--typography--lead);
+		tab-size:      2;
 
 		code { @extend %typography }
 	}
@@ -139,7 +148,6 @@
 		--color: var(--color--hover);
 
 		background-color: var(--color--slight);
-		border-radius:    var(--link--radius);
 	}
 
 
