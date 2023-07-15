@@ -21,6 +21,25 @@
 
 
 
+%font--verdana {
+	@extend %--shoulders;
+	@extend %--safari--rounding;
+
+	--typography--cap-height:        var(--typography--cap-height--verdana);
+	--typography--x-height:          var(--typography--x-height--verdana);
+	--typography--shoulder--bottom:  0.103;
+
+	--typography--inset--left:      -0.098;
+	--typography--inset--right:     -0.090;
+
+	--typography--underline:         0.078;
+	--typography--underline--shift: -0.045;
+
+	font-family: 'Verdana', sans-serif;
+}
+
+
+
 %font--gill-sans {
 	@extend %--shoulders;
 	@extend %--safari--rounding;
@@ -65,25 +84,6 @@
 	@extend %font--gill-sans--on-verdana;
 
 	--typography--scale: calc(var(--typography--cap-height--gill-sans) / var(--typography--x-height--gill-sans));
-}
-
-
-
-%font--verdana {
-	@extend %--shoulders;
-	@extend %--safari--rounding;
-
-	--typography--cap-height:        var(--typography--cap-height--verdana);
-	--typography--x-height:          var(--typography--x-height--verdana);
-	--typography--shoulder--bottom:  0.103;
-
-	--typography--inset--left:      -0.098;
-	--typography--inset--right:     -0.090;
-
-	--typography--underline:         0.078;
-	--typography--underline--shift: -0.045;
-
-	font-family: 'Verdana', sans-serif;
 }
 
 
