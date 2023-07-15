@@ -112,6 +112,7 @@
 		display:             flex;
 		flex-direction:      column;
 		list-style-position: outside;
+		padding-left:        var(--list--marker-shift); // Declared below.
 		row-gap:             var(--typography--lead);
 
 		> li {
@@ -120,6 +121,7 @@
 			display:       list-item;
 			margin-bottom: var(--typography--margin--bottom);
 			margin-top:    var(--typography--margin--top);
+			padding-left:  calc(var(--typography--lead) - var(--list--item-shift));
 
 			&:before, &:after { display: none } // Conflicts with the marker, so use the margin.
 
@@ -149,14 +151,14 @@
 	}
 
 	ul {
+		--list--marker-shift: 0.51em;  // Align the bullet edge, at least in Safari.
+		--list--item-shift:   0.16em; // Optical.
+
 		list-style-type: '•';
-		padding-left:    0.5em; // About the width of bullet, at least in Safari.
 
-		li {
-			padding-left: calc(var(--typography--lead) - 0.16em); // Optical.
+		@include browser(chrome) { --list--marker-shift: 0.55em }
 
-			&::marker { color: var(--color--middle) }
-		}
+		li::marker { color: var(--color--middle) }
 	}
 
 
@@ -245,6 +247,11 @@
 		@include width(640) { @include tall(600) { margin-top: calc(var(--typography--line-height) * 4) } }
 	}
 
+
+
+	#Footer {
+		padding-top: calc(var(--typography--line-height) * 4); // Extra space above.
+	}
 
 
 	#MainMartini {
