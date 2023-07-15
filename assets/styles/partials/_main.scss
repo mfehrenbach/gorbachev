@@ -114,9 +114,15 @@
 	code {
 		@extend %font--sf-mono--in-verdana;
 
-		margin-left:  var(--typography--margin--left);
-		margin-right: var(--typography--margin--right);
-		white-space:  pre;
+		--color: var(--color--hover);
+
+		background-color: var(--color--slight);
+		border-radius:    var(--link--radius);
+		overflow-x:       auto;
+		overflow-y:       hidden;
+		white-space:      pre;
+
+		&::-webkit-scrollbar { display: none }
 	}
 
 	*:not(pre) > code { // Inline-only.
@@ -125,6 +131,8 @@
 		--padding: 0.4em; // Optical.
 
 		-webkit-user-select: all;
+		margin-left:         var(--typography--margin--left);
+		margin-right:        var(--typography--margin--right);
 		max-width:           calc(100% - 0.333em); // Cut last letter at full width.
 		padding-left:        calc(var(--padding) + var(--typography--margin--left));
 		padding-right:       calc(var(--padding) + var(--typography--margin--right));
@@ -134,21 +142,22 @@
 	}
 
 	pre {
-		border-radius: var(--link--radius);
-		padding:       var(--typography--lead);
-		tab-size:      2;
+		display:  flex; // Tighten right edge to content.
+		tab-size: 2;
 
-		code { @extend %typography }
-	}
+		code {
+			@extend %typography;
 
-	*:not(pre) > code, pre {
-		--color: var(--color--hover);
-
-		background-color: var(--color--slight);
-		border-radius:    var(--link--radius);
-		overflow-x:       auto;
-
-		&::-webkit-scrollbar { display: none }
+			margin-bottom:  calc(-1 * var(--typography--lead));
+			margin-left:    initial; // From typography.
+			margin-right:   initial;
+			margin-top:     calc(-1 * var(--typography--lead));
+			max-width:      100%;
+			padding-bottom: var(--typography--lead);
+			padding-left:   calc(var(--typography--lead) + var(--typography--margin--left));
+			padding-right:  calc(var(--typography--lead) + var(--typography--margin--right));
+			padding-top:    var(--typography--lead);
+		}
 	}
 
 
