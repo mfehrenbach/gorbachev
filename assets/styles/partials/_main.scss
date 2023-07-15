@@ -111,6 +111,33 @@
 
 
 
+	code {
+		@extend %font--sf-mono;
+
+		white-space: pre;
+	}
+
+	*:not(pre) > code { // Inline-only.
+		@extend %typography--inline;
+
+		user-select: all;
+	}
+
+	pre {
+		padding:  var(--typography--lead);
+		tab-size: 2;
+
+		code { @extend %typography }
+	}
+
+	*:not(pre) > code, pre {
+		--color: var(--color--hover);
+
+		background-color: var(--color--slight);
+	}
+
+
+
 	ol, ul, {
 		display:             flex;
 		flex-direction:      column;
