@@ -88,6 +88,24 @@
 
 
 
+%font--sf-mono {
+	@extend %--shoulders;
+
+	--typography--cap-height:        0.705;
+	--typography--x-height:          0.526;
+	--typography--shoulder--bottom:  0.145;
+
+	--typography--inset--left:      -0.055;
+	--typography--inset--right:     -0.054;
+
+	--typography--underline:         0.063;
+	--typography--underline--shift: -0.052;
+
+	font-family: 'SF Mono', ui-monospace, monospace;
+}
+
+
+
 %font--uppercase { text-transform: uppercase }
 
 %font--extended {
