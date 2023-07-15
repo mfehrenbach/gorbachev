@@ -15,6 +15,9 @@ if (typeof replacementStyles == 'undefined') {
 	// Toss the empty/conditional linked list item from nav.
 	document.querySelector('#Sidebar > ul script').parentNode.remove()
 
+	// And the Display Preferences link.
+	document.querySelector('.smallprint > a[href="/preferences/"').remove()
+
 
 
 	// Add a level of DOM grouping to linked lists, for stickiness.
