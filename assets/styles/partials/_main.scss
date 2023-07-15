@@ -152,14 +152,26 @@
 	}
 
 	ul {
-		--list--marker-shift: 0.51em;  // Align the bullet edge, at least in Safari.
+		--list--marker-shift: 0.51em; // Align the bullet edge, at least in Safari.
 		--list--item-shift:   0.16em; // Optical.
 
 		list-style-type: '•';
 
-		@include browser(chrome) { --list--marker-shift: 0.55em }
+		@include browser(chrome) { --list--marker-shift: 0.55em } // What can you do.
 
 		li::marker { color: var(--color--middle) }
+	}
+
+	ol {
+		--list--marker-shift: 1.63em; // Left edge of Verdana ‘1’ foot.
+		--list--item-shift:   0.87em; // Optical.
+
+		list-style-type: decimal;
+
+		@include browser(chrome) { // Sigh.
+			--list--marker-shift: 1.33em;
+			--list--item-shift:   0.59em;
+		}
 	}
 
 
