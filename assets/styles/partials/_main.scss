@@ -206,7 +206,7 @@
 			// Nested last paragraph margin “collapses” up.
 			> blockquote { padding-bottom: calc(-1 * var(--typography--margin--bottom)) }
 
-			> p, > blockquote, > ul, > ol {
+			> p, >pre, > blockquote, > ul, > ol {
 				// Space between nested block elements.
 				&:not(:first-child) { margin-top: var(--typography--line) }
 				// Extra line after them.
