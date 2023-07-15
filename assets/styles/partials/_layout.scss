@@ -98,9 +98,10 @@ body {
 
 	// Main layout.
 	#Box {
-		display: grid;
-		padding: var(--typography--line--3) var(--typography--lead); // Less needed above optically (iOS).
-		row-gap: var(--typography--line--2);
+		display:               grid;
+		grid-template-columns: minmax(0, 1fr); // Since “auto” is the min otherwise.
+		padding:               var(--typography--line--3) var(--typography--lead); // Less needed above optically (iOS).
+		row-gap:               var(--typography--line--2);
 		grid-template-areas:
 			'banner'
 			'sidebar'
@@ -238,7 +239,6 @@ body {
 
 		#Main {
 			grid-area: main;
-			max-width: calc(425 / 12 * 1em); // Preserve existing (default size) wrapping.
 
 			// iOS bottom-edge fade for scrolled address bar (slate on slate).
 			&:after {
@@ -290,9 +290,12 @@ body {
 
 		// Two-column.
 		@include width(568) {
-			column-gap:      var(--typography--line);
-			justify-content: center;
-			padding:         var(--typography--line--2) var(--typography--line);
+			--main--wrap: calc(425 / 12 * 1em); // Preserve existing (default size) wrapping.
+
+			column-gap:            var(--typography--line);
+			grid-template-columns: minmax(0, min-content) minmax(0, var(--main--wrap));
+			justify-content:       center;
+			padding:               var(--typography--line--2) var(--typography--line);
 			grid-template-areas:
 				'banner  banner'
 				'sidebar main  ';
