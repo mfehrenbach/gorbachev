@@ -108,6 +108,40 @@
 
 
 
+	ul, ol, {
+		display:             flex;
+		flex-direction:      column;
+		list-style-position: outside;
+		row-gap:             var(--typography--lead);
+
+		> li {
+			@extend %typography; // For “naked“ list items.
+
+			display:       list-item;
+			margin-bottom: var(--typography--margin--bottom);
+			margin-top:    var(--typography--margin--top);
+
+			&:before, &:after { display: none } // Conflicts with the marker, so use the margin.
+
+			// Since the `li` is an acting type element.
+			> p { &:first-child:before, &:last-child:after { display: none } }
+
+			> p, > blockquote, > ul, > ol {
+				// Space between nested block elements.
+				&:not(:first-child) { margin-top: var(--typography--line) }
+				// Extra line after them.
+				&:last-child { margin-bottom: var(--typography--line-height) }
+				// Two extra for multiple.
+				&:not(:only-child):last-child { margin-bottom: calc(var(--typography--line-height) * 2) }
+			}
+
+			// Cancel these out for the last list items.
+			&:last-child > *:last-child:not(._) { margin-bottom: initial }
+		}
+	}
+
+
+
 	.dateline {
 		@extend %--double--after;
 		@extend %font--extended;
