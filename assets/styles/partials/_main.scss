@@ -59,6 +59,21 @@
 		@extend %link--text;
 
 		--color: var(--color--secondary);
+
+		code:not(._) { // Bump specificity, as it happens.
+			border-color:        transparent;
+			border-left-width:   0;
+			border-right-width:  0;
+			border-style:        solid;
+			box-shadow:          initial;
+			display:             inline;
+			margin:              initial;
+			padding:             initial;
+
+			&:before, &:after { content: '\2002' } // An `&ensp;` around it.
+		}
+
+		&:has(> code) { --typography--underline--shift: -0.333 } // Below the background.
 	}
 
 	blockquote {
