@@ -61,15 +61,6 @@
 		--color: var(--color--secondary);
 	}
 
-	strong {
-		@extend %font--extended;
-		@extend %font--gill-sans--in-verdana;
-		@extend %font--uppercase;
-		@extend %typography--inline;
-
-		--color: var(--color--secondary)
-	}
-
 	blockquote {
 		@extend %--nested--spacing;
 
@@ -106,9 +97,18 @@
 		}
 	}
 
+	strong {
+		@extend %font--extended;
+		@extend %font--gill-sans--in-verdana;
+		@extend %font--uppercase;
+		@extend %typography--inline;
+
+		--color: var(--color--secondary)
+	}
 
 
-	ul, ol, {
+
+	ol, ul, {
 		display:             flex;
 		flex-direction:      column;
 		list-style-position: outside;
@@ -151,17 +151,6 @@
 		}
 	}
 
-	ul {
-		--list--marker-shift: 0.51em; // Align the bullet edge, at least in Safari.
-		--list--item-shift:   0.16em; // Optical.
-
-		list-style-type: '•';
-
-		li::marker { color: var(--color--middle) }
-
-		@include browser(chrome) { --list--marker-shift: 0.55em } // What can you do.
-	}
-
 	ol {
 		--list--marker-shift: 1.31em; // Left edge of Gill ‘7’ bar.
 		--list--item-shift:   0.67em; // Optical.
@@ -185,6 +174,17 @@
 
 			@include browser(chrome) { --list--marker-shift: 1.55em }
 		}
+	}
+
+	ul {
+		--list--marker-shift: 0.51em; // Align the bullet edge, at least in Safari.
+		--list--item-shift:   0.16em; // Optical.
+
+		list-style-type: '•';
+
+		li::marker { color: var(--color--middle) }
+
+		@include browser(chrome) { --list--marker-shift: 0.55em } // What can you do.
 	}
 
 
