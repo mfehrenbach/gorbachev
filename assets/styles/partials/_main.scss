@@ -160,26 +160,30 @@
 		li::marker { color: var(--color--middle) }
 
 		@include browser(chrome) { --list--marker-shift: 0.55em } // What can you do.
-
 	}
 
 	ol {
-		--list--marker-shift: 1.63em; // Left edge of Verdana ‘1’ foot.
-		--list--item-shift:   0.87em; // Optical.
+		--list--marker-shift: 1.31em; // Left edge of Gill ‘7’ bar.
+		--list--item-shift:   0.67em; // Optical.
 
 		list-style-type: decimal;
 
-		li::marker { color: var(--color--tertiary) }
+		li::marker {
+			@extend %font--gill-sans--on-verdana; // 😎.
+			@extend %typography--inline;
 
-		@include browser(chrome) { // Sigh.
-			--list--marker-shift: 1.33em;
-			--list--item-shift:   0.59em;
+			color: var(--color--tertiary);
 		}
 
-		&:has(> :nth-child(10)) { // Fancy new selector.
-			--list--marker-shift: 2.28em;
+		@include browser(chrome) { // Sigh.
+			--list--marker-shift: 1.02em;
+			--list--item-shift:   0.37em;
+		}
 
-			@include browser(chrome) { --list--marker-shift: 1.98em; }
+		&:has(> :nth-child(10)) { // Fancy new selector to shift these in further.
+			--list--marker-shift: 1.84em;
+
+			@include browser(chrome) { --list--marker-shift: 1.55em }
 		}
 	}
 
