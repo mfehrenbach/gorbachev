@@ -44,7 +44,7 @@
 
 			@include browser(chrome) { --sticky--top: -0.01rem } // Prevent visible sliver above.
 
-			@include width(640) {
+			@include width(744) {
 				@include tall(600) {
 					--sticky--chin:   var(--typography--line);
 					--sticky--spacer: var(--typography--line);
@@ -306,7 +306,7 @@
 		margin-top: calc(var(--typography--line-height) * 2); // Just extra lines, no leading.
 
 		// Smoke em’ if you got em.
-		@include width(640) { @include tall(600) { margin-top: calc(var(--typography--line-height) * 4) } }
+		@include width(744) { @include tall(600) { margin-top: calc(var(--typography--line-height) * 4) } }
 	}
 
 

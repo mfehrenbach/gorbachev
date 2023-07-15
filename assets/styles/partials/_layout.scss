@@ -333,7 +333,7 @@ body {
 
 
 			// Tablets/comps.
-			@include width(640) {
+			@include width(744) {
 				@include tall(600) {
 					column-gap: calc(var(--typography--line) * 2); // Horizontal, so twice optically (not baseline).
 					padding:    var(--typography--line--4) var(--typography--line);
