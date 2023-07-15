@@ -153,7 +153,7 @@
 		padding-left:    0.5em; // About the width of bullet, at least in Safari.
 
 		li {
-			padding-left: calc(var(--typography--lead) - 0.1em); // Optical.
+			padding-left: calc(var(--typography--lead) - 0.2em); // Optical.
 
 			&::marker { color: var(--color--middle) }
 		}
