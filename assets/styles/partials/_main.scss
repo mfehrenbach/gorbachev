@@ -113,6 +113,7 @@
 		flex-direction:      column;
 		list-style-position: outside;
 		padding-left:        var(--list--marker-shift); // Declared below.
+		padding-right:       calc(var(--typography--lead) + var(--list--marker-shift));
 		row-gap:             var(--typography--lead);
 
 		> li {
