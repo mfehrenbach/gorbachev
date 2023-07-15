@@ -25,12 +25,13 @@
 	%--sticky-header--main {
 		@extend %sticky-header;
 
+		--sticky--chin:   var(--typography--line-height);
 		--sticky--spacer: var(--typography--line);
 		--sticky--top:    var(--sticky--offset);
 
-		margin-bottom:  calc(-1 * var(--sticky--spacer) - var(--sticky--fade));
+		margin-bottom:  calc(-1 * var(--sticky--chin) - var(--sticky--fade));
 		margin-top:     calc(-1 * var(--sticky--spacer));
-		padding-bottom: calc(var(--sticky--spacer) + var(--sticky--fade));
+		padding-bottom: calc(var(--sticky--chin) + var(--sticky--fade));
 		padding-left:   calc(var(--typography--lead) + var(--typography--margin--left));
 		padding-right:  calc(var(--typography--lead) + var(--typography--margin--right));
 		padding-top:    var(--sticky--spacer);
@@ -43,7 +44,12 @@
 
 			@include browser(chrome) { --sticky--top: -0.01rem } // Prevent visible sliver above.
 
-			@include width(640) { @include tall(600) { --sticky--spacer: var(--typography--line) } }
+			@include width(640) {
+				@include tall(600) {
+					--sticky--chin:   var(--typography--line);
+					--sticky--spacer: var(--typography--line);
+				}
+			}
 		}
 	}
 
