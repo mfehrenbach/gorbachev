@@ -114,24 +114,24 @@
 	code {
 		@extend %font--sf-mono--in-verdana;
 
-		white-space: pre;
+		margin-left:  var(--typography--margin--left);
+		margin-right: var(--typography--margin--right);
+		white-space:  pre;
 	}
 
 	*:not(pre) > code { // Inline-only.
 		@extend %typography--inline;
 
-		--padding: 0.333em;
+		--padding: 0.5em;
 
-		--inset: calc((var(--typography--line-height) - var(--typography--cap)) / 2 - var(--padding));
-
-		border-radius:  calc(var(--inset) + var(--link--radius) / 2);
-		max-width:      100%;
-		outline-offset: calc(-1 * var(--inset) + 0.1rem);
-		outline:        var(--inset) solid var(--color--background); // Draws over background.
-		overflow-x:     hidden;
-		padding-left:   calc(var(--inset) + var(--padding) + var(--typography--margin--left));
-		padding-right:  calc(var(--inset) + var(--padding) + var(--typography--margin--right));
-		user-select:    all;
+		-webkit-user-select: all;
+		max-width:           100%;
+		overflow-x:          scroll;
+		padding-left:        calc(var(--padding) + var(--typography--margin--left));
+		padding-right:       calc(var(--padding) + var(--typography--margin--right));
+		box-shadow:          inset 0 calc(-1 * var(--typography--margin--top) - var(--padding)) 0 var(--color--background),
+		                     inset 0 calc(var(--typography--margin--bottom)   + var(--padding)) 0 var(--color--background);
+		// “Shadow” draws over the top/bottom of the too-tall background.
 
 		&::-webkit-scrollbar { display: none }
 	}
@@ -148,6 +148,7 @@
 		--color: var(--color--hover);
 
 		background-color: var(--color--slight);
+		border-radius:    var(--link--radius);
 	}
 
 
