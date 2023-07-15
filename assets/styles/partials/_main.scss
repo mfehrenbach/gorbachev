@@ -157,9 +157,10 @@
 
 		list-style-type: '•';
 
+		li::marker { color: var(--color--middle) }
+
 		@include browser(chrome) { --list--marker-shift: 0.55em } // What can you do.
 
-		li::marker { color: var(--color--middle) }
 	}
 
 	ol {
@@ -167,6 +168,8 @@
 		--list--item-shift:   0.87em; // Optical.
 
 		list-style-type: decimal;
+
+		li::marker { color: var(--color--tertiary) }
 
 		@include browser(chrome) { // Sigh.
 			--list--marker-shift: 1.33em;
