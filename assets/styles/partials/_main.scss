@@ -135,7 +135,15 @@
 			}
 
 			// Nested last paragraph margin “collapses” up.
-			> blockquote > p:last-child:after { display: none }
+			> blockquote {
+				> p:last-child:after { display: none } // Turn off the offender.
+
+				&:before { // Fix bar height.
+					top:       initial;
+					transform: initial;
+					height:    calc(100% + var(--typography--margin--bottom));
+				}
+			}
 
 			> p, > blockquote, > ul, > ol {
 				// Space between nested block elements.
