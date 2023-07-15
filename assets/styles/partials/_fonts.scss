@@ -64,7 +64,7 @@
 
 
 
-// Match cap heights to Verdana.
+// Normalize cap heights to Verdana.
 %font--gill-sans--on-verdana {
 	@extend %font--gill-sans;
 
@@ -74,14 +74,14 @@
 	--typography--leading--override: calc(var(--typography--cap-height--gill-sans) / var(--typography--cap-height--verdana) * var(--typography--leading));
 }
 
-// Match inline caps to Verdana x-height.
+// Adjust inline caps to Verdana x-height.
 %font--gill-sans--in-verdana {
 	@extend %font--gill-sans--on-verdana;
 
 	--typography--scale: calc(var(--typography--x-height--verdana) / var(--typography--cap-height--gill-sans));
 }
 
-// Match x-height to Verdana caps.
+// Adjust x-height to Verdana caps.
 %font--gill-sans--x-verdana-cap {
 	@extend %font--gill-sans--on-verdana;
 
