@@ -164,7 +164,7 @@ body {
 		%sticky-header {
 
 			--sticky--fade:     var(--typography--line-height);
-			--sticky--forehead: calc(var(--typography--lead) * 2); // Optically with bottom address bar (iOS).
+			--sticky--forehead: var(--typography--line-height); // Optically with bottom address bar (iOS).
 			--sticky--offset:   calc(var(--sticky--forehead) + var(--typography--cap));
 
 			// Chrome needs the prefix; Safari understands with and without.
