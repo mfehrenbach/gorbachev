@@ -1,14 +1,21 @@
 // First run…
 if (typeof replacementStyles == 'undefined') {
+	// Flag Windows for CSS.
+	if (navigator.appVersion.includes('Win')) document.documentElement.classList.add('windows')
+
 	// Make the page responsive.
 	const metaViewport = '<meta content="initial-scale=1, width=device-width, viewport-fit=cover" name="viewport">'
 	document.head.insertAdjacentHTML('beforeEnd', metaViewport)
 
-	// Flag Windows for CSS.
-	if (navigator.appVersion.includes('Win')) document.documentElement.classList.add('windows')
+
 
 	// Pull footer out to the end of main column.
 	document.getElementById('Main').appendChild(document.getElementById('Footer'))
+
+	// Toss the empty/conditional linked list item from nav.
+	document.querySelector('#Sidebar > ul script').parentNode.remove()
+
+
 
 	// Add a level of DOM grouping to linked lists, for stickiness.
 	const linkedLists = document.querySelectorAll('dl.linkedlist')
@@ -21,6 +28,8 @@ if (typeof replacementStyles == 'undefined') {
 			linkedList.appendChild(linkListDiv)
 		})
 	})
+
+
 
 	// Duplicate the sidebar ad to the main column, for mobile.
 	const adBlock = document.getElementById('SidebarMartini')
@@ -47,9 +56,7 @@ if (typeof replacementStyles == 'undefined') {
 	wrapper.append(...adBlock.children)
 	adBlock.appendChild(wrapper)
 
-	// Toss the empty/conditional linked list item from nav.
-	const navLinkedList = document.querySelector('#Sidebar > ul script').parentNode
-	navLinkedList.remove()
+
 
 	// Set up the stylesheet.
 	let baseUrl = document.currentScript.src
