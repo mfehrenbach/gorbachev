@@ -106,6 +106,20 @@
 	font-family: 'SF Mono', ui-monospace, monospace;
 }
 
+%font--sf-mono--on-verdana { // Normalize as before.
+	@extend %font--sf-mono;
+
+	--typography--size--override: calc(var(--typography--cap-height--verdana) / var(--typography--cap-height--sf-mono) * var(--typography--size));
+
+	--typography--leading--override: calc(var(--typography--cap-height--sf-mono) / var(--typography--cap-height--verdana) * var(--typography--leading));
+}
+
+%font--sf-mono--in-verdana {
+	@extend %font--sf-mono--on-verdana;
+
+	--typography--scale: 0.9; // Optical adjustment for “fixed-widthedness.”
+}
+
 
 
 %font--uppercase { text-transform: uppercase }
