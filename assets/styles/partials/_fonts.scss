@@ -4,11 +4,11 @@
 
 // For maths.
 :root {
-	--typography--cap-height--gill-sans: 0.681; // In em. Unitless for use in calc.
-	--typography--cap-height--verdana:   0.727;
-
-	--typography--x-height--gill-sans: 0.448;
+	--typography--cap-height--verdana: 0.727; // In em. Unitless for use in calc.
 	--typography--x-height--verdana:   0.546;
+
+	--typography--cap-height--gill-sans: 0.681;
+	--typography--x-height--gill-sans:   0.448;
 }
 
 // Font metrics.
@@ -27,13 +27,13 @@
 
 	--typography--cap-height:        var(--typography--cap-height--verdana);
 	--typography--x-height:          var(--typography--x-height--verdana);
-	--typography--shoulder--bottom:  0.103;
+	--typography--shoulder--bottom:  0.103; // Vertical centering in the line box, across most sizes.
 
-	--typography--inset--left:      -0.098;
-	--typography--inset--right:     -0.090;
+	--typography--inset--left:      -0.098; // Optical insets, left edge of capital "D".
+	--typography--inset--right:     -0.090; // Right edge of “d” (since lines tend to end lowercase).
 
-	--typography--underline:         0.078;
-	--typography--underline--shift: -0.045;
+	--typography--underline:         0.078; // Height of crossbar on “t”.
+	--typography--underline--shift: -0.045; // Shift down from baseline, to line up with bottom of descenders.
 
 	font-family: 'Verdana', sans-serif;
 }
@@ -46,13 +46,13 @@
 
 	--typography--cap-height:        var(--typography--cap-height--gill-sans);
 	--typography--x-height:          var(--typography--x-height--gill-sans);
-	--typography--shoulder--bottom:  0.157; // Vertical centering in the line box, across most sizes.
+	--typography--shoulder--bottom:  0.157;
 
-	--typography--inset--left:      -0.076; // Optical insets, left edge of capital "D".
-	--typography--inset--right:     -0.058; // Right edge of “d” (since lines tend to end lowercase).
+	--typography--inset--left:      -0.076;
+	--typography--inset--right:     -0.058;
 
-	--typography--underline:         0.080; // Height of crossbar on “t”.
-	--typography--underline--shift: -0.069; // Shift down from baseline, to line up with bottom of descenders.
+	--typography--underline:         0.080;
+	--typography--underline--shift: -0.069;
 
 	font-family: 'Gill Sans', sans-serif;
 
