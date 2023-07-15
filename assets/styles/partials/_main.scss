@@ -124,7 +124,12 @@
 			&:before, &:after { display: none } // Conflicts with the marker, so use the margin.
 
 			// Since the `li` is an acting type element.
-			> p { &:first-child:before, &:last-child:after { display: none } }
+			> p {
+				margin-left:  initial;
+				margin-right: initial;
+
+				&:first-child:before, &:last-child:after { display: none }
+			}
 
 			> p, > blockquote, > ul, > ol {
 				// Space between nested block elements.
