@@ -172,6 +172,12 @@
 			--list--marker-shift: 1.33em;
 			--list--item-shift:   0.59em;
 		}
+
+		&:has(> :nth-child(10)) { // Fancy new selector.
+			--list--marker-shift: 2.28em;
+
+			@include browser(chrome) { --list--marker-shift: 1.98em; }
+		}
 	}
 
 
