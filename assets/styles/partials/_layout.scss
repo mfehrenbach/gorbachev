@@ -318,16 +318,13 @@ body {
 				--sticky--top: var(--typography--line-height);
 
 				-webkit-mask:     initial; // Reset sticky-header properties.
-				align-items:      end;
 				align-self:       start;
 				background-color: initial;
 				flex-direction:   column;
-				justify-self:     end;
 				margin:           initial;
 				overflow:         visible;
 				padding:          initial;
 				text-align:       right;
-				width:            min-content;
 
 				// Navigation.
 				> ul {
