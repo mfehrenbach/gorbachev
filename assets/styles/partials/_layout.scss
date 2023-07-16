@@ -227,7 +227,9 @@ body {
 					> a {
 						@extend %link--text;
 						@extend %typography--underline--disable;
-					 }
+					}
+
+					&:has(> script:only-child) { display: none } // Turn off empty linked list item.
 				}
 			}
 

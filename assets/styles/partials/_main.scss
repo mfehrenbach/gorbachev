@@ -349,6 +349,15 @@
 
 	#Footer {
 		margin-top: var(--typography--line--8);
+
+		input[name=q] {
+			margin-right: initial !important; // To override inline styles, I’m sorry.
+			width:        initial !important;
+		}
+
+		.smallprint {
+			> a[href='/preferences/'], > br { display: none } // Hide prefs link and extra breaks.
+		}
 	}
 
 

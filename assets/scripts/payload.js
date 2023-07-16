@@ -9,14 +9,6 @@ if (typeof replacementStyles == 'undefined') {
 
 
 
-	// Toss some legacy stuff.
-	document.querySelector('#Sidebar > ul script').parentNode.remove()
-	document.querySelector('.smallprint > a[href="/preferences/"').remove()
-	document.querySelectorAll('.smallprint > br').forEach(br => br.remove())
-	document.getElementById('SiteSearch').removeAttribute('style')
-
-
-
 	// Add a level of DOM grouping to linked lists, for stickiness.
 	const linkedLists = document.querySelectorAll('dl.linkedlist')
 	linkedLists.forEach(linkedList => {
