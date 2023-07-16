@@ -334,7 +334,7 @@
 	> .article {
 		@extend %--nested--spacing;
 
-		display: flow-root; // Prevent margin collapse.
+		display: flow-root;
 
 		> h1 {
 			@extend %--sticky-header--main;
@@ -362,7 +362,7 @@
 		> .footnotes {
 			--color: var(--color--secondary);
 
-			display:    flow-root; // Prevent margin collapse.
+			display:    flow-root;
 			margin-top: var(--typography--line--4);
 
 			> ol {
