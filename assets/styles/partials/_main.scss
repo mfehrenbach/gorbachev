@@ -92,7 +92,7 @@
 			--color--underline: var(--color--middle);
 		}
 
-		// The rare nested one, also down a notch.
+		// The rarer nested ones, also down a notch.
 		blockquote, strong { --color: var(--color--tertiary) }
 
 		s {
@@ -100,8 +100,8 @@
 			--color--underline: var(--color--primary);
 		}
 
-		ol, ul, blockquote {
-			margin-left:   var(--typography--line-height); // Combined with visible lead for a line.
+		ol, ul, blockquote, pre {
+			margin-left:   var(--typography--lead);
 			padding-right: initial;
 		}
 
