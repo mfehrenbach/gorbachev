@@ -88,6 +88,13 @@
 	--typography--scale: calc(var(--typography--cap-height--gill-sans) / var(--typography--x-height--gill-sans));
 }
 
+// Adjust x-height to Verdana x-height.
+%font--gill-sans--x-verdana-x {
+	@extend %font--gill-sans--on-verdana;
+
+	--typography--scale: calc(var(--typography--x-height--verdana) / var(--typography--x-height--gill-sans));
+}
+
 
 
 %font--sf-mono {

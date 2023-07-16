@@ -350,11 +350,23 @@
 	#PreviousNext {
 		margin-top: var(--typography--line--4);
 
-		tr:not(:first-child) td { padding-top: var(--typography--line) } // Oh, tables.
+		tr:not(:first-child) td { padding-top: var(--typography--line) } // Second row. Oh, tables.
 
-		td:first-child {
-			padding-right: var(--typography--line);
+		td:first-child { // Prev/next.
+			padding-right: var(--typography--lead);
 			text-align:    right;
+
+			@include width(744) { @include tall(480) { padding-right: var(--typography--line) } }
+		}
+
+		td:not(:first-child) { // Article titles.
+			@extend %font--gill-sans--x-verdana-x;
+
+			a {
+				@extend %typography--underline--disable;
+
+				--color: var(--color--primary);
+			}
 		}
 	}
 
