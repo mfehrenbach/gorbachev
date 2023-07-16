@@ -95,6 +95,11 @@
 		// The rare nested one, also down a notch.
 		blockquote, strong { --color: var(--color--tertiary) }
 
+		s {
+			--color:            var(--color--tertiary);
+			--color--underline: var(--color--primary);
+		}
+
 		ol, ul, blockquote {
 			margin-left:   var(--typography--line-height); // Combined with visible lead for a line.
 			padding-right: initial;
@@ -123,6 +128,16 @@
 	}
 
 
+
+	s {
+		@extend %typography--inline;
+		@extend %typography--strikethrough;
+
+		--color:            var(--color--secondary);
+		--color--underline: var(--color--hover);
+
+		display: inline;
+	}
 
 	strong, sup {
 		@extend %font--extended;

@@ -20,7 +20,7 @@ em, em em em { font-style: italic }
 
 em em { font-style: normal }
 
-del { text-decoration: line-through }
+s, del { text-decoration-line: line-through }
 
 nobr, .nowrap { white-space: nowrap }
 
@@ -137,16 +137,31 @@ td {
 
 
 
-// Underlines.
+// Line work.
+%--line-decoration {
+	--typography--decoration-thickness: calc(var(--typography--underline) * 1em);
+
+	text-decoration-color:     var(--color--underline, var(--color));
+	text-decoration-thickness: var(--typography--decoration-thickness);
+}
+
 %typography--underline {
+	@extend %--line-decoration;
+
 	--typography--decoration-thickness: calc(var(--typography--underline) * 1em);
 	--typography--underline-offset:     calc((var(--typography--underline--shift) - (2 * var(--typography--underline) * var(--typography--underline--clear, 0))) * 1em);
 	// Allow for below-descender option.
 
-	text-decoration-color:     var(--color--underline, var(--color));
 	text-decoration-line:      underline;
-	text-decoration-thickness: var(--typography--decoration-thickness);
 	text-underline-offset:     calc(-1 * var(--typography--underline-offset) + var(--typography--decoration-thickness));
 }
 
 %typography--underline--disable { text-decoration: initial }
+
+
+
+%typography--strikethrough {
+	@extend %--line-decoration;
+
+	text-decoration-line: line-through;
+}
