@@ -270,7 +270,7 @@ body {
 
 
 		// Ad block internals.
-		#SidebarMartini div, #MainMartini {
+		#MainMartini, #SidebarMartini div {
 			display: flex;
 			gap:     var(--typography--lead);
 
@@ -294,12 +294,19 @@ body {
 			}
 		}
 
+		#MainMartini {
+			align-items:   center;
+			padding-right: var(--typography--lead);
+		}
+
 		#SidebarMartini {
+			--ad--spacer: var(--typography--line--2);
+
 			align-items: end;
 			display:     none; // Hide on single-column (show dupe in Main).
 			flex-grow:   1;
-			margin-top:  var(--typography--line--4);
-			max-height:  150vh; // Another fold or so.
+			margin-top:  var(--ad--spacer);
+			max-height:  100vh; // Another fold or so.
 
 			> div { // The JS-added container.
 				align-items:    end;
@@ -310,11 +317,6 @@ body {
 				// Allow left-ragged edge to poke out a bit for better wraps.
 				> p { margin-left: calc(-1 * var(--typography--lead)) }
 			}
-		}
-
-		#MainMartini {
-			align-items:   center;
-			padding-right: var(--typography--lead);
 		}
 
 
@@ -391,6 +393,11 @@ body {
 				@include tall(640) {
 					#SidebarMartini { display: flex }
 					#MainMartini    { display: none }
+				}
+
+				@include tall(700) { // Space it out more when we can.
+					#Sidebar > ul   { --sticky--chin: var(--typography--line--2) }
+					#SidebarMartini { --ad--spacer: var(--typography--line--4) }
 				}
 			}
 		}
