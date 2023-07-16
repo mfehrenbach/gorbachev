@@ -40,7 +40,8 @@ if (typeof replacementStyles == 'undefined') {
 		})
 		// Then go after the first blockquote, if need be.
 		if (!adPlacement) adPlacement = firstThing.querySelector('.article > blockquote + p')
-		adPlacement.before(mainAdBlock)
+		if (!adPlacement) adPlacement = firstThing.querySelector('.article > ul > li:nth-child(2) > p:last-child') // It happens.
+		if (adPlacement) adPlacement.before(mainAdBlock)
 	} else if (firstThing.classList.contains('linkedlist')) {
 		firstThing.querySelector('div:first-of-type').appendChild(mainAdBlock) // After the first “definition”.
 	}
