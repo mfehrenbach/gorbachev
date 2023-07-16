@@ -242,9 +242,6 @@ body {
 					&:has(> script:only-child) { display: none } // Turn off empty linked list item.
 				}
 			}
-
-			// Ad block.
-			#SidebarMartini { display: none } // Hide on single-column (show dupe in main).
 		}
 
 
@@ -271,7 +268,8 @@ body {
 		}
 
 
-		// Ad block.
+
+		// Ad block internals.
 		#SidebarMartini div, #MainMartini {
 			display: flex;
 			gap:     var(--typography--lead);
@@ -291,9 +289,13 @@ body {
 				--typography--size--override: 11;
 				--typography--factor:         initial; // Since type is not scaling.
 
+				max-width: 50ch;
+
 				a { @extend %link--text }
 			}
 		}
+
+		#SidebarMartini { display: none } // Hide on single-column (show dupe in main).
 
 		#MainMartini {
 			align-items:   center;
@@ -367,23 +369,23 @@ body {
 					padding-top:    var(--typography--line--4);
 					row-gap:        var(--typography--line--4);
 
-					#Sidebar {
-						--sticky--first: var(--typography--line);
+					#Sidebar { --sticky--first: var(--typography--line) }
+				}
 
-						// Ad block.
-						#SidebarMartini {
-							align-items: end;
-							display:     flex;
-							flex-grow:   1;
-							margin-top:  var(--typography--line--4);
-							max-height:  100vh; // Another fold or so.
+				// With enough height to move the ad back over.
+				@include tall(640) {
+					#SidebarMartini {
+						align-items: end;
+						display:     flex;
+						flex-grow:   1;
+						margin-top:  var(--typography--line--4);
+						max-height:  150vh; // Another fold or so.
 
-							> div { // The JS-added container.
-								align-items:    end;
-								bottom:         var(--typography--line);
-								flex-direction: column;
-								position:       sticky;
-							}
+						> div { // The JS-added container.
+							align-items:    end;
+							bottom:         var(--typography--line);
+							flex-direction: column;
+							position:       sticky;
 						}
 					}
 
