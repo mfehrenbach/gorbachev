@@ -45,7 +45,7 @@
 			@include browser(chrome) { --sticky--top: -0.01rem } // Prevent visible sliver above.
 
 			@include width(744) {
-				@include tall(600) {
+				@include tall(480) {
 					--sticky--chin:   var(--typography--line);
 					--sticky--spacer: var(--typography--line);
 				}

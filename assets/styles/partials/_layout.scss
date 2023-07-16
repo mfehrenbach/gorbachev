@@ -70,13 +70,13 @@ body {
 		@include landscape { --typography--size: calc(var(--typography--size--floor) / #{ $legacy-threshold } * 100vh) }
 	}
 
-	@include width(768) {
+	@include width(744) {
 		@include tall(480) {
 			// Start scaling up type when there is room.
 			--typography--factor: 1;
 			--typography--size:   clamp(
 															calc(var(--typography--size--floor) * 0.1rem),
-															calc(var(--typography--size--floor) / 768 * 100vw),
+															calc(var(--typography--size--floor) / 744 * 100vw),
 															calc(var(--typography--size--middle) * 0.1rem)
 														);
 		}
@@ -334,7 +334,7 @@ body {
 
 			// Tablets/comps.
 			@include width(744) {
-				@include tall(600) {
+				@include tall(480) {
 					column-gap: calc(var(--typography--line) * 2); // Horizontal, so twice optically (not baseline).
 					padding:    var(--typography--line--4) var(--typography--line);
 					row-gap:    var(--typography--line--4);
