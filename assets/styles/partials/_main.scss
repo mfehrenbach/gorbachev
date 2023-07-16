@@ -335,11 +335,14 @@
 
 
 	> .ookiaks {
-		display:    flow-root; // Prevent margin collapse.
-		margin-top: calc(var(--typography--line-height) * 2); // Just extra lines, no leading.
+		display: none;
 
-		// Smoke em’ if you got em.
-		@include width(744) { @include tall(600) { margin-top: calc(var(--typography--line-height) * 4) } }
+		+ * {
+			margin-top: var(--typography--line--6);
+
+			// Smoke em’ if you got em.
+			@include width(744) { @include tall(600) { margin-top: var(--typography--line--8) } }
+		}
 	}
 
 
