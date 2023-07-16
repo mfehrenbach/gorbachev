@@ -345,8 +345,9 @@
 
 
 	#Footer {
-		padding-top: calc(var(--typography--line-height) * 4); // Extra space above.
+		margin-top: var(--typography--line--8);
 	}
+
 
 
 	#MainMartini {
