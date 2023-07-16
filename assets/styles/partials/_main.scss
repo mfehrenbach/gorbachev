@@ -542,7 +542,8 @@
 
 
 	#MainMartini {
-		margin-bottom: var(--typography--line--2);
 		margin-top:    var(--typography--line--2);
+
+		&:not(:last-child) { margin-bottom: var(--typography--line--2) }
 	}
 }
