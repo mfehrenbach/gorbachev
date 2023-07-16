@@ -100,20 +100,21 @@ body {
 	#Box {
 		display:               grid;
 		grid-template-columns: minmax(0, 1fr); // Since “auto” is the min otherwise.
-		padding:               var(--typography--line--3) var(--typography--lead); // Less needed above optically (iOS).
+		padding-bottom:        var(--typography--line-height);
+		padding-left:          var(--typography--lead);
+		padding-right:         var(--typography--lead);
+		padding-top:           var(--typography--line--3); // Less needed above optically (iOS).
 		row-gap:               var(--typography--line--2);
 		grid-template-areas:
 			'banner'
 			'sidebar'
 			'main';
 
-		// Even for Chrome.
-		@include browser(chrome) { padding: var(--typography--line--4) var(--typography--lead) }
-
+		@include browser(chrome) { padding-top: var(--typography--line--4) } // More for Chrome.
 
 		#Banner {
 			grid-area:     banner;
-			margin-bottom: calc(var(--typography--line-height) * 2); // Just extra lines, no leading.
+			margin-bottom: calc(var(--typography--line-height) * 2); // Just extra lines to match the optical 4, above.
 
 			// The logo.
 			a {
@@ -297,7 +298,9 @@ body {
 			column-gap:            var(--typography--line);
 			grid-template-columns: minmax(0, min-content) minmax(0, var(--main--wrap));
 			justify-content:       center;
-			padding:               var(--typography--line--2) var(--typography--line);
+			padding-left:          var(--typography--line);
+			padding-right:         var(--typography--line);
+			padding-top:           var(--typography--line--2); // Less needed above optically (iOS).
 			grid-template-areas:
 				'banner  banner'
 				'sidebar main  ';
@@ -337,9 +340,10 @@ body {
 			// Tablets/comps.
 			@include width(744) {
 				@include tall(480) {
-					column-gap: calc(var(--typography--line) * 2); // Horizontal, so twice optically (not baseline).
-					padding:    var(--typography--line--4) var(--typography--line);
-					row-gap:    var(--typography--line--4);
+					column-gap:     calc(var(--typography--line) * 2); // Horizontal, so twice optically (not baseline).
+					padding-bottom: var(--typography--line);
+					padding-top:    var(--typography--line--4);
+					row-gap:        var(--typography--line--4);
 
 					#Sidebar {
 						--sticky--top: var(--typography--line);
