@@ -93,7 +93,12 @@
 		}
 
 		// The rare nested one, also down a notch.
-		blockquote { --color: var(--color--tertiary) }
+		blockquote, strong { --color: var(--color--tertiary) }
+
+		ol, ul, blockquote {
+			margin-left:   var(--typography--line-height); // Combined with visible lead for a line.
+			padding-right: initial;
+		}
 
 		// The bar on the side.
 		&:before {
