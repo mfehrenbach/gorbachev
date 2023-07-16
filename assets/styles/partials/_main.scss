@@ -453,10 +453,54 @@
 	#Footer {
 		margin-top: var(--typography--line--4);
 
-		input[name=q] {
-			margin-right: initial !important; // To override inline styles, I’m sorry.
-			width:        initial !important;
+		#SiteSearch {
+			display:       flow-root;
+			margin-bottom: initial !important; // To override inline styles, I’m sorry.
+
+			> div {
+				display:       flex;
+				gap:           var(--typography--lead);
+				margin-bottom: var(--typography--margin--bottom);
+				margin-top:    var(--typography--margin--top);
+
+				input[name='q'] {
+					@extend %link--element;
+
+					background-color: var(--color--slight);
+					border-radius:    var(--link--radius);
+					flex-grow:        1;
+					margin-bottom:    initial;
+					margin-right:     initial !important; // I swear I wouldn’t do this otherwise.
+					margin-top:       initial;
+					margin:           initial;
+					max-width:        66%;
+					padding-bottom:   initial;
+					padding-top:      initial;
+					width:            initial !important; // I’m not proud of this.
+
+					@include width(568) { max-width: 50% }
+				}
+
+				input[type='submit'] {
+					@extend %font--extended;
+					@extend %font--gill-sans--on-verdana;
+					@extend %font--uppercase;
+					@extend %link--element;
+					@extend %typography;
+
+					--color: var(--color--secondary);
+
+					cursor:         text;
+					margin-bottom:  initial;
+					margin-top:     initial;
+					padding-bottom: initial;
+					padding-right:  calc(var(--link--enlargement) + var(--typography--margin--right));
+					padding-top:    initial;
+				}
+			}
 		}
+
+
 
 		.smallprint {
 			@extend %font--extended;
@@ -464,6 +508,8 @@
 			@extend %font--uppercase;
 
 			--color: var(--color--tertiary);
+
+			margin-top: var(--typography--line);
 
 			> a[href='/preferences/'], > br { display: none } // Hide prefs link and extra breaks.
 		}
