@@ -124,6 +124,8 @@
 		--color: var(--color--secondary)
 	}
 
+	sup { scroll-margin-top: var(--link--scroll-margin) }
+
 
 
 	code {
@@ -329,6 +331,14 @@
 			@extend %font--uppercase;
 
 			&:not(:first-child) { margin-top: var(--typography--line--4) } // Specificity match the wildcard.
+		}
+
+		> .footnotes {
+			> ol {
+				> li {
+					scroll-margin-top: var(--link--scroll-margin);
+				}
+			}
 		}
 	}
 
