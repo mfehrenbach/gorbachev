@@ -132,10 +132,11 @@
 		--typography--scale: 0.9; // Optical.
 
 		display:           inline; // To keep with previous.
-		line-height:       initial; // Otherwise vertical-align borks.
-		margin-left:       0.25em;
+		line-height:       1em;    // Otherwise vertical-align borks.
+		margin-left:       0.125em;
 		scroll-margin-top: var(--link--scroll-margin);
-		vertical-align:    super;
+		vertical-align:    calc(var(--typography--x) / var(--typography--scale));
+		// Sat on top of Verdana x-height.
 
 		> a {
 			@extend %typography--underline--disable;
