@@ -169,10 +169,10 @@ body {
 
 
 		// Sticky stuff.
-		--sticky--fade: var(--typography--line-height);
-		--sticky--hero: var(--typography--line-height); // Optically, with bottom address bar (iOS).
+		--sticky--fade:  var(--typography--line-height);
+		--sticky--first: var(--typography--line-height); // Optically, with bottom address bar (iOS).
 
-		@include browser(chrome) { --sticky--hero: var(--typography--line) }
+		@include browser(chrome) { --sticky--first: var(--typography--line) }
 
 		@mixin sticky-head {
 			// Chrome needs the prefix; Safari understands with and without.
@@ -199,7 +199,7 @@ body {
 			@extend %sticky-header;
 
 			--sticky--chin:     var(--typography--lead);
-			--sticky--forehead: var(--sticky--hero);
+			--sticky--forehead: var(--sticky--first);
 			--sticky--top:      0;
 
 			column-gap: var(--typography--line);
@@ -321,23 +321,35 @@ body {
 			#Banner { margin-bottom: initial } // Reset extra mobile/portrait space.
 
 			#Sidebar {
-				--sticky--top: var(--typography--line-height);
+				--sticky--first: var(--typography--line-height);
 
 				-webkit-mask:     initial; // Reset sticky-header properties.
-				align-self:       start;
 				background-color: initial;
 				flex-direction:   column;
 				margin:           initial;
 				overflow:         visible;
 				padding:          initial;
+				position:         static;
+				row-gap:          var(--typography--line--2);
 				text-align:       right;
+
+				// Byline.
+				> p:first-child {
+					position: sticky; // Simple setup, nav will do the fancy cover/masking.
+					top:      var(--sticky--first);
+					z-index:  1; // In front of following nav.
+				}
 
 				// Navigation.
 				> ul {
+					@include sticky-head; // Move stickiness onto this level.
+
+					--sticky--chin:     var(--sticky--first);
+					--sticky--forehead: calc(var(--sticky--first) + var(--typography--cap) + var(--typography--line--2));
+					--sticky--top:      0;
+
 					align-items:    end;
 					flex-direction: column;
-					margin-top:     var(--typography--line--2);
-					padding-right:  initial;
 					row-gap:        var(--typography--lead);
 				}
 			}
@@ -355,9 +367,7 @@ body {
 					row-gap:        var(--typography--line--4);
 
 					#Sidebar {
-						--sticky--top: var(--typography--line);
-
-						height: calc(100vh - var(--typography--line) * 2);
+						--sticky--first: var(--typography--line);
 
 						// Ad block.
 						#SidebarMartini {
