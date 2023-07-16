@@ -307,6 +307,9 @@ body {
 				bottom:         var(--typography--line);
 				flex-direction: column;
 				position:       sticky;
+
+				// Allow left-ragged edge to poke out a bit for better wraps.
+				> p { margin-left: calc(-1 * var(--typography--lead)) }
 			}
 		}
 
