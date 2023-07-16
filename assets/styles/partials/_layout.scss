@@ -169,10 +169,12 @@ body {
 
 
 		// Sticky stuff.
-		%sticky-header {
-			--sticky--hero: var(--typography--line-height); // Optically with bottom address bar (iOS).
-			--sticky--fade:  var(--typography--line-height);
+		--sticky--fade: var(--typography--line-height);
+		--sticky--hero: var(--typography--line-height); // Optically, with bottom address bar (iOS).
 
+		@include browser(chrome) { --sticky--hero: var(--typography--line) }
+
+		@mixin sticky-head {
 			// Chrome needs the prefix; Safari understands with and without.
 			-webkit-mask:     linear-gradient(to top, transparent, var(--color--tertiary) var(--sticky--fade), var(--color--hover) var(--sticky--fade));
 			background-color: var(--color--background);
@@ -186,9 +188,10 @@ body {
 			padding-top:      var(--sticky--forehead);
 			position:         sticky;
 			top:              var(--sticky--top);
-
-			@include browser(chrome) { --sticky--hero: var(--typography--line) }
 		}
+
+		// Can’t extend across media queries (thanks Nex3), hence this dance.
+		%sticky-header { @include sticky-head }
 
 
 
