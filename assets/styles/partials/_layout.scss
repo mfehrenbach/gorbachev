@@ -330,14 +330,14 @@ body {
 				overflow:         visible;
 				padding:          initial;
 				position:         static;
-				row-gap:          var(--typography--line--2);
 				text-align:       right;
 
 				// Byline.
 				> p:first-child {
-					position: sticky; // Simple setup, nav will do the fancy cover/masking.
-					top:      var(--sticky--first);
-					z-index:  1; // In front of following nav.
+					margin-bottom: var(--typography--line--2);
+					position:      sticky; // Simple setup, nav will do the fancy cover/masking.
+					top:           var(--sticky--first);
+					z-index:       2; // In front of following nav.
 				}
 
 				// Navigation.
@@ -351,6 +351,7 @@ body {
 					align-items:    end;
 					flex-direction: column;
 					row-gap:        var(--typography--lead);
+					z-index:        1; // In front of ad block.
 				}
 			}
 
@@ -375,6 +376,7 @@ body {
 							display:     flex;
 							flex-grow:   1;
 							margin-top:  var(--typography--line--4);
+							max-height:  100vh; // Another fold or so.
 
 							> div { // The JS-added container.
 								align-items:    end;
