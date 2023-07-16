@@ -269,9 +269,8 @@ body {
 
 		// Ad block.
 		#SidebarMartini div, #MainMartini {
-			align-items: center;
-			display:     flex;
-			gap:         var(--typography--lead);
+			display: flex;
+			gap:     var(--typography--lead);
 
 			// Around the image.
 			> a {
@@ -288,10 +287,13 @@ body {
 				--typography--size--override: 11;
 				--typography--factor:         initial; // Since type is not scaling.
 
-				max-width: calc(165 / 11 * 1em); // Preserve existing (default size) wrapping.
-
 				a { @extend %link--text }
 			}
+		}
+
+		#MainMartini {
+			align-items:   center;
+			padding-right: var(--typography--lead);
 		}
 
 
