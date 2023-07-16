@@ -333,8 +333,31 @@
 			&:not(:first-child) { margin-top: var(--typography--line--4) } // Specificity match the wildcard.
 		}
 
+
+
 		> .footnotes {
+			display:    flow-root; // Prevent margin collapse.
+			margin-top: var(--typography--line--4);
+
 			> ol {
+				margin-top:  calc(-1 * var(--typography--line));
+				padding-top: var(--typography--line);
+				position:    relative;
+
+				&:before { // Lil’ bar.
+					background-color: var(--color--middle);
+					content:          '';
+					height:           var(--typography--stroke);
+					left:             0;
+					position:         absolute;
+					top:              0;
+					width:            33%;
+
+					@include width(568) { width: 25% }
+				}
+
+				> hr { display: none } // Easier to use the pseudo.
+
 				> li {
 					scroll-margin-top: var(--link--scroll-margin);
 				}
