@@ -278,7 +278,7 @@ body {
 			> a {
 				@extend %link--element;
 
-				flex-shrink: 0; // Prevent image smushing in mobile left/right layout.
+				flex-shrink: 0; // Prevent image smushing.
 				border:      initial; // Cancel out text-link spacing.
 			}
 
@@ -295,7 +295,20 @@ body {
 			}
 		}
 
-		#SidebarMartini { display: none } // Hide on single-column (show dupe in main).
+		#SidebarMartini {
+			align-items: end;
+			display:     none; // Hide on single-column (show dupe in Main).
+			flex-grow:   1;
+			margin-top:  var(--typography--line--4);
+			max-height:  150vh; // Another fold or so.
+
+			> div { // The JS-added container.
+				align-items:    end;
+				bottom:         var(--typography--line);
+				flex-direction: column;
+				position:       sticky;
+			}
+		}
 
 		#MainMartini {
 			align-items:   center;
@@ -374,23 +387,8 @@ body {
 
 				// With enough height to move the ad back over.
 				@include tall(640) {
-					#SidebarMartini {
-						align-items: end;
-						display:     flex;
-						flex-grow:   1;
-						margin-top:  var(--typography--line--4);
-						max-height:  150vh; // Another fold or so.
-
-						> div { // The JS-added container.
-							align-items:    end;
-							bottom:         var(--typography--line);
-							flex-direction: column;
-							position:       sticky;
-						}
-					}
-
-					// Hide main-column dupe.
-					#MainMartini { display: none }
+					#SidebarMartini { display: flex }
+					#MainMartini    { display: none }
 				}
 			}
 		}
