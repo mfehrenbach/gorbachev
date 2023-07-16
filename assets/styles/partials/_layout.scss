@@ -279,7 +279,6 @@ body {
 				@extend %link--element;
 
 				flex-shrink: 0; // Prevent image smushing.
-				border:      initial; // Cancel out text-link spacing.
 			}
 
 			// Tagline.
