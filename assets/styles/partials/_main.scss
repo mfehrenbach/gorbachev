@@ -341,7 +341,7 @@
 			margin-top: var(--typography--line--6);
 
 			// Smoke em’ if you got em.
-			@include width(1080) { @include tall(800) { margin-top: var(--typography--line--8) } }
+			@include width(744) { @include tall(1080) { margin-top: var(--typography--line--8) } }
 		}
 	}
 
@@ -373,7 +373,7 @@
 
 
 	#Footer {
-		margin-top: var(--typography--line--8);
+		margin-top: var(--typography--line--4);
 
 		input[name=q] {
 			margin-right: initial !important; // To override inline styles, I’m sorry.
@@ -382,6 +382,11 @@
 
 		.smallprint {
 			> a[href='/preferences/'], > br { display: none } // Hide prefs link and extra breaks.
+		}
+
+		@include width(744) {
+			@include tall(480)  { margin-top: var(--typography--line--6) }
+			@include tall(1080) { margin-top: var(--typography--line--8) }
 		}
 	}
 
