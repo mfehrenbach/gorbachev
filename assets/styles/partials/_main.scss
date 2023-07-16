@@ -391,8 +391,14 @@
 					.footnoteBackLink { // The return arrow.
 						@extend %typography--underline--disable;
 
-						line-height:    initial; // For vertical-align.
-						vertical-align: middle;
+						line-height:     1em; // For vertical-align.
+						vertical-align: -0.15em;
+
+						@include browser(safari--mobile) {
+							font-family:    -apple-system; // Slightly better arrow.
+							font-size:       170%;
+							vertical-align: -0.125em;
+						}
 					}
 				}
 			}
