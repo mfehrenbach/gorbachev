@@ -105,6 +105,8 @@
 			padding-right: initial;
 		}
 
+		code { --color: var(--color--primary) }
+
 		// The bar on the side.
 		&:before {
 			background-color: var(--color--middle);
@@ -407,6 +409,8 @@
 
 						@include hover { --color: var(--color--hover) } // Specificity.
 					}
+
+					code { --color: var(--color--primary) }
 
 					.footnoteBackLink { // The return arrow.
 						@extend %typography--underline--disable;
