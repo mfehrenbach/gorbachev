@@ -378,6 +378,19 @@
 
 				> li {
 					scroll-margin-top: var(--link--scroll-margin);
+
+					.footnoteBackLink { // The return arrow.
+						@extend %typography--underline--disable;
+
+						--color: var(--color--tertiary);
+
+						line-height:    initial; // For vertical-align.
+						vertical-align: middle;
+
+						@include hover { --color: var(--color--hover) } // Specificity.
+
+						&:focus-visible:not(:disabled) { --color: var(--color--hover) } // Again.
+					}
 				}
 			}
 		}
