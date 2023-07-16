@@ -381,6 +381,12 @@
 		}
 
 		.smallprint {
+			@extend %font--extended;
+			@extend %font--gill-sans--in-verdana;
+			@extend %font--uppercase;
+
+			--color: var(--color--tertiary);
+
 			> a[href='/preferences/'], > br { display: none } // Hide prefs link and extra breaks.
 		}
 
