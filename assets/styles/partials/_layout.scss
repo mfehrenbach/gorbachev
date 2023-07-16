@@ -170,19 +170,24 @@ body {
 
 		// Sticky stuff.
 		%sticky-header {
-
-			--sticky--fade:     var(--typography--line-height);
-			--sticky--forehead: var(--typography--line-height); // Optically with bottom address bar (iOS).
-			--sticky--offset:   calc(var(--sticky--forehead) + var(--typography--cap));
+			--sticky--hero: var(--typography--line-height); // Optically with bottom address bar (iOS).
+			--sticky--fade:  var(--typography--line-height);
 
 			// Chrome needs the prefix; Safari understands with and without.
 			-webkit-mask:     linear-gradient(to top, transparent, var(--color--tertiary) var(--sticky--fade), var(--color--hover) var(--sticky--fade));
 			background-color: var(--color--background);
+			margin-bottom:    calc(-1 * var(--sticky--chin) - var(--sticky--fade));
 			margin-left:      calc(-1 * var(--typography--lead));
 			margin-right:     calc(-1 * var(--typography--lead));
+			margin-top:       calc(-1 * var(--sticky--forehead));
+			padding-bottom:   calc(var(--sticky--chin) + var(--sticky--fade));
+			padding-left:     var(--typography--lead);
+			padding-right:    var(--typography--lead);
+			padding-top:      var(--sticky--forehead);
 			position:         sticky;
+			top:              var(--sticky--top);
 
-			@include browser(chrome) { --sticky--forehead: var(--typography--line) }
+			@include browser(chrome) { --sticky--hero: var(--typography--line) }
 		}
 
 
@@ -190,20 +195,15 @@ body {
 		#Sidebar {
 			@extend %sticky-header;
 
-			--sticky--top: 0;
+			--sticky--chin:     var(--typography--lead);
+			--sticky--forehead: var(--sticky--hero);
+			--sticky--top:      0;
 
-			column-gap:     var(--typography--line);
-			display:        flex;
-			grid-area:      sidebar;
-			margin-bottom:  calc(-1 * var(--typography--lead) - var(--sticky--fade));
-			margin-top:     calc(-1 * var(--sticky--forehead));
-			overflow-x:     scroll;
-			padding-bottom: calc(var(--typography--lead) + var(--sticky--fade));
-			padding-left:   var(--typography--lead);
-			padding-right:  var(--typography--line);
-			padding-top:    var(--sticky--forehead);
-			top:            var(--sticky--top);
-			z-index:        2; // Over the sticky headers in the main column.
+			column-gap: var(--typography--line);
+			display:    flex;
+			grid-area:  sidebar;
+			overflow-x: scroll;
+			z-index:    2; // Over the sticky headers in the main column.
 
 			&::-webkit-scrollbar { display: none } // Hide scrollbar.
 
