@@ -9,17 +9,10 @@ if (typeof replacementStyles == 'undefined') {
 
 
 
-	// Pull footer out to the end of main column.
-	document.getElementById('Main').appendChild(document.getElementById('Footer'))
-
-	// Toss the empty/conditional linked list item from nav.
+	// Toss some legacy stuff.
 	document.querySelector('#Sidebar > ul script').parentNode.remove()
-
-	// And the Display Preferences link and extra breaks.
 	document.querySelector('.smallprint > a[href="/preferences/"').remove()
 	document.querySelectorAll('.smallprint > br').forEach(br => br.remove())
-
-	// Nix inline styles on the search form, come on now.
 	document.getElementById('SiteSearch').removeAttribute('style')
 
 
@@ -29,10 +22,12 @@ if (typeof replacementStyles == 'undefined') {
 	linkedLists.forEach(linkedList => {
 		const linkListTitles = linkedList.querySelectorAll('dt')
 		linkListTitles.forEach(linkListTitle => {
+			let newlinkListTitle = linkListTitle.cloneNode(true)
 			const linkListDescription = linkListTitle.nextElementSibling
 			const linkListDiv = document.createElement('div')
-			linkListDiv.append(linkListTitle, linkListDescription)
-			linkedList.appendChild(linkListDiv)
+			linkListDiv.append(newlinkListTitle, linkListDescription)
+			linkListTitle.before(linkListDiv)
+			linkListTitle.remove()
 		})
 	})
 
