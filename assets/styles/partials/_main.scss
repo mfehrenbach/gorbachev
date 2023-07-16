@@ -354,6 +354,8 @@
 
 
 		> .footnotes {
+			--color: var(--color--secondary);
+
 			display:    flow-root; // Prevent margin collapse.
 			margin-top: var(--typography--line--4);
 
@@ -379,17 +381,17 @@
 				> li {
 					scroll-margin-top: var(--link--scroll-margin);
 
+					a {
+						--color: var(--color--tertiary);
+
+						@include hover { --color: var(--color--hover) } // Specificity.
+					}
+
 					.footnoteBackLink { // The return arrow.
 						@extend %typography--underline--disable;
 
-						--color: var(--color--tertiary);
-
 						line-height:    initial; // For vertical-align.
 						vertical-align: middle;
-
-						@include hover { --color: var(--color--hover) } // Specificity.
-
-						&:focus-visible:not(:disabled) { --color: var(--color--hover) } // Again.
 					}
 				}
 			}
