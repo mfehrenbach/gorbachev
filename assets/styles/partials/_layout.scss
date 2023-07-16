@@ -220,8 +220,9 @@ body {
 			> ul {
 				--color: var(--color--secondary);
 
-				column-gap: var(--typography--line);
-				display:    flex;
+				column-gap:    var(--typography--line);
+				display:       flex;
+				padding-right: var(--typography--lead);
 
 				> li {
 					@extend %font--extended;
@@ -333,6 +334,7 @@ body {
 					align-items:    end;
 					flex-direction: column;
 					margin-top:     var(--typography--line--2);
+					padding-right:  initial;
 					row-gap:        var(--typography--lead);
 				}
 			}
