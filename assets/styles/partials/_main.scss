@@ -76,6 +76,8 @@
 		&:has(> code) { --typography--underline--shift: -0.333 } // Below the background.
 	}
 
+
+
 	blockquote {
 		@extend %--nested--spacing;
 
@@ -115,16 +117,31 @@
 		}
 	}
 
-	strong {
+
+
+	strong, sup {
 		@extend %font--extended;
 		@extend %font--gill-sans--in-verdana;
 		@extend %font--uppercase;
 		@extend %typography--inline;
-
-		--color: var(--color--secondary)
 	}
 
-	sup { scroll-margin-top: var(--link--scroll-margin) }
+	strong { --color: var(--color--secondary) }
+
+	sup {
+		--typography--scale: 0.9; // Optical.
+
+		margin-left:       0.25em;
+		scroll-margin-top: var(--link--scroll-margin);
+		transform:         translateY(calc(-1 * var(--typography--x) / var(--typography--scale)));
+		// Sat on the Verdana x-height.
+
+		> a {
+			@extend %typography--underline--disable;
+
+			--color: var(--color--tertiary);
+		}
+	}
 
 
 
