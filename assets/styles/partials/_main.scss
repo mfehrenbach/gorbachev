@@ -341,7 +341,7 @@
 			margin-top: var(--typography--line--6);
 
 			// Smoke em’ if you got em.
-			@include width(744) { @include tall(600) { margin-top: var(--typography--line--8) } }
+			@include width(1080) { @include tall(800) { margin-top: var(--typography--line--8) } }
 		}
 	}
 
