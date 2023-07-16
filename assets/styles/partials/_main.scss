@@ -347,6 +347,19 @@
 
 
 
+	#PreviousNext {
+		margin-top: var(--typography--line--4);
+
+		tr:not(:first-child) td { padding-top: var(--typography--line) } // Oh, tables.
+
+		td:first-child {
+			padding-right: var(--typography--line);
+			text-align:    right;
+		}
+	}
+
+
+
 	#Footer {
 		margin-top: var(--typography--line--8);
 

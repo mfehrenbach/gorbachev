@@ -110,7 +110,12 @@ h1, h2, h3, h4, h5, h6, td, p, %typography {
 	&:after  { margin-bottom: var(--typography--margin--bottom) }
 }
 
-td { display: table-cell } // Flow-root breaks these.
+
+
+td {
+	display:    table-cell; // Reset typography properties that break these.
+	word-break: initial;
+}
 
 
 
