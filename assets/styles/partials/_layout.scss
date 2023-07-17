@@ -10,11 +10,12 @@
 :root {
 	--scroll--padding: 33vh; // Without knowing the title length/height, this is safe.
 
-	scroll-padding-top:    var(--scroll--padding);
+	scroll-behavior:       smooth;
 	scroll-padding-bottom: 5vh;
+	scroll-padding-top:    var(--scroll--padding);
 
 	// Two-column.
-	@include width(568) { --scroll--padding: 20vh }
+	@include width(568) { --scroll--padding: 25vh }
 }
 
 
