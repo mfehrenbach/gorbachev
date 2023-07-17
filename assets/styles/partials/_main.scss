@@ -491,8 +491,14 @@
 				input[name='q'] {
 					@extend %link--element;
 
+					--color--highlight:       var(--color--slight); // Override active states.
+					--color--highlight--more: var(--color--slight);
+
+					@include hover { --color--slight: var(--color--middle) }
+
 					background-color: var(--color--slight);
 					border-radius:    var(--link--radius);
+					cursor:           text;
 					flex-grow:        1;
 					font-size:        85%;
 					margin-bottom:    initial;
@@ -516,7 +522,6 @@
 
 					--color: var(--color--secondary);
 
-					cursor:         text;
 					margin-bottom:  initial;
 					margin-top:     initial;
 					padding-bottom: initial;
