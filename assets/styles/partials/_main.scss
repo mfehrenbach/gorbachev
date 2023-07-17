@@ -323,6 +323,8 @@
 
 		--color: var(--color--tertiary);
 
+		&:not(:first-child):not(._) { margin-top: var(--typography--line--2) }
+
 		em { font-style: normal } // Cancel these out in favor of small caps. (Gill itals are way off.)
 	}
 
