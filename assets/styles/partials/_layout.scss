@@ -6,6 +6,19 @@
 
 
 
+// Viewport stuff.
+:root {
+	--scroll--padding: 33vh; // Without knowing the title length/height, this is safe.
+
+	scroll-padding-top:    var(--scroll--padding);
+	scroll-padding-bottom: 5vh;
+
+	// Two-column.
+	@include width(568) { --scroll--padding: 20vh }
+}
+
+
+
 // Variables and layout.
 body {
 	@extend %font--verdana;
@@ -53,8 +66,6 @@ body {
 	--link--radius:      calc(var(--typography--x) / 3);
 	--link--transition:  50ms;
 
-	--link--scroll-margin: 33vh; // Without knowing the title length/height, this is safe.
-
 
 
 	background-color: var(--color--background);
@@ -71,9 +82,6 @@ body {
 
 		@include landscape { --typography--size: calc(var(--typography--size--floor) / #{ $legacy-threshold } * 100vh) }
 	}
-
-	// Two-column.
-	@include width(568) { --link--scroll-margin: 25vh }
 
 	@include width(744) {
 		@include tall(480) {

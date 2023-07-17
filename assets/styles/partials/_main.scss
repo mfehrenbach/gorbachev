@@ -152,7 +152,6 @@
 		display:           inline; // To keep with previous.
 		line-height:       1em;    // Otherwise vertical-align borks.
 		margin-left:       0.125em;
-		scroll-margin-top: var(--link--scroll-margin);
 		vertical-align:    calc(var(--typography--x) / var(--typography--scale));
 		// Sat on top of Verdana x-height.
 
@@ -405,8 +404,6 @@
 				> hr { display: none } // Easier to use the pseudo.
 
 				> li {
-					scroll-margin-top: var(--link--scroll-margin);
-
 					a {
 						--color: var(--color--tertiary);
 
