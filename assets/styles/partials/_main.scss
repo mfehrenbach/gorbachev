@@ -17,7 +17,7 @@
 	}
 
 	%--double--after { // Bump specificity.
-		+ *:not(:first-child):not(._) { margin-top: var(--typography--line--2) }
+		+ *:not(:first-child):not(._):not(._) { margin-top: var(--typography--line--2) }
 	}
 
 
@@ -74,6 +74,7 @@
 
 
 	blockquote {
+		@extend %--double--after;
 		@extend %--nested--spacing;
 
 		--color: var(--color--secondary);
