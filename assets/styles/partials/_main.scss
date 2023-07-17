@@ -317,6 +317,16 @@
 		@include hover { --color: var(--color--hover) } // Specificity.
 	}
 
+	.smallprint {
+		@extend %font--extended;
+		@extend %font--gill-sans--in-verdana;
+		@extend %font--uppercase;
+
+		--color: var(--color--tertiary);
+
+		em { font-style: normal } // Cancel these out in favor of small caps. (Gill itals are way off.)
+	}
+
 
 
 	> .linkedlist {
@@ -534,12 +544,6 @@
 
 
 		.smallprint {
-			@extend %font--extended;
-			@extend %font--gill-sans--in-verdana;
-			@extend %font--uppercase;
-
-			--color: var(--color--tertiary);
-
 			margin-top: var(--typography--line);
 
 			> a[href='/preferences/'], > br { display: none } // Hide prefs link and extra breaks.
