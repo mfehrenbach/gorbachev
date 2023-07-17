@@ -437,6 +437,14 @@
 
 
 
+	#MainMartini {
+		margin-top: var(--typography--line--2);
+
+		&:not(:last-child) { margin-bottom: var(--typography--line--2) }
+	}
+
+
+
 	#PreviousNext {
 		margin-top: var(--typography--line--4);
 
@@ -536,13 +544,5 @@
 			@include tall(480)  { --footer--gap: var(--typography--line--6) }
 			@include tall(1080) { --footer--gap: var(--typography--line--8) }
 		}
-	}
-
-
-
-	#MainMartini {
-		margin-top:    var(--typography--line--2);
-
-		&:not(:last-child) { margin-bottom: var(--typography--line--2) }
 	}
 }
