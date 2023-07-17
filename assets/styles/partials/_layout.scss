@@ -8,14 +8,17 @@
 
 // Viewport stuff.
 :root {
-	--scroll--padding: 33vh; // Without knowing the title length/height, this is safe.
+	--scroll--padding: 30vh; // Without knowing the title length/height, this is safe.
 
 	scroll-behavior:       smooth;
 	scroll-padding-bottom: 5vh;
 	scroll-padding-top:    var(--scroll--padding);
 
 	// Two-column.
-	@include width(568) { --scroll--padding: 25vh }
+	@include width(568) { --scroll--padding: 40vh }
+
+	// Tablets/comps.
+	@include width(744) { @include tall(480) { --scroll--padding: 25vh } }
 }
 
 
