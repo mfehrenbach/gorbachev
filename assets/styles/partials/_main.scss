@@ -320,11 +320,11 @@
 
 
 	> .linkedlist {
+		display:        flex;
+		flex-direction: column;
+		row-gap:        var(--typography--line--4);
+
 		> div { // New container from JS.
-			display: flow-root; // Prevent margin collapse.
-
-			&:not(:first-child) { margin-top: var(--typography--line--4) }
-
 			> dt {
 				@extend %--double--after;
 				@extend %--sticky-header--main;
@@ -346,8 +346,6 @@
 
 	> .article {
 		@extend %--nested--spacing;
-
-		display: flow-root;
 
 		> h1 {
 			@extend %--sticky-header--main;
@@ -375,7 +373,6 @@
 		> .footnotes {
 			--color: var(--color--secondary);
 
-			display:    flow-root;
 			margin-top: var(--typography--line--4);
 
 			> ol {
@@ -466,10 +463,15 @@
 
 
 	#Footer {
-		margin-top: var(--typography--line--4);
+		--footer--gap: var(--typography--line--4);
+
+		display:         flex;
+		flex-direction:  column;
+		flex-grow:       1; // For shorter pages, fill the space.
+		justify-content: end; // And push the contents down.
+		margin-top:      var(--footer--gap);
 
 		#SiteSearch {
-			display:       flow-root;
 			margin-bottom: initial !important; // To override inline styles, I’m sorry.
 
 			> div {
@@ -531,8 +533,8 @@
 		}
 
 		@include width(744) {
-			@include tall(480)  { margin-top: var(--typography--line--6) }
-			@include tall(1080) { margin-top: var(--typography--line--8) }
+			@include tall(480)  { --footer--gap: var(--typography--line--6) }
+			@include tall(1080) { --footer--gap: var(--typography--line--8) }
 		}
 	}
 

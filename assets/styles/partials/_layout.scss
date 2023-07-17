@@ -247,7 +247,12 @@ body {
 
 
 		#Main {
-			grid-area: main;
+			--main--min: calc(100vh - var(--sticky--first) - var(--typography--cap) * 2 - var(--typography--line) - var(--typography--line-height));
+
+			display:        flex;
+			flex-direction: column;
+			grid-area:      main;
+			min-height:     var(--main--min);
 
 			// iOS bottom-edge fade for scrolled address bar (slate on slate).
 			&:after {
@@ -374,7 +379,11 @@ body {
 				}
 			}
 
-			#Main { &:after { display: none } } // Turn off address-bar fade.
+			#Main {
+				--main--min: calc(100vh - var(--typography--line-height) * 2);
+
+				&:after { display: none } // Turn off address-bar fade.
+			}
 
 
 
@@ -387,6 +396,8 @@ body {
 					row-gap:        var(--typography--line--4);
 
 					#Sidebar { --sticky--first: var(--typography--line) }
+
+					#Main { --main--min: calc(100vh - var(--typography--line) * 2); }
 				}
 
 				// With enough height to move the ad back over.
