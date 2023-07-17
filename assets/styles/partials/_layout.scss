@@ -115,28 +115,28 @@ body {
 
 	// Main layout.
 	#Box {
-		--banner--spacing: var(--typography--line--3); // Less needed above optically (iOS).
+		--banner--forehead: var(--typography--line--3); // Less needed above optically (iOS).
 
 		display:               grid;
 		grid-template-columns: minmax(0, 1fr); // Since “auto” is the min otherwise.
 		padding-bottom:        var(--typography--line-height);
 		padding-left:          var(--typography--lead);
 		padding-right:         var(--typography--lead);
-		padding-top:           var(--banner--spacing);
+		padding-top:           var(--banner--forehead);
 		row-gap:               var(--typography--line--2);
 		grid-template-areas:
 			'banner'
 			'sidebar'
 			'main';
 
-		@include browser(chrome) { --banner--spacing: var(--typography--line--4) } // More for Chrome.
+		@include browser(chrome) { --banner--forehead: var(--typography--line--4) } // More for Chrome.
 
 		#Banner {
 			grid-area:     banner;
 			margin-bottom: calc(var(--typography--line-height) * 2); // Just extra lines to match the optical 4, above.
 
 			// The logo.
-			a {
+			> a {
 				@extend %link--element;
 
 				--intrinsic--width:  720; // From the PNG.
@@ -351,7 +351,7 @@ body {
 
 		// Two-column.
 		@include width(568) {
-			--banner--spacing: var(--typography--line--2);
+			--banner--forehead: var(--typography--line--2);
 
 			--main--wrap: calc(425 / 12 * 1em); // Preserve existing (default size) wrapping.
 
@@ -414,7 +414,7 @@ body {
 			// Tablets/comps.
 			@include width(744) {
 				@include tall(480) {
-					--banner--spacing: var(--typography--line--4);
+					--banner--forehead: var(--typography--line--4);
 
 					column-gap:     calc(var(--typography--line) * 2); // Horizontal, so twice optically (not baseline).
 					padding-bottom: var(--typography--line);
