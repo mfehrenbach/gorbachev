@@ -283,6 +283,7 @@ body {
 			> a {
 				@extend %link--element;
 
+				border:      initial; // Cancel out text-link spacing.
 				flex-shrink: 0; // Prevent image smushing.
 			}
 
