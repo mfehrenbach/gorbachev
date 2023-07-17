@@ -4,7 +4,7 @@ if (typeof replacementStyles == 'undefined') {
 	if (navigator.appVersion.includes('Win')) document.documentElement.classList.add('windows')
 
 	// Make the page responsive.
-	const metaViewport = '<meta content="initial-scale=1, width=device-width, viewport-fit=cover" name="viewport">'
+	const metaViewport = '<meta content="initial-scale=1, maximum-scale=1, viewport-fit=cover, width=device-width" name="viewport">'
 	document.head.insertAdjacentHTML('beforeEnd', metaViewport)
 
 
