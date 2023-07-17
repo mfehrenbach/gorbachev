@@ -306,7 +306,7 @@ body {
 			display:     none; // Hide on single-column (show dupe in Main).
 			flex-grow:   1;
 			margin-top:  var(--ad--spacer);
-			max-height:  100vh; // Another fold or so.
+			max-height:  125vh; // Another fold or so.
 
 			> div { // The JS-added container.
 				align-items:    end;
