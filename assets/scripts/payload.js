@@ -68,6 +68,12 @@ if (typeof replacementStyles == 'undefined') {
 
 
 
+	// Add return-to-top links.
+	const bannerTop = '<div id="BannerTop"><p class="toplink"><a href="#">Top <span>↑</span></a></p></div>'
+	document.getElementById('Banner').insertAdjacentHTML('beforeEnd', bannerTop)
+
+
+
 	// Finally, set up the stylesheet.
 	let baseUrl = document.currentScript.src
 	baseUrl = baseUrl.substring(0, baseUrl.lastIndexOf('/'))

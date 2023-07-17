@@ -134,6 +134,9 @@ body {
 		#Banner {
 			grid-area:     banner;
 			margin-bottom: calc(var(--typography--line-height) * 2); // Just extra lines to match the optical 4, above.
+			position:      sticky;
+			top:           calc(-1 * var(--typography--line-height) - var(--typography--line--4) + var(--sticky--first));
+			z-index:       2; // Behind navigation, in front of sticky titles.
 
 			// The logo.
 			> a {
@@ -216,7 +219,8 @@ body {
 			--sticky--forehead: var(--sticky--first);
 			--sticky--top:      0;
 
-			column-gap:       var(--typography--line--2);
+			// Gutter and noodling “The Talk Show” to line up with “Top” link.
+			column-gap:       calc(var(--typography--line--2) - 0.2em);
 			display:          flex;
 			grid-area:        sidebar;
 			overflow-x:       scroll;
@@ -349,17 +353,63 @@ body {
 
 
 
+		// JS-added return-to-top links.
+		--sticky--right--inset: calc(var(--typography--lead) * 2 + (46 / 390) * 100vw); // Width of top link and nav gutter.
+
+		#BannerTop {
+			height:   calc(var(--typography--line-height) * 2 + var(--typography--cap));
+			position: absolute;
+			right:    0;
+			top:      calc(var(--typography--line--4) + var(--typography--line-height)); // Start with nav.
+
+			> p {
+				position: sticky;
+				top:      calc(var(--sticky--first) + var(--typography--cap) + var(--typography--line));
+			}
+		}
+
+		.toplink {
+			@extend %--scroll--snap;
+			@extend %font--extended;
+			@extend %font--gill-sans--on-verdana;
+			@extend %font--uppercase;
+			@extend %typography;
+			@extend nobr;
+
+			--color: var(--color--tertiary);
+
+			> a {
+				@extend %link--text;
+				@extend %typography--underline--disable;
+
+				> span { // The arrow.
+					@extend %typography--inline;
+					@extend %font--sf-mono--on-verdana;
+
+					--typography--scale: 1.125;
+
+					margin-left:    -0.125em;
+					vertical-align: -0.032em; // Optical.
+				}
+			}
+		}
+
+
+
 		// Two-column.
 		@include width(568) {
 			--banner--forehead: var(--typography--line--2);
 
 			--main--wrap: calc(425 / 12 * 1em); // Preserve existing (default size) wrapping.
 
+			--sticky--right--inset: initial; // Reset space for top link.
+
 			column-gap:            var(--typography--line);
 			grid-template-columns: minmax(0, min-content) minmax(0, var(--main--wrap));
 			justify-content:       center;
 			padding-left:          var(--typography--line);
 			padding-right:         var(--typography--line);
+			position:              initial; // Reset from secret sticky.
 			grid-template-areas:
 				'banner  banner'
 				'sidebar main  ';
@@ -367,6 +417,8 @@ body {
 
 
 			#Banner { margin-bottom: initial } // Reset extra mobile/portrait space.
+
+			#BannerTop  { display: none } // Switch to sidebar one.
 
 			#Sidebar {
 				--sticky--first: var(--typography--line-height);
