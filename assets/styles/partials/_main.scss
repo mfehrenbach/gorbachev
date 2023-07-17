@@ -29,7 +29,7 @@
 
 				--sticky--chin:     var(--typography--line-height);
 				--sticky--forehead: var(--typography--line);
-				--sticky--top:      calc(var(--sticky--first) + var(--typography--cap)); // Nav above.
+				--sticky--top:      calc(var(--sticky--first) + var(--typography--cap) / var(--typography--scale, 1)); // Nav above.
 
 				padding-left:   calc(var(--typography--lead) + var(--typography--margin--left));
 				padding-right:  calc(var(--typography--lead) + var(--typography--margin--right));
