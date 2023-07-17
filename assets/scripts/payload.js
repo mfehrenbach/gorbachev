@@ -69,8 +69,11 @@ if (typeof replacementStyles == 'undefined') {
 
 
 	// Add return-to-top links.
-	const bannerTop = '<div id="BannerTop"><p class="toplink"><a href="#">Top <span>↑</span></a></p></div>'
-	document.getElementById('Banner').insertAdjacentHTML('beforeEnd', bannerTop)
+	const topLink = '<p class="toplink"><a href="#">Top <span>↑</span></a></p>'
+	const bannerTopLink = Object.assign(document.createElement('div'), { id: 'BannerTop', innerHTML: topLink } ) // One-liner, is this better?
+	const sidebarTopLink = Object.assign(document.createElement('div'), { id: 'SidebarTop', innerHTML: topLink } ) // One-liner, is this better?
+	document.getElementById('Banner').append(bannerTopLink)
+	document.getElementById('Sidebar').append(sidebarTopLink)
 
 
 

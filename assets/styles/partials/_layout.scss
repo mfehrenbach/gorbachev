@@ -338,7 +338,7 @@ body {
 			display:     none; // Hide on single-column (show dupe in Main).
 			flex-grow:   1;
 			margin-top:  var(--ad--spacer);
-			max-height:  125vh; // Another fold or so.
+			max-height:  100vh; // Another fold or so.
 
 			> div { // The JS-added container.
 				align-items:    end;
@@ -362,10 +362,19 @@ body {
 			right:    0;
 			top:      calc(var(--typography--line--4) + var(--typography--line-height)); // Start with nav.
 
-			> p {
-				position: sticky;
-				top:      calc(var(--sticky--first) + var(--typography--cap) + var(--typography--line));
-			}
+			> p { top: calc(var(--sticky--first) + var(--typography--cap) + var(--typography--line)) }
+		}
+
+		#SidebarTop {
+			--top--spacer: var(--typography--line);
+
+			align-items:     end;
+			display:         none; // Banner one visible on mobile.
+			flex-grow:       1; // Fill height under ad.
+			justify-content: end;
+			margin-top:      var(--top--spacer);
+
+			> p { bottom: var(--sticky--first) }
 		}
 
 		.toplink {
@@ -377,6 +386,8 @@ body {
 			@extend nobr;
 
 			--color: var(--color--tertiary);
+
+			position: sticky;
 
 			> a {
 				@extend %link--text;
@@ -420,6 +431,8 @@ body {
 
 			#BannerTop  { display: none } // Switch to sidebar one.
 
+			#SidebarTop { display: flex }
+
 			#Sidebar {
 				--sticky--first: var(--typography--line-height);
 
@@ -444,7 +457,7 @@ body {
 				> ul {
 					@include sticky-head; // Move stickiness onto this level.
 
-					--sticky--chin:     var(--sticky--first);
+					--sticky--chin:     var(--typography--line); // Covers top link in landscape.
 					--sticky--forehead: calc(var(--sticky--first) + var(--typography--cap) + var(--typography--line--2));
 					--sticky--top:      0;
 
@@ -475,16 +488,20 @@ body {
 					#Sidebar { --sticky--first: var(--typography--line) }
 
 					#Main { --main--min: calc(100vh - var(--typography--line) * 2); }
+
+					#SidebarTop { --top--spacer: var(--typography--line--2) }
 				}
 
 				// With enough height to move the ad back over.
 				@include tall(640) {
 					#SidebarMartini { display: flex }
-					#MainMartini    { display: none }
+
+					#MainMartini { display: none }
 				}
 
 				@include tall(700) { // Space it out more when we can.
-					#Sidebar > ul   { --sticky--chin: var(--typography--line--2) }
+					#Sidebar > ul { --sticky--chin: var(--typography--line--2) }
+
 					#SidebarMartini { --ad--spacer: var(--typography--line--4) }
 				}
 			}
