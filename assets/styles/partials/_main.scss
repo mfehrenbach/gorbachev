@@ -12,9 +12,7 @@
 	// Base spacing.
 	> *:not(:first-child) { margin-top: var(--typography--line--4) }
 
-	%--nested--spacing {
-		> *:not(:first-child) { margin-top: var(--typography--line) }
-	}
+	%--nested--spacing { > *:not(:first-child) { margin-top: var(--typography--line) } }
 
 	%--double--after { // Bump specificity.
 		+ *:not(:first-child):not(._):not(._) { margin-top: var(--typography--line--2) }
@@ -294,6 +292,10 @@
 
 
 
+	h1 { @extend %font--gill-sans--x-verdana-cap }
+
+
+
 	.dateline {
 		@extend %--double--after;
 		@extend %font--extended;
@@ -359,7 +361,6 @@
 		> h1 {
 			@extend %--sticky-header--main;
 			@extend %--double--after;
-			@extend %font--gill-sans--x-verdana-cap;
 
 			> a {
 				@extend %typography--underline--disable;
