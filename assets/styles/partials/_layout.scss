@@ -483,6 +483,17 @@ body {
 						@extend %--scroll--snap--reset;
 
 						margin-left: calc(-1 * var(--typography--line));
+
+						// Wrap “Sponsor the show” link, on Talk Show nav.
+						&:has(> a[href="http://neat.fm/"]) {
+							white-space: initial;
+							width: 16ch;
+
+							@include width(1024) {
+								white-space: nowrap;
+								width:       initial;
+							}
+						}
 					}
 				}
 			}
