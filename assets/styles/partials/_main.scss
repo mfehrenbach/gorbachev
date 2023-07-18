@@ -10,13 +10,20 @@
 
 #Main {
 	// Base spacing.
-	> *:not(:first-child) { margin-top: var(--typography--line--4) }
+	> * {
+		margin-top: var(--typography--line--4);
 
-	%--nested--spacing { > *:not(:first-child) { margin-top: var(--typography--line) } }
-
-	%--double--after { // Bump specificity.
-		+ *:not(:first-child):not(._):not(._) { margin-top: var(--typography--line--2) }
+		&:first-child { margin-top: initial }
 	}
+
+	p, blockquote, ol, ul, pre {
+		margin-top: var(--typography--line);
+
+		&:first-child { margin-top: initial }
+	}
+
+	// Mixin to leverage the cascade.
+	@mixin double-after { + * { margin-top: var(--typography--line--2) } }
 
 
 
@@ -51,7 +58,7 @@
 
 		--color: var(--color--secondary);
 
-		code:not(._) { // Bump specificity, as it happens.
+		code {
 			border-color:        transparent;
 			border-left-width:   0;
 			border-right-width:  0;
@@ -70,14 +77,13 @@
 
 
 	blockquote {
-		@extend %--double--after;
-		@extend %--nested--spacing;
-
 		--color: var(--color--secondary);
 
 		padding-left:  var(--typography--lead);
 		padding-right: var(--typography--lead);
 		position:      relative;
+
+		@include double-after;
 
 		a { // Down one more notch.
 			--color:            var(--color--tertiary);
@@ -208,14 +214,14 @@
 
 
 	ol, ul, {
-		@extend %--double--after;
-
 		display:             flex;
 		flex-direction:      column;
 		list-style-position: outside;
 		padding-left:        var(--list--marker-shift); // Declared below.
 		padding-right:       calc(var(--typography--lead) + var(--list--marker-shift));
 		row-gap:             var(--typography--lead);
+
+		@include double-after;
 
 		> li {
 			@extend %typography; // For “naked“ list items.
@@ -238,17 +244,16 @@
 			// Nested last paragraph margin “collapses” up.
 			> blockquote > p:last-child { margin-bottom: calc(-1 * var(--typography--margin--bottom)) }
 
-			> p, >pre, > blockquote, > ul, > ol {
-				// Space between nested block elements.
-				&:not(:first-child) { margin-top: var(--typography--line) }
-				// Extra line after them.
+			> p, > pre, > blockquote, > ul, > ol {
+				// Extra line after nested block elements..
 				&:last-child { margin-bottom: var(--typography--line-height) }
+
 				// Two extra for multiple.
 				&:not(:only-child):last-child { margin-bottom: calc(var(--typography--line-height) * 2) }
 			}
 
 			// Cancel these out for the last list items.
-			&:last-child > *:last-child:not(._) { margin-bottom: initial }
+			&:last-child > *:last-child { margin-bottom: initial }
 		}
 	}
 
@@ -295,12 +300,13 @@
 
 
 	.dateline {
-		@extend %--double--after;
 		@extend %font--extended;
 		@extend %font--gill-sans--on-verdana;
 		@extend %font--uppercase;
 
 		--color: var(--color--middle);
+
+		@include double-after;
 	}
 
 	.permalink {
@@ -321,7 +327,7 @@
 
 		--color: var(--color--tertiary);
 
-		&:not(:first-child):not(._) { margin-top: var(--typography--line--2) }
+		margin-top: var(--typography--line--2);
 
 		em { font-style: normal } // Cancel these out in favor of small caps. (Gill itals are way off.)
 	}
@@ -335,7 +341,6 @@
 
 		> div { // New container from JS.
 			> dt {
-				@extend %--double--after;
 				@extend %--sticky-header--main;
 				@extend %font--extended;
 				@extend %font--gill-sans--on-verdana;
@@ -344,21 +349,20 @@
 
 				--color: var(--color--secondary);
 
+				@include double-after;
+
 				> a { @extend %typography--underline--disable }
 			}
-
-			> dd { @extend %--nested--spacing }
 		}
 	}
 
 
 
 	> .article {
-		@extend %--nested--spacing;
-
 		> h1 {
 			@extend %--sticky-header--main;
-			@extend %--double--after;
+
+			@include double-after;
 
 			> a {
 				@extend %typography--underline--disable;
@@ -368,12 +372,13 @@
 		}
 
 		> h2 {
-			@extend %--double--after;
 			@extend %font--extended;
 			@extend %font--gill-sans--on-verdana;
 			@extend %font--uppercase;
 
-			&:not(:first-child):not(._) { margin-top: var(--typography--line--4) } // Specificity match the wildcard.
+			margin-top: var(--typography--line--4);
+
+			@include double-after;
 		}
 
 
