@@ -462,9 +462,13 @@
 		> p {
 			@extend %font--gill-sans--x-verdana-x;
 
-			margin-top:   var(--typography--line);
-			padding-left: var(--typograpy--lead);
-			text-indent:  calc(-1 * var(--typograpy--lead));
+			margin-top:    calc(var(--typography--line) + var(--typography--margin--top));
+			padding-left:  var(--typography--line-height);
+			padding-right: var(--typography--line-height);
+			text-indent:   calc(-1 * var(--typography--line-height));
+
+			// Type pseudo interferes with the indent, so take it out of the margin proper.
+			&:before { content: initial }
 
 			> a {
 				@extend %typography--underline--disable;
