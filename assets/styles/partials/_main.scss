@@ -57,6 +57,15 @@
 
 
 
+	%--section-spacing {
+		margin-top: var(--typography--line--6);
+
+		// Smoke em’ if you got em.
+		@include width(744) { @include tall(1080) { margin-top: var(--typography--line--8) } }
+	}
+
+
+
 	%--sticky-header--main {
 		@extend %sticky-header;
 
@@ -349,6 +358,11 @@
 		--color: var(--color--middle);
 	}
 
+	// On the main landing.
+	> .dateline { @extend %--section-spacing }
+
+
+
 	.permalink {
 		@extend %typography--underline--disable;
 
@@ -393,6 +407,14 @@
 				+ dd { margin-top: var(--typography--line--2) }
 			}
 		}
+	}
+
+
+
+	.ookiaks {
+		display: none; // Just use for targeting.
+
+		+ * { @extend %--section-spacing }
 	}
 
 
@@ -457,20 +479,6 @@
 					}
 				}
 			}
-		}
-	}
-
-
-
-
-	.ookiaks {
-		display: none;
-
-		+ * {
-			margin-top: var(--typography--line--6);
-
-			// Smoke em’ if you got em.
-			@include width(744) { @include tall(1080) { margin-top: var(--typography--line--8) } }
 		}
 	}
 
