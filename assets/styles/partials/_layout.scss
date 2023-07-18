@@ -250,7 +250,6 @@ body {
 
 				column-gap:    calc(var(--typography--lead) * 2);
 				display:       flex;
-				padding-right: calc(50vw);
 
 				> li {
 					@extend %--scroll--snap;
@@ -263,6 +262,8 @@ body {
 						@extend %link--text;
 						@extend %typography--underline--disable;
 					}
+
+					&:last-child { padding-right: 40vw } // To scroll snap the last item to the left.
 
 					&:has(> script:only-child) { display: none } // Turn off empty linked list item.
 				}
@@ -401,7 +402,7 @@ body {
 					--typography--scale: 1.125;
 
 					margin-left:    -0.125em;
-					vertical-align: -0.032em; // Optical.
+					vertical-align: -0.035em; // Optical.
 				}
 			}
 		}
@@ -484,15 +485,13 @@ body {
 
 						margin-left: calc(-1 * var(--typography--line));
 
+						&:last-child { padding-right: initial } // Reset scroll padding.
+
 						// Wrap “Sponsor the show” link, on Talk Show nav.
 						&:has(> a[href="http://neat.fm/"]) {
 							white-space: initial;
-							width: 16ch;
 
-							@include width(1024) {
-								white-space: nowrap;
-								width:       initial;
-							}
+							@include width(1024) { white-space: nowrap }
 						}
 					}
 				}
