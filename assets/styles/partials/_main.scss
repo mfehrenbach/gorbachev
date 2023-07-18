@@ -208,6 +208,8 @@
 
 
 	ol, ul, {
+		@extend %--double--after;
+
 		display:             flex;
 		flex-direction:      column;
 		list-style-position: outside;
@@ -371,7 +373,7 @@
 			@extend %font--gill-sans--on-verdana;
 			@extend %font--uppercase;
 
-			&:not(:first-child) { margin-top: var(--typography--line--4) } // Specificity match the wildcard.
+			&:not(:first-child):not(._) { margin-top: var(--typography--line--4) } // Specificity match the wildcard.
 		}
 
 
