@@ -75,5 +75,5 @@ $--tall-threshold:   900;
 
 // Scope hovers.
 @mixin hover {
-	@media (any-hover: hover) { &:hover { @content } }
+	@media (any-hover: hover) { &:hover:not(#specificity):not(#specificity) { @content } }
 }

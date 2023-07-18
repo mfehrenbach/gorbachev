@@ -370,8 +370,6 @@
 
 		// Add gap, cancel out the `&nbsp;`, enlargement, and letter-spacing.
 		margin-left: calc(var(--typography--lead) - 1ch - var(--link--enlargement) + (var(--typography--inset--right--override) * 1em));
-
-		@include hover { --color: var(--color--hover) } // Specificity.
 	}
 
 	.smallprint {
@@ -479,11 +477,7 @@
 			> hr { display: none } // Easier to use the pseudo.
 
 			> li {
-				a {
-					--color: var(--color--tertiary);
-
-					@include hover { --color: var(--color--hover) } // Specificity.
-				}
+				a { --color: var(--color--tertiary) }
 
 				code { --color: var(--color--primary) }
 
