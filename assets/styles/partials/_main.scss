@@ -483,6 +483,60 @@
 
 
 
+	#SiteSearch {
+		margin-bottom: initial !important; // To override inline styles, I’m sorry.
+
+		> div {
+			display:       flex;
+			gap:           var(--typography--lead);
+			margin-bottom: var(--typography--margin--bottom);
+			margin-top:    var(--typography--margin--top);
+
+			input[name='q'] {
+				@extend %link--element;
+
+				--color--highlight:       var(--color--slight); // Override active states.
+				--color--highlight--more: var(--color--slight);
+
+				@include hover { --color--slight: var(--color--middle) }
+
+				background-color: var(--color--slight);
+				border-radius:    var(--link--radius);
+				cursor:           text;
+				flex-grow:        1;
+				font-size:        85%;
+				margin-bottom:    initial;
+				margin-right:     initial !important; // I swear I wouldn’t do this otherwise.
+				margin-top:       initial;
+				margin:           initial;
+				max-width:        66%;
+				padding-bottom:   initial;
+				padding-top:      initial;
+				width:            initial !important; // I’m not proud of this.
+
+				@include width(568) { max-width: 50% }
+			}
+
+			input[type='submit'] {
+				@extend %font--extended;
+				@extend %font--gill-sans--on-verdana;
+				@extend %font--uppercase;
+				@extend %link--element;
+				@extend %typography;
+
+				--color: var(--color--secondary);
+
+				margin-bottom:  initial;
+				margin-top:     initial;
+				padding-bottom: initial;
+				padding-right:  calc(var(--link--enlargement) + var(--typography--margin--right));
+				padding-top:    initial;
+			}
+		}
+	}
+
+
+
 	#Footer {
 		--footer--gap: var(--typography--line--4);
 
@@ -491,58 +545,6 @@
 		flex-grow:       1; // For shorter pages, fill the space.
 		justify-content: end; // And push the contents down.
 		margin-top:      var(--footer--gap);
-
-		#SiteSearch {
-			margin-bottom: initial !important; // To override inline styles, I’m sorry.
-
-			> div {
-				display:       flex;
-				gap:           var(--typography--lead);
-				margin-bottom: var(--typography--margin--bottom);
-				margin-top:    var(--typography--margin--top);
-
-				input[name='q'] {
-					@extend %link--element;
-
-					--color--highlight:       var(--color--slight); // Override active states.
-					--color--highlight--more: var(--color--slight);
-
-					@include hover { --color--slight: var(--color--middle) }
-
-					background-color: var(--color--slight);
-					border-radius:    var(--link--radius);
-					cursor:           text;
-					flex-grow:        1;
-					font-size:        85%;
-					margin-bottom:    initial;
-					margin-right:     initial !important; // I swear I wouldn’t do this otherwise.
-					margin-top:       initial;
-					margin:           initial;
-					max-width:        66%;
-					padding-bottom:   initial;
-					padding-top:      initial;
-					width:            initial !important; // I’m not proud of this.
-
-					@include width(568) { max-width: 50% }
-				}
-
-				input[type='submit'] {
-					@extend %font--extended;
-					@extend %font--gill-sans--on-verdana;
-					@extend %font--uppercase;
-					@extend %link--element;
-					@extend %typography;
-
-					--color: var(--color--secondary);
-
-					margin-bottom:  initial;
-					margin-top:     initial;
-					padding-bottom: initial;
-					padding-right:  calc(var(--link--enlargement) + var(--typography--margin--right));
-					padding-top:    initial;
-				}
-			}
-		}
 
 
 
