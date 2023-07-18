@@ -58,11 +58,11 @@ if (typeof replacementStyles == 'undefined') {
 	// Fix keyboard scrolling in Safari, which ignores root `scroll-padding-top`.
 	if (navigator.userAgent.includes('AppleWebKit') && !navigator.userAgent.includes('Chrome')) {
 		document.addEventListener('keydown', () => {
-			event.preventDefault()
-			let scrollDistance = parseInt(getComputedStyle(document.body).getPropertyValue('--scroll--padding'))
-			scrollDistance = window.innerHeight * (100 - scrollDistance) / 100
 			let scrollDown = (!event.shiftKey && event.code == 'Space') || event.code == 'PageDown'
 			let scrollUp   = (event.shiftKey && event.code == 'Space') || event.code == 'PageUp'
+			if (scrollDown || scrollUp) event.preventDefault()
+			let scrollDistance = parseInt(getComputedStyle(document.body).getPropertyValue('--scroll--padding'))
+			scrollDistance = window.innerHeight * (100 - scrollDistance) / 100
 			if (scrollDown) window.scrollBy(0, scrollDistance)
 			if (scrollUp) window.scrollBy(0, -scrollDistance)
 		})
