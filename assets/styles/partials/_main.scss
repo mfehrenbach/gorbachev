@@ -334,6 +334,11 @@
 
 	h1 { @extend %font--gill-sans--x-verdana-cap }
 
+	h2 {
+		@extend %font--extended;
+		@extend %font--gill-sans--on-verdana;
+		@extend %font--uppercase;
+	}
 
 
 	.dateline {
@@ -369,7 +374,7 @@
 
 
 
-	> .linkedlist {
+	.linkedlist {
 		display:        flex;
 		flex-direction: column;
 		row-gap:        var(--typography--line--4);
@@ -392,7 +397,7 @@
 
 
 
-	> .article {
+	.article {
 		> h1 {
 			@extend %--sticky-header--main;
 
@@ -402,61 +407,53 @@
 				--color: var(--color--primary);
 			}
 		}
-
-		> h2 {
-			@extend %font--extended;
-			@extend %font--gill-sans--on-verdana;
-			@extend %font--uppercase;
-
-
-		}
+	}
 
 
 
-		> .footnotes {
-			--color: var(--color--secondary);
+	.footnotes {
+		--color: var(--color--secondary);
 
-			margin-top: var(--typography--line--4);
+		margin-top: var(--typography--line--4);
 
-			> ol {
-				margin-top:  calc(-1 * var(--typography--line));
-				padding-top: var(--typography--line);
-				position:    relative;
+		> ol {
+			margin-top:  calc(-1 * var(--typography--line));
+			padding-top: var(--typography--line);
+			position:    relative;
 
-				&:before { // Lil’ bar.
-					background-color: var(--color--middle);
-					content:          '';
-					height:           var(--typography--stroke);
-					left:             0;
-					position:         absolute;
-					top:              0;
-					width:            33%;
+			&:before { // Lil’ bar.
+				background-color: var(--color--middle);
+				content:          '';
+				height:           var(--typography--stroke);
+				left:             0;
+				position:         absolute;
+				top:              0;
+				width:            33%;
 
-					@include width(568) { width: 25% }
+				@include width(568) { width: 25% }
+			}
+
+			> hr { display: none } // Easier to use the pseudo.
+
+			> li {
+				a {
+					--color: var(--color--tertiary);
+
+					@include hover { --color: var(--color--hover) } // Specificity.
 				}
 
-				> hr { display: none } // Easier to use the pseudo.
+				code { --color: var(--color--primary) }
 
-				> li {
-					a {
-						--color: var(--color--tertiary);
+				.footnoteBackLink { // The return arrow.
+					@extend %typography--underline--disable;
 
-						@include hover { --color: var(--color--hover) } // Specificity.
-					}
+					line-height:     1em; // For vertical-align.
+					vertical-align: -0.15em;
 
-					code { --color: var(--color--primary) }
-
-					.footnoteBackLink { // The return arrow.
-						@extend %typography--underline--disable;
-
-						line-height:     1em; // For vertical-align.
-						vertical-align: -0.15em;
-
-						@include browser(safari--mobile) {
-							font-family:    -apple-system; // Slightly better arrow.
-							font-size:       170%;
-							vertical-align: -0.125em;
-						}
+					@include browser(safari--mobile) {
+						font-family:    -apple-system; // Slightly better arrow.
+						font-size:       170%;
+						vertical-align: -0.125em;
 					}
 				}
 			}
@@ -465,7 +462,8 @@
 
 
 
-	> .ookiaks {
+
+	.ookiaks {
 		display: none;
 
 		+ * {
@@ -478,7 +476,7 @@
 
 
 
-	> .archive {
+	.archive {
 		#SiteSearch {
 			@extend %--sticky-header--main;
 
@@ -620,7 +618,7 @@
 		justify-content: end; // And push the contents down.
 		margin-top:      var(--footer--gap);
 
-		.smallprint:not(:first-child) {
+		> .smallprint:not(:first-child) {
 			margin-top: var(--typography--line);
 
 			// Hide prefs link and extra breaks.
