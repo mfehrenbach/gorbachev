@@ -488,13 +488,17 @@
 		#SiteSearch {
 			@extend %--sticky-header--main;
 
-			// Inline style again, #sorrynotsorry.
+			// Inline style again.
 			margin-bottom: calc(-1 * var(--sticky--chin) - var(--sticky--fade)) !important;
 		}
 
 		> h1 { margin-top: var(--typography--line--2) }
 
-		> h2 { @extend .dateline }
+		> h2 {
+			@extend .dateline;
+
+			&:first-of-type { margin-top: var(--typography--line--2) }
+		}
 
 		> p {
 			@extend %font--gill-sans--x-verdana-x;
