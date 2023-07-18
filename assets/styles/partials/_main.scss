@@ -430,9 +430,9 @@
 			}
 
 			+ * { margin-top:  var(--typography--line--2) } // Line up to nav.
-
-			+ h6 + * { margin-top: var(--typography--line--2) } // After dateline.
 		}
+
+		> h6 + * { margin-top: var(--typography--line--2) } // After dateline.
 
 		// “The Talk Show” landing.
 		> h2:has(> a[href^="/thetalkshow"]) {
@@ -446,6 +446,8 @@
 				--color: var(--color--tertiary);
 
 				margin-top: var(--typography--lead);
+
+				+ * { margin-top: var(--typography--line) }
 			}
 		}
 	}
