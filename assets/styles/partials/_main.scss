@@ -496,22 +496,28 @@
 	#PreviousNext {
 		margin-top: var(--typography--line--4);
 
-		tr:not(:first-child) td { padding-top: var(--typography--line) } // Second row. Oh, tables.
+		table {
+			width: 100%;
 
-		td:first-child { // Prev/next.
-			padding-right: var(--typography--lead);
-			text-align:    right;
+			tr:not(:first-child) td { padding-top: var(--typography--line) } // Second row. Oh, tables.
 
-			@include width(744) { @include tall(480) { padding-right: var(--typography--line) } }
-		}
+			td:first-child { // Prev/next.
+				padding-right: var(--typography--lead);
+				text-align:    right;
 
-		td:not(:first-child) { // Article titles.
-			@extend %font--gill-sans--x-verdana-x;
+				@include width(744) { @include tall(480) { padding-right: var(--typography--line) } }
+			}
 
-			a {
-				@extend %typography--underline--disable;
+			td:not(:first-child) { // Article titles.
+				@extend %font--gill-sans--x-verdana-x;
 
-				--color: var(--color--primary);
+				width: 100%;
+
+				a {
+					@extend %typography--underline--disable;
+
+					--color: var(--color--primary);
+				}
 			}
 		}
 	}
