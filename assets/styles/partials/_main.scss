@@ -477,6 +477,7 @@
 				@extend %font--gill-sans--in-verdana;
 				@extend %font--uppercase;
 				@extend %typography--inline;
+				@extend nobr; // Some of the dates have spaces in them! Mystery solved.
 
 				--color: var(--color--tertiary);
 			}
