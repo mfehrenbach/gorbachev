@@ -480,6 +480,7 @@
 		margin-bottom: initial !important; // To override inline styles, I’m sorry.
 
 		> div {
+			align-items:   start;
 			display:       flex;
 			gap:           var(--typography--lead);
 			margin-bottom: var(--typography--margin--bottom);
@@ -539,9 +540,7 @@
 		justify-content: end; // And push the contents down.
 		margin-top:      var(--footer--gap);
 
-
-
-		.smallprint {
+		.smallprint:not(:first-child) {
 			margin-top: var(--typography--line);
 
 			> a[href='/preferences/'], > br { display: none } // Hide prefs link and extra breaks.
