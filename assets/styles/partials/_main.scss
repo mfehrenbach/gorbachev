@@ -462,13 +462,8 @@
 		> p {
 			@extend %font--gill-sans--x-verdana-x;
 
-			margin-top:    calc(var(--typography--line) + var(--typography--margin--top));
-			padding-left:  var(--typography--line-height);
-			padding-right: var(--typography--line-height);
-			text-indent:   calc(-1 * var(--typography--line-height));
-
-			// Type pseudo interferes with the indent, so take it out of the margin proper.
-			&:before { content: initial }
+			margin-top: var(--typography--line);
+			max-width:  48ch;
 
 			> a {
 				@extend %typography--underline--disable;
@@ -480,10 +475,11 @@
 				@extend %font--extended;
 				@extend %font--gill-sans--in-verdana;
 				@extend %font--uppercase;
-				@extend %typography--inline;
-				@extend nobr; // Some of the dates have spaces in them! Mystery solved.
+				@extend %typography--inline-block;
 
 				--color: var(--color--tertiary);
+
+				width: 100%; // Force onto new line.
 			}
 		}
 	}
