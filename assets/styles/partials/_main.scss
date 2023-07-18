@@ -236,8 +236,6 @@
 		@include double-after;
 
 		> li {
-			@extend %typography; // For “naked“ list items.
-
 			display:       list-item;
 			margin-bottom: var(--typography--margin--bottom);
 			margin-top:    var(--typography--margin--top);
@@ -361,7 +359,6 @@
 				@extend %--sticky-header--main;
 				@extend %font--extended;
 				@extend %font--gill-sans--on-verdana;
-				@extend %typography;
 				@extend %font--uppercase;
 
 				--color: var(--color--secondary);

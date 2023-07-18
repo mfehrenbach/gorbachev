@@ -257,7 +257,6 @@ body {
 					@extend %font--extended;
 					@extend %font--gill-sans--on-verdana;
 					@extend %font--uppercase;
-					@extend %typography;
 					@extend nobr;
 
 					> a {
@@ -385,7 +384,6 @@ body {
 			@extend %font--extended;
 			@extend %font--gill-sans--on-verdana;
 			@extend %font--uppercase;
-			@extend %typography;
 			@extend nobr;
 
 			--color: var(--color--tertiary);

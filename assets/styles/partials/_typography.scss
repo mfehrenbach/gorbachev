@@ -88,12 +88,14 @@ nobr, .nowrap { white-space: nowrap }
 
 // Bounding/line-box control.
 %typography,
+dt,
 h1,
 h2,
 h3,
 h4,
 h5,
 h6,
+li,
 p,
 td {
 	@extend %--basic-properties;
