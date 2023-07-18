@@ -200,8 +200,8 @@ body {
 			margin-right:     calc(-1 * var(--typography--lead));
 			margin-top:       calc(-1 * var(--sticky--forehead));
 			padding-bottom:   calc(var(--sticky--chin) + var(--sticky--fade));
-			padding-left:     var(--typography--lead);
-			padding-right:    var(--typography--lead);
+			padding-left:     calc(var(--typography--lead) + var(--typography--margin--left, 0em) + var(--sticky--left--inset, 0em));
+			padding-right:    calc(var(--typography--lead) + var(--typography--margin--right, 0em) + var(--sticky--right--inset, 0em));
 			padding-top:      var(--sticky--forehead);
 			position:         sticky;
 			top:              var(--sticky--top);

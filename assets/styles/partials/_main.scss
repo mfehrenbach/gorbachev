@@ -22,31 +22,25 @@
 
 
 
-	@at-root {
-		body #Box { // To match specificity without loads of shenanigans.
-			%--sticky-header--main {
-				@extend %sticky-header;
+	%--sticky-header--main {
+		@extend %sticky-header;
 
-				--sticky--chin:     var(--typography--line-height);
-				--sticky--forehead: var(--typography--line);
-				--sticky--top:      calc(var(--sticky--first) + var(--typography--cap) / var(--typography--scale, 1)); // Nav above.
+		--sticky--chin:     var(--typography--line-height);
+		--sticky--forehead: var(--typography--line);
+		--sticky--top:      calc(var(--sticky--first) + var(--typography--cap) / var(--typography--scale, 1)); // Nav above.
 
-				padding-left:   calc(var(--typography--lead) + var(--typography--margin--left));
-				padding-right:  calc(var(--typography--lead) + var(--typography--margin--right) + var(--sticky--right--inset, 0em));
-				z-index:        1; // In front of siblings.
+		z-index: 1; // In front of siblings.
 
-				@include width(568) {
-					--sticky--forehead: var(--typography--line-height);
-					--sticky--top:    0;
+		@include width(568) {
+			--sticky--forehead: var(--typography--line-height);
+			--sticky--top:    0;
 
-					@include browser(chrome) { --sticky--top: -0.01rem } // Prevent visible sliver above.
+			@include browser(chrome) { --sticky--top: -0.01rem } // Prevent visible sliver above.
 
-					@include width(744) {
-						@include tall(480) {
-							--sticky--chin:     var(--typography--line);
-							--sticky--forehead: var(--typography--line);
-						}
-					}
+			@include width(744) {
+				@include tall(480) {
+					--sticky--chin:     var(--typography--line);
+					--sticky--forehead: var(--typography--line);
 				}
 			}
 		}
