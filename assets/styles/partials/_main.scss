@@ -128,7 +128,7 @@
 		@extend %typography--strikethrough;
 
 		--color:            var(--color--secondary);
-		--color--underline: var(--color--hover);
+		--color--underline: var(--color--primary);
 
 		display: inline;
 	}
