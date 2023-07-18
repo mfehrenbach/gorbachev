@@ -16,7 +16,11 @@
 		&:first-child { margin-top: initial }
 	}
 
-	p, blockquote, ol, ul, pre {
+	blockquote,
+	ol,
+	p,
+	pre,
+	ul {
 		margin-top: var(--typography--line);
 
 		&:first-child { margin-top: initial }
@@ -91,14 +95,20 @@
 		}
 
 		// The rarer nested ones, also down a notch.
-		blockquote, strong { --color: var(--color--tertiary) }
+		blockquote,
+		strong {
+			--color: var(--color--tertiary);
+		}
 
 		s {
 			--color:            var(--color--tertiary);
 			--color--underline: var(--color--primary);
 		}
 
-		ol, ul, blockquote, pre {
+		blockquote,
+		ol,
+		pre
+		ul {
 			margin-left:   var(--typography--lead);
 			padding-right: initial;
 		}
@@ -137,7 +147,8 @@
 		--color--underline: var(--color--primary);
 	}
 
-	strong, sup {
+	strong,
+	sup {
 		@extend %font--extended;
 		@extend %font--gill-sans--in-verdana;
 		@extend %font--uppercase;
@@ -213,7 +224,8 @@
 
 
 
-	ol, ul, {
+	ol,
+	ul {
 		display:             flex;
 		flex-direction:      column;
 		list-style-position: outside;
@@ -238,13 +250,18 @@
 				margin-left:  initial;
 				margin-right: initial;
 
+				// Take off top one and bottom one.
 				&:first-child:before, &:last-child:after { display: none }
 			}
 
 			// Nested last paragraph margin “collapses” up.
 			> blockquote > p:last-child { margin-bottom: calc(-1 * var(--typography--margin--bottom)) }
 
-			> p, > pre, > blockquote, > ul, > ol {
+			> blockquote,
+			> ol,
+			> p,
+			> pre,
+			> ul {
 				// Extra line after nested block elements..
 				&:last-child { margin-bottom: var(--typography--line-height) }
 
@@ -597,7 +614,8 @@
 		.smallprint:not(:first-child) {
 			margin-top: var(--typography--line);
 
-			> a[href='/preferences/'], > br { display: none } // Hide prefs link and extra breaks.
+			// Hide prefs link and extra breaks.
+			> a[href='/preferences/'], > br { display: none }
 		}
 
 		@include width(744) {

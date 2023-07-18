@@ -87,7 +87,15 @@ nobr, .nowrap { white-space: nowrap }
 
 
 // Bounding/line-box control.
-h1, h2, h3, h4, h5, h6, td, p, %typography {
+%typography
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+td {
 	@extend %--basic-properties;
 	@extend %--color-spacing-weight;
 	@extend %--variables--face;
@@ -109,8 +117,6 @@ h1, h2, h3, h4, h5, h6, td, p, %typography {
 	&:before { margin-top:    var(--typography--margin--top) }
 	&:after  { margin-bottom: var(--typography--margin--bottom) }
 }
-
-
 
 td {
 	display:    table-cell; // Reset typography properties that break these.

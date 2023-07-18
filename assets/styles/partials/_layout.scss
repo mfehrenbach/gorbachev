@@ -301,7 +301,8 @@ body {
 
 
 		// Ad block internals.
-		#MainMartini, #SidebarMartini div {
+		#MainMartini,
+		#SidebarMartini div {
 			display: flex;
 			gap:     var(--typography--lead);
 
