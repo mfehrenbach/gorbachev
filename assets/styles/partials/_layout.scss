@@ -48,11 +48,11 @@ body {
 	--color--slate:      #4a525a;
 
 	--color--highest:   white;
-	--color--primary:   rgba(white var(--opacity--primary)); // SCSS mixes the name to RGB.
-	--color--secondary: rgba(white var(--opacity--secondary));
-	--color--tertiary:  rgba(white var(--opacity--tertiary));
-	--color--middle:    rgba(white var(--opacity--middle));
-	--color--slight:    rgba(white var(--opacity--slight));
+	--color--primary:   rgba(255, 255, 255, var(--opacity--primary));
+	--color--secondary: rgba(255, 255, 255, var(--opacity--secondary));
+	--color--tertiary:  rgba(255, 255, 255, var(--opacity--tertiary));
+	--color--middle:    rgba(255, 255, 255, var(--opacity--middle));
+	--color--slight:    rgba(255, 255, 255, var(--opacity--slight));
 
 	// Map to use.
 	--color:             var(--color--primary);
