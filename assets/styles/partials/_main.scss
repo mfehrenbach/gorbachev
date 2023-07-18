@@ -428,6 +428,25 @@
 
 				--color: var(--color--primary);
 			}
+
+			+ * { margin-top:  var(--typography--line--2) } // Line up to nav.
+
+			+ h6 + * { margin-top: var(--typography--line--2) } // After dateline.
+		}
+
+		// “The Talk Show” landing.
+		> h2:has(> a[href^="/thetalkshow"]) {
+			> a { @extend %typography--underline--disable }
+
+			+ h6 { // Dateline, smaller (akin to Archive landing).
+				@extend %font--extended;
+				@extend %font--gill-sans--in-verdana;
+				@extend %font--uppercase;
+
+				--color: var(--color--tertiary);
+
+				margin-top: var(--typography--lead);
+			}
 		}
 	}
 
@@ -634,7 +653,7 @@
 			margin-top: var(--typography--line);
 
 			// Hide prefs link and extra breaks.
-			> a[href='/preferences/'], > br { display: none }
+			> a[href="/preferences/"], > br { display: none }
 		}
 
 		@include width(744) {
