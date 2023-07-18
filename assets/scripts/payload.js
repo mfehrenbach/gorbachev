@@ -27,29 +27,31 @@ if (typeof replacementStyles == 'undefined') {
 
 	// Duplicate the sidebar ad to the main column, for mobile.
 	const adBlock = document.getElementById('SidebarMartini')
-	let mainAdBlock = adBlock.cloneNode(true)
-	mainAdBlock.id = 'MainMartini'
-	let firstThing = document.querySelector('#Main > *:first-child')
-	if (firstThing.classList.contains('dateline')) firstThing = document.querySelector('#Main > *:nth-child(2)')
-	if (firstThing.classList.contains('article')) {
-		let adPlacement = null
-		// Ideally place it between paragraphs, but not at the start.
-		firstThing.querySelectorAll('.article > *:not(h6) + p + p').forEach(paragraph => {
-			// But only if not preceded by a colon, that’d be weird.
-			if (!adPlacement && paragraph.previousElementSibling.textContent.at(-1) != ':') adPlacement = paragraph
-		})
-		// Then go after the first blockquote, if need be.
-		if (!adPlacement) adPlacement = firstThing.querySelector('.article > blockquote + p')
-		if (!adPlacement) adPlacement = firstThing.querySelector('.article > ul > li:nth-child(2) > p:last-child') // It happens.
-		if (adPlacement) adPlacement.before(mainAdBlock)
-	} else if (firstThing.classList.contains('linkedlist')) {
-		firstThing.querySelector('div:first-of-type').appendChild(mainAdBlock) // After the first “definition”.
-	}
+	if (adBlock) {
+		let mainAdBlock = adBlock.cloneNode(true)
+		mainAdBlock.id = 'MainMartini'
+		let firstThing = document.querySelector('#Main > *:first-child')
+		if (firstThing.classList.contains('dateline')) firstThing = document.querySelector('#Main > *:nth-child(2)')
+		if (firstThing.classList.contains('article')) {
+			let adPlacement = null
+			// Ideally place it between paragraphs, but not at the start.
+			firstThing.querySelectorAll('.article > *:not(h6) + p + p').forEach(paragraph => {
+				// But only if not preceded by a colon, that’d be weird.
+				if (!adPlacement && paragraph.previousElementSibling.textContent.at(-1) != ':') adPlacement = paragraph
+			})
+			// Then go after the first blockquote, if need be.
+			if (!adPlacement) adPlacement = firstThing.querySelector('.article > blockquote + p')
+			if (!adPlacement) adPlacement = firstThing.querySelector('.article > ul > li:nth-child(2) > p:last-child') // It happens.
+			if (adPlacement) adPlacement.before(mainAdBlock)
+		} else if (firstThing.classList.contains('linkedlist')) {
+			firstThing.querySelector('div:first-of-type').appendChild(mainAdBlock) // After the first “definition”.
+		}
 
-	// Wrap another layer around the sidebar ad, for stickiness.
-	const wrapper = document.createElement('div')
-	wrapper.append(...adBlock.children)
-	adBlock.appendChild(wrapper)
+		// Wrap another layer around the sidebar ad, for stickiness.
+		const wrapper = document.createElement('div')
+		wrapper.append(...adBlock.children)
+		adBlock.appendChild(wrapper)
+	}
 
 
 
