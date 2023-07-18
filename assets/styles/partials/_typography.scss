@@ -130,6 +130,16 @@ td {
 	@extend %--variables--face;
 	@extend %--variables--leading;
 
+	display:     inline;
+	line-height: 1em; // To not mess with parent baselines.
+}
+
+%typography--inline-block {
+	@extend %--basic-properties;
+	@extend %--color-spacing-weight;
+	@extend %--variables--face;
+	@extend %--variables--leading;
+
 	display:       inline-block; // For negative margins.
 	margin-bottom: var(--typography--margin--bottom);
 	margin-top:    var(--typography--margin--top);
