@@ -444,10 +444,18 @@ body {
 				overflow:         visible;
 				padding:          initial;
 				position:         static;
+				scroll-snap-type: initial;
 				text-align:       right;
+
+				%--scroll--snap--reset {
+					scroll-margin-left: initial;
+					scroll-snap-align:  initial;
+				}
 
 				// Byline.
 				> p:first-child {
+					@extend %--scroll--snap--reset;
+
 					margin-bottom: var(--typography--line--2);
 					position:      sticky; // Simple setup, nav will do the fancy cover/masking.
 					top:           var(--sticky--first);
@@ -466,6 +474,8 @@ body {
 					flex-direction: column;
 					row-gap:        var(--typography--lead);
 					z-index:        1; // In front of ad block.
+
+					> li { @extend %--scroll--snap--reset }
 				}
 			}
 
