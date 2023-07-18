@@ -46,22 +46,21 @@ body {
 	--opacity--slight:    13%;   // #606870.
 
 	--color--slate:      #4a525a;
-	--color--slate--rgb: 74, 82, 90;
 
-	--color--primary:   rgba(255, 255, 255, var(--opacity--primary));
-	--color--secondary: rgba(255, 255, 255, var(--opacity--secondary));
-	--color--tertiary:  rgba(255, 255, 255, var(--opacity--tertiary));
-	--color--middle:    rgba(255, 255, 255, var(--opacity--middle));
-	--color--slight:    rgba(255, 255, 255, var(--opacity--slight));
+	--color--highest:   white;
+	--color--primary:   rgba(white var(--opacity--primary)); // SCSS mixes the name to RGB.
+	--color--secondary: rgba(white var(--opacity--secondary));
+	--color--tertiary:  rgba(white var(--opacity--tertiary));
+	--color--middle:    rgba(white var(--opacity--middle));
+	--color--slight:    rgba(white var(--opacity--slight));
 
 	// Map to use.
-	--color:                  var(--color--primary);
-	--color--background:      var(--color--slate);
-	--color--background--rgb: var(--color--slate--rgb);
+	--color:             var(--color--primary);
+	--color--background: var(--color--slate);
 
 	--color--highlight:       var(--color--slight);
 	--color--highlight--more: var(--color--middle);
-	--color--hover:           white;
+	--color--hover:           var(--color--highest);
 	--color--underline:       var(--color--middle);
 
 	// Links.
@@ -193,7 +192,7 @@ body {
 
 		@mixin sticky-head {
 			// Chrome needs the prefix; Safari understands with and without.
-			-webkit-mask:     linear-gradient(to top, transparent, var(--color--tertiary) var(--sticky--fade), var(--color--hover) var(--sticky--fade));
+			-webkit-mask:     linear-gradient(to top, transparent, var(--color--tertiary) var(--sticky--fade), var(--color--highest) var(--sticky--fade));
 			background-color: var(--color--background);
 			margin-bottom:    calc(-1 * var(--sticky--chin) - var(--sticky--fade));
 			margin-left:      calc(-1 * var(--sticky--outset--left, var(--typography--lead)));

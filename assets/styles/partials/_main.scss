@@ -209,7 +209,7 @@
 	code {
 		@extend %font--sf-mono--in-verdana;
 
-		--color: var(--color--hover);
+		--color: var(--color--highest);
 
 		background-color: var(--color--slight);
 		border-radius:    var(--link--radius);
