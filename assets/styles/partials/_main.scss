@@ -9,25 +9,51 @@
 
 
 #Main {
-	// Base spacing.
-	> * {
-		margin-top: var(--typography--line--4);
-
-		&:first-child { margin-top: initial }
-	}
-
+	// Default block element spacing.
 	blockquote,
+	dd,
+	dl,
+	dt,
+	h4,
+	h5,
+	h6,
 	ol,
 	p,
 	pre,
 	ul {
 		margin-top: var(--typography--line);
-
-		&:first-child { margin-top: initial }
 	}
 
-	// Mixin to leverage the cascade.
-	@mixin double-after { + * { margin-top: var(--typography--line--2) } }
+	blockquote,
+	dl,
+	h1,
+	h2,
+	ol,
+	ul {
+		+ * { margin-top: var(--typography--line--2) } // Double after.
+	}
+
+	h1 { margin-top: var(--typography--line--6) }
+	h2 { margin-top: var(--typography--line--4) }
+	h3 { margin-top: var(--typography--line--2) }
+
+	blockquote,
+	dd,
+	dl,
+	dt,
+	h1,
+	h2,
+	h3,
+	h4,
+	h5,
+	h6,
+	ol,
+	p,
+	p,
+	pre,
+	ul {
+		&:first-child { margin-top: initial }
+	}
 
 
 
@@ -86,8 +112,6 @@
 		padding-left:  var(--typography--lead);
 		padding-right: var(--typography--lead);
 		position:      relative;
-
-		@include double-after;
 
 		a { // Down one more notch.
 			--color:            var(--color--tertiary);
@@ -233,8 +257,6 @@
 		padding-right:       calc(var(--typography--lead) + var(--list--marker-shift));
 		row-gap:             var(--typography--lead);
 
-		@include double-after;
-
 		> li {
 			display:       list-item;
 			margin-bottom: var(--typography--margin--bottom);
@@ -320,8 +342,6 @@
 		@extend %font--uppercase;
 
 		--color: var(--color--middle);
-
-		@include double-after;
 	}
 
 	.permalink {
@@ -363,9 +383,9 @@
 
 				--color: var(--color--secondary);
 
-				@include double-after;
-
 				> a { @extend %typography--underline--disable }
+
+				+ dd { margin-top: var(--typography--line--2) }
 			}
 		}
 	}
@@ -375,8 +395,6 @@
 	> .article {
 		> h1 {
 			@extend %--sticky-header--main;
-
-			@include double-after;
 
 			> a {
 				@extend %typography--underline--disable;
@@ -390,9 +408,7 @@
 			@extend %font--gill-sans--on-verdana;
 			@extend %font--uppercase;
 
-			margin-top: var(--typography--line--4);
 
-			@include double-after;
 		}
 
 
@@ -472,11 +488,7 @@
 
 		> h1 { margin-top: var(--typography--line--2) }
 
-		> h2 {
-			@extend .dateline;
-
-			margin-top: var(--typography--line--4);
-		}
+		> h2 { @extend .dateline }
 
 		> p {
 			@extend %font--gill-sans--x-verdana-x;
