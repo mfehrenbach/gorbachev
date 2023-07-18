@@ -377,6 +377,8 @@ body {
 			> p { bottom: var(--sticky--first) }
 		}
 
+		ul + #SidebarTop { margin-top: 100vh } // On pages with no ad block.
+
 		.toplink {
 			@extend %--scroll--snap;
 			@extend %font--extended;
