@@ -335,11 +335,11 @@
 
 
 	hr {
-		display:         flex;
-		justify-content: center;
-		margin-bottom:   var(--typography--line--4);
-		margin-top:      var(--typography--line--2);
-		padding-right:   var(--typography--line); // Optical shift.
+		--divider--spacing: var(--typography--line--2);
+
+		display:       flex;
+		margin-bottom: var(	--divider--spacing);
+		margin-top:    var(	--divider--spacing);
 
 		&:after {
 			@extend %typography--inline-block;
@@ -348,6 +348,8 @@
 			content: '•\2003\2003•\2003\2003•'; // Those are `&emsp;` between.
 			display: flow-root;
 		}
+
+		@include width(744) { @include tall(480) { --divider--spacing: var(--typography--line--3) } }
 	}
 
 
