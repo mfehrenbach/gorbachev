@@ -344,10 +344,11 @@ body {
 				align-items:    end;
 				bottom:         var(--typography--line);
 				flex-direction: column;
+				margin-left:    calc(-1 * var(--typography--lead));
 				position:       sticky;
 
 				// Allow left-ragged edge to poke out a bit for better wraps.
-				> p { margin-left: calc(-1 * var(--typography--lead)) }
+				@include width(1024) { margin-left: calc(-1 * var(--typography--line)) }
 			}
 		}
 
