@@ -483,16 +483,14 @@ body {
 					> li {
 						@extend %--scroll--snap--reset;
 
-						margin-left: calc(-1 * var(--typography--line));
+						margin-left: calc(-1 * var(--typography--lead));
 
 						&:last-child { padding-right: initial } // Reset scroll padding.
 
 						// Wrap “Sponsor the show” link, on Talk Show nav.
-						&:has(> a[href="http://neat.fm/"]) {
-							white-space: initial;
+						&:has(> a[href="http://neat.fm/"]) { white-space: initial }
 
-							@include width(1024) { white-space: nowrap }
-						}
+						@include width(1024) { margin-left: calc(-1 * var(--typography--line)) }
 					}
 				}
 			}
