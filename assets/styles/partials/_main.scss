@@ -374,14 +374,9 @@
 	}
 
 	audio {
-		@extend %typography--inline-block;
-
 		height:        var(--typography--line-height);
 		margin-bottom: calc(var(--typography--line-height) + var(--typography--margin--bottom));
 		margin-top:    var(--typography--line-height);
-
-		// Inset a bit visually, to ragged edge.
-		@include width(568) { width: calc(100% - var(--typography--lead)) }
 
 		// Approximate Safari’s vibe.
 		@include browser(chrome) {
