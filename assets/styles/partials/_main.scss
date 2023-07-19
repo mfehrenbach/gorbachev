@@ -116,37 +116,30 @@
 
 
 	blockquote {
-		--color: var(--color--secondary);
+		// Ratchet colors down a notch.
+		--color--primary--parent:   var(--color--primary);
+		--color--secondary--parent: var(--color--secondary);
+		--color--tertiary--parent:  var(--color--tertiary);
+
+		> * {
+			--color: var(--color--secondary--parent); // Redeclare.
+
+			--color--highest:   var(--color--primary--parent);
+			--color--primary:   var(--color--secondary--parent);
+			--color--secondary: var(--color--tertiary--parent);
+		}
 
 		padding-left:  var(--typography--lead);
 		padding-right: var(--typography--lead);
 		position:      relative;
 
-		a { // Down one more notch.
-			--color:            var(--color--tertiary);
-			--color--underline: var(--color--middle);
-		}
-
-		// The rarer nested ones, also down a notch.
-		blockquote,
-		strong {
-			--color: var(--color--tertiary);
-		}
-
-		s {
-			--color:            var(--color--tertiary);
-			--color--underline: var(--color--primary);
-		}
-
 		blockquote,
 		ol,
 		pre,
 		ul {
-			margin-left:   var(--typography--lead);
+			margin-left:   var(--typography--lead); // Further inset.
 			padding-right: initial;
 		}
-
-		code { --color: var(--color--primary) }
 
 		// The bar on the side.
 		&:before {
