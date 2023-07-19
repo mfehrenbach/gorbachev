@@ -374,6 +374,21 @@
 
 		// Inset a bit visually, to ragged edge.
 		@include width(1024) { width: calc(100% - var(--typography--lead)) }
+
+		// Approximate Safari’s vibe.
+		@include browser(chrome) {
+			filter: invert(1); // “Dark mode.”
+
+			&::-webkit-media-controls-enclosure {
+				border-radius:    var(--link--enlargement);
+				background-color: rgba(247, 253, 255, 17%);
+			}
+
+			&::-webkit-media-controls-play-button { transform: scale(1.2) }
+
+			&::-webkit-media-controls-current-time-display,
+			&::-webkit-media-controls-time-remaining-display { text-shadow: initial }
+		}
 	}
 
 	p:has(> audio:only-child) { // This `:has` sure is handy.
