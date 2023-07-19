@@ -337,9 +337,11 @@
 	hr {
 		--divider--spacing: var(--typography--line--2);
 
-		display:       flex;
-		margin-bottom: var(	--divider--spacing);
-		margin-top:    var(	--divider--spacing);
+		display:    flex;
+		margin-top: var(--divider--spacing);
+
+		&:first-child      { margin-top: initial }
+		&:not(:last-child) { margin-bottom: var( --divider--spacing) }
 
 		&:after {
 			@extend %typography--inline-block;
