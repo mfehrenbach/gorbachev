@@ -363,6 +363,26 @@
 	}
 
 
+
+	audio {
+		@extend %typography--inline-block;
+
+		height: var(--typography--line-height);
+		width:  100%;
+
+		// Inset a bit visually, to ragged edge.
+		@include width(1024) { width: calc(100% - var(--typography--lead)) }
+	}
+
+	p:has(> audio:only-child) { // This `:has` sure is handy.
+		margin-top: var(--typography--line--2);
+
+		&:first-child      { margin-top: initial }
+		&:not(:last-child) { margin-bottom: var( --typography--line--2) }
+	}
+
+
+
 	.dateline {
 		@extend %font--extended;
 		@extend %font--gill-sans--on-verdana;
