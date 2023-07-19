@@ -377,12 +377,15 @@
 
 		// Approximate Safari’s vibe.
 		@include browser(chrome) {
-			filter: invert(1); // “Dark mode.”
+			border-radius:    var(--link--enlargement);
+			background-color: rgba(10, 0, 0, 17%);
 
-			&::-webkit-media-controls-enclosure {
-				border-radius:    var(--link--enlargement);
-				background-color: rgba(247, 253, 255, 17%);
+			&::-webkit-media-controls {
+				filter:         invert(1); // Faux “dark mode” for controls.
+				mix-blend-mode: screen;
 			}
+
+			&::-webkit-media-controls-enclosure { background-color: transparent }
 
 			&::-webkit-media-controls-play-button { transform: scale(1.2) }
 
