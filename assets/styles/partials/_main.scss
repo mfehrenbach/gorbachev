@@ -366,13 +366,19 @@
 
 
 
+	audio, iframe[src*="youtube.com"] {
+		width: 100%;
+
+		// Inset a bit visually, to ragged edge.
+		@include width(568) { width: calc(100% - var(--typography--lead)) }
+	}
+
 	audio {
 		@extend %typography--inline-block;
 
 		height:        var(--typography--line-height);
 		margin-bottom: calc(var(--typography--line-height) + var(--typography--margin--bottom));
 		margin-top:    var(--typography--line-height);
-		width:         100%;
 
 		// Inset a bit visually, to ragged edge.
 		@include width(568) { width: calc(100% - var(--typography--lead)) }
@@ -396,9 +402,16 @@
 		}
 	}
 
-	// This doesn’t account for anonymous text, but I don’t think that is possible.
-	*:first-child > audio:only-child { margin-top: initial }
+	iframe[src*="youtube.com"] {
+		aspect-ratio:  16 / 9; // An assumption.
+		height:        auto;
+		margin-bottom: var(--typography--line-height);
+		margin-top:    calc(var(--typography--line-height) - var(--typography--margin--top));
+	}
 
+	// This doesn’t account for “anonymous” text, but I don’t think that is possible.
+	*:first-child > audio:only-child,
+	*:first-child > iframe[src*="youtube.com"]:only-child { margin-top: initial }
 
 
 
