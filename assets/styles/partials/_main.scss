@@ -374,8 +374,9 @@
 	}
 
 	audio {
+		display:       flow-root;
 		height:        var(--typography--line-height);
-		margin-bottom: calc(var(--typography--line-height) + var(--typography--margin--bottom));
+		margin-bottom: var(--typography--line-height);
 		margin-top:    var(--typography--line-height);
 
 		// Approximate Safari’s vibe.
