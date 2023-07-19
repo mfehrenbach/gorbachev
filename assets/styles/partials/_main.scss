@@ -468,6 +468,8 @@
 
 		margin-top: var(--typography--line--4);
 
+		> hr { display: none } // Easier to use the pseudo.
+
 		> ol {
 			margin-top:  calc(-1 * var(--typography--line));
 			padding-top: var(--typography--line);
@@ -484,8 +486,6 @@
 
 				@include width(568) { width: 25% }
 			}
-
-			> hr { display: none } // Easier to use the pseudo.
 
 			> li {
 				a { --color: var(--color--tertiary) }
