@@ -334,6 +334,24 @@
 
 
 
+	hr {
+		display:         flex;
+		justify-content: center;
+		margin-bottom:   var(--typography--line--4);
+		margin-top:      var(--typography--line--2);
+		padding-right:   var(--typography--line); // Optical shift.
+
+		&:after {
+			@extend %typography--inline-block;
+
+			color:   var(--color--middle);
+			content: '•\2003\2003•\2003\2003•'; // Those are `&emsp;` between.
+			display: flow-root;
+		}
+	}
+
+
+
 	h1 { @extend %font--gill-sans--x-verdana-cap }
 
 	h2 {
