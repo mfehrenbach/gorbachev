@@ -603,7 +603,11 @@
 
 
 	#MainMartini {
+		// Keep baseline rhythm through.
+		height:     calc(var(--typography--cap) + var(--typography--line-height) * 3);
 		margin-top: var(--typography--line--2);
+
+		> p { margin-top: initial; } // Clear default paragraph spacing.
 
 		&:not(:last-child) { margin-bottom: var(--typography--line--2) }
 	}
