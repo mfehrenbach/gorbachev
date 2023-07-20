@@ -115,20 +115,13 @@
 
 		--color: var(--color--secondary);
 
-		code {
-			border-color:        transparent;
-			border-left-width:   0;
-			border-right-width:  0;
-			border-style:        solid;
-			box-shadow:          initial;
-			display:             inline;
-			margin:              initial;
-			padding:             initial;
+		code:not(pre) { // Match `:not` selector, below.
+			padding: initial;
 
 			&:before, &:after { content: '\2002' } // An `&ensp;` around it.
 		}
 
-		&:has(> code) { --typography--underline--shift: -0.333 } // Below the background.
+		&:has(> code) { --typography--underline--shift: -0.5 } // Below the background.
 	}
 
 
