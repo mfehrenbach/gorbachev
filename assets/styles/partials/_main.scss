@@ -223,13 +223,11 @@
 		border-top:    calc(var(--padding) / 2) solid transparent;
 		padding-left:  calc(var(--padding) + var(--typography--margin--left));
 		padding-right: calc(var(--padding) + var(--typography--margin--right));
+		white-space:   pre-wrap;
 	}
 
 	pre {
-		display:     flex; // Cinch to content width.
 		max-width:   100%;
-		tab-size:    4;
-		white-space: pre;
 		width:       fit-content;
 
 		> code {
@@ -239,6 +237,8 @@
 			overflow-x:   auto;
 			overflow-y:   hidden;
 			padding:      var(--typography--lead);
+			tab-size:     4;
+			white-space:  pre;
 
 			&::-webkit-scrollbar { display: none }
 		}
