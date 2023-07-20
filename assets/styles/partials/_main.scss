@@ -129,24 +129,16 @@
 	blockquote {
 		@extend %--color-diminish;
 
-		padding-left:  var(--typography--lead);
-		padding-right: var(--typography--lead);
+		padding-left:  calc(var(--typography--lead) * 2);
+		padding-right: calc(var(--typography--lead) * 2);
 		position:      relative;
-
-		blockquote,
-		ol,
-		pre,
-		ul {
-			margin-left:   var(--typography--lead); // Further inset.
-			padding-right: initial;
-		}
 
 		// The bar on the side.
 		&:before {
 			background-color: var(--color--middle);
 			content:          '';
 			height:           100%;
-			left:             0;
+			left:             calc(var(--typography--lead) - var(--typography--stroke));
 			min-height:       calc(var(--typography--cap) + var(--typography--lead));
 			position:         absolute;
 			top:              50%;
@@ -257,15 +249,16 @@
 		display:             flex;
 		flex-direction:      column;
 		list-style-position: outside;
-		padding-left:        var(--list--marker-shift); // Declared below.
-		padding-right:       calc(var(--typography--lead) + var(--list--marker-shift));
+		padding-left:        calc(var(--typography--lead) * 2);
+		padding-right:       calc(var(--typography--lead) * 2);
 		row-gap:             var(--typography--lead);
 
 		> li {
 			display:       list-item;
 			margin-bottom: var(--typography--margin--bottom);
+			margin-left:   calc(-1 * (var(--typography--lead) - var(--list--item-shift)) + var(--typography--margin--left));
 			margin-top:    var(--typography--margin--top);
-			padding-left:  calc(var(--typography--lead) - var(--list--item-shift));
+			padding-left:  calc(var(--typography--lead) - var(--list--item-shift)); // These are declared below.
 
 			&:before, &:after { display: none } // Conflicts with the marker, so use the margin.
 
@@ -524,9 +517,11 @@
 		> hr { display: none } // Easier to use the pseudo.
 
 		> ol {
-			margin-top:  calc(-1 * var(--typography--line));
-			padding-top: var(--typography--line);
-			position:    relative;
+			margin-top:    calc(-1 * var(--typography--line));
+			padding-left:  calc(var(--typography--lead) + var(--list--marker-shift) - var(--list--item-shift));
+			padding-right: calc(var(--typography--lead) + var(--list--marker-shift) - var(--list--item-shift));
+			padding-top:   var(--typography--line);
+			position:      relative;
 
 			&:before { // Lil’ bar.
 				background-color: var(--color--middle);
