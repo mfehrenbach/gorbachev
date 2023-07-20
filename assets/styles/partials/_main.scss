@@ -406,9 +406,10 @@
 
 	iframe[src*="youtube.com"] {
 		aspect-ratio:  16 / 9; // An assumption.
+		display:       flow-root;
 		height:        auto;
-		margin-bottom: var(--typography--line-height);
-		margin-top:    calc(var(--typography--line-height) - var(--typography--margin--top));
+		margin-bottom: calc(-1 * var(--typography--margin--bottom) + var(--typography--line-height));
+		margin-top:    calc(-1 * var(--typography--margin--top) + var(--typography--line-height));
 	}
 
 	// This doesn’t account for “anonymous” text, but I don’t think that is possible.
