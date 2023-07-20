@@ -157,7 +157,7 @@ td {
 
 // Line work.
 %--line-decoration {
-	--typography--decoration-thickness: calc(var(--typography--underline) * 1em);
+	--typography--decoration-thickness: calc((var(--typography--underline) + var(--typography--underline--rounding, 0)) * 1em);
 
 	text-decoration-color:     var(--color--underline, var(--color));
 	text-decoration-thickness: var(--typography--decoration-thickness);

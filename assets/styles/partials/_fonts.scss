@@ -19,14 +19,17 @@
 	--typography--shoulder--top: calc(var(--typography--shoulder) - var(--typography--shoulder--bottom));
 
 	--typography--underline--clear: 1; // “True,” moves underline fully south of descender.
+
+	--typography--underline--rounding: -0.028; // Adjustments for pixel rounding (up to 20pt).
+
+	@include retina {    --typography--underline--rounding: -0.003 }
+	@include retina(3) { --typography--underline--rounding: -0.006 }
 }
 
 
 
 %font--verdana {
 	@extend %--calcs;
-	@extend %--safari--rounding;
-
 	--typography--cap-height:        var(--typography--cap-height--verdana);
 	--typography--x-height:          var(--typography--x-height--verdana);
 	--typography--shoulder--bottom:  0.103; // Vertical centering in the line box, across most sizes.
@@ -44,8 +47,6 @@
 
 %font--gill-sans {
 	@extend %--calcs;
-	@extend %--safari--rounding;
-
 	--typography--cap-height:        var(--typography--cap-height--gill-sans);
 	--typography--x-height:          var(--typography--x-height--gill-sans);
 	--typography--shoulder--bottom:  0.157;
@@ -135,14 +136,4 @@
 	--typography--tracking: calc(1 / 6 * (1 / var(--typography--scale, 1))); // Adjust for scale.
 
 	--typography--inset--right--override: calc(var(--typography--inset--right) - var(--typography--tracking));
-}
-
-
-
-// Adjustments for Safari whole-point rounding (up to 18pt), lower for cascade.
-%--safari--rounding {
-	@include browser(safari) {
-		--typography--underline:         0.056;
-		--typography--underline--shift: -0.089;
-	}
 }
