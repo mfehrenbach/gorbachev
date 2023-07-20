@@ -209,48 +209,43 @@
 		@extend %font--sf-mono--in-verdana;
 
 		--color: var(--color--highest);
+	}
 
+	pre,
+	*:not(pre) > code {
 		background-color: var(--color--slight);
 		border-radius:    var(--link--radius);
-		overflow-x:       auto;
-		overflow-y:       hidden;
-		white-space:      pre;
-
-		&::-webkit-scrollbar { display: none }
 	}
 
 	*:not(pre) > code { // Inline-only.
-		@extend %typography--inline-block;
+		@extend %typography--inline;
 
-		--padding: 0.4em; // Optical.
+		--padding: 0.5em; // Optical.
 
-		-webkit-user-select: all;
-		margin-left:         var(--typography--margin--left);
-		margin-right:        var(--typography--margin--right);
-		max-width:           calc(100% - 0.333em); // Cut last letter at full width.
-		padding-left:        calc(var(--padding) + var(--typography--margin--left));
-		padding-right:       calc(var(--padding) + var(--typography--margin--right));
-		box-shadow:          inset 0 calc(-1 * var(--typography--margin--top) - var(--padding)) var(--color--background),
-		                     inset 0 calc(var(--typography--margin--bottom)   + var(--padding)) var(--color--background);
-		// “Shadow” draws over the top/bottom of the too-tall background.
+		-webkit-box-decoration-break: clone;
+		-webkit-user-select:          all;
+
+		border-bottom: calc(var(--padding) / 2) solid transparent;
+		border-top:    calc(var(--padding) / 2) solid transparent;
+		padding-left:  calc(var(--padding) + var(--typography--margin--left));
+		padding-right: calc(var(--padding) + var(--typography--margin--right));
 	}
 
 	pre {
-		display:  flex; // Tighten right edge to content.
-		tab-size: 2;
+		overflow-x:     auto;
+		padding-bottom: var(--typography--lead);
+		padding-left:   var(--typography--lead);
+		padding-right:  var(--typography--lead);
+		padding-top:    var(--typography--lead);
+		tab-size:       4;
+		white-space:    pre;
 
-		code {
+		&::-webkit-scrollbar { display: none }
+
+		> code {
 			@extend %typography;
 
-			margin-bottom:  calc(-1 * var(--typography--lead));
-			margin-left:    initial; // From typography.
-			margin-right:   initial;
-			margin-top:     calc(-1 * var(--typography--lead));
-			max-width:      100%;
-			padding-bottom: var(--typography--lead);
-			padding-left:   calc(var(--typography--lead) + var(--typography--margin--left));
-			padding-right:  calc(var(--typography--lead) + var(--typography--margin--right));
-			padding-top:    var(--typography--lead);
+			width: fit-content;
 		}
 	}
 
