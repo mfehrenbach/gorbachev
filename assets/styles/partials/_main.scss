@@ -199,7 +199,7 @@
 		--color: var(--color--highest);
 	}
 
-	pre,
+	pre:before,
 	*:not(pre) > code {
 		background-color: var(--color--slight);
 		border-radius:    var(--link--radius);
@@ -224,6 +224,15 @@
 		display:   flow-root;
 		max-width: 100%;
 		width:     fit-content;
+		position:  relative;
+
+		&:before {
+			bottom:   calc(-1 * var(--typography--lead));
+			content:  '';
+			position: absolute;
+			top:      calc(-1 * var(--typography--lead));
+			width:    100%;
+		}
 
 		> code {
 			@extend %typography;
@@ -234,7 +243,8 @@
 			margin-top:    var(--typography--margin--top);
 			overflow-x:    auto;
 			overflow-y:    hidden;
-			padding:       var(--typography--lead);
+			padding-left:  var(--typography--lead);
+			padding-right: var(--typography--lead);
 			tab-size:      4;
 			white-space:   pre;
 
