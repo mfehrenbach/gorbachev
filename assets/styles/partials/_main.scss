@@ -29,6 +29,7 @@
 	h1,
 	h2,
 	ol,
+	pre,
 	ul {
 		+ * { margin-top: var(--typography--line--2) } // Double after.
 	}
