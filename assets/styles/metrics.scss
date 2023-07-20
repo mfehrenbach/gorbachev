@@ -14,7 +14,7 @@ body {
 	--color: rgba(0, 0, 0, 0.5);
 
 	display:         grid;
-	gap:             36rem;
+	gap:             72rem;
 	justify-content: start;
 	padding:         12rem 12rem 36rem;
 	width:           fit-content;
@@ -30,6 +30,7 @@ body {
 			background-color:         rgba(orange, 0.5);
 			position:                 relative;
 			text-decoration-skip-ink: none; // To see the overlap.
+			max-width:                50ch;
 
 			a { @extend %typography--underline }
 		}
@@ -49,7 +50,7 @@ body {
 		&:first-of-type { @extend %font--gill-sans }
 
 		&:last-of-type {
-			--typography--size:    100;
+			--typography--size:    20;
 			--typography--leading: 1.5;
 
 			display: grid;
