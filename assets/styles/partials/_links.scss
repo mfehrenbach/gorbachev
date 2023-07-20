@@ -59,17 +59,15 @@
 	@extend %--active-focus;
 	@extend %typography--underline;
 
-	border-bottom-width: calc(var(--link--enlargement) / 2);
+	border-bottom-width: calc(var(--link--enlargement) - var(--typography--shoulder--bottom) * 1em);
 	border-color:        transparent;
 	border-left-width:   var(--link--enlargement);
 	border-right-width:  calc(var(--link--enlargement) + var(--typography--inset--right--override, 0) * 1em);;
 	border-style:        solid;
-	border-top-width:    calc(var(--link--enlargement) / 2);
+	border-top-width:    calc(var(--link--enlargement) - var(--typography--shoulder--top) * 1em);
 	color:               var(--color);
-	margin-bottom:       calc(-1 * var(--link--enlargement) / 2);
 	margin-left:         calc(-1 * var(--link--enlargement));
 	margin-right:        calc(-1 * (var(--link--enlargement) + var(--typography--inset--right--override, 0) * 1em));
-	margin-top:          calc(-1 * var(--link--enlargement) / 2);
 
 	// This sadly doesn’t work in Safari, and causes overflows.
 	@include browser(chrome) { -webkit-box-decoration-break: clone }
