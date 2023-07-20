@@ -121,7 +121,7 @@
 			&:before, &:after { content: '\2002' } // An `&ensp;` around it.
 		}
 
-		&:has(> code) { --typography--underline--shift: -0.5 } // Below the background.
+		&:has(> code) { --typography--underline--distance: -0.4 } // Below the background.
 	}
 
 
