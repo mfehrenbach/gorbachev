@@ -226,20 +226,21 @@
 	}
 
 	pre {
-		overflow-x:     auto;
-		padding-bottom: var(--typography--lead);
-		padding-left:   var(--typography--lead);
-		padding-right:  var(--typography--lead);
-		padding-top:    var(--typography--lead);
-		tab-size:       4;
-		white-space:    pre;
-
-		&::-webkit-scrollbar { display: none }
+		display:     flex; // Cinch to content width.
+		max-width:   100%;
+		tab-size:    4;
+		white-space: pre;
+		width:       fit-content;
 
 		> code {
 			@extend %typography;
 
-			width: fit-content;
+			-webkit-mask: linear-gradient(to right, transparent, var(--color--highest) var(--typography--lead), var(--color--highest) calc(100% - var(--typography--lead)), transparent 100%);
+			overflow-x:   auto;
+			overflow-y:   hidden;
+			padding:      var(--typography--lead);
+
+			&::-webkit-scrollbar { display: none }
 		}
 	}
 
