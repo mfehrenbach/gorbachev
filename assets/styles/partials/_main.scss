@@ -216,8 +216,8 @@
 
 		--padding: 0.5em; // Optical.
 
-		-webkit-box-decoration-break: clone;
-		-webkit-user-select:          all;
+		-webkit-box-decoration-break: clone; // Start background/padding again on new lines.
+		-webkit-user-select:          all; // Select the whole thing by default.
 
 		border-bottom: calc(var(--padding) / 2) solid transparent;
 		border-top:    calc(var(--padding) / 2) solid transparent;
@@ -227,20 +227,26 @@
 	}
 
 	pre {
-		max-width:   100%;
-		width:       fit-content;
+		display:   flow-root;
+		max-width: 100%;
+		width:     fit-content;
 
 		> code {
 			@extend %typography;
 
-			-webkit-mask: linear-gradient(to right, transparent, var(--color--highest) var(--typography--lead), var(--color--highest) calc(100% - var(--typography--lead)), transparent 100%);
-			overflow-x:   auto;
-			overflow-y:   hidden;
-			padding:      var(--typography--lead);
-			tab-size:     4;
-			white-space:  pre;
+			// Fade left/right edges for overflow.
+			-webkit-mask:  linear-gradient(to right, transparent, var(--color--highest) var(--typography--lead), var(--color--highest) calc(100% - var(--typography--lead)), transparent 100%);
+			margin-bottom: var(--typography--margin--bottom);
+			margin-top:    var(--typography--margin--top);
+			overflow-x:    auto;
+			overflow-y:    hidden;
+			padding:       var(--typography--lead);
+			tab-size:      4;
+			white-space:   pre;
 
 			&::-webkit-scrollbar { display: none }
+
+			&:before, &:after { display: none } // Using margins for baseline alignment.
 		}
 	}
 
