@@ -18,8 +18,6 @@
 	--typography--shoulder:      calc(1 - var(--typography--cap-height)); // Remainder/overhang.
 	--typography--shoulder--top: calc(var(--typography--shoulder) - var(--typography--shoulder--bottom));
 
-	--typography--underline--distance: calc(var(--typography--underline--shift, 0) + var(--typography--underline));
-
 	--typography--underline--clear: 1; // “True,” moves underline fully south of descender.
 }
 

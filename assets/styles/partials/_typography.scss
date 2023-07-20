@@ -170,10 +170,10 @@ td {
 	--underline--clear: calc(var(--typography--underline--clear, 0) * var(--typography--underline) * 2);
 
 	--typography--decoration-thickness: calc(var(--typography--underline) * 1em);
-	--typography--underline-offset:     calc((var(--typography--underline--distance) - var(--underline--clear)) * 1em);
+	--typography--underline-offset:     calc((var(--typography--underline--shift, 0) - var(--underline--clear)) * 1em);
 
-	text-decoration-line:      underline;
-	text-underline-offset:     calc(-1 * var(--typography--underline-offset) + var(--typography--decoration-thickness));
+	text-decoration-line:  underline;
+	text-underline-offset: calc(-1 * var(--typography--underline-offset));
 }
 
 %typography--underline--disable { text-decoration: initial }
