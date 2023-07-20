@@ -88,5 +88,6 @@ if (typeof replacementStyles == 'undefined') {
 
 
 // All runs…
+document.querySelectorAll('style').forEach(stylesheet => stylesheet.remove())
 document.querySelectorAll('link[rel=stylesheet]').forEach(stylesheet => stylesheet.remove())
 document.head.insertAdjacentHTML('beforeend', replacementStyles)
