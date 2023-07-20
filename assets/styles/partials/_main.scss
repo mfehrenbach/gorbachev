@@ -216,7 +216,7 @@
 
 		--padding: 0.5em; // Optical.
 
-		-webkit-box-decoration-break: clone; // Start background/padding again on new lines.
+		-webkit-box-decoration-break: clone; // Start padding again on new lines.
 		-webkit-user-select:          all; // Select the whole thing by default.
 
 		border-bottom: calc(var(--padding) / 2) solid transparent;
