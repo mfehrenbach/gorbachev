@@ -14,17 +14,19 @@
 	--typography--x-height--sf-mono:     0.526;
 }
 
-%--shoulders {
+%--calcs {
 	--typography--shoulder:      calc(1 - var(--typography--cap-height)); // Remainder/overhang.
 	--typography--shoulder--top: calc(var(--typography--shoulder) - var(--typography--shoulder--bottom));
 
 	--typography--underline--clear:  1; // “True,” moves underline fully south of descender.
+
+	--typography--underline--distance: calc(var(--typography--underline--shift, 0) + var(--typography--underline));
 }
 
 
 
 %font--verdana {
-	@extend %--shoulders;
+	@extend %--calcs;
 	@extend %--safari--rounding;
 
 	--typography--cap-height:        var(--typography--cap-height--verdana);
@@ -35,7 +37,7 @@
 	--typography--inset--right:     -0.090; // Right edge of “d” (since lines tend to end lowercase).
 
 	--typography--underline:         0.078; // Height of crossbar on “t”.
-	--typography--underline--shift: -0.045; // Shift down from baseline, to line up with bottom of descenders.
+	--typography--underline--shift: -0.123; // Shift down from baseline, to line up with bottom of descenders.
 
 	font-family: 'Verdana', sans-serif;
 }
@@ -43,7 +45,7 @@
 
 
 %font--gill-sans {
-	@extend %--shoulders;
+	@extend %--calcs;
 	@extend %--safari--rounding;
 
 	--typography--cap-height:        var(--typography--cap-height--gill-sans);
@@ -54,7 +56,7 @@
 	--typography--inset--right:     -0.058;
 
 	--typography--underline:         0.080;
-	--typography--underline--shift: -0.069;
+	--typography--underline--shift: -0.149;
 
 	font-family: 'Gill Sans', sans-serif;
 
@@ -98,7 +100,7 @@
 
 
 %font--sf-mono {
-	@extend %--shoulders;
+	@extend %--calcs;
 
 	--typography--cap-height:        var(--typography--cap-height--sf-mono);
 	--typography--x-height:          var(--typography--x-height--sf-mono);
@@ -108,7 +110,7 @@
 	--typography--inset--right:     -0.054;
 
 	--typography--underline:         0.063;
-	--typography--underline--shift: -0.052;
+	--typography--underline--shift: -0.115;
 
 	font-family: 'SF Mono', ui-monospace, monospace;
 }
