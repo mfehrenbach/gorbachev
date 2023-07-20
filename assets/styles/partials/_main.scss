@@ -175,7 +175,7 @@
 		@extend %typography--inline;
 	}
 
-	strong { --color: var(--color--secondary) }
+	strong { --color: var(--color--tertiary) }
 
 	sup {
 		--typography--scale: 0.9; // Optical.
@@ -367,10 +367,18 @@
 
 	h1 { @extend %font--gill-sans--x-verdana-cap }
 
-	h2 {
+	h2,
+	h3 {
 		@extend %font--extended;
-		@extend %font--gill-sans--on-verdana;
 		@extend %font--uppercase;
+	}
+
+	h2 { @extend %font--gill-sans--on-verdana }
+
+	h3 {
+		@extend %font--gill-sans--in-verdana;
+
+		--color: var(--color--tertiary);
 	}
 
 
