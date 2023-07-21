@@ -38,7 +38,7 @@ body {
 	--typography--size:    var(--typography--size--floor);
 	--typography--leading: 1.8;
 
-	// Rounding type-derived values is inconsistent at these sizes.
+	// Rounding on type-derived values is inconsistent at these sizes.
 	--typography--underline--override: 0.1rem;
 
 
@@ -73,8 +73,8 @@ body {
 
 
 	// Links.
-	--link--enlargement: calc(var(--typography--cap) / 2);
-	--link--outline:     2px;
+	--link--enlargement: calc(var(--typography--lead) / 2 - 0.15rem); // Less a bit for rounding/overlaps.
+	--link--outline:     0.2rem;
 	--link--radius:      calc(var(--typography--cap) / 4);
 	--link--transition:  50ms;
 
@@ -108,12 +108,12 @@ body {
 	}
 
 	@include width(1080) {
-		@include tall(800) {
+		@include tall(768) {
 			// Further on tall screens, based on height.
 			--typography--factor: 1;
 			--typography--size:   clamp(
 															calc(var(--typography--size--middle) * 0.1rem),
-															calc(var(--typography--size--middle) / 800 * 100vh),
+															calc(var(--typography--size--middle) / 768 * 100vh),
 															calc(var(--typography--size--ceiling) * 0.1rem)
 														);
 		}

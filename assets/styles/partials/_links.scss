@@ -62,10 +62,10 @@
 	color:          var(--color);
 	margin-left:    calc(-1 * var(--link--enlargement));
 	margin-right:   calc(-1 * (var(--link--enlargement) + var(--typography--inset--right--override, 0) * 1em));
-	padding-bottom: calc(var(--link--enlargement) - var(--typography--shoulder--bottom) * 1em);
+	padding-bottom: calc(var(--link--enlargement) - var(--typography--content--bottom) * 1em);
 	padding-left:   var(--link--enlargement);
 	padding-right:  calc(var(--link--enlargement) + var(--typography--inset--right--override, 0) * 1em);
-	padding-top :   calc(var(--link--enlargement) - var(--typography--shoulder--top) * 1em);
+	padding-top :   calc(var(--link--enlargement) - var(--typography--content--top) * 1em);
 
 	// This sadly doesn’t work in Safari, and causes overflows.
 	@include browser(chrome) { -webkit-box-decoration-break: clone }
