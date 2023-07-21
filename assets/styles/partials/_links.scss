@@ -11,7 +11,7 @@
 	cursor:                      pointer;
 	transition-duration:         var(--link--transition);
 	transition-property:         background-color, color, text-decoration-color;
-	transition-timing-function:  ease-in-out;
+	transition-timing-function:  linear;
 
 	&:active { background-color: var(--color--highlight) }
 
@@ -59,14 +59,14 @@
 	@extend %--active-focus;
 	@extend %typography--underline;
 
-	border-bottom: calc(var(--link--enlargement) - var(--typography--shoulder--bottom) * 1em) solid transparent;
-	border-top :   calc(var(--link--enlargement) - var(--typography--shoulder--top) * 1em) solid transparent;
-	color:         var(--color);
-	margin-left:   calc(-1 * var(--link--enlargement));
-	margin-right:  calc(-1 * (var(--link--enlargement) + var(--typography--inset--right--override, 0) * 1em));
-	padding-left:  var(--link--enlargement);
-	padding-right: calc(var(--link--enlargement) + var(--typography--inset--right--override, 0) * 1em);
+	color:          var(--color);
+	margin-left:    calc(-1 * var(--link--enlargement));
+	margin-right:   calc(-1 * (var(--link--enlargement) + var(--typography--inset--right--override, 0) * 1em));
+	padding-bottom: calc(var(--link--enlargement) - var(--typography--shoulder--bottom) * 1em);
+	padding-left:   var(--link--enlargement);
+	padding-right:  calc(var(--link--enlargement) + var(--typography--inset--right--override, 0) * 1em);
+	padding-top :   calc(var(--link--enlargement) - var(--typography--shoulder--top) * 1em);
 
 	// This sadly doesn’t work in Safari, and causes overflows.
-	@include browser(chrome) { -webkit-box-decoration-break: clone } // Revisit?
+	@include browser(chrome) { -webkit-box-decoration-break: clone }
 }

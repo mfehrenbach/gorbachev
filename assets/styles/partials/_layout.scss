@@ -55,12 +55,11 @@ body {
 	--color--slate: #{$--slate};
 
 	--color--highest:   white;
-	--color--primary:   #{mix(white, $--slate, $--opacity--primary)};
-	--color--secondary: #{mix(white, $--slate, $--opacity--secondary)};
-	--color--tertiary:  #{mix(white, $--slate, $--opacity--tertiary)};
-	--color--middle:    #{mix(white, $--slate, $--opacity--middle)};
-	--color--slight:    #{mix(white, $--slate, $--opacity--slight)};
-	// Matte/mix these out to not compound any overlaps.
+	--color--primary:   rgba(255, 255, 255, #{$--opacity--primary});
+	--color--secondary: rgba(255, 255, 255, #{$--opacity--secondary});
+	--color--tertiary:  rgba(255, 255, 255, #{$--opacity--tertiary});
+	--color--middle:    rgba(255, 255, 255, #{$--opacity--middle});
+	--color--slight:    rgba(255, 255, 255, #{$--opacity--slight});
 
 	// Map to use.
 	--color:             var(--color--primary);
@@ -74,9 +73,9 @@ body {
 
 
 	// Links.
-	--link--enlargement: var(--typography--x);
+	--link--enlargement: calc(var(--typography--cap) / 2);
 	--link--outline:     2px;
-	--link--radius:      calc(var(--typography--x) / 3);
+	--link--radius:      calc(var(--typography--cap) / 4);
 	--link--transition:  50ms;
 
 
@@ -180,7 +179,7 @@ body {
 					position:                   absolute;
 					transition-duration:        var(--link--transition); // Match other links.
 					transition-property:        opacity;
-					transition-timing-function: ease-in-out;
+					transition-timing-function: linear;
 					width:                      calc(var(--intrinsic--width) / var(--content--width) * (100% - var(--link--enlargement) * 2));
 					// Percentages derive from width, so use that for height offset too.
 
