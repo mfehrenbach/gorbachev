@@ -47,7 +47,8 @@ body {
 		&:before { height: var(--typography--x) }
 		&:after { height: var(--typography--stroke) }
 
-		&:first-of-type { @extend %font--gill-sans }
+		&:nth-of-type(2) { @extend %font--gill-sans }
+		&:nth-of-type(3) { @extend %font--sf-mono }
 
 		&:last-of-type {
 			--typography--size:    20;
