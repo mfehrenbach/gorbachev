@@ -11,7 +11,7 @@
 	--typography--x-height--gill-sans:   0.448;
 
 	--typography--cap-height--sf-mono:   0.705;
-	--typography--x-height--sf-mono:     0.526;
+	--typography--x-height--sf-mono:     0.528;
 }
 
 %--calcs {
@@ -30,9 +30,9 @@
 	--typography--shoulder--bottom:  0.103; // Vertical centering in the line box, across most sizes.
 
 	--typography--inset--left:      -0.098; // Optical insets, left edge of capital "D".
-	--typography--inset--right:     -0.090; // Right edge of “d” (since lines tend to end lowercase).
+	--typography--inset--right:     -0.090; // Right edge of “q” (since lines tend to end lowercase).
 
-	--typography--underline:         0.078; // Height of crossbar on “t”.
+	--typography--underline:         0.078; // Height of crossbar on “f”.
 	--typography--underline--shift: -0.123; // Shift down from baseline, to line up with bottom of descenders.
 
 	font-family: 'Verdana', sans-serif;
@@ -47,7 +47,7 @@
 	--typography--shoulder--bottom:  0.157;
 
 	--typography--inset--left:      -0.076;
-	--typography--inset--right:     -0.058;
+	--typography--inset--right:     -0.057;
 
 	--typography--underline:         0.080;
 	--typography--underline--shift: -0.149;
@@ -100,10 +100,10 @@
 	--typography--x-height:          var(--typography--x-height--sf-mono);
 	--typography--shoulder--bottom:  0.145;
 
-	--typography--inset--left:      -0.055;
-	--typography--inset--right:     -0.054;
+	--typography--inset--left:      -0.078;
+	--typography--inset--right:     -0.093;
 
-	--typography--underline:         0.063;
+	--typography--underline:         0.070;
 	--typography--underline--shift: -0.115;
 
 	font-family: 'SF Mono', ui-monospace, monospace;
