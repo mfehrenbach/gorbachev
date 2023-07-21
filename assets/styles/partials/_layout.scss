@@ -39,20 +39,23 @@ body {
 	--typography--leading: 1.8;
 
 	// Palette.
-	--opacity--primary:   90%;   // #EEE equivalent on slate.
-	--opacity--secondary: 70%;   // #CCC.
-	--opacity--tertiary:  51.5%; // #AAA.
-	--opacity--middle:    31.5%; // #888.
-	--opacity--slight:    13%;   // #606870.
+	$--slate: #4a525a;
 
-	--color--slate:      #4a525a;
+	$--opacity--primary:   90%;   // #EEE equivalent on slate.
+	$--opacity--secondary: 70%;   // #CCC.
+	$--opacity--tertiary:  51.5%; // #AAA.
+	$--opacity--middle:    31.5%; // #888.
+	$--opacity--slight:    13%;   // #606870.
+
+	--color--slate: #{$--slate};
 
 	--color--highest:   white;
-	--color--primary:   rgba(255, 255, 255, var(--opacity--primary));
-	--color--secondary: rgba(255, 255, 255, var(--opacity--secondary));
-	--color--tertiary:  rgba(255, 255, 255, var(--opacity--tertiary));
-	--color--middle:    rgba(255, 255, 255, var(--opacity--middle));
-	--color--slight:    rgba(255, 255, 255, var(--opacity--slight));
+	--color--primary:   #{mix(white, $--slate, $--opacity--primary)};
+	--color--secondary: #{mix(white, $--slate, $--opacity--secondary)};
+	--color--tertiary:  #{mix(white, $--slate, $--opacity--tertiary)};
+	--color--middle:    #{mix(white, $--slate, $--opacity--middle)};
+	--color--slight:    #{mix(white, $--slate, $--opacity--slight)};
+	// Matte/mix these out to not compound any overlaps.
 
 	// Map to use.
 	--color:             var(--color--primary);
@@ -166,7 +169,7 @@ body {
 					margin-left:                calc(-1 * var(--content--inset--left) / var(--content--width) * (100% - var(--link--enlargement) * 2));
 					margin-top:                 calc(-1 * var(--content--inset--top) / var(--content--width) * (100% - var(--link--enlargement) * 2));
 					max-width:                  initial; // Cancel reset.
-					opacity:                    var(--opacity--primary); // Match body copy.
+					opacity:                    #{$--opacity--primary}; // Match body copy.
 					position:                   absolute;
 					transition-duration:        var(--link--transition); // Match other links.
 					transition-property:        opacity;

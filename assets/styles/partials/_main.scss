@@ -238,7 +238,7 @@
 			@extend %typography;
 
 			// Fade left/right edges for overflow.
-			-webkit-mask:  linear-gradient(to right, transparent, var(--color--highest) var(--typography--lead), var(--color--highest) calc(100% - var(--typography--lead)), transparent 100%);
+			-webkit-mask:  linear-gradient(to right, transparent, white var(--typography--lead), white calc(100% - var(--typography--lead)), transparent 100%);
 			margin-bottom: var(--typography--margin--bottom);
 			margin-top:    var(--typography--margin--top);
 			overflow-x:    auto;
