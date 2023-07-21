@@ -12,28 +12,32 @@
 
 	--typography--cap-height--sf-mono:   0.705;
 	--typography--x-height--sf-mono:     0.528;
+
+	--typography--underline--clear: 1; // If “true,” moves underline fully south of descender.
 }
 
 %--calcs {
-	--typography--shoulder:      calc(1 - var(--typography--cap-height)); // Remainder/overhang.
-	--typography--shoulder--top: calc(var(--typography--shoulder) - var(--typography--shoulder--bottom));
-
-	--typography--underline--clear: 1; // “True,” moves underline fully south of descender.
+	--typography--shoulder--top: calc(1 - var(--typography--cap-height) - var(--typography--shoulder--bottom));
+	--typography--content--top:  calc(var(--typography--content-area) - var(--typography--cap-height) - var(--typography--content--bottom));
 }
 
 
 
 %font--verdana {
 	@extend %--calcs;
+
+	--typography--content-area:      1.215; // Intrinsic to font, height of default/normal line (always inline links).
+
 	--typography--cap-height:        var(--typography--cap-height--verdana);
 	--typography--x-height:          var(--typography--x-height--verdana);
-	--typography--shoulder--bottom:  0.103; // Vertical centering in the line box, across most sizes.
+	--typography--shoulder--bottom:  0.103; // At defined line-height, distance below baseline.
+	--typography--content--bottom:   0.210; // In default/normal content area.
 
 	--typography--inset--left:      -0.098; // Optical insets, left edge of capital "D".
 	--typography--inset--right:     -0.090; // Right edge of “q” (since lines tend to end lowercase).
 
 	--typography--underline:         0.078; // Height of crossbar on “f”.
-	--typography--underline--shift: -0.123; // Shift down from baseline, to line up with bottom of descenders.
+	--typography--underline--shift: -0.123; // Shift down from baseline to the bottom of descenders.
 
 	font-family: 'Verdana', sans-serif;
 }
@@ -42,9 +46,13 @@
 
 %font--gill-sans {
 	@extend %--calcs;
+
+	--typography--content-area:      1.148;
+
 	--typography--cap-height:        var(--typography--cap-height--gill-sans);
 	--typography--x-height:          var(--typography--x-height--gill-sans);
 	--typography--shoulder--bottom:  0.157;
+	--typography--content--bottom:   0.231;
 
 	--typography--inset--left:      -0.076;
 	--typography--inset--right:     -0.057;
@@ -96,9 +104,12 @@
 %font--sf-mono {
 	@extend %--calcs;
 
+	--typography--content-area:      1.193;
+
 	--typography--cap-height:        var(--typography--cap-height--sf-mono);
 	--typography--x-height:          var(--typography--x-height--sf-mono);
 	--typography--shoulder--bottom:  0.145;
+	--typography--content--bottom:   0.241;
 
 	--typography--inset--left:      -0.078;
 	--typography--inset--right:     -0.093;

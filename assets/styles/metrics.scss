@@ -16,7 +16,7 @@ body {
 	display:         grid;
 	gap:             72rem;
 	justify-content: start;
-	padding:         12rem 12rem 36rem;
+	padding:         36rem 12rem 36rem;
 	width:           fit-content;
 
 	section {
@@ -32,7 +32,32 @@ body {
 			text-decoration-skip-ink: none; // To see the overlap.
 			max-width:                50ch;
 
-			a { @extend %typography--underline }
+			a {
+				@extend %typography--underline;
+
+				// position: relative;
+				background-color: rgba(green, 0.25);
+
+				&:before, &:after {
+					background-color: rgba(deepskyblue, 0.25);
+					content:          '';
+					display:          block;
+					position:         absolute;
+					width:            100%;
+					right: 0;
+					left:  0;
+				}
+
+				&:before {
+					bottom: 100%;
+					height: calc(var(--typography--content--top) * 1em);
+				}
+
+				&:after {
+					top: var(--typography--cap);
+					height: calc(var(--typography--content--bottom) * 1em);
+				}
+			}
 		}
 
 		&:before, &:after {
