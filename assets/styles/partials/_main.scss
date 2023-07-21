@@ -131,8 +131,8 @@
 
 		margin-left:   var(--typography--lead);
 		margin-right:  var(--typography--lead);
-		padding-left:  calc(var(--typography--lead) + var(--typography--stroke));
-		padding-right: calc(var(--typography--lead) + var(--typography--stroke));
+		padding-left:  calc(var(--typography--lead) + var(--typography--underline--override));
+		padding-right: calc(var(--typography--lead) + var(--typography--underline--override));
 		position:      relative;
 
 		// The bar on the side.
@@ -145,15 +145,7 @@
 			position:         absolute;
 			top:              50%;
 			transform:        translateY(-50%); // Center single-line bar on text.
-			width:            var(--typography--stroke);
-
-			// Chrome rounds up for the width, but not for borders.
-			@include browser (chrome) {
-				background-color:  initial;
-				border-left-color: var(--color--middle);
-				border-left-style: solid;
-				border-left-width: var(--typography--stroke);
-			}
+			width:            var(--typography--underline--override);
 		}
 	}
 
@@ -548,7 +540,7 @@
 			&:before { // Lil’ bar.
 				background-color: var(--color--middle);
 				content:          '';
-				height:           var(--typography--stroke);
+				height:           var(--typography--underline--override);
 				left:             0;
 				position:         absolute;
 				top:              0;

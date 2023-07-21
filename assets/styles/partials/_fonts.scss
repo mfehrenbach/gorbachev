@@ -19,11 +19,6 @@
 	--typography--shoulder--top: calc(var(--typography--shoulder) - var(--typography--shoulder--bottom));
 
 	--typography--underline--clear: 1; // “True,” moves underline fully south of descender.
-
-	--typography--underline--rounding: -0.028; // Adjustments for pixel rounding (up to 20pt).
-
-	@include retina {    --typography--underline--rounding: -0.003 }
-	@include retina(3) { --typography--underline--rounding: -0.006 }
 }
 
 
