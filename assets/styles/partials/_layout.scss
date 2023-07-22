@@ -60,6 +60,8 @@ body {
 	--color--tertiary:  rgba(255, 255, 255, #{$--opacity--tertiary});
 	--color--middle:    rgba(255, 255, 255, #{$--opacity--middle});
 	--color--slight:    rgba(255, 255, 255, #{$--opacity--slight});
+	--color--dark:      rgba(0, 0, 0, #{$--opacity--slight});
+	--color--darker:    rgba(0, 0, 0, #{$--opacity--middle});
 
 	// Map to use.
 	--color:             var(--color--primary);
@@ -69,6 +71,8 @@ body {
 	--color--highlight--more: var(--color--middle);
 	--color--hover:           var(--color--highest);
 	--color--underline:       var(--color--middle);
+	--color--inset:           var(--color--dark);
+	--color--inset--more:     var(--color--darker);
 
 
 

@@ -201,12 +201,12 @@
 	code {
 		@extend %font--sf-mono--in-verdana;
 
-		--color: var(--color--highest);
+		--color: var(--color--secondary);
 	}
 
 	pre:before,
 	*:not(pre) > code {
-		background-color: var(--color--slight);
+		background-color: var(--color--inset);
 		border-radius:    var(--link--radius);
 	}
 
@@ -687,12 +687,12 @@
 			input[name='q'] {
 				@extend %link--element;
 
-				--color--highlight:       var(--color--slight); // Override active states.
-				--color--highlight--more: var(--color--slight);
+				--color--highlight:       var(--color--inset); // Override active states.
+				--color--highlight--more: var(--color--inset--more);
 
-				@include hover { --color--slight: var(--color--middle) }
+				@include hover { --color--highlight: var(--color--inset--more) }
 
-				background-color: var(--color--slight);
+				background-color: var(--color--inset);
 				border-radius:    var(--link--radius);
 				cursor:           text;
 				flex-grow:        1;
