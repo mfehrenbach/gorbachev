@@ -528,6 +528,7 @@
 
 
 	audio,
+	video,
 	iframe[src*="youtube"] {
 		@extend %--ragged-block;
 
@@ -557,17 +558,19 @@
 		}
 	}
 
+	video,
 	iframe[src*="youtube"] {
-		aspect-ratio:  16 / 9; // An assumption.
 		height:        auto;
 		margin-bottom: calc(-1 * var(--typography--margin--bottom) + var(--typography--line-height));
 		margin-top:    calc(-1 * var(--typography--margin--top) + var(--typography--line-height));
 		// Extra line before and after.
 	}
 
+	iframe[src*="youtube"] { aspect-ratio:  16 / 9 } // An assumption.
 
 
-	// Drop extra spaces when at the end.
+
+	// Drop extra spaces when at the beginning/end.
 	*:not(a):last-child > img { margin-bottom: calc(-1 * var(--typography--margin--bottom)) }
 
 	*:last-child > a:has(> img) { margin-bottom: calc(-1 * var(--typography--margin--bottom) - var(--link--enlargement)) }
@@ -575,7 +578,10 @@
 	*:first-child > audio:first-child { margin-top:    initial }
 	*:last-child >  audio:last-child  { margin-bottom: initial }
 
+	*:first-child > video:first-child,
 	*:first-child > iframe[src*="youtube.com"]:first-child { margin-top:    calc(-1 * var(--typography--margin--top)) }
+
+	*:last-child >  video:last-child,
 	*:last-child >  iframe[src*="youtube.com"]:last-child  { margin-bottom: calc(-1 * var(--typography--margin--bottom)) }
 	// These all don’t account for surrounding “anonymous” text, but I don’t think that is possible.
 
