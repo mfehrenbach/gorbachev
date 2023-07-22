@@ -515,10 +515,12 @@
 				--color: var(--color--primary);
 			}
 
-			+ * { margin-top:  var(--typography--line--2) } // Line up to nav.
+			+ * { margin-top: var(--typography--line--2) } // Line up to nav.
 		}
 
 		> h6 + * { margin-top: var(--typography--line--2) } // After dateline.
+
+
 
 		// “The Talk Show” landing.
 		> h2:has(> a[href^="/thetalkshow"]) {
@@ -538,6 +540,34 @@
 
 				+ * { margin-top: var(--typography--line) }
 			}
+		}
+
+
+
+		// “Projects” landing, if not elsewhere.
+		> dl {
+			> dt {
+				@extend %font--extended;
+				@extend %font--gill-sans--in-verdana;
+				@extend %font--uppercase;
+
+				--color: var(--color--tertiary);
+
+				margin-top: var(--typography--line--2);
+
+				&:first-child { margin-top: initial }
+
+				> a {
+					@extend %typography--inline;
+					@extend %typography--underline--disable;
+
+					--color: var(--color--secondary);
+
+					--typography--scale: 1; // Clear to “on Verdana” size.
+				}
+			}
+
+			> dd { padding-left: var(--typography--line) }
 		}
 	}
 
