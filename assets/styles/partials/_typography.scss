@@ -164,12 +164,15 @@ td {
 	@extend %--line-decoration;
 
 	// Allow for below-descender option.
-	--underline--clear: calc(var(--typography--underline--clear, 0) * var(--typography--underline) * 2);
+	--underline--clear: calc(var(--typography--underline--clear, 0) * (var(--typography--underline) * 2 * 1em));
 
-	--typography--underline-offset: calc((var(--typography--underline--shift, 0) - var(--underline--clear)) * 1em);
+	// And link-enlargement-matched, starting back from baseline.
+	--underline--link: calc(var(--typography--underline--link, 0) * (var(--typography--underline--shift) * 1em + var(--link--enlargement, 0em) - var(--typography--underline--override, var(--typography--decoration-thickness))));
+
+	--typography--underline-offset: calc(-1 * var(--typography--underline--shift, 0) * 1em + var(--underline--clear) + var(--underline--link));
 
 	text-decoration-line:  underline;
-	text-underline-offset: calc(-1 * var(--typography--underline-offset));
+	text-underline-offset: var(--typography--underline-offset);
 }
 
 %typography--underline--disable { text-decoration: initial }
