@@ -399,7 +399,6 @@
 		display:       flow-root;
 		height:        var(--typography--line-height);
 		margin-bottom: var(--typography--line-height);
-		margin-top:    var(--typography--line-height);
 
 		// Approximate Safari’s vibe.
 		@include browser(chrome) {
