@@ -282,20 +282,10 @@
 			&:first-child:before, &:last-child:after { display: none }
 		}
 
-		// Nested last paragraph margin “collapses” up.
-		> blockquote > p:last-child { margin-bottom: calc(-1 * var(--typography--margin--bottom)) }
-
-		> blockquote,
-		> ol,
-		> p,
-		> pre,
-		> ul {
-			// Two extra lines after when there are multiple children.
-			&:not(:only-child):last-child { margin-bottom: calc(var(--typography--line-height) * 2) }
-		}
-
-		// Cancel these out for the last list items.
-		&:last-child > *:not(:only-child):last-child { margin-bottom: initial }
+		// Nested last margin “collapses” up.
+		> blockquote > p:last-child,
+		> ol:last-child,
+		> ul:last-child { margin-bottom: calc(-1 * var(--typography--margin--bottom)) }
 	}
 
 
@@ -322,16 +312,27 @@
 
 			&:before, &:after { display: none } // Conflicts with the marker, so use the margin.
 
+			> ol,
+			> ul {
+				&:first-of-type { margin-top: calc(var(--typography--lead) + var(--typography--margin--bottom)) }
+			}
+
 			&:not(:last-child) {
-				> blockquote,
 				> ol,
-				> p,
-				> pre,
 				> ul {
+					&:last-child { margin-bottom: calc(var(--typography--lead) + var(--typography--margin--top)) }
+				}
+
+				> blockquote,
+				> p,
+				> pre {
 					// Extra line after nested block elements..
 					&:last-child { margin-bottom: var(--typography--line-height) }
 				}
 			}
+
+			// Cancel these out for the last list items.
+			&:last-child > *:not(:only-child):last-child { margin-bottom: initial }
 		}
 	}
 
