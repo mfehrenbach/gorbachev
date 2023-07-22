@@ -67,6 +67,21 @@
 
 
 
+	// Improve link hovers in Safari, since they often wrap.
+	%--safari-faux-enlargement {
+		@include browser(safari) {
+			margin:        initial;
+			padding-left:  initial;
+			padding-right: initial;
+
+			@include hover { // Faux link-enlargement.
+				box-shadow: calc(-1 * var(--link--enlargement)) 0 0 var(--color--highlight), var(--link--enlargement) 0 0 var(--color--highlight);
+			}
+		}
+	}
+
+
+
 	%--sticky-header--main {
 		@extend %sticky-header;
 
@@ -86,21 +101,6 @@
 				@include tall(480) {
 					--sticky--chin:     var(--typography--line);
 					--sticky--forehead: var(--typography--line);
-				}
-			}
-		}
-
-		// Improve link hovers in Safari, since they often wrap.
-		@include browser(safari) {
-			&:has(> a[title^="Permanent link"] ) {
-				a:not(.permalink) {
-					margin:        initial;
-					padding-left:  initial;
-					padding-right: initial;
-
-					@include hover { // Faux link-enlargement.
-						box-shadow: calc(-1 * var(--link--enlargement)) 0 0 var(--color--highlight), var(--link--enlargement) 0 0 var(--color--highlight);
-					}
 				}
 			}
 		}
@@ -486,7 +486,11 @@
 
 				--color: var(--color--secondary);
 
-				> a { @extend %typography--underline--disable }
+				> a {
+					@extend %typography--underline--disable;
+
+					&:not(.permalink) { @extend %--safari-faux-enlargement }
+				}
 
 				+ dd { margin-top: var(--typography--line--2) }
 			}
@@ -508,6 +512,7 @@
 			@extend %--sticky-header--main;
 
 			> a {
+				@extend %--safari-faux-enlargement;
 				@extend %typography--underline--disable;
 
 				--color: var(--color--primary);
@@ -520,7 +525,10 @@
 
 		// “The Talk Show” landing.
 		> h2:has(> a[href^="/thetalkshow"]) {
-			> a { @extend %typography--underline--disable }
+			> a {
+				@extend %--safari-faux-enlargement;
+				@extend %typography--underline--disable;
+			}
 
 			+ h6 { // Dateline, smaller (akin to Archive landing).
 				@extend %font--extended;
@@ -604,6 +612,7 @@
 			max-width:  48ch;
 
 			> a {
+				@extend %--safari-faux-enlargement;
 				@extend %typography--underline--disable;
 
 				--color: var(--color--primary);
@@ -657,6 +666,7 @@
 				width: 100%;
 
 				a {
+					@extend %--safari-faux-enlargement;
 					@extend %typography--underline--disable;
 
 					--color: var(--color--primary);
