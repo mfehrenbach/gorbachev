@@ -135,56 +135,11 @@
 
 
 
-	// Visual inset for “full width” block stuff within text.
-	%--ragged-block {
-		// Account for typography insets on parent/paragraph above.
-		--full-width: calc(100% + var(--typography--margin--left) + var(--typography--margin--right));
-		--rag--width: calc(var(--full-width) - var(--rag--inset, 0em));
-
-		display:      flow-root;
-		margin-left:  calc(-1 * var(--typography--margin--left));
-		margin-right: calc(-1 * var(--typography--margin--right));
-		max-width:    var(--rag--width);
-
-		// Two-column.
-		@include width(568) { --rag--inset: var(--typography--lead) }
-	}
-
-
-
 	a {
 		@extend %link--text;
 
 		--color: var(--color--secondary);
-
-		// And links with images.
-		&:has(> img) {
-			@extend %--ragged-block;
-			@extend %link--element;
-
-			// Account for link padding too.
-			--full-width: calc(100% + var(--link--enlargement) * 2 + var(--typography--margin--left) + var(--typography--margin--right));
-
-			// Extra space below.
-			margin-bottom: calc(-1 * var(--typography--margin--bottom) - var(--link--enlargement) + var(--typography--line-height));
-			margin-left:   calc(-1 * var(--typography--margin--left) - var(--link--enlargement));
-			margin-right:  calc(-1 * var(--typography--margin--right) - var(--link--enlargement));
-			margin-top:    calc(-1 * var(--typography--margin--top) - var(--link--enlargement));
-
-			> img {
-				display:     flow-root;
-				transition:  var(--link--transition) opacity linear;
-				will-change: opacity; // Reduce flicker/stutter on hover.
-			 }
-
-			@include hover { > img { opacity: 0.933 } }
-		}
 	}
-
-
-
-	// “Loose” inline images.
-	*:not(a) > img { @extend %--ragged-block }
 
 
 
@@ -489,6 +444,57 @@
 
 
 
+	// Visual inset for “full width” block stuff within text.
+	%--ragged-block {
+		// Account for typography insets on parent/paragraph above.
+		--full-width: calc(100% + var(--typography--margin--left) + var(--typography--margin--right));
+		--rag--width: calc(var(--full-width) - var(--rag--inset, 0em));
+
+		display:      flow-root;
+		margin-left:  calc(-1 * var(--typography--margin--left));
+		margin-right: calc(-1 * var(--typography--margin--right));
+		max-width:    var(--rag--width);
+
+		// Two-column.
+		@include width(568) { --rag--inset: var(--typography--lead) }
+	}
+
+
+
+	// “Loose” inline images.
+	*:not(a) > img {
+		@extend %--ragged-block;
+
+		// Account for baselines, extra line after.
+		margin-bottom: calc(-1 * var(--typography--margin--bottom) + var(--typography--line-height));
+		margin-top:    calc(-1 * var(--typography--margin--top));
+	}
+
+	// The more common image-in-link.
+	a:has(> img) {
+		@extend %--ragged-block;
+		@extend %link--element;
+
+		// Account for link padding too.
+		--full-width: calc(100% + var(--link--enlargement) * 2 + var(--typography--margin--left) + var(--typography--margin--right));
+
+		// Extra space below.
+		margin-bottom: calc(-1 * var(--typography--margin--bottom) - var(--link--enlargement) + var(--typography--line-height));
+		margin-left:   calc(-1 * var(--typography--margin--left) - var(--link--enlargement));
+		margin-right:  calc(-1 * var(--typography--margin--right) - var(--link--enlargement));
+		margin-top:    calc(-1 * var(--typography--margin--top) - var(--link--enlargement));
+
+		> img {
+			display:     flow-root;
+			transition:  var(--link--transition) opacity linear;
+			will-change: opacity; // Reduce flicker/stutter on hover.
+		 }
+
+		@include hover { > img { opacity: 0.933 } }
+	}
+
+
+
 	audio,
 	iframe[src*="youtube.com"] {
 		@extend %--ragged-block;
@@ -498,7 +504,7 @@
 
 	audio {
 		height:        var(--typography--line-height);
-		margin-bottom: var(--typography--line-height);
+		margin-bottom: var(--typography--line-height); // Extra line after.
 
 		// Approximate Safari’s vibe.
 		@include browser(chrome) {
@@ -524,6 +530,7 @@
 		height:        auto;
 		margin-bottom: calc(-1 * var(--typography--margin--bottom) + var(--typography--line-height));
 		margin-top:    calc(-1 * var(--typography--margin--top) + var(--typography--line-height));
+		// Extra line before and after.
 	}
 
 	// This doesn’t account for “anonymous” text, but I don’t think that is possible.
