@@ -463,7 +463,32 @@
 
 
 
-	// “Loose” inline images.
+	// Some legacy scaling interpretations.
+	img {
+		&[width] {
+			// Viewport, less gutters.
+			width: calc((100vw - var(--typography--lead) * 2) * var(--percentage) / 100);
+
+			// Two-column, go down from main-column wrap.
+			@include width(568) { width: calc(var(--main--wrap) * var(--percentage) / 100) }
+		}
+
+		&[width="50%"] { --percentage: 50 }
+		&[width="65%"] { --percentage: 65 }
+
+		&[width="100"] { --percentage: 25 }
+		&[width="200"] { --percentage: 45 }
+		&[width="225"] { --percentage: 50 }
+		&[width="400"] { --percentage: 90 }
+
+		&[width="420"],
+		&[width="450"],
+		&[width="500"],
+		&[width="525"],
+		&[width="600"] { --percentage: 100 } // Max these all out.
+	}
+
+	// Loose “inline” images.
 	*:not(a) > img {
 		@extend %--ragged-block;
 
