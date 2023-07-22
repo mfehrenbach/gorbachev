@@ -374,12 +374,16 @@
 	dl {
 		dt {
 			@extend %font--extended;
-			@extend %font--gill-sans--in-verdana;
+			@extend %font--gill-sans--on-verdana;
 			@extend %font--uppercase;
 
 			--color: var(--color--tertiary);
 
+			// Manually duped from “in Verdana” because we can’t extend both.
+			--typography--scale: calc(var(--typography--cap-height--gill-sans) / var(--typography--x-height--gill-sans));
+
 			> a {
+				@extend %font--extended; // Redeclare for the scale.
 				@extend %typography--inline;
 				@extend %typography--underline--disable;
 

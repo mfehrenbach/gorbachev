@@ -137,7 +137,7 @@ td {
 	@extend %--variables--leading;
 
 	display:     inline;
-	line-height: 1em; // To not mess with parent baselines.
+	line-height: initial; // To not mess with parent baselines.
 }
 
 %typography--inline-block {
