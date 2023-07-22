@@ -89,6 +89,21 @@
 				}
 			}
 		}
+
+		// Improve link hovers in Safari, since they often wrap.
+		@include browser(safari) {
+			&:has(> a[title^="Permanent link"] ) {
+				a:not(.permalink) {
+					margin:        initial;
+					padding-left:  initial;
+					padding-right: initial;
+
+					@include hover { // Faux link-enlargement.
+						box-shadow: calc(-1 * var(--link--enlargement)) 0 0 var(--color--highlight), var(--link--enlargement) 0 0 var(--color--highlight);
+					}
+				}
+			}
+		}
 	}
 
 

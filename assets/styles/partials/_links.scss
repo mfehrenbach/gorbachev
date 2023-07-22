@@ -10,7 +10,7 @@
 	border-radius:               var(--link--radius);
 	cursor:                      pointer;
 	transition-duration:         var(--link--transition);
-	transition-property:         background-color, color, text-decoration-color;
+	transition-property:         background-color, box-shadow, color, text-decoration-color;
 	transition-timing-function:  linear;
 
 	&:active { background-color: var(--color--highlight) }
