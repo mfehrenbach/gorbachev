@@ -35,8 +35,16 @@
 	}
 
 	h1 { margin-top: var(--typography--line--6) }
-	h2 { margin-top: var(--typography--line--4) }
-	h3 { margin-top: var(--typography--line--2) }
+
+	dl,
+	h2 {
+		margin-top: var(--typography--line--4);
+	}
+
+	dt,
+	h3 {
+		margin-top: var(--typography--line--2);
+	}
 
 	blockquote,
 	dd,
@@ -261,6 +269,33 @@
 
 
 
+	%--list-item {
+		> p {
+			margin-left:  initial; // Since the parent is an acting type element.
+			margin-right: initial;
+
+			// Take off top one and bottom one.
+			&:first-child:before, &:last-child:after { display: none }
+		}
+
+		// Nested last paragraph margin “collapses” up.
+		> blockquote > p:last-child { margin-bottom: calc(-1 * var(--typography--margin--bottom)) }
+
+		> blockquote,
+		> ol,
+		> p,
+		> pre,
+		> ul {
+			// Two extra lines after when there are multiple children.
+			&:not(:only-child):last-child { margin-bottom: calc(var(--typography--line-height) * 2) }
+		}
+
+		// Cancel these out for the last list items.
+		&:last-child > *:not(:only-child):last-child { margin-bottom: initial }
+	}
+
+
+
 	ol,
 	ul {
 		display:             flex;
@@ -271,6 +306,8 @@
 		row-gap:             var(--typography--lead);
 
 		> li {
+			@extend %--list-item;
+
 			display:       list-item;
 			margin-bottom: var(--typography--margin--bottom);
 			margin-left:   calc(var(--list--marker-shift) + var(--typography--margin--left));
@@ -281,32 +318,16 @@
 
 			&:before, &:after { display: none } // Conflicts with the marker, so use the margin.
 
-			// Since the `li` is an acting type element.
-			> p {
-				margin-left:  initial;
-				margin-right: initial;
-
-				// Take off top one and bottom one.
-				&:first-child:before, &:last-child:after { display: none }
+			&:not(:last-child) {
+				> blockquote,
+				> ol,
+				> p,
+				> pre,
+				> ul {
+					// Extra line after nested block elements..
+					&:last-child { margin-bottom: var(--typography--line-height) }
+				}
 			}
-
-			// Nested last paragraph margin “collapses” up.
-			> blockquote > p:last-child { margin-bottom: calc(-1 * var(--typography--margin--bottom)) }
-
-			> blockquote,
-			> ol,
-			> p,
-			> pre,
-			> ul {
-				// Extra line after nested block elements..
-				&:last-child { margin-bottom: var(--typography--line-height) }
-
-				// Two extra for multiple.
-				&:not(:only-child):last-child { margin-bottom: calc(var(--typography--line-height) * 2) }
-			}
-
-			// Cancel these out for the last list items.
-			&:last-child > *:last-child { margin-bottom: initial }
 		}
 	}
 
@@ -344,6 +365,35 @@
 		li::marker { color: var(--color--middle) }
 
 		@include browser(chrome) { --list--marker-shift: 0.55em } // What can you do.
+	}
+
+
+
+	dl {
+		dt {
+			@extend %font--extended;
+			@extend %font--gill-sans--in-verdana;
+			@extend %font--uppercase;
+
+			--color: var(--color--tertiary);
+
+			> a {
+				@extend %typography--inline;
+				@extend %typography--underline--disable;
+
+				--color: var(--color--secondary);
+
+				--typography--scale: 1; // Clear back to “on Verdana” size.
+
+				&:not(.permalink) { @extend %--safari-faux-enlargement }
+			}
+		}
+
+		dd {
+			@extend %--list-item;
+
+			padding-left: var(--typography--line);
+		}
 	}
 
 
@@ -477,19 +527,11 @@
 		> div { // New container from JS.
 			> dt {
 				@extend %--sticky-header--main;
-				@extend %font--extended;
-				@extend %font--gill-sans--on-verdana;
-				@extend %font--uppercase;
 
-				--color: var(--color--secondary);
-
-				> a {
-					@extend %typography--underline--disable;
-
-					&:not(.permalink) { @extend %--safari-faux-enlargement }
+				+ dd {
+					margin-top:   var(--typography--line--2);
+					padding-left: initial;
 				}
-
-				+ dd { margin-top: var(--typography--line--2) }
 			}
 		}
 	}
@@ -540,34 +582,6 @@
 
 				+ * { margin-top: var(--typography--line) }
 			}
-		}
-
-
-
-		// “Projects” landing, if not elsewhere.
-		> dl {
-			> dt {
-				@extend %font--extended;
-				@extend %font--gill-sans--in-verdana;
-				@extend %font--uppercase;
-
-				--color: var(--color--tertiary);
-
-				margin-top: var(--typography--line--2);
-
-				&:first-child { margin-top: initial }
-
-				> a {
-					@extend %typography--inline;
-					@extend %typography--underline--disable;
-
-					--color: var(--color--secondary);
-
-					--typography--scale: 1; // Clear to “on Verdana” size.
-				}
-			}
-
-			> dd { padding-left: var(--typography--line) }
 		}
 	}
 
