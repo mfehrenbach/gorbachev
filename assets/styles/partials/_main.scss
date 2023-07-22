@@ -599,6 +599,9 @@
 	// On the main landing.
 	> .dateline { @extend %--section-spacing }
 
+	// On archived linked lists.
+	> h1:first-child + .dateline { margin-top: var(--typography--line--2) }
+
 
 
 	.permalink {
@@ -688,6 +691,9 @@
 				+ * { margin-top: var(--typography--line) }
 			}
 		}
+
+		// Linked List landing.
+		+ .article { margin-top: var(--typography--line--4) }
 	}
 
 
