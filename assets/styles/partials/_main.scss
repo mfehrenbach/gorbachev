@@ -71,6 +71,8 @@
 
 		// Smoke em’ if you got em.
 		@include width(744) { @include tall(1080) { margin-top: var(--typography--line--8) } }
+
+		+ * { margin-top: var(--typography--line--2) }
 	}
 
 
