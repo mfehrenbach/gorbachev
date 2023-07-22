@@ -38,7 +38,8 @@ body {
 			a {
 				@extend %typography--underline;
 
-				// position: relative;
+				--link--enlargement: calc(var(--typography--content--bottom) * 1em);
+
 				background-color: rgba(green, 0.25);
 
 				&:before, &:after {
