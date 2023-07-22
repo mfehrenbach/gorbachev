@@ -145,6 +145,34 @@
 
 			&:before, &:after { content: '\2002' } // An `&ensp;` around it.
 		}
+
+
+
+		// Linked images.
+		&:has(> img) {
+			@extend %link--element;
+
+			--full-width: calc(100% + var(--link--enlargement) * 2 + var(--typography--margin--left) + var(--typography--margin--right));
+
+			// Account for typography insets on paragraph above.
+			display:       flow-root;
+			margin-bottom: calc(-1 * var(--typography--margin--bottom) - var(--link--enlargement));
+			margin-left:   calc(-1 * var(--typography--margin--left) - var(--link--enlargement)); // Counteract inset on paragraph.
+			margin-right:  calc(-1 * var(--typography--margin--right) - var(--link--enlargement));
+			margin-top:    calc(-1 * var(--typography--margin--top) - var(--link--enlargement));
+			max-width:     var(--full-width);
+
+			// Inset a bit visually, to ragged edge.
+			@include width(568) { max-width: calc(var(--full-width) - var(--typography--lead)) }
+
+			> img {
+				display:     flow-root;
+				transition:  var(--link--transition) opacity linear;
+				will-change: opacity; // Reduce flicker/stutter on hover.
+			 }
+
+			@include hover { > img { opacity: 0.933 } }
+		}
 	}
 
 
