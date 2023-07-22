@@ -172,7 +172,8 @@
 			// Account for link padding too.
 			--full-width: calc(100% + var(--link--enlargement) * 2 + var(--typography--margin--left) + var(--typography--margin--right));
 
-			margin-bottom: calc(-1 * var(--typography--margin--bottom) - var(--link--enlargement));
+			// Extra space below.
+			margin-bottom: calc(-1 * var(--typography--margin--bottom) - var(--link--enlargement) + var(--typography--line-height));
 			margin-left:   calc(-1 * var(--typography--margin--left) - var(--link--enlargement));
 			margin-right:  calc(-1 * var(--typography--margin--right) - var(--link--enlargement));
 			margin-top:    calc(-1 * var(--typography--margin--top) - var(--link--enlargement));
