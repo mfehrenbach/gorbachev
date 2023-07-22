@@ -488,6 +488,9 @@
 		&[width="600"] { --percentage: 100 } // Max these all out.
 	}
 
+	img + img,
+	img:has(+ img) { display: inline } // Properly inline, occasionally.
+
 	// Loose “inline” images.
 	*:not(a) > img {
 		@extend %--ragged-block;
