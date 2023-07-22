@@ -135,35 +135,47 @@
 
 
 
+	// Visual inset for “full width” block stuff within text.
+	%--ragged-block {
+		// Account for typography insets on parent/paragraph above.
+		--full-width: calc(100% + var(--typography--margin--left) + var(--typography--margin--right));
+		--rag--width: calc(var(--full-width) - var(--rag--inset, 0em));
+
+		display:      flow-root;
+		margin-left:  calc(-1 * var(--typography--margin--left));
+		margin-right: calc(-1 * var(--typography--margin--right));
+		max-width:    var(--rag--width);
+
+		// Two-column.
+		@include width(568) { --rag--inset: var(--typography--lead) }
+	}
+
+
+
 	a {
 		@extend %link--text;
 
 		--color: var(--color--secondary);
 
+		// The occasional link with code.
 		code:not(pre) { // Match `:not` selector, below.
 			padding: initial;
 
 			&:before, &:after { content: '\2002' } // An `&ensp;` around it.
 		}
 
-
-
-		// Linked images.
+		// And links with images.
 		&:has(> img) {
+			@extend %--ragged-block;
 			@extend %link--element;
 
+			// Account for link padding too.
 			--full-width: calc(100% + var(--link--enlargement) * 2 + var(--typography--margin--left) + var(--typography--margin--right));
 
-			// Account for typography insets on paragraph above.
-			display:       flow-root;
 			margin-bottom: calc(-1 * var(--typography--margin--bottom) - var(--link--enlargement));
-			margin-left:   calc(-1 * var(--typography--margin--left) - var(--link--enlargement)); // Counteract inset on paragraph.
+			margin-left:   calc(-1 * var(--typography--margin--left) - var(--link--enlargement));
 			margin-right:  calc(-1 * var(--typography--margin--right) - var(--link--enlargement));
 			margin-top:    calc(-1 * var(--typography--margin--top) - var(--link--enlargement));
-			max-width:     var(--full-width);
-
-			// Inset a bit visually, to ragged edge.
-			@include width(568) { max-width: calc(var(--full-width) - var(--typography--lead)) }
 
 			> img {
 				display:     flow-root;
@@ -174,6 +186,11 @@
 			@include hover { > img { opacity: 0.933 } }
 		}
 	}
+
+
+
+	// “Loose” inline images.
+	*:not(a) > img { @extend %--ragged-block }
 
 
 
@@ -472,19 +489,14 @@
 
 
 
-	audio, iframe[src*="youtube.com"] {
-		--full-width: calc(100% + var(--typography--margin--left) + var(--typography--margin--right));
+	audio,
+	iframe[src*="youtube.com"] {
+		@extend %--ragged-block;
 
-		margin-left:  calc(-1 * var(--typography--margin--left)); // Counteract inset on paragraph.
-		margin-right: calc(-1 * var(--typography--margin--right));
-		width:        var(--full-width);
-
-		// Inset a bit visually, to ragged edge.
-		@include width(568) { width: calc(var(--full-width) - var(--typography--lead)) }
+		width: var(--rag--width); // Fill the space.
 	}
 
 	audio {
-		display:       flow-root;
 		height:        var(--typography--line-height);
 		margin-bottom: var(--typography--line-height);
 
@@ -509,7 +521,6 @@
 
 	iframe[src*="youtube.com"] {
 		aspect-ratio:  16 / 9; // An assumption.
-		display:       flow-root;
 		height:        auto;
 		margin-bottom: calc(-1 * var(--typography--margin--bottom) + var(--typography--line-height));
 		margin-top:    calc(-1 * var(--typography--margin--top) + var(--typography--line-height));
