@@ -491,6 +491,8 @@
 	img + img,
 	img:has(+ img) { display: inline } // Properly inline, occasionally.
 
+
+
 	// Loose “inline” images.
 	*:not(a) > img {
 		@extend %--ragged-block;
@@ -563,9 +565,19 @@
 		// Extra line before and after.
 	}
 
-	// This doesn’t account for “anonymous” text, but I don’t think that is possible.
-	*:first-child > audio:only-child,
-	*:first-child > iframe[src*="youtube.com"]:only-child { margin-top: initial }
+
+
+	// Drop extra spaces when at the end.
+	*:not(a):last-child > img { margin-bottom: calc(-1 * var(--typography--margin--bottom)) }
+
+	*:last-child > a:has(> img) { margin-bottom: calc(-1 * var(--typography--margin--bottom) - var(--link--enlargement)) }
+
+	*:first-child > audio:first-child { margin-top:    initial }
+	*:last-child >  audio:last-child  { margin-bottom: initial }
+
+	*:first-child > iframe[src*="youtube.com"]:first-child { margin-top:    calc(-1 * var(--typography--margin--top)) }
+	*:last-child >  iframe[src*="youtube.com"]:last-child  { margin-bottom: calc(-1 * var(--typography--margin--bottom)) }
+	// These all don’t account for surrounding “anonymous” text, but I don’t think that is possible.
 
 
 
