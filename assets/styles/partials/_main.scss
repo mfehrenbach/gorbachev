@@ -498,7 +498,7 @@
 
 
 	audio,
-	iframe[src*="youtube.com"] {
+	iframe[src*="youtube"] {
 		@extend %--ragged-block;
 
 		width: var(--rag--width); // Fill the space.
@@ -527,7 +527,7 @@
 		}
 	}
 
-	iframe[src*="youtube.com"] {
+	iframe[src*="youtube"] {
 		aspect-ratio:  16 / 9; // An assumption.
 		height:        auto;
 		margin-bottom: calc(-1 * var(--typography--margin--bottom) + var(--typography--line-height));
