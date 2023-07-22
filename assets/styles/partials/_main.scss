@@ -380,7 +380,7 @@
 			--color: var(--color--tertiary);
 
 			// Manually duped from “in Verdana” because we can’t extend both.
-			--typography--scale: calc(var(--typography--cap-height--gill-sans) / var(--typography--x-height--gill-sans));
+			--typography--scale: calc(var(--typography--x-height--verdana) / var(--typography--cap-height--gill-sans));
 
 			> a {
 				@extend %font--extended; // Redeclare for the scale.
