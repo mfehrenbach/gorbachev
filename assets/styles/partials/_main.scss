@@ -445,10 +445,14 @@
 
 
 	audio, iframe[src*="youtube.com"] {
-		width: 100%;
+		--full-width: calc(100% + var(--typography--margin--left) + var(--typography--margin--right));
+
+		margin-left:  calc(-1 * var(--typography--margin--left)); // Counteract inset on paragraph.
+		margin-right: calc(-1 * var(--typography--margin--right));
+		width:        var(--full-width);
 
 		// Inset a bit visually, to ragged edge.
-		@include width(568) { width: calc(100% - var(--typography--lead)) }
+		@include width(568) { width: calc(var(--full-width) - var(--typography--lead)) }
 	}
 
 	audio {
