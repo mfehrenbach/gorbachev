@@ -157,13 +157,6 @@
 
 		--color: var(--color--secondary);
 
-		// The occasional link with code.
-		code:not(pre) { // Match `:not` selector, below.
-			padding: initial;
-
-			&:before, &:after { content: '\2002' } // An `&ensp;` around it.
-		}
-
 		// And links with images.
 		&:has(> img) {
 			@extend %--ragged-block;
@@ -279,6 +272,12 @@
 		padding-left:  calc(var(--padding) + var(--typography--margin--left));
 		padding-right: calc(var(--padding) + var(--typography--margin--right));
 		white-space:   pre-wrap;
+	}
+
+	a code { // The occasional link with code.
+		padding: initial;
+
+		&:before, &:after { content: '\2002' } // An `&ensp;` around it, instead.
 	}
 
 	pre {
