@@ -39,7 +39,7 @@
 	--typography--underline:         0.078; // Height of crossbar on “f”.
 	--typography--underline--shift: -0.123; // Shift down from baseline to the bottom of descenders.
 
-	font-family: 'Verdana', sans-serif;
+	font-family: 'Verdana', system-ui, sans-serif; // System UI comes in for arrows and symbols.
 }
 
 
