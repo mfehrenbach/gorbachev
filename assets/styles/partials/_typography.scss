@@ -95,7 +95,8 @@ h5,
 h6,
 li,
 p,
-td {
+td,
+th {
 	@extend %--basic-properties;
 	@extend %--color-spacing-weight;
 	@extend %--variables--face;
@@ -118,6 +119,7 @@ td {
 	&:after  { margin-bottom: var(--typography--margin--bottom) }
 }
 
+th,
 td {
 	display:    table-cell; // Reset typography properties that break these.
 	word-break: initial;
