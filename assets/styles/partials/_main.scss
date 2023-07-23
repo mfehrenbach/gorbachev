@@ -601,7 +601,11 @@
 		margin-right:    calc(-1 * var(--table--gutter));
 		width:           initial !important;
 
-		th, td { padding: initial !important }
+		th, td {
+			@extend nobr;
+
+			padding: initial !important;
+		}
 
 		th {
 			@extend %font--extended;
@@ -610,6 +614,8 @@
 
 			--color: var(--color--tertiary);
 		}
+
+		th { vertical-align: bottom }
 
 		tr:not(:first-child) td,
 		tr:not(:first-child) th { border-top: var(--table--gap) solid transparent }
@@ -842,6 +848,8 @@
 
 			td:not(:first-child) { // Article titles.
 				@extend %font--gill-sans--x-verdana-x;
+
+				white-space: initial; // Titles gonna wrap.
 
 				a {
 					@extend %--safari-faux-enlargement;
