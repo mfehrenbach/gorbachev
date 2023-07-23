@@ -592,10 +592,13 @@
 
 
 	table {
+		--table--gutter: var(--typography--lead);
+		--table--gap:    var(--typography--lead);
+
 		border-collapse: separate;
-		border-spacing:  var(--typography--lead) 0; // Convenient gutters.
-		margin-left:     calc(-1 * var(--typography--lead)) !important; // Override inline styles.
-		margin-right:    calc(-1 * var(--typography--lead));
+		border-spacing:  var(--table--gutter) 0; // Convenient gutters.
+		margin-left:     calc(-1 * var(--table--gutter)) !important; // Override inline styles.
+		margin-right:    calc(-1 * var(--table--gutter));
 		width:           initial !important;
 
 		th, td { padding: initial !important }
@@ -609,9 +612,9 @@
 		}
 
 		tr:not(:first-child) td,
-		tr:not(:first-child) th { border-top: var(--typography--lead) solid transparent }
+		tr:not(:first-child) th { border-top: var(--table--gap) solid transparent }
 
-		thead tr:last-child th { border-bottom: var(--typography--lead) solid transparent }
+		thead tr:last-child th { border-bottom: var(--table--gap) solid transparent }
 	}
 
 
@@ -831,21 +834,14 @@
 		margin-top: var(--typography--line--4);
 
 		table {
-			width: 100%;
+			--table--gap: var(--typography--line);
 
-			tr:not(:first-child) td { padding-top: var(--typography--line) } // Second row. Oh, tables.
+			@include width(744) { @include tall(480) { --table--gutter: var(--typography--line) } }
 
-			td:first-child { // Prev/next.
-				padding-right: var(--typography--lead);
-				text-align:    right;
-
-				@include width(744) { @include tall(480) { padding-right: var(--typography--line) } }
-			}
+			td:first-child { text-align: right } // Prev/next.
 
 			td:not(:first-child) { // Article titles.
 				@extend %font--gill-sans--x-verdana-x;
-
-				width: 100%;
 
 				a {
 					@extend %--safari-faux-enlargement;
