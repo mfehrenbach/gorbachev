@@ -755,6 +755,8 @@
 			.footnoteBackLink { // The return arrow.
 				@extend %typography--underline--disable;
 
+				--color: var(--color--middle);
+
 				line-height:     1em; // For vertical-align.
 				vertical-align: -0.2em;
 
