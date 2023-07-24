@@ -626,7 +626,7 @@
 		th { vertical-align: bottom }
 
 		td:not(:first-child),
-		th:not(:first-child) { border-left: var(--table--column-gap) solid transparent }
+		th:not(:first-child) { border-left: calc(var(--table--column-gap) + var(--typography--margin--left) + var(--typography--margin--right)) solid transparent }
 
 		tr:not(:first-child) td,
 		tr:not(:first-child) th { border-top: var(--table--row-gap) solid transparent }
