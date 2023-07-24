@@ -260,8 +260,8 @@ body {
 			> ul {
 				--color: var(--color--secondary);
 
-				column-gap:    calc(var(--typography--lead) * 2);
-				display:       flex;
+				column-gap: var(--typography--lead--2);
+				display:    flex;
 
 				> li {
 					@extend %--scroll--snap;
@@ -368,7 +368,7 @@ body {
 
 
 		// JS-added return-to-top links.
-		--sticky--inset--right: calc(var(--typography--lead) * 2 + (46 / 390) * 100vw); // Width of top link and nav gutter.
+		--sticky--inset--right: calc(var(--typography--lead--2) + (46 / 390) * 100vw); // Width of top link and nav gutter.
 
 		#BannerTop {
 			height:   calc(var(--typography--line-height) * 2 + var(--typography--cap));

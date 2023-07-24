@@ -471,7 +471,7 @@
 	img {
 		&[width] {
 			// Viewport, less gutters.
-			width: calc((100vw - var(--typography--lead) * 2) * var(--percentage) / 100);
+			width: calc((100vw - var(--typography--lead--2)) * var(--percentage) / 100);
 
 			// Two-column, go down from main-column wrap.
 			@include width(568) { width: calc(var(--main--wrap) * var(--percentage) / 100) }
@@ -592,7 +592,7 @@
 
 
 	table {
-		--table--column-gap: calc(var(--typography--lead) * 2);
+		--table--column-gap: var(--typography--lead--2);
 		--table--row-gap:    var(--typography--lead);
 
 		margin-left: initial !important;

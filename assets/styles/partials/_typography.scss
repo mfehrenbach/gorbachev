@@ -60,6 +60,7 @@ nobr, .nowrap { white-space: nowrap }
 	--typography--stroke: calc(var(--typography--underline) *  var(--typography--font-size));
 
 	--typography--lead:    calc(var(--typography--line-height) - var(--typography--cap) / var(--typography--scale, 1));
+	--typography--lead--2: calc(var(--typography--lead) * 2);
 	--typography--line:    calc(var(--typography--line-height) + var(--typography--lead));
 	--typography--line--2: calc(var(--typography--line-height) * 2 + var(--typography--lead));
 	--typography--line--3: calc(var(--typography--line-height) * 3 + var(--typography--lead));
