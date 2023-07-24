@@ -853,6 +853,9 @@
 		table {
 			--table--row-gap: var(--typography--line);
 
+			-webkit-mask: initial; // Reset from internal-scroll.
+			overflow:     initial;
+
 			td:first-child { text-align: right } // Prev/next.
 
 			td:not(:first-child) { // Article titles.
