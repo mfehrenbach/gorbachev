@@ -860,7 +860,12 @@
 			-webkit-mask: initial; // Reset from internal-scroll.
 			overflow:     initial;
 
-			td:first-child { text-align: right } // Prev/next.
+			td:first-child { // Prev/next labels.
+				overflow:   hidden;
+				text-align: right;
+
+				strong { margin-right: -1ch } // Hide the colon.
+			}
 
 			td:not(:first-child) { // Article titles.
 				@extend %font--gill-sans--x-verdana-x;
