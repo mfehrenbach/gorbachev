@@ -521,7 +521,7 @@ body {
 				@include tall(480) {
 					--banner--forehead: var(--typography--line--4);
 
-					column-gap:     calc(var(--typography--line) * 2); // Horizontal, so twice optically (not baseline).
+					column-gap:     var(--typography--line--2);
 					padding-bottom: var(--typography--line);
 					row-gap:        var(--typography--line--4);
 
