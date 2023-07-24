@@ -604,9 +604,11 @@
 		--table--column-gap: var(--typography--lead--2);
 		--table--row-gap:    var(--typography--lead);
 
-		margin-left:  calc(-1 * var(--typography--lead)) !important; // Override inline styles.
-		margin-right: calc(-1 * var(--typography--lead));
-		width:        initial !important;
+		margin-bottom:  calc(-1 * var(--typography--cap));
+		margin-left:    calc(-1 * var(--typography--lead)) !important; // Override inline styles.
+		margin-right:   calc(-1 * var(--typography--lead));
+		padding-bottom: var(--typography--cap);
+		width:          initial !important;
 
 		td,
 		th {
