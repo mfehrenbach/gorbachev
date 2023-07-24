@@ -140,6 +140,20 @@
 
 
 
+	// For too-wide code and tables, overflow and fade left/right edges.
+	%--internal-scroll {
+		-webkit-mask:  linear-gradient(to right, transparent, white var(--typography--lead), white calc(100% - var(--typography--lead)), transparent 100%);
+		display:       flow-root;
+		overflow-x:    auto;
+		overflow-y:    hidden;
+		padding-left:  var(--typography--lead);
+		padding-right: var(--typography--lead);
+
+		&::-webkit-scrollbar { display: none }
+	}
+
+
+
 	a {
 		@extend %link--text;
 
@@ -255,20 +269,13 @@
 		}
 
 		> code {
+			@extend %--internal-scroll;
 			@extend %typography;
 
-			// Fade left/right edges for overflow.
-			-webkit-mask:  linear-gradient(to right, transparent, white var(--typography--lead), white calc(100% - var(--typography--lead)), transparent 100%);
 			margin-bottom: var(--typography--margin--bottom);
 			margin-top:    var(--typography--margin--top);
-			overflow-x:    auto;
-			overflow-y:    hidden;
-			padding-left:  var(--typography--lead);
-			padding-right: var(--typography--lead);
 			tab-size:      4;
 			white-space:   pre;
-
-			&::-webkit-scrollbar { display: none }
 
 			&:before, &:after { display: none } // Using margins for baseline alignment.
 		}
@@ -592,11 +599,14 @@
 
 
 	table {
+		@extend %--internal-scroll;
+
 		--table--column-gap: var(--typography--lead--2);
 		--table--row-gap:    var(--typography--lead);
 
-		margin-left: initial !important;
-		width:       initial !important;
+		margin-left:  calc(-1 * var(--typography--lead)) !important; // Override inline styles.
+		margin-right: calc(-1 * var(--typography--lead));
+		width:        initial !important;
 
 		td,
 		th {
