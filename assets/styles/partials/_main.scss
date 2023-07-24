@@ -592,16 +592,16 @@
 
 
 	table {
-		--table--gutter: var(--typography--lead);
-		--table--gap:    var(--typography--lead);
 
-		border-collapse: separate;
-		border-spacing:  var(--table--gutter) 0; // Convenient gutters.
-		margin-left:     calc(-1 * var(--table--gutter)) !important; // Override inline styles.
-		margin-right:    calc(-1 * var(--table--gutter));
-		width:           initial !important;
 
-		th, td {
+		--table--column-gap: calc(var(--typography--lead) * 2);
+		--table--row-gap:    var(--typography--lead);
+
+		margin-left: initial !important;
+		width:       initial !important;
+
+		td,
+		th {
 			@extend nobr;
 
 			padding: initial !important;
@@ -617,10 +617,13 @@
 
 		th { vertical-align: bottom }
 
-		tr:not(:first-child) td,
-		tr:not(:first-child) th { border-top: var(--table--gap) solid transparent }
+		td:not(:first-child),
+		th:not(:first-child) { border-left: var(--table--column-gap) solid transparent }
 
-		thead tr:last-child th { border-bottom: var(--table--gap) solid transparent }
+		tr:not(:first-child) td,
+		tr:not(:first-child) th { border-top: var(--table--row-gap) solid transparent }
+
+		thead tr:last-child th { border-bottom: var(--table--row-gap) solid transparent }
 	}
 
 
@@ -840,9 +843,7 @@
 		margin-top: var(--typography--line--4);
 
 		table {
-			--table--gap: var(--typography--line);
-
-			@include width(744) { @include tall(480) { --table--gutter: var(--typography--line) } }
+			--table--row-gap: var(--typography--line);
 
 			td:first-child { text-align: right } // Prev/next.
 
