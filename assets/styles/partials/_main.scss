@@ -49,6 +49,7 @@
 		margin-top: var(--typography--line--2);
 	}
 
+	> *,
 	blockquote,
 	dd,
 	div,
@@ -478,10 +479,11 @@
 	img {
 		&[width] {
 			// Viewport, less gutters.
-			width: calc((100vw - var(--typography--lead--2)) * var(--percentage) / 100);
+			width:  calc((100vw - var(--typography--lead--2)) * var(--percentage, 75) / 100);
+			height: auto !important;
 
 			// Two-column, go down from main-column wrap.
-			@include width(568) { width: calc(var(--main--wrap) * var(--percentage) / 100) }
+			@include width(568) { width: calc(var(--main--wrap) * var(--percentage, 50) / 100) }
 		}
 
 		&[width="50%"] { --percentage: 50 }
