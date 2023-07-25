@@ -456,7 +456,27 @@ body {
 
 
 
-			#Banner { margin-bottom: initial } // Reset extra mobile/portrait space.
+			#Banner {
+				margin-bottom: initial; // Reset extra mobile/portrait space.
+				top:           calc(-1 * var(--banner--forehead) + var(--typography--lead));
+				z-index:       3;
+
+				// This trick covers blurry main content/ad from flickering through the browser UI.
+				&:before {
+					--outset: var(--typography--lead);
+
+					background: var(--color--background);
+					content:    '';
+					display:    block;
+					height:     calc(var(--banner--forehead) * 2 - var(--typography--lead));
+					left:       calc(-1 * var(--outset));
+					position:   absolute;
+					right:      calc(-1 * var(--outset));
+					top:        calc(-1 * var(--banner--forehead));
+
+					@include width(1080) { --outset: var(--typography--line) }
+				}
+			}
 
 			#BannerTop  { display: none } // Switch to sidebar one.
 
@@ -536,7 +556,7 @@ body {
 					--banner--forehead: var(--typography--line--4);
 
 					padding-bottom: var(--typography--line);
-					row-gap:        var(--typography--line--4);
+					row-gap:        var(--banner--forehead);
 
 					#Sidebar { --sticky--first: var(--typography--line) }
 
