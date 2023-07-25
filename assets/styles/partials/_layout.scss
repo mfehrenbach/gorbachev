@@ -361,7 +361,7 @@ body {
 				position:       sticky;
 
 				// Allow left-ragged edge to poke out a bit for better wraps.
-				@include width(1024) { margin-left: calc(-1 * var(--typography--line)) }
+				@include width(1080) { margin-left: calc(-1 * var(--typography--line)) }
 			}
 		}
 
@@ -503,7 +503,7 @@ body {
 						// Wrap “Sponsor the show” link, on Talk Show nav.
 						&:has(> a[href="http://neat.fm/"]) { white-space: initial }
 
-						@include width(1024) { margin-left: calc(-1 * var(--typography--line)) }
+						@include width(1080) { margin-left: calc(-1 * var(--typography--line)) }
 					}
 				}
 			}
