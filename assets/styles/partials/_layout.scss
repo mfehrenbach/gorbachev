@@ -422,6 +422,21 @@ body {
 
 
 
+		// Loose copyright (Smartypants).
+		> .smallprint {
+			@extend %font--extended;
+			@extend %font--gill-sans--in-verdana;
+			@extend %font--uppercase;
+
+			--color: var(--color--tertiary);
+
+			grid-column: 2;
+		}
+
+		#Sidebar:has(~ .smallprint) { grid-row: span 2 } // Keep “Top” at end.
+
+
+
 		// Two-column.
 		@include width(568) {
 			--banner--forehead: var(--typography--line--2);
