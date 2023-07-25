@@ -167,10 +167,9 @@ body {
 
 				aspect-ratio: var(--content--width) / var(--content--height);
 				box-sizing:   content-box; // Padding outside.
-				height:       calc(var(--typography--cap) + var(--typography--lead));
+				height:       var(--typography--line-height);
 				position:     relative;
 				width:        auto;
-
 
 				img {
 					aspect-ratio:               var(--intrinsic--width) / var(--intrinsic--height);
