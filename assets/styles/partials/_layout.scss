@@ -430,7 +430,7 @@ body {
 
 			--sticky--inset--right: initial; // Reset space for top link.
 
-			column-gap:            var(--typography--line);
+			column-gap:            var(--typography--line--2); // Main “spine” gutter.
 			grid-template-columns: minmax(0, min-content) minmax(0, var(--main--wrap));
 			justify-content:       center;
 			padding-left:          var(--typography--line);
@@ -521,7 +521,6 @@ body {
 				@include tall(480) {
 					--banner--forehead: var(--typography--line--4);
 
-					column-gap:     var(--typography--line--2);
 					padding-bottom: var(--typography--line);
 					row-gap:        var(--typography--line--4);
 
