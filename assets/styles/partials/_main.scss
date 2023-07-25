@@ -817,7 +817,7 @@
 			@extend %font--gill-sans--x-verdana-x;
 
 			margin-top: var(--typography--line);
-			max-width:  48ch;
+			max-width:  42ch; // Approximate the wrap on articles themselves.
 
 			> a {
 				@extend %--safari-faux-enlargement;
