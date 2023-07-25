@@ -329,8 +329,11 @@ body {
 			> p {
 				--color: var(--color--secondary);
 
-				--typography--size--override: 11;
+				--typography--size--override: 12;
 				--typography--factor:         initial; // Since type is not scaling.
+
+				--typography--underline--clear: 1;
+				--typography--underline--link:  initial;
 
 				max-width: 50ch;
 
