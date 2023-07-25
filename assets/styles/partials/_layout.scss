@@ -458,7 +458,7 @@ body {
 
 			#Banner {
 				margin-bottom: initial; // Reset extra mobile/portrait space.
-				top:           calc(-1 * var(--banner--forehead) + var(--typography--lead));
+				top:           calc(-1 * var(--banner--forehead) - var(--typography--line-height) + var(--typography--cap) );
 				z-index:       3;
 
 				// This trick covers blurry main content/ad from flickering through the browser UI.
@@ -468,7 +468,7 @@ body {
 					background: var(--color--background);
 					content:    '';
 					display:    block;
-					height:     calc(var(--banner--forehead) * 2 - var(--typography--lead));
+					height:     calc(var(--banner--forehead) * 2 + var(--typography--lead));
 					left:       calc(-1 * var(--outset));
 					position:   absolute;
 					right:      calc(-1 * var(--outset));
