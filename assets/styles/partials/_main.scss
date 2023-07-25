@@ -720,6 +720,9 @@
 			}
 
 			+ * { margin-top: var(--typography--line--2) } // Line up to nav.
+
+			// 404.
+			&[style*="Hoefler"] { margin-top: calc(-1 * var(--sticky--forehead)) !important } // Inline styles again.
 		}
 
 		> h6 + * { margin-top: var(--typography--line--2) } // After dateline.
