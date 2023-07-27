@@ -6,580 +6,460 @@
 
 
 
-// Viewport stuff.
-:root {
-	--scroll--padding: 30vh; // Without knowing the title length/height, this is safe.
+// Overall layout.
+#Box {
+	--banner--forehead: var(--typography--line--3); // Less needed above optically (iOS).
 
-	scroll-behavior:       smooth;
-	scroll-padding-bottom: 5vh;
-	scroll-padding-top:    var(--scroll--padding);
+	display:               grid;
+	grid-template-columns: minmax(0, 1fr); // Since “auto” is the min otherwise.
+	padding-bottom:        var(--typography--line-height);
+	padding-left:          var(--typography--lead);
+	padding-right:         var(--typography--lead);
+	padding-top:           var(--banner--forehead);
+	row-gap:               var(--typography--line--2);
+	grid-template-areas:
+		'banner'
+		'sidebar'
+		'main';
+
+	@include browser(chrome) { --banner--forehead: var(--typography--line--4) } // More for Chrome.
+
+	#Banner {
+		grid-area:     banner;
+		margin-bottom: calc(var(--typography--line-height) * 2); // Just extra lines to match the optical 4, above.
+		position:      sticky;
+		top:           calc(-1 * var(--typography--line-height) - var(--typography--line--4) + var(--sticky--first));
+		z-index:       2; // Behind navigation, in front of sticky titles.
+
+		// The logo.
+		> a {
+			@extend %link--element;
+
+			--intrinsic--width:  720; // From the PNG.
+			--intrinsic--height: 168;
+
+			--content--width:  644; // Wordmark itself.
+			--content--height: 72;
+
+			--content--inset--left: 47;
+			--content--inset--top:  44;
+
+			--link--enlargement: calc(var(--typography--x) * 2); // Around circle overshoot.
+
+			aspect-ratio: var(--content--width) / var(--content--height);
+			box-sizing:   content-box; // Padding outside.
+			height:       var(--typography--line-height);
+			position:     relative;
+			width:        auto;
+
+			img {
+				aspect-ratio:               var(--intrinsic--width) / var(--intrinsic--height);
+				filter:                     brightness(1.16); // Take image to white.
+				height:                     initial; // Cancel inline.
+				margin-left:                calc(-1 * var(--content--inset--left) / var(--content--width) * (100% - var(--link--enlargement) * 2));
+				margin-top:                 calc(-1 * var(--content--inset--top) / var(--content--width) * (100% - var(--link--enlargement) * 2));
+				max-width:                  initial; // Cancel reset.
+				opacity:                    var(--opacity--primary); // Match body copy.
+				position:                   absolute;
+				transition-duration:        var(--link--transition); // Match other links.
+				transition-property:        opacity;
+				transition-timing-function: linear;
+				width:                      calc(var(--intrinsic--width) / var(--content--width) * (100% - var(--link--enlargement) * 2));
+				// Percentages derive from width, so use that for height offset too.
+
+				// Sharpen up Safari scaling, particularly at 1x.
+				@include browser(safari) { image-rendering: optimizeQuality }
+
+				@include hover { opacity: 100% } // Match other links.
+			}
+		}
+	}
+
+
+
+	// Sticky stuff.
+	--sticky--fade:  var(--typography--line-height);
+	--sticky--first: var(--typography--line-height); // Optically, with bottom address bar (iOS).
+
+	@include browser(chrome) { --sticky--first: var(--typography--line) }
+
+	@mixin sticky-head {
+		// Chrome needs the prefix; Safari understands with and without.
+		-webkit-mask:     linear-gradient(to top, transparent, var(--color--tertiary) var(--sticky--fade), var(--color--highest) var(--sticky--fade));
+		background-color: var(--color--background);
+		margin-bottom:    calc(-1 * var(--sticky--chin) - var(--sticky--fade));
+		margin-left:      calc(-1 * var(--sticky--outset--left, var(--typography--lead)));
+		margin-right:     calc(-1 * var(--sticky--outset--right, var(--typography--lead)));
+		margin-top:       calc(-1 * var(--sticky--forehead));
+		padding-bottom:   calc(var(--sticky--chin) + var(--sticky--fade));
+		padding-left:     calc(var(--sticky--outset--left, var(--typography--lead)) + var(--typography--margin--left, 0em) + var(--sticky--inset--left, 0em));
+		padding-right:    calc(var(--sticky--outset--right, var(--typography--lead)) + var(--typography--margin--right, 0em) + var(--sticky--inset--right, 0em));
+		padding-top:      var(--sticky--forehead);
+		position:         sticky;
+		top:              var(--sticky--top);
+	}
+
+	// Can’t extend across media queries (thanks Nex3), hence this dance.
+	%sticky-header { @include sticky-head }
+
+
+
+	#Sidebar {
+		@extend %sticky-header;
+
+		--sticky--chin:     var(--typography--lead);
+		--sticky--forehead: var(--sticky--first);
+		--sticky--top:      0;
+
+		// Gutter and noodling “The Talk Show” to line up with “Top” link.
+		column-gap:       calc(var(--typography--line--2) - 0.2em);
+		display:          flex;
+		grid-area:        sidebar;
+		overflow-x:       scroll;
+		scroll-snap-type: x proximity;
+		z-index:          2; // Over the sticky headers in the main column.
+
+		&::-webkit-scrollbar { display: none } // Hide scrollbar.
+
+		%--scroll--snap { // Settle on items.
+			scroll-margin-left: var(--typography--lead);
+			scroll-snap-align:  start;
+		}
+
+		// Byline.
+		> p:first-child {
+			@extend %--scroll--snap;
+			@extend %font--extended;
+			@extend %font--gill-sans--on-verdana;
+			@extend nobr;
+
+			strong { @extend %font--uppercase }
+		}
+
+		// Navigation.
+		> ul {
+			--color: var(--color--secondary);
+
+			column-gap: var(--typography--lead--2);
+			display:    flex;
+
+			> li {
+				@extend %--scroll--snap;
+				@extend %font--extended;
+				@extend %font--gill-sans--on-verdana;
+				@extend %font--uppercase;
+				@extend nobr;
+
+				> a {
+					@extend %link--text;
+					@extend %typography--underline--disable;
+				}
+
+				&:last-child { padding-right: 40vw } // To scroll snap the last item to the left.
+
+				&:has(> script:only-child) { display: none } // Turn off empty linked list item.
+			}
+		}
+	}
+
+
+
+	#Main {
+		--main--min: calc(100vh - var(--sticky--first) - var(--typography--cap) * 2 - var(--typography--line) - var(--typography--line-height));
+
+		display:        flex;
+		flex-direction: column;
+		grid-area:      main;
+		min-height:     var(--main--min);
+
+		// iOS bottom-edge fade for scrolled address bar (slate on slate).
+		&:after {
+			background-color: var(--color--background);
+			content:          '';
+			height:           var(--typography--line);
+			left:             0;
+			mask:             linear-gradient(transparent, var(--color--tertiary));
+			pointer-events:   none;
+			position:         fixed;
+			right:            0;
+			top:              calc(100vh - var(--typography--line));
+			transform:        translateZ(0); // Force rendering before collapse.
+			z-index:          2; // Above sticky titles.
+
+			@include browser(chrome) { display: none }
+		}
+	}
+
+
+
+	// Ad block internals.
+	#MainMartini,
+	#SidebarMartini div {
+		display: flex;
+		gap:     var(--typography--lead);
+
+		// Around the image.
+		> a {
+			@extend %link--element;
+
+			border:      initial; // Cancel out text-link spacing.
+			flex-shrink: 0; // Prevent image smushing.
+		}
+
+		// Tagline.
+		> p {
+			--color: var(--color--secondary);
+
+			--typography--size--override: 12;
+			--typography--factor:         initial; // Since type is not scaling.
+
+			--typography--underline--clear: 1;
+			--typography--underline--link:  initial;
+
+			max-width: 50ch;
+
+			a { @extend %link--text }
+		}
+	}
+
+	#MainMartini {
+		align-items:   center;
+		padding-right: var(--typography--lead);
+	}
+
+	#SidebarMartini {
+		--ad--spacer: var(--typography--line--2);
+
+		align-items: end;
+		display:     none; // Hide on single-column (show dupe in Main).
+		flex-grow:   1;
+		margin-top:  var(--ad--spacer);
+		max-height:  100vh; // Another fold or so.
+
+		> div { // The JS-added container.
+			align-items:    end;
+			bottom:         var(--typography--line);
+			flex-direction: column;
+			margin-left:    calc(-1 * var(--typography--lead));
+			position:       sticky;
+
+			// Allow left-ragged edge to poke out a bit for better wraps.
+			@include width(1080) { margin-left: calc(-1 * var(--typography--line)) }
+		}
+	}
+
+
+
+	// JS-added return-to-top links.
+	--sticky--inset--right: calc(var(--typography--lead--2) + (46 / 390) * 100vw); // Width of top link and nav gutter.
+
+	#BannerTop {
+		height:   calc(var(--typography--line-height) * 2 + var(--typography--cap));
+		position: absolute;
+		right:    0;
+		top:      calc(var(--typography--line--4) + var(--typography--line-height)); // Start with nav.
+
+		> p { top: calc(var(--sticky--first) + var(--typography--cap) + var(--typography--line)) }
+	}
+
+	#SidebarTop {
+		--top--spacer: var(--typography--line);
+
+		align-items:     end;
+		display:         none; // Banner one visible on mobile.
+		flex-grow:       1; // Fill height under ad.
+		justify-content: end;
+		margin-top:      var(--top--spacer);
+
+		> p { bottom: var(--sticky--first) }
+	}
+
+	ul + #SidebarTop { margin-top: 100vh } // On pages with no ad block.
+
+	.toplink {
+		@extend %--scroll--snap;
+		@extend %font--extended;
+		@extend %font--gill-sans--on-verdana;
+		@extend %font--uppercase;
+		@extend nobr;
+
+		--color: var(--color--tertiary);
+
+		position: sticky;
+
+		> a {
+			@extend %link--text;
+			@extend %typography--underline--disable;
+
+			> span { // The arrow.
+				@extend %typography--inline;
+				@extend %font--sf-mono--on-verdana;
+
+				--typography--scale: 1.125;
+
+				margin-left:    -0.125em;
+				vertical-align: -0.035em; // Optical.
+			}
+		}
+	}
+
+
+
+	// Loose copyright (Smartypants).
+	> .smallprint {
+		@extend %font--extended;
+		@extend %font--gill-sans--in-verdana;
+		@extend %font--uppercase;
+
+		--color: var(--color--tertiary);
+
+		grid-column: 2;
+	}
+
+	#Sidebar:has(~ .smallprint) { grid-row: span 2 } // Keep “Top” at end.
+
+
 
 	// Two-column.
-	@include width(568) { --scroll--padding: 40vh }
+	@include width(568) {
+		--banner--forehead: var(--typography--line--2);
 
-	// Tablets/comps.
-	@include width(744) { @include tall(480) { --scroll--padding: 25vh } }
-}
+		--main--wrap: calc(425 / 12 * 1em); // Preserve existing (default size) wrapping.
 
+		--sticky--inset--right: initial; // Reset space for top link.
 
-
-// Variables and layout.
-body {
-	@extend %font--verdana;
-	@extend %typography--layout;
-
-
-
-	// Type.
-	--typography--size--floor:   14;
-	--typography--size--middle:  16;
-	--typography--size--ceiling: 20;
-
-	--typography--size:    var(--typography--size--floor);
-	--typography--leading: 1.8;
-
-	// Rounding on type-derived values is inconsistent at these sizes.
-	--typography--underline--override: 0.1rem;
-
-
-
-	// Palette.
-	$--slate: #4a525a;
-
-	$--opacity--primary:   90%;   // #EEE equivalent on slate.
-	$--opacity--secondary: 70%;   // #CCC.
-	$--opacity--tertiary:  51.5%; // #AAA.
-	$--opacity--middle:    31.5%; // #888.
-	$--opacity--slight:    13%;   // #606870.
-
-	--color--slate: #{$--slate};
-
-	--color--highest:   white;
-	--color--primary:   rgba(255, 255, 255, #{$--opacity--primary});
-	--color--secondary: rgba(255, 255, 255, #{$--opacity--secondary});
-	--color--tertiary:  rgba(255, 255, 255, #{$--opacity--tertiary});
-	--color--middle:    rgba(255, 255, 255, #{$--opacity--middle});
-	--color--slight:    rgba(255, 255, 255, #{$--opacity--slight});
-	--color--dark:      rgba(0, 0, 0, #{$--opacity--slight});
-	--color--darker:    rgba(0, 0, 0, #{$--opacity--middle});
-
-	// Map to use.
-	--color:             var(--color--primary);
-	--color--background: var(--color--slate);
-
-	--color--highlight:       var(--color--slight);
-	--color--highlight--more: var(--color--middle);
-	--color--hover:           var(--color--highest);
-	--color--underline:       var(--color--middle);
-	--color--inset:           var(--color--dark);
-	--color--inset--more:     var(--color--darker);
-
-
-
-	// Links.
-	--link--enlargement: calc(var(--typography--lead) / 2 - 0.15rem); // Less a bit for rounding/overlaps.
-	--link--outline:     0.2rem;
-	--link--radius:      calc(var(--typography--cap) / 4);
-	--link--transition:  50ms;
-
-
-
-	background-color: var(--color--background);
-	color:            var(--color--primary);
-	padding-left:     calc(env(safe-area-inset-left, 0rem) * 0.72); // Right to the notch edge.
-	padding-right:    calc(env(safe-area-inset-right, 0rem) * 0.72);
-
-
-
-	@include legacy {
-		// Scale down for legacy devices, based on the viewport.
-		--typography--factor: 1; // With the unit already in the calc.
-		--typography--size:   calc(var(--typography--size--floor) / #{ $legacy-threshold } * 100vw);
-
-		@include landscape { --typography--size: calc(var(--typography--size--floor) / #{ $legacy-threshold } * 100vh) }
-	}
-
-	@include width(744) {
-		@include tall(480) {
-			// Start scaling up type when there is room.
-			--typography--factor: 1;
-			--typography--size:   clamp(
-															calc(var(--typography--size--floor) * 0.1rem),
-															calc(var(--typography--size--floor) / 744 * 100vw),
-															calc(var(--typography--size--middle) * 0.1rem)
-														);
-		}
-	}
-
-	@include width(1080) {
-		@include tall(768) {
-			// Further on tall screens, based on height.
-			--typography--factor: 1;
-			--typography--size:   clamp(
-															calc(var(--typography--size--middle) * 0.1rem),
-															calc(var(--typography--size--middle) / 768 * 100vh),
-															calc(var(--typography--size--ceiling) * 0.1rem)
-														);
-		}
-	}
-
-
-
-	// Main layout.
-	#Box {
-		--banner--forehead: var(--typography--line--3); // Less needed above optically (iOS).
-
-		display:               grid;
-		grid-template-columns: minmax(0, 1fr); // Since “auto” is the min otherwise.
-		padding-bottom:        var(--typography--line-height);
-		padding-left:          var(--typography--lead);
-		padding-right:         var(--typography--lead);
-		padding-top:           var(--banner--forehead);
-		row-gap:               var(--typography--line--2);
+		column-gap:            var(--typography--line--2); // Main “spine” gutter.
+		grid-template-columns: minmax(0, min-content) minmax(0, var(--main--wrap));
+		justify-content:       center;
+		padding-left:          var(--typography--line);
+		padding-right:         var(--typography--line);
+		position:              initial; // Reset from secret sticky.
 		grid-template-areas:
-			'banner'
-			'sidebar'
-			'main';
+			'banner  banner'
+			'sidebar main  ';
 
-		@include browser(chrome) { --banner--forehead: var(--typography--line--4) } // More for Chrome.
+
 
 		#Banner {
-			grid-area:     banner;
-			margin-bottom: calc(var(--typography--line-height) * 2); // Just extra lines to match the optical 4, above.
-			position:      sticky;
-			top:           calc(-1 * var(--typography--line-height) - var(--typography--line--4) + var(--sticky--first));
-			z-index:       2; // Behind navigation, in front of sticky titles.
+			margin-bottom: initial; // Reset extra mobile/portrait space.
+			top:           calc(-1 * var(--banner--forehead) - var(--typography--line-height) + var(--typography--lead) );
+			z-index:       3;
 
-			// The logo.
-			> a {
-				@extend %link--element;
+			// This trick covers blurry main content/ad from flickering through the browser UI.
+			&:before {
+				--outset: var(--typography--lead);
 
-				--intrinsic--width:  720; // From the PNG.
-				--intrinsic--height: 168;
+				background: var(--color--background);
+				content:    '';
+				display:    block;
+				height:     calc(var(--banner--forehead) * 2 + var(--typography--cap));
+				left:       calc(-1 * var(--outset));
+				position:   absolute;
+				right:      calc(-1 * var(--outset));
+				top:        calc(-1 * var(--banner--forehead));
 
-				--content--width:  644; // Wordmark itself.
-				--content--height: 72;
-
-				--content--inset--left: 47;
-				--content--inset--top:  44;
-
-				--link--enlargement: calc(var(--typography--x) * 2); // Around circle overshoot.
-
-				aspect-ratio: var(--content--width) / var(--content--height);
-				box-sizing:   content-box; // Padding outside.
-				height:       var(--typography--line-height);
-				position:     relative;
-				width:        auto;
-
-				img {
-					aspect-ratio:               var(--intrinsic--width) / var(--intrinsic--height);
-					filter:                     brightness(1.16); // Take image to white.
-					height:                     initial; // Cancel inline.
-					margin-left:                calc(-1 * var(--content--inset--left) / var(--content--width) * (100% - var(--link--enlargement) * 2));
-					margin-top:                 calc(-1 * var(--content--inset--top) / var(--content--width) * (100% - var(--link--enlargement) * 2));
-					max-width:                  initial; // Cancel reset.
-					opacity:                    #{$--opacity--primary}; // Match body copy.
-					position:                   absolute;
-					transition-duration:        var(--link--transition); // Match other links.
-					transition-property:        opacity;
-					transition-timing-function: linear;
-					width:                      calc(var(--intrinsic--width) / var(--content--width) * (100% - var(--link--enlargement) * 2));
-					// Percentages derive from width, so use that for height offset too.
-
-					// Sharpen up Safari scaling, particularly at 1x.
-					@include browser(safari) { image-rendering: optimizeQuality }
-
-					@include hover { opacity: 100% } // Match other links.
-				}
+				@include width(1080) { --outset: var(--typography--line) }
 			}
 		}
 
+		#BannerTop  { display: none } // Switch to sidebar one.
 
-
-		// Sticky stuff.
-		--sticky--fade:  var(--typography--line-height);
-		--sticky--first: var(--typography--line-height); // Optically, with bottom address bar (iOS).
-
-		@include browser(chrome) { --sticky--first: var(--typography--line) }
-
-		@mixin sticky-head {
-			// Chrome needs the prefix; Safari understands with and without.
-			-webkit-mask:     linear-gradient(to top, transparent, var(--color--tertiary) var(--sticky--fade), var(--color--highest) var(--sticky--fade));
-			background-color: var(--color--background);
-			margin-bottom:    calc(-1 * var(--sticky--chin) - var(--sticky--fade));
-			margin-left:      calc(-1 * var(--sticky--outset--left, var(--typography--lead)));
-			margin-right:     calc(-1 * var(--sticky--outset--right, var(--typography--lead)));
-			margin-top:       calc(-1 * var(--sticky--forehead));
-			padding-bottom:   calc(var(--sticky--chin) + var(--sticky--fade));
-			padding-left:     calc(var(--sticky--outset--left, var(--typography--lead)) + var(--typography--margin--left, 0em) + var(--sticky--inset--left, 0em));
-			padding-right:    calc(var(--sticky--outset--right, var(--typography--lead)) + var(--typography--margin--right, 0em) + var(--sticky--inset--right, 0em));
-			padding-top:      var(--sticky--forehead);
-			position:         sticky;
-			top:              var(--sticky--top);
-		}
-
-		// Can’t extend across media queries (thanks Nex3), hence this dance.
-		%sticky-header { @include sticky-head }
-
-
+		#SidebarTop { display: flex }
 
 		#Sidebar {
-			@extend %sticky-header;
+			--sticky--first: var(--typography--line-height);
 
-			--sticky--chin:     var(--typography--lead);
-			--sticky--forehead: var(--sticky--first);
-			--sticky--top:      0;
+			-webkit-mask:     initial; // Reset sticky-header properties.
+			align-items:      end;
+			background-color: initial;
+			flex-direction:   column;
+			margin:           initial;
+			overflow:         visible;
+			padding:          initial;
+			position:         static;
+			scroll-snap-type: initial;
+			text-align:       right;
 
-			// Gutter and noodling “The Talk Show” to line up with “Top” link.
-			column-gap:       calc(var(--typography--line--2) - 0.2em);
-			display:          flex;
-			grid-area:        sidebar;
-			overflow-x:       scroll;
-			scroll-snap-type: x proximity;
-			z-index:          2; // Over the sticky headers in the main column.
-
-			&::-webkit-scrollbar { display: none } // Hide scrollbar.
-
-			%--scroll--snap { // Settle on items.
-				scroll-margin-left: var(--typography--lead);
-				scroll-snap-align:  start;
+			%--scroll--snap--reset {
+				scroll-margin-left: initial;
+				scroll-snap-align:  initial;
 			}
 
 			// Byline.
 			> p:first-child {
-				@extend %--scroll--snap;
-				@extend %font--extended;
-				@extend %font--gill-sans--on-verdana;
-				@extend nobr;
+				@extend %--scroll--snap--reset;
 
-				strong { @extend %font--uppercase }
+				margin-bottom: var(--typography--line--2);
+				position:      sticky; // Simple setup, nav will do the fancy cover/masking.
+				top:           var(--sticky--first);
+				z-index:       2; // In front of following nav.
 			}
 
 			// Navigation.
 			> ul {
-				--color: var(--color--secondary);
+				@include sticky-head; // Move stickiness onto this level.
 
-				column-gap: var(--typography--lead--2);
-				display:    flex;
+				--sticky--chin:     var(--typography--line); // Covers top link in landscape.
+				--sticky--forehead: calc(var(--sticky--first) + var(--typography--cap) + var(--typography--line--2));
+				--sticky--top:      0;
+
+				--sticky--outset--left: var(--typography--line);
+
+				align-items:    end;
+				align-self:     stretch;
+				flex-direction: column;
+				row-gap:        var(--typography--lead);
+				z-index:        1; // In front of ad block.
 
 				> li {
-					@extend %--scroll--snap;
-					@extend %font--extended;
-					@extend %font--gill-sans--on-verdana;
-					@extend %font--uppercase;
-					@extend nobr;
-
-					> a {
-						@extend %link--text;
-						@extend %typography--underline--disable;
-					}
-
-					&:last-child { padding-right: 40vw } // To scroll snap the last item to the left.
-
-					&:has(> script:only-child) { display: none } // Turn off empty linked list item.
-				}
-			}
-		}
-
-
-
-		#Main {
-			--main--min: calc(100vh - var(--sticky--first) - var(--typography--cap) * 2 - var(--typography--line) - var(--typography--line-height));
-
-			display:        flex;
-			flex-direction: column;
-			grid-area:      main;
-			min-height:     var(--main--min);
-
-			// iOS bottom-edge fade for scrolled address bar (slate on slate).
-			&:after {
-				background-color: var(--color--background);
-				content:          '';
-				height:           var(--typography--line);
-				left:             0;
-				mask:             linear-gradient(transparent, var(--color--tertiary));
-				pointer-events:   none;
-				position:         fixed;
-				right:            0;
-				top:              calc(100vh - var(--typography--line));
-				transform:        translateZ(0); // Force rendering before collapse.
-				z-index:          2; // Above sticky titles.
-
-				@include browser(chrome) { display: none }
-			}
-		}
-
-
-
-		// Ad block internals.
-		#MainMartini,
-		#SidebarMartini div {
-			display: flex;
-			gap:     var(--typography--lead);
-
-			// Around the image.
-			> a {
-				@extend %link--element;
-
-				border:      initial; // Cancel out text-link spacing.
-				flex-shrink: 0; // Prevent image smushing.
-			}
-
-			// Tagline.
-			> p {
-				--color: var(--color--secondary);
-
-				--typography--size--override: 12;
-				--typography--factor:         initial; // Since type is not scaling.
-
-				--typography--underline--clear: 1;
-				--typography--underline--link:  initial;
-
-				max-width: 50ch;
-
-				a { @extend %link--text }
-			}
-		}
-
-		#MainMartini {
-			align-items:   center;
-			padding-right: var(--typography--lead);
-		}
-
-		#SidebarMartini {
-			--ad--spacer: var(--typography--line--2);
-
-			align-items: end;
-			display:     none; // Hide on single-column (show dupe in Main).
-			flex-grow:   1;
-			margin-top:  var(--ad--spacer);
-			max-height:  100vh; // Another fold or so.
-
-			> div { // The JS-added container.
-				align-items:    end;
-				bottom:         var(--typography--line);
-				flex-direction: column;
-				margin-left:    calc(-1 * var(--typography--lead));
-				position:       sticky;
-
-				// Allow left-ragged edge to poke out a bit for better wraps.
-				@include width(1080) { margin-left: calc(-1 * var(--typography--line)) }
-			}
-		}
-
-
-
-		// JS-added return-to-top links.
-		--sticky--inset--right: calc(var(--typography--lead--2) + (46 / 390) * 100vw); // Width of top link and nav gutter.
-
-		#BannerTop {
-			height:   calc(var(--typography--line-height) * 2 + var(--typography--cap));
-			position: absolute;
-			right:    0;
-			top:      calc(var(--typography--line--4) + var(--typography--line-height)); // Start with nav.
-
-			> p { top: calc(var(--sticky--first) + var(--typography--cap) + var(--typography--line)) }
-		}
-
-		#SidebarTop {
-			--top--spacer: var(--typography--line);
-
-			align-items:     end;
-			display:         none; // Banner one visible on mobile.
-			flex-grow:       1; // Fill height under ad.
-			justify-content: end;
-			margin-top:      var(--top--spacer);
-
-			> p { bottom: var(--sticky--first) }
-		}
-
-		ul + #SidebarTop { margin-top: 100vh } // On pages with no ad block.
-
-		.toplink {
-			@extend %--scroll--snap;
-			@extend %font--extended;
-			@extend %font--gill-sans--on-verdana;
-			@extend %font--uppercase;
-			@extend nobr;
-
-			--color: var(--color--tertiary);
-
-			position: sticky;
-
-			> a {
-				@extend %link--text;
-				@extend %typography--underline--disable;
-
-				> span { // The arrow.
-					@extend %typography--inline;
-					@extend %font--sf-mono--on-verdana;
-
-					--typography--scale: 1.125;
-
-					margin-left:    -0.125em;
-					vertical-align: -0.035em; // Optical.
-				}
-			}
-		}
-
-
-
-		// Loose copyright (Smartypants).
-		> .smallprint {
-			@extend %font--extended;
-			@extend %font--gill-sans--in-verdana;
-			@extend %font--uppercase;
-
-			--color: var(--color--tertiary);
-
-			grid-column: 2;
-		}
-
-		#Sidebar:has(~ .smallprint) { grid-row: span 2 } // Keep “Top” at end.
-
-
-
-		// Two-column.
-		@include width(568) {
-			--banner--forehead: var(--typography--line--2);
-
-			--main--wrap: calc(425 / 12 * 1em); // Preserve existing (default size) wrapping.
-
-			--sticky--inset--right: initial; // Reset space for top link.
-
-			column-gap:            var(--typography--line--2); // Main “spine” gutter.
-			grid-template-columns: minmax(0, min-content) minmax(0, var(--main--wrap));
-			justify-content:       center;
-			padding-left:          var(--typography--line);
-			padding-right:         var(--typography--line);
-			position:              initial; // Reset from secret sticky.
-			grid-template-areas:
-				'banner  banner'
-				'sidebar main  ';
-
-
-
-			#Banner {
-				margin-bottom: initial; // Reset extra mobile/portrait space.
-				top:           calc(-1 * var(--banner--forehead) - var(--typography--line-height) + var(--typography--lead) );
-				z-index:       3;
-
-				// This trick covers blurry main content/ad from flickering through the browser UI.
-				&:before {
-					--outset: var(--typography--lead);
-
-					background: var(--color--background);
-					content:    '';
-					display:    block;
-					height:     calc(var(--banner--forehead) * 2 + var(--typography--cap));
-					left:       calc(-1 * var(--outset));
-					position:   absolute;
-					right:      calc(-1 * var(--outset));
-					top:        calc(-1 * var(--banner--forehead));
-
-					@include width(1080) { --outset: var(--typography--line) }
-				}
-			}
-
-			#BannerTop  { display: none } // Switch to sidebar one.
-
-			#SidebarTop { display: flex }
-
-			#Sidebar {
-				--sticky--first: var(--typography--line-height);
-
-				-webkit-mask:     initial; // Reset sticky-header properties.
-				align-items:      end;
-				background-color: initial;
-				flex-direction:   column;
-				margin:           initial;
-				overflow:         visible;
-				padding:          initial;
-				position:         static;
-				scroll-snap-type: initial;
-				text-align:       right;
-
-				%--scroll--snap--reset {
-					scroll-margin-left: initial;
-					scroll-snap-align:  initial;
-				}
-
-				// Byline.
-				> p:first-child {
 					@extend %--scroll--snap--reset;
 
-					margin-bottom: var(--typography--line--2);
-					position:      sticky; // Simple setup, nav will do the fancy cover/masking.
-					top:           var(--sticky--first);
-					z-index:       2; // In front of following nav.
-				}
+					margin-left: calc(-1 * var(--typography--lead));
 
-				// Navigation.
-				> ul {
-					@include sticky-head; // Move stickiness onto this level.
+					&:last-child { padding-right: initial } // Reset scroll padding.
 
-					--sticky--chin:     var(--typography--line); // Covers top link in landscape.
-					--sticky--forehead: calc(var(--sticky--first) + var(--typography--cap) + var(--typography--line--2));
-					--sticky--top:      0;
+					// Wrap “Sponsor the show” link, on Talk Show nav.
+					&:has(> a[href="http://neat.fm/"]) { white-space: initial }
 
-					--sticky--outset--left: var(--typography--line);
-
-					align-items:    end;
-					align-self:     stretch;
-					flex-direction: column;
-					row-gap:        var(--typography--lead);
-					z-index:        1; // In front of ad block.
-
-					> li {
-						@extend %--scroll--snap--reset;
-
-						margin-left: calc(-1 * var(--typography--lead));
-
-						&:last-child { padding-right: initial } // Reset scroll padding.
-
-						// Wrap “Sponsor the show” link, on Talk Show nav.
-						&:has(> a[href="http://neat.fm/"]) { white-space: initial }
-
-						@include width(1080) { margin-left: calc(-1 * var(--typography--line)) }
-					}
+					@include width(1080) { margin-left: calc(-1 * var(--typography--line)) }
 				}
 			}
+		}
 
-			#Main {
-				--main--min: calc(100vh - var(--typography--line-height) * 2);
+		#Main {
+			--main--min: calc(100vh - var(--typography--line-height) * 2);
 
-				&:after { display: none } // Turn off address-bar fade.
+			&:after { display: none } // Turn off address-bar fade.
+		}
+
+
+
+		// Tablets/comps.
+		@include width(744) {
+			@include tall(480) {
+				--banner--forehead: var(--typography--line--4);
+
+				padding-bottom: var(--typography--line);
+				row-gap:        var(--banner--forehead);
+
+				#Sidebar { --sticky--first: var(--typography--line) }
+
+				#Main { --main--min: calc(100vh - var(--typography--line) * 2); }
+
+				#SidebarTop { --top--spacer: var(--typography--line--2) }
 			}
 
+			// With enough height to move the ad back over.
+			@include tall(640) {
+				#SidebarMartini { display: flex }
 
+				#MainMartini { display: none }
+			}
 
-			// Tablets/comps.
-			@include width(744) {
-				@include tall(480) {
-					--banner--forehead: var(--typography--line--4);
+			@include tall(700) { // Space it out more when we can.
+				#Sidebar > ul { --sticky--chin: var(--typography--line--2) }
 
-					padding-bottom: var(--typography--line);
-					row-gap:        var(--banner--forehead);
-
-					#Sidebar { --sticky--first: var(--typography--line) }
-
-					#Main { --main--min: calc(100vh - var(--typography--line) * 2); }
-
-					#SidebarTop { --top--spacer: var(--typography--line--2) }
-				}
-
-				// With enough height to move the ad back over.
-				@include tall(640) {
-					#SidebarMartini { display: flex }
-
-					#MainMartini { display: none }
-				}
-
-				@include tall(700) { // Space it out more when we can.
-					#Sidebar > ul { --sticky--chin: var(--typography--line--2) }
-
-					#SidebarMartini { --ad--spacer: var(--typography--line--4) }
-				}
+				#SidebarMartini { --ad--spacer: var(--typography--line--4) }
 			}
 		}
 	}

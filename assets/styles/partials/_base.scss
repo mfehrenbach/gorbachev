@@ -1,0 +1,127 @@
+@use 'utilities' as *;
+
+@forward 'typography';
+@forward 'fonts';
+@forward 'links';
+
+
+
+// Viewport stuff.
+:root {
+	--scroll--padding: 30vh; // Without knowing the title length/height, this is safe.
+
+	scroll-behavior:       smooth;
+	scroll-padding-bottom: 5vh;
+	scroll-padding-top:    var(--scroll--padding);
+
+	// Two-column.
+	@include width(568) { --scroll--padding: 40vh }
+
+	// Tablets/comps.
+	@include width(744) { @include tall(480) { --scroll--padding: 25vh } }
+}
+
+
+
+// Variables and such.
+body {
+	@extend %font--verdana;
+	@extend %typography--layout;
+
+
+
+	// Type.
+	--typography--size--floor:   14;
+	--typography--size--middle:  16;
+	--typography--size--ceiling: 20;
+
+	--typography--size:    var(--typography--size--floor);
+	--typography--leading: 1.8;
+
+	// Rounding on type-derived values is inconsistent at these sizes.
+	--typography--underline--override: 0.1rem;
+
+
+
+	// Palette.
+	$slate: #4a525a;
+
+	$opacity--primary:   90%;   // #EEE equivalent on slate.
+	$opacity--secondary: 70%;   // #CCC.
+	$opacity--tertiary:  51.5%; // #AAA.
+	$opacity--middle:    31.5%; // #888.
+	$opacity--slight:    13%;   // #606870.
+
+	--color--slate: #{$slate};
+
+	--opacity--primary: #{$opacity--primary}; // To use elsewhere.
+
+	--color--highest:   white;
+	--color--primary:   rgba(255, 255, 255, var(--opacity--primary));
+	--color--secondary: rgba(255, 255, 255, #{$opacity--secondary});
+	--color--tertiary:  rgba(255, 255, 255, #{$opacity--tertiary});
+	--color--middle:    rgba(255, 255, 255, #{$opacity--middle});
+	--color--slight:    rgba(255, 255, 255, #{$opacity--slight});
+	--color--dark:      rgba(0, 0, 0, #{$opacity--slight});
+	--color--darker:    rgba(0, 0, 0, #{$opacity--middle});
+
+	// Map to use.
+	--color:             var(--color--primary);
+	--color--background: var(--color--slate);
+
+	--color--highlight:       var(--color--slight);
+	--color--highlight--more: var(--color--middle);
+	--color--hover:           var(--color--highest);
+	--color--underline:       var(--color--middle);
+	--color--inset:           var(--color--dark);
+	--color--inset--more:     var(--color--darker);
+
+
+
+	// Links.
+	--link--enlargement: calc(var(--typography--lead) / 2 - 0.15rem); // Less a bit for rounding/overlaps.
+	--link--outline:     0.2rem;
+	--link--radius:      calc(var(--typography--cap) / 4);
+	--link--transition:  50ms;
+
+
+
+	background-color: var(--color--background);
+	color:            var(--color--primary);
+	padding-left:     calc(env(safe-area-inset-left, 0rem) * 0.72); // Right to the notch edge.
+	padding-right:    calc(env(safe-area-inset-right, 0rem) * 0.72);
+
+
+
+	@include legacy {
+		// Scale down for legacy devices, based on the viewport.
+		--typography--factor: 1; // With the unit already in the calc.
+		--typography--size:   calc(var(--typography--size--floor) / #{ $legacy-threshold } * 100vw);
+
+		@include landscape { --typography--size: calc(var(--typography--size--floor) / #{ $legacy-threshold } * 100vh) }
+	}
+
+	@include width(744) {
+		@include tall(480) {
+			// Start scaling up type when there is room.
+			--typography--factor: 1;
+			--typography--size:   clamp(
+															calc(var(--typography--size--floor) * 0.1rem),
+															calc(var(--typography--size--floor) / 744 * 100vw),
+															calc(var(--typography--size--middle) * 0.1rem)
+														);
+		}
+	}
+
+	@include width(1080) {
+		@include tall(768) {
+			// Further on tall screens, based on height.
+			--typography--factor: 1;
+			--typography--size:   clamp(
+															calc(var(--typography--size--middle) * 0.1rem),
+															calc(var(--typography--size--middle) / 768 * 100vh),
+															calc(var(--typography--size--ceiling) * 0.1rem)
+														);
+		}
+	}
+}
