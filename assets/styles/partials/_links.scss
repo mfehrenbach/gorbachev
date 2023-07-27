@@ -70,3 +70,18 @@
 	// This sadly doesn’t work in Safari, and causes overflows.
 	@include browser(chrome) { -webkit-box-decoration-break: clone }
 }
+
+
+
+// Improve link hovers in Safari, as they often wrap and `box-decoration-break` doesn’t work.
+%link--safari-faux-enlargement {
+	@include browser(safari) {
+		margin:        initial;
+		padding-left:  initial;
+		padding-right: initial;
+
+		@include hover { // Faux link-enlargement.
+			box-shadow: calc(-1 * var(--link--enlargement)) 0 0 var(--color--highlight), var(--link--enlargement) 0 0 var(--color--highlight);
+		}
+	}
+}

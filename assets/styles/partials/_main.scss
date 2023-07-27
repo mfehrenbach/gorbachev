@@ -80,21 +80,6 @@
 
 
 
-	// Improve link hovers in Safari, since they often wrap.
-	%--safari-faux-enlargement {
-		@include browser(safari) {
-			margin:        initial;
-			padding-left:  initial;
-			padding-right: initial;
-
-			@include hover { // Faux link-enlargement.
-				box-shadow: calc(-1 * var(--link--enlargement)) 0 0 var(--color--highlight), var(--link--enlargement) 0 0 var(--color--highlight);
-			}
-		}
-	}
-
-
-
 	%--sticky-header--main {
 		@extend %sticky-header;
 
@@ -402,7 +387,7 @@
 
 				--typography--scale: 1; // Clear back to “on Verdana” size.
 
-				&:not(.permalink) { @extend %--safari-faux-enlargement }
+				&:not(.permalink) { @extend %link--safari-faux-enlargement }
 			}
 		}
 
@@ -710,7 +695,7 @@
 			@extend %--sticky-header--main;
 
 			> a {
-				@extend %--safari-faux-enlargement;
+				@extend %link--safari-faux-enlargement;
 				@extend %typography--underline--disable;
 
 				--color: var(--color--primary);
@@ -729,7 +714,7 @@
 		// “The Talk Show” landing.
 		> h2:has(> a[href^="/thetalkshow"]) {
 			> a {
-				@extend %--safari-faux-enlargement;
+				@extend %link--safari-faux-enlargement;
 				@extend %typography--underline--disable;
 			}
 
@@ -820,7 +805,7 @@
 			max-width:  42ch; // Approximate the wrap on articles themselves.
 
 			> a {
-				@extend %--safari-faux-enlargement;
+				@extend %link--safari-faux-enlargement;
 				@extend %typography--underline--disable;
 
 				--color: var(--color--primary);
@@ -875,7 +860,7 @@
 				white-space: initial; // Titles gonna wrap.
 
 				a {
-					@extend %--safari-faux-enlargement;
+					@extend %link--safari-faux-enlargement;
 					@extend %typography--underline--disable;
 
 					--color: var(--color--primary);
