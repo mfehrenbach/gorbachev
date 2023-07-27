@@ -79,6 +79,10 @@ if (typeof replacementStyles == 'undefined') {
 
 
 
+	// Adjust the FancyZoom properties a bit.
+	window.innerWidth >= 1024 ? minBorder = 96 : minBorder = 32
+
+
 	// Finally, set up the stylesheet.
 	let baseUrl = document.currentScript.src
 	baseUrl = baseUrl.substring(0, baseUrl.lastIndexOf('/'))
