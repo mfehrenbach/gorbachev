@@ -128,7 +128,10 @@ body {
 	// Zoom overrides.
 	#ZoomImage { box-shadow: initial !important; }
 
-	&:has(> #ZoomBox[style*="visible"]) #Box { opacity: $opacity--slight } // Dim content.
+	&:has(> #ZoomBox[style*="visible"]) #Box {
+		opacity:        $opacity--slight; // Dim content.
+		pointer-events: none;
+	}
 }
 
 :root:has(> body > #ZoomBox[style*="visible"]) { overflow: hidden; } // Freeze scrolling.
