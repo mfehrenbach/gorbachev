@@ -15,6 +15,7 @@
 	padding-right:         var(--typography--lead);
 	padding-top:           var(--banner--forehead);
 	row-gap:               var(--typography--line--2);
+	transition:            var(--link--transition) opacity linear;
 	grid-template-areas:
 		'banner'
 		'sidebar'

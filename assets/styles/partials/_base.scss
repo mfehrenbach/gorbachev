@@ -122,4 +122,13 @@ body {
 														);
 		}
 	}
+
+
+
+	// Zoom overrides.
+	#ZoomImage { box-shadow: initial !important; }
+
+	&:has(> #ZoomBox[style*="visible"]) #Box { opacity: $opacity--slight } // Dim content.
 }
+
+:root:has(> body > #ZoomBox[style*="visible"]) { overflow: hidden; } // Freeze scrolling.
