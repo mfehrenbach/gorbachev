@@ -31,7 +31,7 @@ module:
     - source: archetypes
       target: archetypes
     # Surface for `resources.Get` functions. (Must then include default mounts, above.)
-    - source: .github
+    - source: ./
       target: assets
     - source: layouts
       target: assets
