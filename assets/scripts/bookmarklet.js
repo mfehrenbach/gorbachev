@@ -1,5 +1,8 @@
 {{- $payload := resources.Get `scripts/payload.js` -}}
-{{- $payload = $payload | resources.Copy `payload.js` -}}
+{{- $payload = $payload | js.Build (dict `format` `esm`) -}}
+{{- $payload = $payload.Content -}}
+{{- $payload = $payload | replaceRE `// <stdin>\n` `` -}}
+{{- $payload = $payload | resources.FromString `payload.js` -}}
 
 javascript:(function(){
 	const df = 'https://daringfireball.net'
