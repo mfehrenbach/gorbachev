@@ -1,5 +1,7 @@
 # Gorbachev
 
+ 
+
 > ### Daring Fireball 1.2, *Gorbachev*
 >
 > This is the initial, “drop in CSS replacement” phase we discussed towards the end of lunch last week. The goal here is to make the site responsive with the existing DOM, layout, and typography. We’ll give you a CSS file to replace your current one.
