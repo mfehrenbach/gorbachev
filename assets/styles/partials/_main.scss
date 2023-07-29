@@ -93,7 +93,7 @@
 			--sticky--forehead: var(--typography--line-height);
 			--sticky--top:    0;
 
-			@include browser(chrome) { --sticky--top: -0.01rem } // Prevent visible sliver above.
+			@include browser(chrome, safari--mobile) { --sticky--top: -0.1rem } // Prevent visible sliver above.
 
 			@include width(744) {
 				@include tall(480) {
