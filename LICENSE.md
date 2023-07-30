@@ -4,4 +4,4 @@
 
 If you copy without permission, you’re an unprincipled dick.
 
-*Layout v. 1.2 / Update 2023-07-29*
+*Layout v<span title="Version">1.2</span> / Update <span title="Date">2023-07-29</span>*
