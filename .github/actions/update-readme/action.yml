@@ -2,12 +2,12 @@ name: Update README
 runs:
   using: composite
   steps:
-    - name: Store bookmarklet
-      id: bookmarklet
-      run: echo "link=$(cat _site/bookmarklet.txt)" >> "$GITHUB_OUTPUT"
+    - name:  Store bookmarklet
+      id:    bookmarklet
+      run:   echo "link=$(cat _site/bookmarklet.txt)" >> "$GITHUB_OUTPUT"
       shell: bash
-    - name: Toss build
-      run: git reset --hard
+    - name:  Toss build
+      run:   git reset --hard
       shell: bash
     - name: Edit link
       uses: jacobtomlinson/gha-find-replace@v3
@@ -21,11 +21,15 @@ runs:
         find:    "```js\n(.*?)\n```"
         replace: "```js\n${{ steps.bookmarklet.outputs.link }}\n```"
         include: "README.md"
+    - name:  Store updated
+      id:    updated
+      run:   echo "date=$(date +%Y%m%d)" >> $GITHUB_OUTPUT
+      shell: bash
     - name: Edit date
       uses: jacobtomlinson/gha-find-replace@v3
       with:
-        find:    ' \/ Updated (.*?)\*\n'
-        replace: ' / Updated TESTING*\n'
+        find:    ' \/ Updated (.*?)\*'
+        replace: ' / Updated ${{ steps.updated.outputs.date }}*'
         include: 'LICENSE.md'
     - name: Commit changes
       run: |
