@@ -18,7 +18,7 @@ runs:
       shell: bash
     - name:  Beautify Output
       run: |
-        html-beautify --indent-inner-html --extra_liners --no-preserve-newlines --indent-with-tabs --replace "_site/**/*.html"
-        css-beautify --space_around_combinator --indent-with-tabs --replace "_site/**/*.css"
+        html-beautify --extra_liners --indent-inner-html --indent-with-tabs --no-preserve-newlines --replace "_site/**/*.html"
+        css-beautify --indent-with-tabs --space_around_combinator --replace "_site/**/*.css"
         js-beautify --indent-with-tabs --replace "_site/**/*.js"
       shell: bash
