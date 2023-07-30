@@ -1,1 +1,10 @@
-{{- . | safeHTML -}}
+{{- $license := resources.Get `LICENSE.md` -}}
+{{- $license = $license.Content -}}
+{{- $license = $license | markdownify -}}
+{{- $license = $license | replaceRE `</h1>` `</h1><br>` -}}
+{{- $license = $license | plainify -}}
+{{- $license = $license | chomp -}}
+{{- $license = $license | replaceRE "^" "\t" -}}
+{{- $license = $license | replaceRE "\n" "\n\t" -}}
+{{- $license = print "/*\n" $license "\n*/\n\n" -}}
+{{- $license | safeHTML -}}{{- . | safeHTML -}}
