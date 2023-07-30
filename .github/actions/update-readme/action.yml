@@ -24,8 +24,8 @@ runs:
     - name: Edit date
       uses: jacobtomlinson/gha-find-replace@v3
       with:
-        find:    ' \/ Updated (.*?)\*'
-        replace: ' / Updated TESTING*'
+        find:    ' \/ Updated (.*?)\*\n'
+        replace: ' / Updated TESTING*\n'
         include: './LICENSE.md'
     - name: Commit changes
       run: |
