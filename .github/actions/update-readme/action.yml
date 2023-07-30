@@ -21,13 +21,19 @@ runs:
         find:    "```js\n(.*?)\n```"
         replace: "```js\n${{ steps.bookmarklet.outputs.link }}\n```"
         include: "./README.md"
+    - name: Edit date
+      uses: jacobtomlinson/gha-find-replace@v3
+      with:
+        find:    '\/ Updated (.*?)\*'
+        replace: '\/ Updated TESTING\*'
+        include: './LICENSE.md'
     - name: Commit changes
       run: |
         if [[ "$(git status --porcelain)" != "" ]]; then
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add .
-          git commit -m "Auto-update README."
+          git commit -m "Auto-update README/LICENSE."
           git push
         fi
       shell: bash
