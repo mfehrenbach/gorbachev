@@ -7,4 +7,4 @@ hugo --buildFuture --config $config --destination $destination --minify --templa
 rm -rf resources &&
 html-beautify --indent-inner-html --extra_liners --no-preserve-newlines --indent-with-tabs --replace "$destination/**/*.html" &&
 css-beautify --space_around_combinator --indent-with-tabs --replace "$destination/**/*.css" &&
-js-beautify --indent-with-tabs --replace "$destination/**/*.js" &&
+js-beautify --indent-with-tabs --replace "$destination/**/*.js"
