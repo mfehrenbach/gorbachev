@@ -2,6 +2,7 @@
 {{- $payload = $payload | js.Build (dict `format` `esm`) -}}
 {{- $payload = $payload.Content -}}
 {{- $payload = $payload | replaceRE `// <stdin>\n` `` -}}
+{{- $payload = partial `license.html` $payload -}}
 {{- $payload = $payload | resources.FromString `payload.js` -}}
 
 javascript:(function(){

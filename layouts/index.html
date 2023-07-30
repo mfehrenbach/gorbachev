@@ -9,6 +9,9 @@
 		{{ $bookmarklet = $bookmarklet | resources.FromString `bookmarklet.txt` }}
 		{{ $replacement := resources.Get `styles/replacement.scss` }}
 		{{ $replacement = $replacement | toCSS (dict `transpiler` `dartsass` `targetPath` `replacement.css`) }}
+		{{ $replacement = $replacement.Content }}
+		{{ $replacement = partial `license.html` $replacement }}
+		{{ $replacement = $replacement | resources.FromString `replacement.css` }}
 		<!-- Permalink to render out: {{ $bookmarklet.Permalink }} -->
 		<!-- Permalink to render out: {{ $replacement.Permalink }} -->
 		{{ if hugo.IsProduction }}
