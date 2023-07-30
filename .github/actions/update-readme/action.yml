@@ -14,19 +14,19 @@ runs:
       with:
         find:    '\((.*?) "Gorbachev"\)'
         replace: '(${{ env.HUGO_BASEURL }}/bookmarklet.txt "Gorbachev")'
-        include: './README.md'
+        include: 'README.md'
     - name: Edit JS
       uses: jacobtomlinson/gha-find-replace@v3
       with:
         find:    "```js\n(.*?)\n```"
         replace: "```js\n${{ steps.bookmarklet.outputs.link }}\n```"
-        include: "./README.md"
+        include: "README.md"
     - name: Edit date
       uses: jacobtomlinson/gha-find-replace@v3
       with:
         find:    ' \/ Updated (.*?)\*\n'
         replace: ' / Updated TESTING*\n'
-        include: './LICENSE.md'
+        include: 'LICENSE.md'
     - name: Commit changes
       run: |
         if [[ "$(git status --porcelain)" != "" ]]; then
