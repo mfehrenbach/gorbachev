@@ -14,10 +14,6 @@ document.body.addEventListener('transitionend', () => {
 			// Flag Windows for CSS.
 			if (navigator.appVersion.includes('Win')) document.documentElement.classList.add('windows')
 
-			// Make the page responsive.
-			const metaViewport = '<meta content="initial-scale=1, maximum-scale=1, viewport-fit=cover, width=device-width" name="viewport">'
-			document.head.insertAdjacentHTML('beforeEnd', metaViewport)
-
 
 
 			// Add a level of DOM grouping to linked lists, for stickiness.
@@ -93,6 +89,11 @@ document.body.addEventListener('transitionend', () => {
 			// Adjust the FancyZoom properties a bit.
 			window.innerWidth >= 1024 ? minBorder = 96 : minBorder = 32
 
+
+
+			// Make the page responsive.
+			const metaViewport = '<meta content="initial-scale=1, maximum-scale=1, viewport-fit=cover, width=device-width" name="viewport">'
+			document.head.insertAdjacentHTML('beforeEnd', metaViewport)
 
 			// Finally, set up the stylesheet.
 			var replacementStyles = `<link href="${baseUrl}/replacement.css" rel="stylesheet">` // Using `var` so it is global.
