@@ -16,6 +16,27 @@ document.body.addEventListener('transitionend', () => {
 
 
 
+			// Prevent orphans, the old-fashioned way.
+			const textElements = [
+				'a',
+				'dd',
+				'dt',
+				'h1',
+				'h2',
+				'h3',
+				'li',
+				'p'
+			]
+			textElements.forEach(textElement => {
+				for (const element of document.querySelectorAll(textElement)) {
+					if (element.children.length == 0 && element.innerText.split(" ").length > 1) {
+						element.innerText = element.innerText.replace(/\s\b(?=\S+$)/, ' ')
+					}
+				}
+			})
+
+
+
 			// Add a level of DOM grouping to linked lists, for stickiness.
 			const linkedLists = document.querySelectorAll('dl.linkedlist')
 			linkedLists.forEach(linkedList => {
