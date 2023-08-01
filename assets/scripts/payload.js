@@ -18,19 +18,19 @@ document.body.addEventListener('transitionend', () => {
 
 			// Prevent orphans, the old-fashioned way.
 			const textElements = [
-				'a',
 				'dd',
 				'dt',
+				'dt > a',
 				'h1',
 				'h2',
 				'h3',
 				'li',
-				'p'
+				'p',
 			]
 			textElements.forEach(textElement => {
 				for (const element of document.querySelectorAll(textElement)) {
-					if (element.children.length == 0 && element.textContent.split(" ").length > 1) {
-						element.textContent = element.textContent.replace(/\s\b(?=\S+$)/, ' ')
+					if (element.textContent.split(" ").length > 1) {
+						element.innerHTML = element.innerHTML.replace(/\s\b(?=\S+$)(?!href)/, ' ')
 					}
 				}
 			})
