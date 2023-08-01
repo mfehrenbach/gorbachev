@@ -83,6 +83,19 @@ document.body.addEventListener('transitionend', () => {
 
 
 
+			// Spans on bracketed notes.
+			const strongs = document.querySelectorAll('p strong')
+			strongs.forEach(paragraph => {
+				paragraph = paragraph.parentElement
+				paragraph.classList.add('sidenote')
+				if (paragraph.textContent.at(0) == '[' && paragraph.textContent.at(-1) == ']') {
+					paragraph.innerHTML = paragraph.innerHTML.replace('[', '<span>[</span>')
+					paragraph.innerHTML = paragraph.innerHTML.replace(']', '<span>]</span>')
+				}
+			})
+
+
+
 			// Fix keyboard scrolling in Safari, which ignores root `scroll-padding-top`.
 			if (navigator.userAgent.includes('AppleWebKit') && !navigator.userAgent.includes('Chrome')) {
 				document.addEventListener('keydown', () => {

@@ -661,6 +661,20 @@
 		em { font-style: normal } // Cancel these out in favor of small caps. (Gill itals are way off.)
 	}
 
+	// JS-added for bracketed ones.
+	.sidenote {
+		--color: var(--color--secondary);
+
+		> span {
+			@extend %typography--inline;
+
+			--color: var(--color--tertiary);
+
+			&:first-child { margin-right: 0.5ch }
+			&:last-child  { margin-left:  0.5ch }
+		}
+	}
+
 
 
 	.linkedlist {
