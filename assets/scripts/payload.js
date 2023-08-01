@@ -29,8 +29,8 @@ document.body.addEventListener('transitionend', () => {
 			]
 			textElements.forEach(textElement => {
 				for (const element of document.querySelectorAll(textElement)) {
-					if (element.children.length == 0 && element.innerText.split(" ").length > 1) {
-						element.innerText = element.innerText.replace(/\s\b(?=\S+$)/, ' ')
+					if (element.children.length == 0 && element.textContent.split(" ").length > 1) {
+						element.textContent = element.textContent.replace(/\s\b(?=\S+$)/, ' ')
 					}
 				}
 			})
