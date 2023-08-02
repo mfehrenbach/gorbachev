@@ -35,6 +35,8 @@ document.body.addEventListener('transitionend', () => {
 						element.innerHTML = element.innerHTML.replace(/\s(\b[a-zA-Z]{1,2})\s/g, ' $1 ')
 						// And pairs of these (ex: “ of a ”).
 						element.innerHTML = element.innerHTML.replace(/\s(\b[a-zA-Z]{1,2})&nbsp;(\b[a-zA-Z]{1,2})\s/g, ' $1 $2 ')
+						// 1-to-3-digit numbers with their units.
+						element.innerHTML = element.innerHTML.replace(/\s(\b[\d]{1,3})\s/g, ' $1 ')
 						// The with their referents.
 						element.innerHTML = element.innerHTML.replace(/\s(the)\s/g, ' $1 ')
 						// And Oxford ands.
