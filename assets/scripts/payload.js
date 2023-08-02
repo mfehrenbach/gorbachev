@@ -26,6 +26,7 @@ document.body.addEventListener('transitionend', () => {
 				'h3',
 				'li',
 				'p',
+				'td'
 			]
 			textElements.forEach(textElement => {
 				for (const element of document.querySelectorAll(textElement)) {
