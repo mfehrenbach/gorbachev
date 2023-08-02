@@ -16,10 +16,8 @@ document.body.addEventListener('transitionend', () => {
 
 
 
-			// Prevent orphans, the old-fashioned way.
-			const textElements = [
-				'dd',
-				'dt',
+			// Some basic ragging.
+			const textRags = [
 				'dt > a',
 				'h1',
 				'h2',
@@ -28,10 +26,19 @@ document.body.addEventListener('transitionend', () => {
 				'p',
 				'td'
 			]
-			textElements.forEach(textElement => {
-				for (const element of document.querySelectorAll(textElement)) {
+			textRags.forEach(textRag => {
+				for (const element of document.querySelectorAll(textRag)) {
 					if (element.textContent.split(" ").length > 1) {
+						// Prevent orphans the old-fashioned way.
 						element.innerHTML = element.innerHTML.replace(/\s\b(?=\S+$)(?!href)/, ' ')
+						// Keep 1-and-2-letter words with the following ones.
+						element.innerHTML = element.innerHTML.replace(/\s(\b[a-zA-Z]{1,2})\s/g, ' $1 ')
+						// And pairs of these (ex: “ of a ”).
+						element.innerHTML = element.innerHTML.replace(/\s(\b[a-zA-Z]{1,2})&nbsp;(\b[a-zA-Z]{1,2})\s/g, ' $1 $2 ')
+						// The with their referents.
+						element.innerHTML = element.innerHTML.replace(/\s(the)\s/g, ' $1 ')
+						// And Oxford ands.
+						element.innerHTML = element.innerHTML.replace(/,\s(and)\s/g, ', $1 ')
 					}
 				}
 			})
