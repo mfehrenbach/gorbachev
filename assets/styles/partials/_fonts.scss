@@ -38,6 +38,15 @@
 	font-family: 'Verdana', system-ui, sans-serif; // System UI comes in for arrows and symbols.
 }
 
+%font--verdana--cap-to-x {
+	@extend %font--verdana;
+
+	--typography--size--override: calc(var(--typography--x-height--verdana) / var(--typography--cap-height--verdana) * var(--typography--size));
+
+	// Cancel this out in the leading.
+	--typography--leading--override: calc(var(--typography--cap-height--verdana) / var(--typography--x-height--verdana) * var(--typography--leading));
+}
+
 
 
 %font--gill-sans {

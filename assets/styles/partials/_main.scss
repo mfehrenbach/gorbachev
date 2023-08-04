@@ -203,6 +203,13 @@
 		}
 	}
 
+	small {
+		@extend %font--verdana--cap-to-x;
+		@extend %typography--inline;
+	}
+
+	p:has(> small) { @extend %--color-diminish }
+
 
 
 	code {
